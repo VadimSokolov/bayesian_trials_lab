@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="lab.css">
+<link rel="stylesheet" href="nav.css">
 <style>
   .tip { border-bottom: 1px dotted #1F6B6B; cursor: help; }
   .sub { margin: 2.2rem 0 .4rem; }
@@ -56,12 +57,13 @@
 </head>
 <body class="lab">
 <a class="skip" href="#lab">Skip to the simulator</a>
-<div class="topbar"><div class="wrap">
-  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
-  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
-  <span class="title">14. Trial simulator</span>
-  <span class="pn"><a href="13-regulators-map.html">&larr; Prev</a><a href="./">Index</a><a href="15-reading-bayesian-trials.html">Next &rarr;</a></span>
-</div></div>
+<header class="sitenav">
+  <div class="sn-bar">
+    <a class="sn-brand" href="encyclopedia/">Bayesian Clinical Trials</a>
+    <nav class="sn-tabs" aria-label="Site"><a href="books.html">Books</a><a href="labs.html" aria-current="page">Labs</a><a href="encyclopedia/">Encyclopedia</a></nav>
+  </div>
+  <nav class="sn-sub" aria-label="Module"><div class="sn-subin"><a href="13-regulators-map.html">&larr; Prev</a><a href="15-reading-bayesian-trials.html" class="sn-end">Next &rarr;</a></div></nav>
+</header>
 
 <main class="wrap">
 <section class="hero">
@@ -200,7 +202,7 @@
     <li>Polack, F. P. et al. (2020). Safety and efficacy of the BNT162b2 mRNA Covid-19 vaccine. N Engl J Med 383:2603-2615. <a href="https://doi.org/10.1056/NEJMoa2034577">doi:10.1056/NEJMoa2034577</a></li>
     <li>Lan, K. K. G. and DeMets, D. L. (1983). Discrete sequential boundaries for clinical trials. Biometrika 70(3):659-663. O&rsquo;Brien, P. C. and Fleming, T. R. (1979). A multiple testing procedure for clinical trials. Biometrics 35(3):549-556.</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>

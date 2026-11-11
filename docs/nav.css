@@ -1,0 +1,41 @@
+/* Shared site header: brand, three tabs (Books, Labs, Encyclopedia) and an optional quiet sub-bar.
+   Loaded by every page (lab pages and the encyclopedia). Self-contained: own tokens, system UI font. */
+.sitenav {
+  --sn-bg: #ffffff; --sn-text: #1d2229; --sn-muted: #5b6471; --sn-line: #e8eaed; --sn-accent: #1f5fa8; --sn-hover: #f4f5f7;
+  position: sticky; top: 0; z-index: 1000; background: var(--sn-bg); border-bottom: 1px solid var(--sn-line);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.3;
+  color: var(--sn-text); text-align: left;
+}
+.lab .sitenav { position: relative; }
+@media (prefers-color-scheme: dark) {
+  body:not(.lab) .sitenav { --sn-bg: #14171c; --sn-text: #e6e9ee; --sn-muted: #a0a8b4; --sn-line: #2a2f37; --sn-accent: #7fb2ee; --sn-hover: #1f242c; }
+}
+.sitenav *, .sitenav *::before, .sitenav *::after { box-sizing: border-box; }
+.sitenav a { text-decoration: none; }
+.sitenav :focus-visible { outline: 2px solid var(--sn-accent); outline-offset: -2px; border-radius: 3px; }
+.sitenav .sn-bar, .sitenav .sn-subin { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; }
+.sitenav .sn-bar { height: 52px; gap: 1.75rem; }
+.sitenav .sn-brand { color: var(--sn-text); font-size: 1rem; font-weight: 600; letter-spacing: -.005em; white-space: nowrap; }
+.sitenav .sn-tabs { display: flex; align-self: stretch; gap: .25rem; margin: 0; padding: 0; }
+.sitenav .sn-tabs a { display: inline-flex; align-items: center; min-height: 0; padding: 0 .75rem; color: var(--sn-muted); font-size: .95rem; font-weight: 400;
+  border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; text-decoration: none; }
+.sitenav .sn-tabs a:hover { color: var(--sn-text); text-decoration: none; }
+.sitenav .sn-tabs a[aria-current="page"] { color: var(--sn-text); font-weight: 600; border-bottom-color: var(--sn-accent); }
+.sitenav .sn-sub { display: block; border-top: 1px solid var(--sn-line); }
+.sitenav .sn-subin { height: 40px; gap: .25rem; }
+.sitenav .sn-sub a { display: inline-flex; align-items: center; height: 28px; padding: 0 .6rem; margin-left: -.6rem; color: var(--sn-muted); font-size: .88rem; border-radius: 6px; white-space: nowrap; }
+.sitenav .sn-sub a + a { margin-left: 0; }
+.sitenav .sn-sub a:hover { color: var(--sn-text); background: var(--sn-hover); }
+.sitenav .sn-sub a[aria-current="page"] { color: var(--sn-text); font-weight: 600; background: var(--sn-hover); }
+.sitenav .sn-sub .sn-end { margin-left: auto; }
+@media (max-width: 520px) {
+  .sitenav .sn-bar, .sitenav .sn-subin { padding: 0 1rem; }
+  .sitenav .sn-bar { gap: 1rem; }
+  .sitenav .sn-tabs { gap: 0; }
+  .sitenav .sn-tabs a { padding: 0 .5rem; font-size: .9rem; }
+  .sitenav .sn-brand { font-size: .95rem; }
+}
+@media (max-width: 400px) {
+  .sitenav .sn-brand { font-size: .88rem; }
+  .sitenav .sn-bar { gap: .5rem; }
+}

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="lab.css">
+<link rel="stylesheet" href="nav.css">
 <script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
 <style>.setup{margin:.5rem 0 1rem;font-size:1.02rem}</style>
@@ -37,12 +38,13 @@
 </head>
 <body class="lab">
 <a class="skip" href="#lab">Skip to the lab</a>
-<div class="topbar"><div class="wrap">
-  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
-  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
-  <span class="title">1. From prior to posterior</span>
-  <span class="pn"><a href="./">Index</a><a href="02-p-values.html">Next &rarr;</a></span>
-</div></div>
+<header class="sitenav">
+  <div class="sn-bar">
+    <a class="sn-brand" href="encyclopedia/">Bayesian Clinical Trials</a>
+    <nav class="sn-tabs" aria-label="Site"><a href="books.html">Books</a><a href="labs.html" aria-current="page">Labs</a><a href="encyclopedia/">Encyclopedia</a></nav>
+  </div>
+  <nav class="sn-sub" aria-label="Module"><div class="sn-subin"><a href="02-p-values.html" class="sn-end">Next &rarr;</a></div></nav>
+</header>
 
 <main class="wrap">
 <section class="hero">
@@ -229,7 +231,7 @@
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570. <a href="https://vsokolov.org/clinical_trials_in_practice/">Chapters online</a>.</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a>.</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>

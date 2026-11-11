@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="lab.css">
+<link rel="stylesheet" href="nav.css">
 <script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
 <style>
@@ -29,12 +30,13 @@
 </head>
 <body class="lab">
 <a class="skip" href="#lab">Skip to the lab</a>
-<div class="topbar"><div class="wrap">
-  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
-  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
-  <span class="title">15. Reading a Bayesian trial</span>
-  <span class="pn"><a href="14-simulator.html">&larr; Prev</a><a href="./">Index</a><a href="16-bayesian-protocol.html">Next &rarr;</a></span>
-</div></div>
+<header class="sitenav">
+  <div class="sn-bar">
+    <a class="sn-brand" href="encyclopedia/">Bayesian Clinical Trials</a>
+    <nav class="sn-tabs" aria-label="Site"><a href="books.html">Books</a><a href="labs.html" aria-current="page">Labs</a><a href="encyclopedia/">Encyclopedia</a></nav>
+  </div>
+  <nav class="sn-sub" aria-label="Module"><div class="sn-subin"><a href="14-simulator.html">&larr; Prev</a><a href="16-bayesian-protocol.html" class="sn-end">Next &rarr;</a></div></nav>
+</header>
 
 <main class="wrap">
 <section class="hero">
@@ -131,7 +133,7 @@
     <li>REMAP-CAP Investigators, Gordon A.C. et al. (2021), Interleukin-6 receptor antagonists in critically ill patients with Covid-19, N Engl J Med 384:1491-1502. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2100433">doi:10.1056/NEJMoa2100433</a></li>
     <li>Combes A. et al. (2018), N Engl J Med 378:1965-1975 (EOLIA). Goligher E.C. et al. (2018), JAMA 320:2251-2259.</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>

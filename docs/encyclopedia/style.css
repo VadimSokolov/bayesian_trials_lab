@@ -38,18 +38,12 @@ pre { background: var(--code-bg); padding: .6rem .8rem; border-radius: 6px; over
 pre code { background: none; padding: 0; }
 summary { cursor: pointer; }
 
-.site-header { display: flex; align-items: center; gap: 1.4rem; padding: .7rem 1.2rem; background: var(--bg);
-  border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
-.brand { font-family: Georgia, serif; font-weight: 700; color: var(--text); text-decoration: none; font-size: 1.1rem; white-space: nowrap; }
-.site-header nav { display: flex; gap: 1.1rem; }
-.site-header nav a { color: var(--muted); text-decoration: none; font-size: .95rem; }
-.site-header nav a:hover, .site-header nav a.active { color: var(--text); }
-.search-slot { margin-left: auto; flex: 1 1 200px; max-width: 320px; }
+.search-slot { margin-left: auto; flex: 1 1 140px; max-width: 320px; min-width: 0; }
 body.is-home .search-slot { visibility: hidden; }
 
 main:focus-visible { outline: none; }
-main { max-width: 1080px; margin: 0 auto; padding: 1.6rem 1.4rem 3rem; outline: none; }
-.site-footer { padding: 1.5rem 1.4rem; color: var(--muted); font-size: .82rem; max-width: 1080px; margin: 0 auto; }
+main { max-width: 1120px; margin: 0 auto; padding: 1.6rem 1.5rem 3rem; outline: none; }
+.site-footer { padding: 1.5rem 1.5rem; color: var(--muted); font-size: .82rem; max-width: 1120px; margin: 0 auto; }
 .site-footer p { margin: .3rem 0; }
 .site-footer a { color: var(--muted); }
 .small { font-size: .85rem; } .muted { color: var(--muted); }
@@ -215,11 +209,7 @@ span.elink.missing { color: var(--muted); }
 @media (max-width: 520px) {
   main { padding: 1rem 1rem 2.5rem; }
   h1, .hero h1 { font-size: 1.6rem; }
-  .site-header { padding: .5rem 1rem; gap: .8rem; flex-wrap: wrap; }
-  .brand { font-size: 1rem; }
-  .site-header nav { gap: .8rem; }
-  .search-slot { flex-basis: 100%; max-width: none; margin-left: 0; order: 3; }
-  body.is-home .search-slot { display: none; }
+  .search-slot { max-width: none; }
   .search.big input { font-size: 1.05rem; }
   .route .sum { white-space: normal; }
 }

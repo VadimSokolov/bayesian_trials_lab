@@ -7,16 +7,19 @@
 <meta name="description" content="Encyclopedia, knowledge graph and optional tutor on top of the book Bayesian Clinical Trials and Personalized Medicine, Volume I.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../nav.css">
 </head>
 <body>
 <a class="skip" href="#view">Skip to content</a>
-<header class="site-header">
-  <a class="brand" href="#/" aria-label="Home">Bayesian Clinical Trials</a>
-  <nav aria-label="Main">
-    <a href="#/graph" data-nav="graph">Map</a>
-    <a href="../">Lab</a>
-  </nav>
-  <div id="header-search" class="search-slot"></div>
+<header class="sitenav">
+  <div class="sn-bar">
+    <a class="sn-brand" href="./">Bayesian Clinical Trials</a>
+    <nav class="sn-tabs" aria-label="Site"><a href="../books.html">Books</a><a href="../labs.html">Labs</a><a href="./" aria-current="page">Encyclopedia</a></nav>
+  </div>
+  <nav class="sn-sub" aria-label="Encyclopedia"><div class="sn-subin">
+    <a href="#/" data-sub="home">Home</a><a href="#/graph" data-sub="graph">Map</a>
+    <div id="header-search" class="search-slot"></div>
+  </div></nav>
 </header>
 <main id="view" tabindex="-1" aria-live="polite"></main>
 <footer class="site-footer" id="footer"></footer>

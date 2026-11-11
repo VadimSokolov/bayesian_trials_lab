@@ -15,15 +15,7 @@ body.lab { margin: 0; font-family: var(--sans, 'IBM Plex Sans', system-ui, -appl
 .skip { position: absolute; left: -999px; top: 0; background: var(--navy); color: #fff; padding: .5rem 1rem; z-index: 99; }
 .skip:focus { left: 0; }
 
-/* 1. Top bar */
-.topbar { background: var(--white); border-bottom: 1px solid var(--border); position: relative; z-index: 20; }
-.topbar .wrap { display: flex; align-items: center; gap: 1rem; min-height: 56px; flex-wrap: wrap; }
-.topbar img { display: block; height: 26px; }
-.topbar .crumb { font-size: .9rem; color: var(--text-tertiary); }
-.topbar .crumb a { text-decoration: none; font-weight: 600; }
-.topbar .title { font-weight: 600; font-size: .95rem; flex: 1; min-width: 12rem; }
-.topbar .pn a { font-size: .9rem; text-decoration: none; padding: .35rem .6rem; border: 1px solid var(--border-strong); border-radius: 6px; margin-left: .35rem; display: inline-block; }
-.topbar .pn a:hover { background: var(--teal-light); }
+/* 1. Top bar: see nav.css */
 
 /* 2. Hero */
 .hero { padding: 2.5rem 0 1.25rem; }
@@ -133,7 +125,6 @@ details.code pre { margin: .6rem 1rem 1rem; padding: .9rem; background: var(--na
 @media (max-width: 800px) {
   .labgrid { grid-template-columns: 1fr; }
   .qcards { grid-template-columns: 1fr; }
-  .topbar .title { order: 3; flex-basis: 100%; }
   .hero { padding-top: 1.5rem; }
   body.lab { font-size: 16px; }
 }

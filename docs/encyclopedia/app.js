@@ -206,8 +206,6 @@ function renderFooter() {
   const b = KG.book;
   $('#footer').innerHTML = `<p>${esc(b.authors)} (2026). <em>${esc(b.title)}</em>.
     <a href="https://doi.org/${esc(b.doi)}" target="_blank" rel="noopener noreferrer">DOI</a> &middot;
-    <a href="${esc(b.html)}" target="_blank" rel="noopener noreferrer">Read the book</a> &middot;
-    ${(KG.formulas || []).length ? '<a href="#/formulas">Formulas in words</a> &middot;' : ''}
     <a href="llms.txt">llms.txt</a></p>`;
 }
 
@@ -642,15 +640,17 @@ function route() {
   const [pathPart, query] = raw.split('?');
   const params = new URLSearchParams(query || '');
   const parts = pathPart.split('/').filter(Boolean);
-  document.querySelectorAll('[data-nav]').forEach((a) => a.classList.remove('active'));
-  const nav = (k) => { const a = $(`[data-nav="${k}"]`); if (a) a.classList.add('active'); };
+  const nav = (k) => document.querySelectorAll('[data-sub]').forEach((a) => {
+    if (a.dataset.sub === k) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  nav(!parts[0] ? 'home' : parts[0] === 'graph' ? 'graph' : '');
   const [kind, arg] = [parts[0], decodeURIComponent(parts.slice(1).join('/'))];
   document.body.classList.toggle('is-home', !kind);
   if (!kind) { homeView(); }
   else if (kind === 'e') entityView(arg);
   else if (kind === 'c') chapterView(arg);
-  else if (kind === 'graph') { nav('graph'); graphView(params); }
-  else if (kind === 'search') { nav('search'); searchView(params); }
+  else if (kind === 'graph') graphView(params);
+  else if (kind === 'search') searchView(params);
   else if (kind === 'ask') { location.replace('#/search' + (params.get('q') ? '?q=' + encodeURIComponent(params.get('q')) : '')); return; }
   else if (kind === 'path') pathView(arg);
   else if (kind === 'type') typeView(arg);
