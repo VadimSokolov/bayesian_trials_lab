@@ -82,7 +82,6 @@ Smart search (`ask.js`) finds content in the book; it does not write answers. It
 - The reply is structured JSON (`output_config.format`, json_schema): `pointer` (one or two sentences saying where the book answers) and up to 6 `results` (`n`, `why` of at most 15 words), best first. The page shows the pointer, then the ranked passages (entity page, or book section with its "§15.2.2" number), then the free results under a divider. The number `n` is checked against the list, so a made-up passage cannot appear.
 - If the call fails, the free results stay and one short notice is shown. A proxy 429 (rate limit or daily budget) is shown as the proxy wrote it. Results are cached in memory per question, so going back does not pay twice.
 - Usage is one tiny grey line under the passages (tokens and approximate cost).
-- The "Find in the book" link on an entity page opens the search page with "What is <name>?", which runs a smart search.
 
 ## The proxy for visitors
 

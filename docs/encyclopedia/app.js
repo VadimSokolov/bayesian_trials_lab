@@ -348,7 +348,7 @@ function entityView(id) {
     <h1>${esc(e.name)}</h1>
     ${e.summary ? `<p class="summary">${esc(e.summary)}</p>` : ''}
     <div class="actions">
-      ${e.stub ? '' : `<button type="button" class="btn primary" id="btn-tutor">Study with a tutor</button><a class="quiet" href="#/search?q=${encodeURIComponent('What is ' + e.name + '?')}">Find in the book</a>`}
+      ${e.stub ? '' : `<button type="button" class="btn primary" id="btn-tutor">Study with a tutor</button>`}
       <a class="quiet" href="#/path/${esc(e.id)}">Study path</a>
       <a class="quiet" href="#/graph?focus=${esc(e.id)}">Show in graph</a></div></div>
     <div class="entity-grid"><article class="article">${article}</article><aside class="panel" aria-label="Related information">${side}</aside></div>`;
