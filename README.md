@@ -48,7 +48,7 @@ Open it from any written entity page with "Study with a tutor" (the drawer also 
 
 - Socratic tutor: the skill map is the target entity plus its closest prerequisites (up to 10 by depth). Levels 0 to 5 are saved per entity in localStorage (`kg.level.<id>`). The system prompt holds the adapted skill text, the full pages of the subskill entities and a table that maps section keys to book URLs. The model is told to teach only from those pages, cite sections as links, use the "Check yourself" questions and lab modules as exercises, ask one question at a time, and report a level change on its own line as `LEVEL entity-id N`, which the interface reads and hides.
 - Ask about this page: grounded Q&A over the current entity and its neighbors.
-- Models: with your own key, Claude Opus 5.5 (default), Sonnet 5.5 and Haiku 5.5: adaptive thinking, 16000 max tokens, effort medium (low for Haiku), server-side fallback for Opus and Sonnet, prompt caching on the system prompt, streamed output. Without a key the tutor runs through the site's proxy (see "The proxy for visitors"): Haiku only, 1500 max tokens, no fallback.
+- Model: always Claude Haiku 5.5 through the site's proxy (readers do not enter keys); adaptive thinking, effort low.
 - API key (optional): without one, calls go through the site's proxy. With one, calls go from the browser directly to Anthropic with the official `@anthropic-ai/sdk` and `dangerouslyAllowBrowser: true`. The key is kept in memory and is written to localStorage only if the reader ticks "Remember my key in this browser". It never goes to this site or the proxy. Readers should use a key with a spend limit.
 - "Copy tutor prompt" copies the full system prompt and a first message, to paste into claude.ai without a key. "Save state" and "Resume" store the conversation and levels in localStorage.
 - Conversations are kept in memory per entity and mode; they are lost on reload unless saved.
@@ -85,7 +85,7 @@ Smart search (`ask.js`) finds content in the book; it does not write answers. It
 
 ## The proxy for visitors
 
-Visitors need no key. Unless the reader entered their own key (Settings, saved in localStorage `kg.apikey` only if they tick "Remember"), `llm.js` creates the SDK client with `baseURL` `https://bct-lab-proxy.brokenomics.workers.dev`, a placeholder key, `dangerouslyAllowBrowser` and no retries. The Cloudflare Worker (`proxy/`, not part of the site) holds the owner's key, forces model `claude-haiku-5-5`, caps `max_tokens` at 1500, sets effort low (keeping `output_config.format`), allows only the `message-threads-2026-08-12` beta, and answers 429 with a message when the per-IP rate limit or the daily budget is reached. Through the proxy the client sends no fallback beta and no fallbacks, and the model picker is hidden. Settings show one line: "Free, via the site (Haiku). Add your own key for other models." With their own key readers call Anthropic directly and pick a model (default Haiku). This applies to smart search and to the tutor; the tutor keeps its conversation, threads and caching.
+Visitors need no key and cannot enter one: `llm.js` always creates the SDK client with `baseURL` set to the proxy, model `claude-haiku-5-5`.
 
 SDK 1.8.0 sends its key as `Authorization: Bearer`, which the Worker's CORS rules do not allow, so `llm.js` removes that header and sends the placeholder as `x-api-key` (which the Worker allows).
 

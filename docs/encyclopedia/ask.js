@@ -1,6 +1,6 @@
 // Smart search: one Claude call that reads the top retrieved passages and points the reader to where the book answers.
 // Retrieval runs in the browser (search.js). Single turn, no threads, structured JSON output.
-// Readers without a key go through the site owner's proxy (Haiku); with their own key the call goes straight to Anthropic.
+// All calls go through the site owner's proxy (Claude Haiku).
 import { esc } from './render.js';
 import * as S from './search.js';
 import { MODELS, FREE_LINE, keys, lsGet, lsSet, client, viaProxy, modelFor, usageOf, fmtUsage, errorText } from './llm.js';
@@ -130,26 +130,9 @@ export function smartHtml(r) {
 
 // ---------- settings (one quiet line, key, model when a key is set) ----------
 export function settingsHtml() {
-  const cur = modelFor(lsGet('kg.ask.model'));
   return `<details class="a-settings" id="a-settings"><summary>Settings</summary>
-    <p class="note" id="a-free">${esc(FREE_LINE)}</p>
-    <label for="a-key">Anthropic API key (optional)</label>
-    <input id="a-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
-    <label class="inline"><input type="checkbox" id="a-remember"> Remember my key in this browser</label>
-    <div id="a-modelrow"><label for="a-model">Model</label>
-      <select id="a-model">${Object.entries(MODELS).map(([id, m]) => `<option value="${id}"${id === cur ? ' selected' : ''}>${m.label}</option>`).join('')}</select></div>
-    <p class="note">A key stays in your browser and goes straight to Anthropic, never through this site. Use a key with a spend limit.</p>
+    <p class="note">${esc(FREE_LINE)}</p>
   </details>`;
 }
 
-export function bindSettings(root) {
-  const sync = () => { $('#a-modelrow', root).hidden = !keys.value; $('#a-free', root).hidden = !!keys.value; };
-  $('#a-key', root).value = keys.value;
-  $('#a-remember', root).checked = keys.remember;
-  const saved = lsGet('kg.ask.model');
-  if (keys.value && saved && MODELS[saved]) $('#a-model', root).value = saved;
-  sync();
-  $('#a-model', root).addEventListener('change', (e) => lsSet('kg.ask.model', e.target.value));
-  $('#a-key', root).addEventListener('input', (e) => { keys.set(e.target.value); const tk = $('#t-key'); if (tk) { tk.value = keys.value; tk.dispatchEvent(new Event('input')); } sync(); });
-  $('#a-remember', root).addEventListener('change', (e) => { keys.setRemember(e.target.checked); const tr = $('#t-remember'); if (tr) tr.checked = keys.remember; });
-}
+export function bindSettings() { /* nothing to bind: always the site's Haiku */ }

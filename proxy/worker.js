@@ -79,7 +79,7 @@ export default {
       if (!success) return err(429, 'Too many requests. Please wait a minute.', h);
     }
     const cap = parseFloat(env.DAILY_CAP_USD || '3');
-    if (await spent(env) >= cap) return err(429, 'The free daily budget is used up. Try again tomorrow, or add your own API key in Settings.', h);
+    if (await spent(env) >= cap) return err(429, 'The free daily budget is used up. Try again tomorrow.', h);
 
     const raw = await request.text();
     if (raw.length > MAX_BODY) return err(413, 'Request too large.', h);

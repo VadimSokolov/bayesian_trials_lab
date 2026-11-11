@@ -1,5 +1,5 @@
 // Tutor drawer: Socratic tutor mode and "Ask about this page" mode.
-// Calls go from the browser straight to the Claude API with the reader's own key.
+// Calls go through the site owner's proxy (Claude Haiku).
 import { esc, renderMarkdown, BRACKET_RE } from './render.js';
 
 import { MODELS, keys, client, makeThread, usageOf, fmtUsage, errorText, viaProxy, modelFor } from './llm.js';
@@ -282,7 +282,7 @@ async function send(text) {
   setStatus('Thinking...');
   let acc = '';
   try {
-    const model = modelFor($('#t-model').value);
+    const model = modelFor();
     const ck = `${mode}:${id}`;
     let th = tthreads[ck];
     if (!th || th.model !== model || th.proxy !== viaProxy()) {
@@ -389,14 +389,6 @@ function resumeState() {
 export function init(data) {
   kg = data;
   keys.init();
-  if (keys.value) { $('#t-key').value = keys.value; $('#t-remember').checked = true; }
-  const syncKeyUi = () => { $('#t-modelrow').hidden = !keys.value; $('#t-free').hidden = !!keys.value; };
-  syncKeyUi();
-  const m = lsGet(LS.model);
-  if (m && MODELS[m]) $('#t-model').value = m;
-  $('#t-model').addEventListener('change', (e) => lsSet(LS.model, e.target.value));
-  $('#t-key').addEventListener('input', (e) => { keys.set(e.target.value); syncKeyUi(); });
-  $('#t-remember').addEventListener('change', (e) => keys.setRemember(e.target.checked));
   $('#t-close').addEventListener('click', close);
   document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !$('#tutor').hidden && !ev.defaultPrevented) close(); });
   document.querySelectorAll('.tabs [role=tab]').forEach((t) => t.addEventListener('click', () => { cur.mode = t.dataset.mode; refreshAll(); }));

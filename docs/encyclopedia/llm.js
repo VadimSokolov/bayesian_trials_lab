@@ -1,8 +1,8 @@
 // Shared Claude API setup for the tutor and smart search: key storage, models, message threads, usage and cost.
-// Readers without their own key go through the site owner's proxy (Haiku only, rate and budget limits).
-// Readers with their own key call Anthropic directly and can pick a model.
+// All calls go through the site owner's proxy (Claude Haiku, rate and budget limits).
+// Readers do not enter keys.
 const PROXY_URL = 'https://bct-lab-proxy.brokenomics.workers.dev';
-export const FREE_LINE = 'Free, via the site (Haiku). Add your own key for other models.';
+export const FREE_LINE = 'Free on this site, answered by Claude Haiku.';
 const SDK_URL = 'https://esm.sh/@anthropic-ai/sdk@1.8.0';
 export const MODELS = {
   'claude-opus-5-5': { label: 'Opus 5.5', effort: 'medium', fallback: true, in: 4, out: 20 },
@@ -18,14 +18,14 @@ export const lsDel = (k) => { try { localStorage.removeItem(k); } catch (e) { /*
 export const keys = {
   value: '',
   remember: false,
-  init() { const k = lsGet('kg.apikey'); if (k) { this.value = k; this.remember = true; } },
-  set(v) { this.value = String(v || '').trim(); if (this.remember) lsSet('kg.apikey', this.value); },
+  init() { lsDel('kg.apikey'); this.value = ''; this.remember = false; },
+  set() { /* no reader keys: the site's proxy is always used */ },
   setRemember(b) { this.remember = !!b; if (b) lsSet('kg.apikey', this.value); else lsDel('kg.apikey'); },
 };
 
-export const viaProxy = () => !keys.value;
-// The model actually used: the reader's choice with their own key, Haiku through the proxy.
-export const modelFor = (chosen) => (keys.value && MODELS[chosen] ? chosen : 'claude-haiku-5-5');
+export const viaProxy = () => true;
+// The model is always Claude Haiku.
+export const modelFor = () => 'claude-haiku-5-5';
 
 let sdk = null;
 // An empty apiKey means the proxy: no retries (the proxy rate limits), a placeholder key, the owner's key is added server-side.
@@ -70,7 +70,7 @@ export function errorText(err, proxy) {
   if (proxy && err && (err.status === 429 || err.status === 403 || err.status === 413)) return msg;
   const code = err.status ? ` (HTTP ${err.status})` : '';
   let hint = '';
-  if (err.status === 401) hint = ' Check your API key.';
+  if (err.status === 401) hint = ' The site could not reach the model; try again later.';
   else if (err.status === 429) hint = ' Rate limited: wait a moment and try again.';
   return 'Error' + code + ': ' + msg + hint;
 }
