@@ -1,0 +1,16 @@
+id: eq-bf-odds
+section: sec-evidence-bf
+title: "Bayes factor updates prior odds"
+tex: "\\htmlClass{term c1}{\\underbrace{\\frac{\\Pr(H_1 \\mid y)}{\\Pr(H_0 \\mid y)}}_{\\text{posterior odds}}} \\;=\\; \\htmlClass{term c2}{\\mathrm{BF}_{10}} \\times \\htmlClass{term c3}{\\underbrace{\\frac{\\pi_a}{\\pi_0}}_{\\text{prior odds}}},"
+parts:
+  - "The "
+  - {k: c1, words: "posterior odds of the alternative against the null"}
+  - " equal "
+  - {k: c2, words: "the Bayes factor, the ratio of the probabilities the two hypotheses gave to the observed data"}
+  - " times "
+  - {k: c3, words: "the prior odds"}
+  - "."
+notes:
+  c1: "Odds after seeing the data."
+  c2: "The evidence in the data for the alternative against the null."
+  c3: "The prior probability of the alternative over that of the null."

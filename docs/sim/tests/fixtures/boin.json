@@ -1,0 +1,171 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "boin-boundary-target0.2",
+      "description": "BOIN boundaries, target 0.2, ncohort 10, cohortsize 3, default phi1=0.6*target, phi2=1.4*target, cutoff.eli 0.95",
+      "package": "BOIN",
+      "version": "2.7.2",
+      "r_version": "4.5.2",
+      "call": "get.boundary(target=0.2, ncohort=10, cohortsize=3)",
+      "inputs": {
+        "target": 0.2,
+        "ncohort": 10,
+        "cohortsize": 3
+      },
+      "outputs": {
+        "lambda_e": 0.1572422867003,
+        "lambda_d": 0.2384624388173,
+        "n_treated": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+        "escalate_if_dlt_le": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
+        "deescalate_if_dlt_ge": [1, 2, 3, 3, 4, 5, 6, 6, 7, 8],
+        "eliminate_if_dlt_ge": [2, 3, 4, 5, 6, 7, 8, 8, 9, 10]
+      }
+    },
+    {
+      "id": "boin-boundary-target0.25",
+      "description": "BOIN boundaries, target 0.25, ncohort 10, cohortsize 3, default phi1=0.6*target, phi2=1.4*target, cutoff.eli 0.95",
+      "package": "BOIN",
+      "version": "2.7.2",
+      "r_version": "4.5.2",
+      "call": "get.boundary(target=0.25, ncohort=10, cohortsize=3)",
+      "inputs": {
+        "target": 0.25,
+        "ncohort": 10,
+        "cohortsize": 3
+      },
+      "outputs": {
+        "lambda_e": 0.1968008705555,
+        "lambda_d": 0.2983921523755,
+        "n_treated": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+        "escalate_if_dlt_le": [0, 1, 1, 2, 2, 3, 4, 4, 5, 5],
+        "deescalate_if_dlt_ge": [1, 2, 3, 4, 5, 6, 7, 8, 9, 9],
+        "eliminate_if_dlt_ge": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      }
+    },
+    {
+      "id": "boin-boundary-target0.3",
+      "description": "BOIN boundaries, target 0.3, ncohort 10, cohortsize 3, default phi1=0.6*target, phi2=1.4*target, cutoff.eli 0.95",
+      "package": "BOIN",
+      "version": "2.7.2",
+      "r_version": "4.5.2",
+      "call": "get.boundary(target=0.3, ncohort=10, cohortsize=3)",
+      "inputs": {
+        "target": 0.3,
+        "ncohort": 10,
+        "cohortsize": 3
+      },
+      "outputs": {
+        "lambda_e": 0.2364906852365,
+        "lambda_d": 0.3585194646409,
+        "n_treated": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+        "escalate_if_dlt_le": [0, 1, 2, 2, 3, 4, 4, 5, 6, 7],
+        "deescalate_if_dlt_ge": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "eliminate_if_dlt_ge": [3, 4, 5, 7, 8, 9, 10, 11, 12, 14]
+      }
+    },
+    {
+      "id": "boin-boundary-target0.33",
+      "description": "BOIN boundaries, target 0.33, ncohort 10, cohortsize 3, default phi1=0.6*target, phi2=1.4*target, cutoff.eli 0.95",
+      "package": "BOIN",
+      "version": "2.7.2",
+      "r_version": "4.5.2",
+      "call": "get.boundary(target=0.33, ncohort=10, cohortsize=3)",
+      "inputs": {
+        "target": 0.33,
+        "ncohort": 10,
+        "cohortsize": 3
+      },
+      "outputs": {
+        "lambda_e": 0.2603767436778,
+        "lambda_d": 0.394715868291,
+        "n_treated": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+        "escalate_if_dlt_le": [0, 1, 2, 3, 3, 4, 5, 6, 7, 7],
+        "deescalate_if_dlt_ge": [2, 3, 4, 5, 6, 8, 9, 10, 11, 12],
+        "eliminate_if_dlt_ge": [3, 4, 6, 7, 8, 10, 11, 12, 13, 15]
+      }
+    },
+    {
+      "id": "boin-oc-0.05_0.15_0.3_0.45_0.6",
+      "description": "BOIN operating characteristics, target 0.3, ncohort 10, cohortsize 3, ntrial 10000, startdose 1, seed 2024 (set.seed before call). Simulation, compare with Monte Carlo tolerance (~0.01 abs on percentages).",
+      "package": "BOIN",
+      "version": "2.7.2",
+      "r_version": "4.5.2",
+      "call": "set.seed(2024); get.oc(target=0.3, p.true=c(0.05,0.15,0.3,0.45,0.6), ncohort=10, cohortsize=3, ntrial=10000)",
+      "inputs": {
+        "target": 0.3,
+        "p.true": [0.05, 0.15, 0.3, 0.45, 0.6],
+        "ncohort": 10,
+        "cohortsize": 3,
+        "ntrial": 10000,
+        "seed": 2024
+      },
+      "outputs": {
+        "selection_pct": [1.08, 23.52, 54.96, 19.03, 1.39],
+        "patients_per_dose": [4.152, 9.1968, 11.1498, 4.7322, 0.7638],
+        "dlt_per_dose": [0.2002, 1.3796, 3.3424, 2.1469, 0.4605],
+        "total_n": 29.9946,
+        "total_dlt": 7.5296,
+        "pct_stopped_early": 0.02,
+        "overdose_selection_pct": 20.42,
+        "overdose_allocation_pct": 18.323298193675,
+        "names_in_result": ["selpercent", "npatients", "ntox", "totaltox", "totaln", "percentstop", "overdose60", "overdose80", "simu.setup", "flowchart", "lambda_e", "lambda_d"]
+      }
+    },
+    {
+      "id": "boin-oc-0.1_0.2_0.3_0.4_0.5",
+      "description": "BOIN operating characteristics, target 0.3, ncohort 10, cohortsize 3, ntrial 10000, startdose 1, seed 2024 (set.seed before call). Simulation, compare with Monte Carlo tolerance (~0.01 abs on percentages).",
+      "package": "BOIN",
+      "version": "2.7.2",
+      "r_version": "4.5.2",
+      "call": "set.seed(2024); get.oc(target=0.3, p.true=c(0.1,0.2,0.3,0.4,0.5), ncohort=10, cohortsize=3, ntrial=10000)",
+      "inputs": {
+        "target": 0.3,
+        "p.true": [0.1, 0.2, 0.3, 0.4, 0.5],
+        "ncohort": 10,
+        "cohortsize": 3,
+        "ntrial": 10000,
+        "seed": 2024
+      },
+      "outputs": {
+        "selection_pct": [4.2, 29.45, 41.01, 20.36, 4.67],
+        "patients_per_dose": [5.8122, 9.8868, 8.9652, 4.1145, 1.146],
+        "dlt_per_dose": [0.5792, 1.9687, 2.7032, 1.6452, 0.5668],
+        "total_n": 29.9247,
+        "total_dlt": 7.4631,
+        "pct_stopped_early": 0.31,
+        "overdose_selection_pct": 25.03,
+        "overdose_allocation_pct": 17.579123600237,
+        "names_in_result": ["selpercent", "npatients", "ntox", "totaltox", "totaln", "percentstop", "overdose60", "overdose80", "simu.setup", "flowchart", "lambda_e", "lambda_d"]
+      }
+    },
+    {
+      "id": "boin-oc-0.3_0.4_0.5_0.6_0.7",
+      "description": "BOIN operating characteristics, target 0.3, ncohort 10, cohortsize 3, ntrial 10000, startdose 1, seed 2024 (set.seed before call). Simulation, compare with Monte Carlo tolerance (~0.01 abs on percentages).",
+      "package": "BOIN",
+      "version": "2.7.2",
+      "r_version": "4.5.2",
+      "call": "set.seed(2024); get.oc(target=0.3, p.true=c(0.3,0.4,0.5,0.6,0.7), ncohort=10, cohortsize=3, ntrial=10000)",
+      "inputs": {
+        "target": 0.3,
+        "p.true": [0.3, 0.4, 0.5, 0.6, 0.7],
+        "ncohort": 10,
+        "cohortsize": 3,
+        "ntrial": 10000,
+        "seed": 2024
+      },
+      "outputs": {
+        "selection_pct": [55.61, 22.26, 4.18, 0.44, 0.01],
+        "patients_per_dose": [17.3253, 7.2813, 1.797, 0.2517, 0.0198],
+        "dlt_per_dose": [5.1886, 2.9247, 0.8953, 0.1502, 0.0142],
+        "total_n": 26.6751,
+        "total_dlt": 9.173,
+        "pct_stopped_early": 17.5,
+        "overdose_selection_pct": 26.89,
+        "overdose_allocation_pct": 35.050665227122,
+        "names_in_result": ["selpercent", "npatients", "ntox", "totaltox", "totaln", "percentstop", "overdose60", "overdose80", "simu.setup", "flowchart", "lambda_e", "lambda_d"]
+      }
+    }
+  ]
+}

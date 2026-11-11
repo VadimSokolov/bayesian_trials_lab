@@ -1,0 +1,20 @@
+id: eq-pp
+section: 15/from-conditional-power-to-predictive-probability
+title: Predictive probability of success
+tex: >-
+  \htmlClass{term c1}{\mathrm{PP}} = \int \htmlClass{term c2}{\mathrm{CP}(\xi)}\, \htmlClass{term c3}{\pi(\xi \mid y_{1:n})}\, d\xi = \htmlClass{term c4}{\Pr(\text{final success criterion met} \mid y_{1:n})},
+parts:
+  - "The "
+  - {k: c1, words: "predictive probability of success"}
+  - " is "
+  - {k: c2, words: "the conditional power at each possible effect"}
+  - ", averaged with weights from "
+  - {k: c3, words: "the posterior of the effect given the data so far"}
+  - ". That is "
+  - {k: c4, words: "the chance the final success rule is met, given the data so far"}
+  - "."
+notes:
+  c1: "The chance the final success rule will be met if the trial continues."
+  c2: "Power computed as if the effect were known to be $\\xi$."
+  c3: "Today's belief about the effect; it replaces the single assumed effect of conditional power."
+  c4: "The same quantity in words: what the trial will conclude at the end, judged from today."

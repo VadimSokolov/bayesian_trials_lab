@@ -1,0 +1,15 @@
+id: eq-bayes-rule
+section: sec-evidence-bayesrisk
+title: "The Bayes decision rule"
+tex: "\\htmlClass{term c1}{D^{B}(y)} = \\htmlClass{term c2}{\\mathbf 1\\{\\mathrm{BF}_{10}(y) > b\\}}, \\qquad \\htmlClass{term c3}{b = \\frac{\\pi_0}{1-\\pi_0}\\cdot\\frac{\\ell_1}{\\ell_0}},"
+parts:
+  - {k: c1, words: "The risk-minimizing decision"}
+  - " is to declare the treatment effective when "
+  - {k: c2, words: "the Bayes factor exceeds a threshold"}
+  - ", where "
+  - {k: c3, words: "the threshold is the prior odds of the null times the ratio of the two losses"}
+  - "."
+notes:
+  c1: "Uses only the data that occurred."
+  c2: "The indicator is 1 when the Bayes factor is above the threshold and 0 otherwise."
+  c3: "A loss ratio in disguise; equivalent to rejecting when the posterior probability of the null falls below $\\ell_0/(\\ell_0+\\ell_1)$."

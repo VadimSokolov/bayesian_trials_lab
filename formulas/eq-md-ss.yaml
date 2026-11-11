@@ -1,0 +1,16 @@
+id: eq-md-ss
+section: 9/the-power-function-and-the-sample-size-equation
+title: Sample size equation for the moderate deviation rule
+tex: |-
+  \htmlClass{term c1}{n\,I\,\theta^2} = \left(\htmlClass{term c2}{\sqrt{\log n + C}} + \htmlClass{term c3}{z_\beta}\right)^2 .
+parts:
+  - {k: c1, words: "The information the trial collects"}
+  - " must equal the square of "
+  - {k: c2, words: "the growing boundary"}
+  - " plus "
+  - {k: c3, words: "the quantile for the chosen power"}
+  - "."
+notes:
+  c1: "Sample size times information times squared effect."
+  c2: "Replaces $z_\\alpha$ and depends on $n$ itself, so the equation is implicit, but only through a logarithm."
+  c3: "Set by the target power $1-\\beta$."

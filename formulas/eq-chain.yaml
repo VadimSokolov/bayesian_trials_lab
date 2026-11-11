@@ -1,0 +1,19 @@
+id: eq-chain
+section: sec-borrowing-chain
+title: Indirect comparison by chaining hazard ratios
+tex: \htmlClass{term c1}{\log\mathrm{HR}_{T:P}}=\htmlClass{term c2}{\log\mathrm{HR}_{T:D}}+\htmlClass{term c3}{\log\mathrm{HR}_{D:P}},
+parts:
+- 'The '
+- k: c1
+  words: log hazard ratio of tirzepatide against placebo
+- ' is '
+- k: c2
+  words: the log hazard ratio of tirzepatide against dulaglutide
+- ' plus '
+- k: c3
+  words: the log hazard ratio of dulaglutide against placebo
+- .
+notes:
+  c1: No trial answers this directly, so it is assembled; the variances add if the two estimates are independent.
+  c2: From SURPASS-CVOT.
+  c3: From REWIND; the chain assumes the dulaglutide effect is the same in both populations (constancy).

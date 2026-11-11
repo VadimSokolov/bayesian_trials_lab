@@ -1,0 +1,20 @@
+id: eq-ss-cont
+section: 9/the-same-formula-for-three-kinds-of-endpoint
+title: Sample size for a continuous endpoint
+tex: |-
+  \htmlClass{term c1}{n_{\text{per arm}}} = \frac{\htmlClass{term c2}{2\,\sigma^2} \htmlClass{term c3}{(z_\alpha+z_\beta)^2}}{\htmlClass{term c4}{\Delta^2}}.
+parts:
+  - "The "
+  - {k: c1, words: "patients needed in each arm"}
+  - " are "
+  - {k: c2, words: "twice the variance of the outcome"}
+  - " times "
+  - {k: c3, words: "the squared error-rate quantiles"}
+  - ", divided by "
+  - {k: c4, words: "the squared difference in means"}
+  - "."
+notes:
+  c1: "Sample size per arm for a difference in means."
+  c2: "Patient-to-patient variance, with a common standard deviation $\\sigma$ in both arms."
+  c3: "The same error specification as in the standard formula."
+  c4: "The difference in means the trial is built to detect; only $\\Delta/\\sigma$ matters."

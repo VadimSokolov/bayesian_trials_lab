@@ -1,0 +1,4129 @@
+[
+ {
+  "id": "clinical-trial",
+  "name": "Clinical trial",
+  "type": "concept",
+  "aliases": [
+   "trial"
+  ],
+  "owner": "1",
+  "home": "sec-decision-setting",
+  "chapters": [
+   "1",
+   "2",
+   "4"
+  ]
+ },
+ {
+  "id": "decision-theory",
+  "name": "Decision theory",
+  "type": "concept",
+  "aliases": [
+   "statistical decision theory"
+  ],
+  "owner": "1",
+  "home": "sec-decision-decision",
+  "chapters": [
+   "1",
+   "11",
+   "15"
+  ]
+ },
+ {
+  "id": "bayesian-adaptive-design",
+  "name": "Bayesian adaptive design",
+  "type": "design",
+  "aliases": [
+   "Bayesian adaptive trial"
+  ],
+  "owner": "1",
+  "home": "sec-decision-thesis",
+  "chapters": [
+   "1",
+   "14",
+   "15",
+   "23"
+  ]
+ },
+ {
+  "id": "select-trial",
+  "name": "SELECT",
+  "type": "trial",
+  "aliases": [
+   "semaglutide cardiovascular outcomes trial",
+   "semaglutide"
+  ],
+  "owner": "21",
+  "home": "sec-cases-select",
+  "chapters": [
+   "21",
+   "1",
+   "9",
+   "12"
+  ]
+ },
+ {
+  "id": "type-i-error",
+  "name": "Type I error",
+  "type": "concept",
+  "aliases": [
+   "type I error rate",
+   "alpha",
+   "false positive rate"
+  ],
+  "owner": "4",
+  "home": "sec-testing-errors",
+  "chapters": [
+   "4",
+   "1",
+   "7",
+   "14",
+   "A"
+  ]
+ },
+ {
+  "id": "type-ii-error",
+  "name": "Type II error",
+  "type": "concept",
+  "aliases": [
+   "beta error"
+  ],
+  "owner": "4",
+  "home": "sec-testing-errors",
+  "chapters": [
+   "4"
+  ]
+ },
+ {
+  "id": "power",
+  "name": "Statistical power",
+  "type": "concept",
+  "aliases": [
+   "power",
+   "power calculation"
+  ],
+  "owner": "9",
+  "home": "sec-power",
+  "chapters": [
+   "9",
+   "1",
+   "4",
+   "A"
+  ]
+ },
+ {
+  "id": "spending-function",
+  "name": "Lan-DeMets spending function",
+  "type": "method",
+  "aliases": [
+   "alpha spending",
+   "alpha spending function"
+  ],
+  "owner": "11",
+  "home": "11/spending-functions-and-the-information-fraction",
+  "chapters": [
+   "11",
+   "1",
+   "A"
+  ]
+ },
+ {
+  "id": "trial-cost",
+  "name": "Trial cost",
+  "type": "concept",
+  "aliases": [
+   "cost of a trial"
+  ],
+  "owner": "21",
+  "home": "21/trial-cost",
+  "chapters": [
+   "21",
+   "1",
+   "9"
+  ]
+ },
+ {
+  "id": "substantial-evidence",
+  "name": "Substantial evidence",
+  "type": "regulation",
+  "aliases": [
+   "regulatory standard",
+   "substantial evidence of effectiveness"
+  ],
+  "owner": "3",
+  "home": "3/what-the-statute-says",
+  "chapters": [
+   "3",
+   "1",
+   "23"
+  ]
+ },
+ {
+  "id": "history-of-bayesian-trials",
+  "name": "History of Bayesian trials",
+  "type": "history",
+  "aliases": [
+   "short history"
+  ],
+  "owner": "1",
+  "home": "sec-decision-history",
+  "chapters": [
+   "1",
+   "11"
+  ]
+ },
+ {
+  "id": "deviation-scale",
+  "name": "Deviation scale",
+  "type": "concept",
+  "aliases": [
+   "three deviation scales",
+   "deviation scales"
+  ],
+  "owner": "11",
+  "home": "11/the-three-deviation-scales",
+  "chapters": [
+   "11",
+   "1",
+   "7",
+   "9"
+  ]
+ },
+ {
+  "id": "moderate-deviation-sample-size",
+  "name": "Moderate deviation sample size",
+  "type": "method",
+  "aliases": [
+   "moderate deviation",
+   "moderate deviation sample size equation"
+  ],
+  "owner": "9",
+  "home": "sec-power-md",
+  "chapters": [
+   "9",
+   "11"
+  ]
+ },
+ {
+  "id": "large-deviation",
+  "name": "Large deviation scale",
+  "type": "concept",
+  "aliases": [
+   "large deviation",
+   "large deviation ledger"
+  ],
+  "owner": "11",
+  "home": "sec-ch10-wald",
+  "chapters": [
+   "11",
+   "1",
+   "9"
+  ]
+ },
+ {
+  "id": "evidence-toll",
+  "name": "Evidence toll",
+  "type": "concept",
+  "aliases": [
+   "three tolls",
+   "tolls"
+  ],
+  "owner": "11",
+  "home": "11/the-three-tolls",
+  "chapters": [
+   "11",
+   "7",
+   "12"
+  ]
+ },
+ {
+  "id": "two-bars",
+  "name": "The two bars",
+  "type": "concept",
+  "aliases": [
+   "Bayes factor bar",
+   "level bar"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-twobars",
+  "chapters": [
+   "7",
+   "11"
+  ]
+ },
+ {
+  "id": "surcharge",
+  "name": "Surcharge for anytime validity",
+  "type": "concept",
+  "aliases": [
+   "surcharge",
+   "seventy percent surcharge"
+  ],
+  "owner": "12",
+  "home": "sec-evalues-surcharge",
+  "chapters": [
+   "12",
+   "11"
+  ]
+ },
+ {
+  "id": "phase-1-trial",
+  "name": "Phase I trial",
+  "type": "design",
+  "aliases": [
+   "phase I"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle-p1",
+  "chapters": [
+   "2",
+   "17"
+  ]
+ },
+ {
+  "id": "phase-2-trial",
+  "name": "Phase II trial",
+  "type": "design",
+  "aliases": [
+   "phase II"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle-p2",
+  "chapters": [
+   "2",
+   "15"
+  ]
+ },
+ {
+  "id": "phase-3-trial",
+  "name": "Phase III trial",
+  "type": "design",
+  "aliases": [
+   "phase III"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle-p3",
+  "chapters": [
+   "2",
+   "3"
+  ]
+ },
+ {
+  "id": "phase-4-trial",
+  "name": "Phase IV study",
+  "type": "design",
+  "aliases": [
+   "phase IV",
+   "postmarketing"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle-p4",
+  "chapters": [
+   "2",
+   "13"
+  ]
+ },
+ {
+  "id": "drug-development",
+  "name": "Drug development",
+  "type": "concept",
+  "aliases": [
+   "drug development process"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle",
+  "chapters": [
+   "2",
+   "1"
+  ]
+ },
+ {
+  "id": "maximum-tolerated-dose",
+  "name": "Maximum tolerated dose",
+  "type": "concept",
+  "aliases": [
+   "MTD"
+  ],
+  "owner": "17",
+  "home": "17/why-the-mtd-is-a-poor-target-for-modern-agents",
+  "chapters": [
+   "17",
+   "2"
+  ]
+ },
+ {
+  "id": "bioequivalence",
+  "name": "Bioequivalence",
+  "type": "concept",
+  "aliases": [],
+  "owner": "2",
+  "home": "sec-lifecycle-be",
+  "chapters": [
+   "2"
+  ]
+ },
+ {
+  "id": "two-one-sided-tests",
+  "name": "Two one-sided tests",
+  "type": "method",
+  "aliases": [
+   "TOST"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle-be",
+  "chapters": [
+   "2",
+   "4"
+  ]
+ },
+ {
+  "id": "real-options",
+  "name": "Real options",
+  "type": "concept",
+  "aliases": [
+   "phases as options",
+   "option value"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle-options",
+  "chapters": [
+   "2"
+  ]
+ },
+ {
+  "id": "rofecoxib-case",
+  "name": "Rofecoxib safety signal",
+  "type": "history",
+  "aliases": [
+   "rofecoxib",
+   "Vioxx"
+  ],
+  "owner": "13",
+  "home": "sec-safety-rofecoxib",
+  "chapters": [
+   "13",
+   "2"
+  ]
+ },
+ {
+  "id": "phase-transition-probability",
+  "name": "Phase transition probability",
+  "type": "concept",
+  "aliases": [],
+  "owner": "2",
+  "home": "sec-lifecycle-reading",
+  "chapters": [
+   "2"
+  ]
+ },
+ {
+  "id": "bayesian-reading-of-phases",
+  "name": "Bayesian reading of the phases",
+  "type": "concept",
+  "aliases": [],
+  "owner": "2",
+  "home": "sec-lifecycle-reading",
+  "chapters": [
+   "2"
+  ]
+ },
+ {
+  "id": "recruitment-speed",
+  "name": "Recruitment and the value of speed",
+  "type": "concept",
+  "aliases": [
+   "value of speed",
+   "recruitment"
+  ],
+  "owner": "2",
+  "home": "sec-lifecycle-recruitment",
+  "chapters": [
+   "2",
+   "21"
+  ]
+ },
+ {
+  "id": "fda",
+  "name": "FDA",
+  "type": "organization",
+  "aliases": [
+   "Food and Drug Administration"
+  ],
+  "owner": "3",
+  "home": "sec-regulatory-fda",
+  "chapters": [
+   "3",
+   "1",
+   "4",
+   "8",
+   "23",
+   "B"
+  ]
+ },
+ {
+  "id": "ema",
+  "name": "EMA",
+  "type": "organization",
+  "aliases": [
+   "European Medicines Agency"
+  ],
+  "owner": "3",
+  "home": "sec-regulatory-eu",
+  "chapters": [
+   "3",
+   "20",
+   "23",
+   "B"
+  ]
+ },
+ {
+  "id": "mhra",
+  "name": "MHRA",
+  "type": "organization",
+  "aliases": [
+   "Medicines and Healthcare products Regulatory Agency"
+  ],
+  "owner": "3",
+  "home": "sec-regulatory-eu",
+  "chapters": [
+   "3",
+   "B"
+  ]
+ },
+ {
+  "id": "ich",
+  "name": "ICH",
+  "type": "organization",
+  "aliases": [
+   "International Council for Harmonisation"
+  ],
+  "owner": "3",
+  "home": "sec-regulatory-ich",
+  "chapters": [
+   "3",
+   "B"
+  ]
+ },
+ {
+  "id": "adequate-and-well-controlled-investigation",
+  "name": "Adequate and well-controlled investigation",
+  "type": "regulation",
+  "aliases": [
+   "adequate and well controlled"
+  ],
+  "owner": "3",
+  "home": "3/the-regulation-what-adequate-and-well-controlled-means",
+  "chapters": [
+   "3"
+  ]
+ },
+ {
+  "id": "one-trial-with-confirmatory-evidence",
+  "name": "One trial with confirmatory evidence",
+  "type": "regulation",
+  "aliases": [
+   "one trial",
+   "1997 amendment"
+  ],
+  "owner": "3",
+  "home": "3/the-1997-amendment-one-trial-and-confirmatory-evidence",
+  "chapters": [
+   "3",
+   "23"
+  ]
+ },
+ {
+  "id": "fda-substantial-evidence-draft-2026",
+  "name": "FDA substantial-evidence draft guidance 2026",
+  "type": "regulation",
+  "aliases": [
+   "2026 substantial-evidence draft"
+  ],
+  "owner": "3",
+  "home": "3/the-2026-substantial-evidence-draft",
+  "chapters": [
+   "3",
+   "23"
+  ]
+ },
+ {
+  "id": "fda-bayesian-draft-guidance-2026",
+  "name": "FDA Bayesian draft guidance 2026",
+  "type": "regulation",
+  "aliases": [
+   "Bayesian draft guidance",
+   "Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products"
+  ],
+  "owner": "3",
+  "home": "3/use-of-bayesian-methodology-in-clinical-trials-of-drug-and-biological-products-draft-january-2026",
+  "chapters": [
+   "3",
+   "8",
+   "23",
+   "B"
+  ]
+ },
+ {
+  "id": "fda-adaptive-design-guidance-2019",
+  "name": "FDA adaptive design guidance 2019",
+  "type": "regulation",
+  "aliases": [
+   "adaptive design guidance",
+   "Adaptive Designs for Clinical Trials of Drugs and Biologics"
+  ],
+  "owner": "3",
+  "home": "3/adaptive-designs-for-clinical-trials-of-drugs-and-biologics-final-november-2019",
+  "chapters": [
+   "3",
+   "B"
+  ]
+ },
+ {
+  "id": "fda-master-protocols-guidance-2026",
+  "name": "FDA master protocols guidance 2026",
+  "type": "regulation",
+  "aliases": [
+   "master protocol guidance",
+   "Master Protocols for Drug and Biological Product Development"
+  ],
+  "owner": "3",
+  "home": "3/master-protocols-for-drug-and-biological-product-development-revised-draft-june-2026",
+  "chapters": [
+   "3",
+   "10",
+   "20"
+  ]
+ },
+ {
+  "id": "fda-multiple-endpoints-guidance-2022",
+  "name": "FDA multiple endpoints guidance 2022",
+  "type": "regulation",
+  "aliases": [
+   "Multiple Endpoints in Clinical Trials"
+  ],
+  "owner": "3",
+  "home": "3/multiple-endpoints-in-clinical-trials-final-october-2022",
+  "chapters": [
+   "3",
+   "10"
+  ]
+ },
+ {
+  "id": "cid-program",
+  "name": "Complex innovative trial design program",
+  "type": "regulation",
+  "aliases": [
+   "CID program",
+   "CID paired meeting program",
+   "complex innovative trial design"
+  ],
+  "owner": "3",
+  "home": "3/the-complex-innovative-trial-design-cid-paired-meeting-program",
+  "chapters": [
+   "3",
+   "17",
+   "23",
+   "B"
+  ]
+ },
+ {
+  "id": "midd-program",
+  "name": "MIDD paired meeting program",
+  "type": "regulation",
+  "aliases": [
+   "MIDD"
+  ],
+  "owner": "3",
+  "home": "3/the-midd-paired-meeting-program",
+  "chapters": [
+   "3",
+   "B"
+  ]
+ },
+ {
+  "id": "pdufa",
+  "name": "PDUFA",
+  "type": "regulation",
+  "aliases": [
+   "Prescription Drug User Fee Act",
+   "formal meetings under PDUFA"
+  ],
+  "owner": "3",
+  "home": "3/formal-meetings-under-pdufa",
+  "chapters": [
+   "3"
+  ]
+ },
+ {
+  "id": "cpim",
+  "name": "Critical Path Innovation Meetings",
+  "type": "regulation",
+  "aliases": [
+   "CPIM"
+  ],
+  "owner": "3",
+  "home": "3/critical-path-innovation-meetings-cpim",
+  "chapters": [
+   "3",
+   "B"
+  ]
+ },
+ {
+  "id": "ddt-qualification",
+  "name": "Drug development tool qualification",
+  "type": "regulation",
+  "aliases": [
+   "DDT qualification"
+  ],
+  "owner": "3",
+  "home": "3/drug-development-tool-ddt-qualification",
+  "chapters": [
+   "3",
+   "B"
+  ]
+ },
+ {
+  "id": "requires-recommends-permits",
+  "name": "Requires, recommends, permits",
+  "type": "concept",
+  "aliases": [],
+  "owner": "3",
+  "home": "sec-regulatory-force",
+  "chapters": [
+   "3"
+  ]
+ },
+ {
+  "id": "special-protocol-assessment",
+  "name": "Special Protocol Assessment",
+  "type": "regulation",
+  "aliases": [
+   "SPA"
+  ],
+  "owner": "23",
+  "home": "23/the-interaction-timeline-with-fda",
+  "chapters": [
+   "23",
+   "3",
+   "B"
+  ]
+ },
+ {
+  "id": "ich-e9-r1",
+  "name": "ICH E9(R1)",
+  "type": "regulation",
+  "aliases": [
+   "E9(R1) addendum"
+  ],
+  "owner": "3",
+  "home": "sec-regulatory-ich",
+  "chapters": [
+   "3",
+   "5",
+   "23"
+  ]
+ },
+ {
+  "id": "ich-e11a",
+  "name": "ICH E11A",
+  "type": "regulation",
+  "aliases": [
+   "E11A",
+   "pediatric extrapolation guideline"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-pediatric",
+  "chapters": [
+   "19",
+   "3"
+  ]
+ },
+ {
+  "id": "ich-m11",
+  "name": "ICH M11",
+  "type": "regulation",
+  "aliases": [
+   "M11",
+   "structured protocol"
+  ],
+  "owner": "23",
+  "home": "23/structured-protocols-ich-m11-and-spirit-2025",
+  "chapters": [
+   "23",
+   "3"
+  ]
+ },
+ {
+  "id": "spirit-2025",
+  "name": "SPIRIT 2025",
+  "type": "regulation",
+  "aliases": [],
+  "owner": "23",
+  "home": "23/structured-protocols-ich-m11-and-spirit-2025",
+  "chapters": [
+   "23"
+  ]
+ },
+ {
+  "id": "consort-2025",
+  "name": "CONSORT 2025",
+  "type": "regulation",
+  "aliases": [],
+  "owner": "23",
+  "home": "23/checklists",
+  "chapters": [
+   "23"
+  ]
+ },
+ {
+  "id": "ace-reporting-guideline",
+  "name": "ACE reporting guideline",
+  "type": "regulation",
+  "aliases": [
+   "ACE",
+   "Adaptive designs CONSORT Extension"
+  ],
+  "owner": "23",
+  "home": "23/checklists",
+  "chapters": [
+   "23"
+  ]
+ },
+ {
+  "id": "robust-reporting-guideline",
+  "name": "ROBUST reporting guideline",
+  "type": "regulation",
+  "aliases": [
+   "ROBUST"
+  ],
+  "owner": "23",
+  "home": "23/checklists",
+  "chapters": [
+   "23"
+  ]
+ },
+ {
+  "id": "barg",
+  "name": "Bayesian Analysis Reporting Guidelines",
+  "type": "regulation",
+  "aliases": [
+   "BARG"
+  ],
+  "owner": "23",
+  "home": "23/checklists",
+  "chapters": [
+   "23"
+  ]
+ },
+ {
+  "id": "asa-statement",
+  "name": "ASA statement on p-values",
+  "type": "principle",
+  "aliases": [
+   "ASA statement",
+   "dirty dozen"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-asa",
+  "chapters": [
+   "7"
+  ]
+ },
+ {
+  "id": "rebyota-trial",
+  "name": "REBYOTA",
+  "type": "trial",
+  "aliases": [
+   "REBYOTA trial"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-rebyota",
+  "chapters": [
+   "19",
+   "3",
+   "14",
+   "23"
+  ]
+ },
+ {
+  "id": "bnt162b2-trial",
+  "name": "BNT162b2 trial",
+  "type": "trial",
+  "aliases": [
+   "BNT162b2",
+   "Pfizer-BioNTech phase 3",
+   "C4591001"
+  ],
+  "owner": "6",
+  "home": "6/pfizer-biontech-bnt162b2-phase-3-c4591001",
+  "chapters": [
+   "6",
+   "3",
+   "8",
+   "12",
+   "14",
+   "15",
+   "21",
+   "23"
+  ]
+ },
+ {
+  "id": "belimumab-pediatric-lupus",
+  "name": "Pediatric belimumab in lupus",
+  "type": "trial",
+  "aliases": [
+   "belimumab",
+   "belimumab in children"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-belimumab",
+  "chapters": [
+   "19",
+   "3",
+   "8",
+   "23"
+  ]
+ },
+ {
+  "id": "superion-trial",
+  "name": "Superion",
+  "type": "trial",
+  "aliases": [
+   "Superion device trial"
+  ],
+  "owner": "14",
+  "home": "14/superion-a-device-threshold-of-0958",
+  "chapters": [
+   "14",
+   "3"
+  ]
+ },
+ {
+  "id": "optimizer-smart-trial",
+  "name": "OPTIMIZER Smart",
+  "type": "trial",
+  "aliases": [
+   "OPTIMIZER Smart device trial"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-optimizer",
+  "chapters": [
+   "19",
+   "3"
+  ]
+ },
+ {
+  "id": "two-group-comparison",
+  "name": "Two-group comparison",
+  "type": "concept",
+  "aliases": [
+   "two group comparison"
+  ],
+  "owner": "4",
+  "home": "sec-testing-example",
+  "chapters": [
+   "4",
+   "6"
+  ]
+ },
+ {
+  "id": "sampling-distribution",
+  "name": "Sampling distribution of a trial result",
+  "type": "concept",
+  "aliases": [
+   "rerun ten thousand times"
+  ],
+  "owner": "4",
+  "home": "sec-testing-sampling",
+  "chapters": [
+   "4"
+  ]
+ },
+ {
+  "id": "z-test",
+  "name": "z test",
+  "type": "method",
+  "aliases": [
+   "normal approximation test"
+  ],
+  "owner": "4",
+  "home": "sec-testing-z",
+  "chapters": [
+   "4"
+  ]
+ },
+ {
+  "id": "p-value",
+  "name": "P-value",
+  "type": "concept",
+  "aliases": [
+   "p value"
+  ],
+  "owner": "4",
+  "home": "sec-testing-pvalue",
+  "chapters": [
+   "4",
+   "7",
+   "A"
+  ]
+ },
+ {
+  "id": "randomization-test",
+  "name": "Randomization test",
+  "type": "method",
+  "aliases": [
+   "randomization inference",
+   "permutation test"
+  ],
+  "owner": "5",
+  "home": "sec-randomization-inference",
+  "chapters": [
+   "5",
+   "4"
+  ]
+ },
+ {
+  "id": "confidence-interval",
+  "name": "Confidence interval",
+  "type": "concept",
+  "aliases": [
+   "CI"
+  ],
+  "owner": "4",
+  "home": "sec-testing-ci",
+  "chapters": [
+   "4",
+   "6"
+  ]
+ },
+ {
+  "id": "one-sided-test",
+  "name": "One-sided test",
+  "type": "concept",
+  "aliases": [
+   "one sided test",
+   "0.025",
+   "one sided alpha"
+  ],
+  "owner": "4",
+  "home": "sec-testing-sided",
+  "chapters": [
+   "4",
+   "A"
+  ]
+ },
+ {
+  "id": "noninferiority-trial",
+  "name": "Noninferiority trial",
+  "type": "design",
+  "aliases": [
+   "noninferiority"
+  ],
+  "owner": "4",
+  "home": "sec-testing-ni",
+  "chapters": [
+   "4",
+   "19",
+   "21"
+  ]
+ },
+ {
+  "id": "noninferiority-margin",
+  "name": "Noninferiority margin",
+  "type": "concept",
+  "aliases": [
+   "margin"
+  ],
+  "owner": "4",
+  "home": "4/where-the-margin-comes-from",
+  "chapters": [
+   "4",
+   "19",
+   "21"
+  ]
+ },
+ {
+  "id": "equivalence-trial",
+  "name": "Equivalence trial",
+  "type": "design",
+  "aliases": [
+   "equivalence"
+  ],
+  "owner": "4",
+  "home": "4/equivalence",
+  "chapters": [
+   "4"
+  ]
+ },
+ {
+  "id": "surpass-cvot",
+  "name": "SURPASS-CVOT",
+  "type": "trial",
+  "aliases": [
+   "SURPASS CVOT"
+  ],
+  "owner": "21",
+  "home": "sec-cases-surpass",
+  "chapters": [
+   "21",
+   "4"
+  ]
+ },
+ {
+  "id": "recovery-trial",
+  "name": "RECOVERY",
+  "type": "trial",
+  "aliases": [
+   "RECOVERY trial"
+  ],
+  "owner": "22",
+  "home": "sec-reanalyses-recovery",
+  "chapters": [
+   "22",
+   "4",
+   "5",
+   "10",
+   "20"
+  ]
+ },
+ {
+  "id": "andromeda-shock-trial",
+  "name": "ANDROMEDA-SHOCK",
+  "type": "trial",
+  "aliases": [
+   "ANDROMEDA SHOCK"
+  ],
+  "owner": "22",
+  "home": "sec-reanalyses-andromeda",
+  "chapters": [
+   "22",
+   "4",
+   "7"
+  ]
+ },
+ {
+  "id": "estimand",
+  "name": "Estimand",
+  "type": "concept",
+  "aliases": [
+   "estimand framework"
+  ],
+  "owner": "5",
+  "home": "5/estimands-and-intercurrent-events",
+  "chapters": [
+   "5",
+   "4",
+   "23"
+  ]
+ },
+ {
+  "id": "randomization",
+  "name": "Randomization",
+  "type": "concept",
+  "aliases": [
+   "random allocation"
+  ],
+  "owner": "5",
+  "home": "sec-randomization",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "simple-randomization",
+  "name": "Simple randomization",
+  "type": "method",
+  "aliases": [],
+  "owner": "5",
+  "home": "5/simple-randomization",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "permuted-block-randomization",
+  "name": "Permuted block randomization",
+  "type": "method",
+  "aliases": [
+   "permuted blocks"
+  ],
+  "owner": "5",
+  "home": "5/permuted-block-randomization",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "stratified-randomization",
+  "name": "Stratified randomization",
+  "type": "method",
+  "aliases": [],
+  "owner": "5",
+  "home": "5/stratified-randomization",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "minimization",
+  "name": "Minimization",
+  "type": "method",
+  "aliases": [
+   "minimisation"
+  ],
+  "owner": "5",
+  "home": "5/minimization",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "allocation-concealment",
+  "name": "Allocation concealment",
+  "type": "concept",
+  "aliases": [
+   "concealment"
+  ],
+  "owner": "5",
+  "home": "sec-randomization-concealment",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "blinding",
+  "name": "Blinding",
+  "type": "concept",
+  "aliases": [
+   "masking"
+  ],
+  "owner": "5",
+  "home": "sec-randomization-blinding",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "confounding-by-indication",
+  "name": "Confounding by indication",
+  "type": "concept",
+  "aliases": [],
+  "owner": "5",
+  "home": "5/confounding-by-indication-a-doctor-picks-the-patients",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "counterfactual",
+  "name": "Counterfactual",
+  "type": "concept",
+  "aliases": [
+   "counterfactual problem"
+  ],
+  "owner": "5",
+  "home": "5/the-counterfactual-problem",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "ignorability",
+  "name": "Ignorability of assignment",
+  "type": "concept",
+  "aliases": [
+   "ignorability",
+   "ignorable assignment mechanism"
+  ],
+  "owner": "5",
+  "home": "5/ignorability-of-the-assignment-mechanism",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "intention-to-treat",
+  "name": "Intention to treat",
+  "type": "principle",
+  "aliases": [
+   "ITT",
+   "ITT principle"
+  ],
+  "owner": "5",
+  "home": "5/the-itt-principle",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "intercurrent-event",
+  "name": "Intercurrent event",
+  "type": "concept",
+  "aliases": [],
+  "owner": "5",
+  "home": "5/estimands-and-intercurrent-events",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "covariate-adjustment",
+  "name": "Covariate adjustment",
+  "type": "method",
+  "aliases": [],
+  "owner": "5",
+  "home": "sec-randomization-covadj",
+  "chapters": [
+   "5",
+   "23"
+  ]
+ },
+ {
+  "id": "ancova",
+  "name": "ANCOVA",
+  "type": "method",
+  "aliases": [
+   "change from baseline",
+   "analysis of covariance"
+  ],
+  "owner": "5",
+  "home": "5/continuous-outcomes-ancova",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "kolmogorov-complexity",
+  "name": "Kolmogorov complexity",
+  "type": "concept",
+  "aliases": [
+   "randomness as incompressibility"
+  ],
+  "owner": "5",
+  "home": "5/randomness-as-incompressibility",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "arnold-randomness-measure",
+  "name": "Arnold's measure of randomness",
+  "type": "method",
+  "aliases": [],
+  "owner": "5",
+  "home": "5/arnolds-measure-of-randomness",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "mrc-streptomycin-trial",
+  "name": "MRC streptomycin trial",
+  "type": "trial",
+  "aliases": [
+   "streptomycin trial"
+  ],
+  "owner": "5",
+  "home": "5/the-mrc-streptomycin-trial-1948-concealment-before-the-word-existed",
+  "chapters": [
+   "5"
+  ]
+ },
+ {
+  "id": "womens-health-initiative",
+  "name": "Women's Health Initiative",
+  "type": "trial",
+  "aliases": [
+   "WHI"
+  ],
+  "owner": "11",
+  "home": "11/a-stop-for-harm-the-womens-health-initiative-2002",
+  "chapters": [
+   "11",
+   "5"
+  ]
+ },
+ {
+  "id": "bayes-rule",
+  "name": "Bayes' rule",
+  "type": "principle",
+  "aliases": [
+   "Bayes theorem"
+  ],
+  "owner": "6",
+  "home": "sec-bayes-rule",
+  "chapters": [
+   "6"
+  ]
+ },
+ {
+  "id": "prior-distribution",
+  "name": "Prior distribution",
+  "type": "concept",
+  "aliases": [
+   "prior"
+  ],
+  "owner": "8",
+  "home": "sec-priors",
+  "chapters": [
+   "8",
+   "6",
+   "19"
+  ]
+ },
+ {
+  "id": "likelihood",
+  "name": "Likelihood",
+  "type": "concept",
+  "aliases": [
+   "likelihood function"
+  ],
+  "owner": "6",
+  "home": "sec-bayes",
+  "chapters": [
+   "6"
+  ]
+ },
+ {
+  "id": "posterior-distribution",
+  "name": "Posterior distribution",
+  "type": "concept",
+  "aliases": [
+   "posterior"
+  ],
+  "owner": "6",
+  "home": "sec-bayes",
+  "chapters": [
+   "6",
+   "A"
+  ]
+ },
+ {
+  "id": "exchangeability",
+  "name": "Exchangeability",
+  "type": "concept",
+  "aliases": [],
+  "owner": "6",
+  "home": "sec-exchangeability",
+  "chapters": [
+   "6",
+   "19"
+  ]
+ },
+ {
+  "id": "de-finetti-representation",
+  "name": "de Finetti representation",
+  "type": "principle",
+  "aliases": [
+   "de Finetti"
+  ],
+  "owner": "6",
+  "home": "sec-exchangeability",
+  "chapters": [
+   "6"
+  ]
+ },
+ {
+  "id": "beta-prior",
+  "name": "Beta prior",
+  "type": "concept",
+  "aliases": [
+   "Beta distribution",
+   "Beta family"
+  ],
+  "owner": "6",
+  "home": "sec-beta",
+  "chapters": [
+   "6",
+   "8"
+  ]
+ },
+ {
+  "id": "conjugate-prior",
+  "name": "Conjugate prior",
+  "type": "concept",
+  "aliases": [
+   "conjugacy"
+  ],
+  "owner": "6",
+  "home": "sec-beta",
+  "chapters": [
+   "6"
+  ]
+ },
+ {
+  "id": "effective-sample-size",
+  "name": "Effective sample size",
+  "type": "concept",
+  "aliases": [
+   "ESS",
+   "prior effective sample size"
+  ],
+  "owner": "8",
+  "home": "sec-priors-ess",
+  "chapters": [
+   "8",
+   "6",
+   "19",
+   "A"
+  ]
+ },
+ {
+  "id": "credible-interval",
+  "name": "Credible interval",
+  "type": "concept",
+  "aliases": [],
+  "owner": "6",
+  "home": "sec-intervals",
+  "chapters": [
+   "6"
+  ]
+ },
+ {
+  "id": "posterior-predictive-distribution",
+  "name": "Posterior predictive distribution",
+  "type": "concept",
+  "aliases": [
+   "predictive distribution"
+  ],
+  "owner": "6",
+  "home": "sec-predictive-dist",
+  "chapters": [
+   "6",
+   "15"
+  ]
+ },
+ {
+  "id": "normal-normal-model",
+  "name": "Normal-normal model",
+  "type": "method",
+  "aliases": [
+   "normal normal model"
+  ],
+  "owner": "6",
+  "home": "sec-normal-normal",
+  "chapters": [
+   "6",
+   "22"
+  ]
+ },
+ {
+  "id": "log-hazard-ratio",
+  "name": "Log hazard ratio",
+  "type": "concept",
+  "aliases": [],
+  "owner": "6",
+  "home": "sec-normal-normal",
+  "chapters": [
+   "6",
+   "18"
+  ]
+ },
+ {
+  "id": "sequential-updating",
+  "name": "Sequential updating",
+  "type": "concept",
+  "aliases": [
+   "posterior today is the prior tomorrow"
+  ],
+  "owner": "6",
+  "home": "sec-updating",
+  "chapters": [
+   "6"
+  ]
+ },
+ {
+  "id": "posterior-probability-success-criterion",
+  "name": "Posterior probability success criterion",
+  "type": "concept",
+  "aliases": [
+   "success criterion",
+   "FDA success criterion",
+   "success threshold",
+   "posterior probability threshold"
+  ],
+  "owner": "14",
+  "home": "sec-sim-rule",
+  "chapters": [
+   "14",
+   "6",
+   "7",
+   "23"
+  ]
+ },
+ {
+  "id": "posterior-probability-of-benefit",
+  "name": "Posterior probability of benefit",
+  "type": "concept",
+  "aliases": [
+   "probability of benefit"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-posterior",
+  "chapters": [
+   "7",
+   "22"
+  ]
+ },
+ {
+  "id": "remap-cap-trial",
+  "name": "REMAP-CAP",
+  "type": "trial",
+  "aliases": [
+   "REMAP-CAP trial"
+  ],
+  "owner": "20",
+  "home": "20/remap-cap-domains-response-adaptive-randomization-and-an-embedded-design",
+  "chapters": [
+   "20",
+   "6",
+   "8",
+   "10",
+   "16"
+  ]
+ },
+ {
+  "id": "stopping-rule-principle",
+  "name": "Stopping rule principle",
+  "type": "principle",
+  "aliases": [
+   "posterior does not depend on the stopping rule",
+   "likelihood principle"
+  ],
+  "owner": "11",
+  "home": "11/the-posterior-does-not-depend-on-the-stopping-rule",
+  "chapters": [
+   "11",
+   "6"
+  ]
+ },
+ {
+  "id": "false-positive-risk",
+  "name": "False positive risk",
+  "type": "concept",
+  "aliases": [
+   "FPR"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-fpr",
+  "chapters": [
+   "7"
+  ]
+ },
+ {
+  "id": "bayes-factor",
+  "name": "Bayes factor",
+  "type": "concept",
+  "aliases": [
+   "BF"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-bf",
+  "chapters": [
+   "7",
+   "12",
+   "13"
+  ]
+ },
+ {
+  "id": "lindleys-paradox",
+  "name": "Lindley's paradox",
+  "type": "concept",
+  "aliases": [
+   "Lindley paradox"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-lindley",
+  "chapters": [
+   "7"
+  ]
+ },
+ {
+  "id": "jeffreys-scale",
+  "name": "Jeffreys scale",
+  "type": "concept",
+  "aliases": [
+   "Jeffreys table"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-jeffreys",
+  "chapters": [
+   "7"
+  ]
+ },
+ {
+  "id": "minimum-bayes-factor",
+  "name": "Minimum Bayes factor",
+  "type": "method",
+  "aliases": [
+   "calibrating the p-value",
+   "p-value calibration"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-calibration",
+  "chapters": [
+   "7"
+  ]
+ },
+ {
+  "id": "bayes-risk",
+  "name": "Bayes risk",
+  "type": "concept",
+  "aliases": [
+   "Bayes risk of a test"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-bayesrisk",
+  "chapters": [
+   "7",
+   "12"
+  ]
+ },
+ {
+  "id": "implied-loss",
+  "name": "Implied loss",
+  "type": "concept",
+  "aliases": [
+   "test as a Bayes rule"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-implied-loss",
+  "chapters": [
+   "7"
+  ]
+ },
+ {
+  "id": "ockham-penalty",
+  "name": "Ockham penalty",
+  "type": "concept",
+  "aliases": [
+   "Lindley information"
+  ],
+  "owner": "7",
+  "home": "sec-evidence-lindleyinfo",
+  "chapters": [
+   "7"
+  ]
+ },
+ {
+  "id": "eolia-trial",
+  "name": "EOLIA",
+  "type": "trial",
+  "aliases": [
+   "EOLIA trial"
+  ],
+  "owner": "22",
+  "home": "sec-reanalyses-eolia",
+  "chapters": [
+   "22",
+   "7",
+   "8",
+   "11"
+  ]
+ },
+ {
+  "id": "skeptical-prior",
+  "name": "Skeptical prior",
+  "type": "concept",
+  "aliases": [],
+  "owner": "8",
+  "home": "sec-priors-three",
+  "chapters": [
+   "8",
+   "22"
+  ]
+ },
+ {
+  "id": "enthusiastic-prior",
+  "name": "Enthusiastic prior",
+  "type": "concept",
+  "aliases": [],
+  "owner": "8",
+  "home": "sec-priors-three",
+  "chapters": [
+   "8",
+   "22"
+  ]
+ },
+ {
+  "id": "noninformative-prior",
+  "name": "Noninformative prior",
+  "type": "concept",
+  "aliases": [
+   "default prior",
+   "flat prior"
+  ],
+  "owner": "8",
+  "home": "sec-priors-three",
+  "chapters": [
+   "8"
+  ]
+ },
+ {
+  "id": "conditional-means-prior",
+  "name": "Conditional means prior",
+  "type": "method",
+  "aliases": [],
+  "owner": "8",
+  "home": "sec-priors-cmp",
+  "chapters": [
+   "8"
+  ]
+ },
+ {
+  "id": "prior-data-conflict",
+  "name": "Prior-data conflict",
+  "type": "concept",
+  "aliases": [
+   "prior data conflict"
+  ],
+  "owner": "8",
+  "home": "sec-priors-conflict",
+  "chapters": [
+   "8",
+   "19"
+  ]
+ },
+ {
+  "id": "sensitivity-analysis",
+  "name": "Sensitivity analysis over the prior",
+  "type": "method",
+  "aliases": [
+   "prior sensitivity analysis"
+  ],
+  "owner": "8",
+  "home": "sec-priors-sensitivity",
+  "chapters": [
+   "8"
+  ]
+ },
+ {
+  "id": "tipping-point-analysis",
+  "name": "Tipping-point analysis",
+  "type": "method",
+  "aliases": [
+   "tipping point",
+   "tipping-point prior"
+  ],
+  "owner": "8",
+  "home": "sec-priors-tipping",
+  "chapters": [
+   "8",
+   "19"
+  ]
+ },
+ {
+  "id": "prior-elicitation",
+  "name": "Prior elicitation",
+  "type": "concept",
+  "aliases": [
+   "sources of priors"
+  ],
+  "owner": "8",
+  "home": "sec-priors-sources",
+  "chapters": [
+   "8"
+  ]
+ },
+ {
+  "id": "prior-specification",
+  "name": "Prior specification in the protocol",
+  "type": "concept",
+  "aliases": [
+   "prior in the protocol"
+  ],
+  "owner": "8",
+  "home": "sec-priors-protocol",
+  "chapters": [
+   "8",
+   "23"
+  ]
+ },
+ {
+  "id": "sample-size",
+  "name": "Sample size",
+  "type": "concept",
+  "aliases": [
+   "sample size calculation"
+  ],
+  "owner": "9",
+  "home": "sec-power",
+  "chapters": [
+   "9"
+  ]
+ },
+ {
+  "id": "power-curve",
+  "name": "Power curve",
+  "type": "concept",
+  "aliases": [],
+  "owner": "9",
+  "home": "9/the-power-curve",
+  "chapters": [
+   "9"
+  ]
+ },
+ {
+  "id": "design-alternative",
+  "name": "Design alternative",
+  "type": "concept",
+  "aliases": [],
+  "owner": "9",
+  "home": "9/sensitivity-to-the-design-alternative",
+  "chapters": [
+   "9"
+  ]
+ },
+ {
+  "id": "assurance",
+  "name": "Assurance",
+  "type": "concept",
+  "aliases": [
+   "Bayesian power",
+   "expected power"
+  ],
+  "owner": "9",
+  "home": "sec-power-assurance",
+  "chapters": [
+   "9"
+  ]
+ },
+ {
+  "id": "bayesian-sample-size-criteria",
+  "name": "Bayesian sample size criteria",
+  "type": "method",
+  "aliases": [],
+  "owner": "9",
+  "home": "sec-power-criteria",
+  "chapters": [
+   "9"
+  ]
+ },
+ {
+  "id": "prior-odds-constant",
+  "name": "Prior odds in the sample size constant",
+  "type": "concept",
+  "aliases": [
+   "prior odds"
+  ],
+  "owner": "9",
+  "home": "9/the-prior-odds-in-the-constant",
+  "chapters": [
+   "9"
+  ]
+ },
+ {
+  "id": "phase-2-to-phase-3-optimism",
+  "name": "Phase 2 to phase 3 optimism",
+  "type": "concept",
+  "aliases": [
+   "phase 2 selection problem"
+  ],
+  "owner": "9",
+  "home": "sec-power-zia",
+  "chapters": [
+   "9",
+   "8"
+  ]
+ },
+ {
+  "id": "shared-control-arithmetic",
+  "name": "Shared-control arithmetic",
+  "type": "concept",
+  "aliases": [
+   "platform arithmetic",
+   "shared control"
+  ],
+  "owner": "20",
+  "home": "20/shared-control-arithmetic",
+  "chapters": [
+   "20",
+   "9"
+  ]
+ },
+ {
+  "id": "multiplicity",
+  "name": "Multiplicity",
+  "type": "concept",
+  "aliases": [
+   "multiple comparisons"
+  ],
+  "owner": "10",
+  "home": "sec-multiplicity",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "familywise-error-rate",
+  "name": "Familywise error rate",
+  "type": "concept",
+  "aliases": [
+   "FWER"
+  ],
+  "owner": "10",
+  "home": "sec-mult-problem",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "false-discovery-rate",
+  "name": "False discovery rate",
+  "type": "concept",
+  "aliases": [
+   "FDR"
+  ],
+  "owner": "10",
+  "home": "sec-mult-fdr",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "bonferroni-correction",
+  "name": "Bonferroni correction",
+  "type": "method",
+  "aliases": [
+   "Bonferroni"
+  ],
+  "owner": "10",
+  "home": "10/bonferroni",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "holm-procedure",
+  "name": "Holm procedure",
+  "type": "method",
+  "aliases": [
+   "Holm"
+  ],
+  "owner": "10",
+  "home": "10/holm",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "hochberg-procedure",
+  "name": "Hochberg procedure",
+  "type": "method",
+  "aliases": [
+   "Hochberg"
+  ],
+  "owner": "10",
+  "home": "10/hochberg",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "closed-testing",
+  "name": "Closed testing",
+  "type": "method",
+  "aliases": [
+   "closed testing procedure"
+  ],
+  "owner": "10",
+  "home": "10/closed-testing",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "fixed-sequence-testing",
+  "name": "Fixed-sequence testing",
+  "type": "method",
+  "aliases": [
+   "hierarchical testing",
+   "fixed sequence"
+  ],
+  "owner": "10",
+  "home": "10/fixed-sequence-hierarchical-testing",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "graphical-procedure",
+  "name": "Graphical procedure",
+  "type": "method",
+  "aliases": [
+   "graphical multiple testing"
+  ],
+  "owner": "10",
+  "home": "10/graphical-procedures",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "subgroup-analysis",
+  "name": "Subgroup analysis",
+  "type": "concept",
+  "aliases": [
+   "subgroups"
+  ],
+  "owner": "10",
+  "home": "sec-mult-subgroups",
+  "chapters": [
+   "10",
+   "22"
+  ]
+ },
+ {
+  "id": "forking-paths",
+  "name": "Forking paths",
+  "type": "concept",
+  "aliases": [
+   "garden of forking paths"
+  ],
+  "owner": "10",
+  "home": "sec-mult-selected",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "winners-curse",
+  "name": "Winner's curse",
+  "type": "concept",
+  "aliases": [],
+  "owner": "10",
+  "home": "10/a-numerical-illustration-the-winners-curse",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "shrinkage",
+  "name": "Shrinkage",
+  "type": "method",
+  "aliases": [
+   "shrinkage estimator"
+  ],
+  "owner": "10",
+  "home": "sec-mult-shrinkage",
+  "chapters": [
+   "10",
+   "22"
+  ]
+ },
+ {
+  "id": "stein-estimator",
+  "name": "Stein estimator",
+  "type": "method",
+  "aliases": [
+   "James-Stein",
+   "Efron and Morris"
+  ],
+  "owner": "10",
+  "home": "10/stein-efron-and-morris-and-the-batting-averages",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "empirical-bayes",
+  "name": "Empirical Bayes",
+  "type": "method",
+  "aliases": [],
+  "owner": "10",
+  "home": "10/stein-efron-and-morris-and-the-batting-averages",
+  "chapters": [
+   "10",
+   "13"
+  ]
+ },
+ {
+  "id": "hierarchical-model",
+  "name": "Hierarchical model",
+  "type": "method",
+  "aliases": [
+   "Bayesian hierarchical model"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-hier",
+  "chapters": [
+   "19",
+   "10"
+  ]
+ },
+ {
+  "id": "four-operation-ulcer-trial",
+  "name": "Four-operation ulcer trial",
+  "type": "trial",
+  "aliases": [
+   "ulcer trial"
+  ],
+  "owner": "10",
+  "home": "sec-mult-ulcer",
+  "chapters": [
+   "10"
+  ]
+ },
+ {
+  "id": "i-spy-2-trial",
+  "name": "I-SPY 2",
+  "type": "trial",
+  "aliases": [
+   "I-SPY 2 trial"
+  ],
+  "owner": "20",
+  "home": "20/i-spy-2-graduation-by-predictive-probability",
+  "chapters": [
+   "20",
+   "10",
+   "15",
+   "16"
+  ]
+ },
+ {
+  "id": "multiplicity-across-arms",
+  "name": "Multiplicity across arms",
+  "type": "concept",
+  "aliases": [
+   "master protocol multiplicity"
+  ],
+  "owner": "20",
+  "home": "20/multiplicity-across-arms",
+  "chapters": [
+   "20",
+   "10"
+  ]
+ },
+ {
+  "id": "group-sequential-design",
+  "name": "Group sequential design",
+  "type": "design",
+  "aliases": [
+   "interim looks"
+  ],
+  "owner": "11",
+  "home": "sec-sequential",
+  "chapters": [
+   "11",
+   "14"
+  ]
+ },
+ {
+  "id": "interim-analysis",
+  "name": "Interim analysis",
+  "type": "concept",
+  "aliases": [
+   "repeated testing",
+   "interim look"
+  ],
+  "owner": "11",
+  "home": "11/why-repeated-testing-at-a-fixed-level-fails",
+  "chapters": [
+   "11",
+   "15"
+  ]
+ },
+ {
+  "id": "armitage-recursion",
+  "name": "Armitage recursion",
+  "type": "method",
+  "aliases": [],
+  "owner": "11",
+  "home": "11/the-armitage-recursion",
+  "chapters": [
+   "11"
+  ]
+ },
+ {
+  "id": "obrien-fleming-boundary",
+  "name": "O'Brien-Fleming boundary",
+  "type": "method",
+  "aliases": [
+   "O'Brien-Fleming"
+  ],
+  "owner": "11",
+  "home": "11/obrien-fleming-pocock-and-the-family-between-them",
+  "chapters": [
+   "11",
+   "14",
+   "21"
+  ]
+ },
+ {
+  "id": "pocock-boundary",
+  "name": "Pocock boundary",
+  "type": "method",
+  "aliases": [
+   "Pocock"
+  ],
+  "owner": "11",
+  "home": "11/obrien-fleming-pocock-and-the-family-between-them",
+  "chapters": [
+   "11"
+  ]
+ },
+ {
+  "id": "information-fraction",
+  "name": "Information fraction",
+  "type": "concept",
+  "aliases": [],
+  "owner": "11",
+  "home": "11/spending-functions-and-the-information-fraction",
+  "chapters": [
+   "11",
+   "A"
+  ]
+ },
+ {
+  "id": "futility-boundary",
+  "name": "Futility boundary",
+  "type": "method",
+  "aliases": [
+   "futility rule",
+   "futility",
+   "binding futility"
+  ],
+  "owner": "11",
+  "home": "11/futility-boundaries-binding-and-non-binding",
+  "chapters": [
+   "11",
+   "15"
+  ]
+ },
+ {
+  "id": "data-monitoring-committee",
+  "name": "Data monitoring committee",
+  "type": "organization",
+  "aliases": [
+   "DMC",
+   "DSMB"
+  ],
+  "owner": "11",
+  "home": "11/what-a-dmc-does",
+  "chapters": [
+   "11",
+   "20",
+   "21",
+   "23"
+  ]
+ },
+ {
+  "id": "bayes-sequential-decision-problem",
+  "name": "Bayes sequential decision problem",
+  "type": "concept",
+  "aliases": [
+   "Bayesian sequential decision"
+  ],
+  "owner": "11",
+  "home": "11/the-bayes-sequential-decision-problem",
+  "chapters": [
+   "11",
+   "15"
+  ]
+ },
+ {
+  "id": "wald-sprt",
+  "name": "Wald's sequential test",
+  "type": "method",
+  "aliases": [
+   "Wald SPRT",
+   "sequential probability ratio test"
+  ],
+  "owner": "11",
+  "home": "sec-ch10-wald",
+  "chapters": [
+   "11",
+   "13"
+  ]
+ },
+ {
+  "id": "bayesian-monitoring-history",
+  "name": "History of Bayesian monitoring",
+  "type": "history",
+  "aliases": [],
+  "owner": "11",
+  "home": "sec-ch10-bayeshistory",
+  "chapters": [
+   "11"
+  ]
+ },
+ {
+  "id": "truncated-trial-bias",
+  "name": "Truncated trial bias",
+  "type": "concept",
+  "aliases": [
+   "early stopping bias",
+   "truncated trials overestimate"
+  ],
+  "owner": "11",
+  "home": "11/truncated-trials-overestimate-bassler-and-colleagues-2010",
+  "chapters": [
+   "11",
+   "14"
+  ]
+ },
+ {
+  "id": "covid-anticoagulation-multiplatform",
+  "name": "COVID anticoagulation multiplatform trials",
+  "type": "trial",
+  "aliases": [
+   "therapeutic heparin trial"
+  ],
+  "owner": "20",
+  "home": "20/the-covid-anticoagulation-multiplatform",
+  "chapters": [
+   "20",
+   "8",
+   "11"
+  ]
+ },
+ {
+  "id": "e-value",
+  "name": "E-value",
+  "type": "concept",
+  "aliases": [
+   "e value",
+   "betting score"
+  ],
+  "owner": "12",
+  "home": "sec-evalues-bets",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "test-martingale",
+  "name": "Test martingale",
+  "type": "concept",
+  "aliases": [],
+  "owner": "12",
+  "home": "12/test-martingales-and-villes-inequality",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "villes-inequality",
+  "name": "Ville's inequality",
+  "type": "principle",
+  "aliases": [
+   "Ville inequality"
+  ],
+  "owner": "12",
+  "home": "12/test-martingales-and-villes-inequality",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "e-value-growth-rate",
+  "name": "Growth rate of an e-value",
+  "type": "concept",
+  "aliases": [
+   "growth rate"
+  ],
+  "owner": "12",
+  "home": "12/how-big-a-bet-the-growth-rate",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "cornfield-betting-odds",
+  "name": "Cornfield and the betting odds of 1966",
+  "type": "history",
+  "aliases": [
+   "Cornfield"
+  ],
+  "owner": "12",
+  "home": "12/cornfield-and-the-betting-odds-of-1966",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "likelihood-ratio",
+  "name": "Likelihood ratio",
+  "type": "concept",
+  "aliases": [],
+  "owner": "12",
+  "home": "12/likelihood-ratios",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "mixture-method",
+  "name": "Mixture method",
+  "type": "method",
+  "aliases": [
+   "mixture e-value"
+  ],
+  "owner": "12",
+  "home": "12/mixtures",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "e-process",
+  "name": "E-process",
+  "type": "concept",
+  "aliases": [],
+  "owner": "12",
+  "home": "12/e-processes",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "confidence-sequence",
+  "name": "Confidence sequence",
+  "type": "method",
+  "aliases": [],
+  "owner": "12",
+  "home": "sec-evalues-p",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "anytime-valid-inference",
+  "name": "Anytime-valid inference",
+  "type": "concept",
+  "aliases": [
+   "always valid p-value",
+   "optional stopping"
+  ],
+  "owner": "12",
+  "home": "sec-evalues",
+  "chapters": [
+   "12"
+  ]
+ },
+ {
+  "id": "select-reconstruction",
+  "name": "SELECT reconstruction",
+  "type": "concept",
+  "aliases": [
+   "reconstruction"
+  ],
+  "owner": "21",
+  "home": "21/three-monitoring-schemes-and-selects-own-design-one-error-rate",
+  "chapters": [
+   "21",
+   "12",
+   "9"
+  ]
+ },
+ {
+  "id": "safety-signal",
+  "name": "Safety signal",
+  "type": "concept",
+  "aliases": [
+   "safety monitoring"
+  ],
+  "owner": "13",
+  "home": "sec-safety",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "cumulative-meta-analysis",
+  "name": "Cumulative meta-analysis",
+  "type": "method",
+  "aliases": [
+   "cumulative meta analysis"
+  ],
+  "owner": "13",
+  "home": "13/what-the-traditional-analysis-said",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "e-value-safety-monitoring",
+  "name": "E-value safety monitoring",
+  "type": "method",
+  "aliases": [
+   "e-value monitoring",
+   "continuous monitoring"
+  ],
+  "owner": "13",
+  "home": "sec-safety-monitor",
+  "chapters": [
+   "13",
+   "12"
+  ]
+ },
+ {
+  "id": "faers",
+  "name": "FAERS",
+  "type": "regulation",
+  "aliases": [
+   "spontaneous reports",
+   "FDA Adverse Event Reporting System"
+  ],
+  "owner": "13",
+  "home": "sec-safety-gps",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "disproportionality-analysis",
+  "name": "Disproportionality analysis",
+  "type": "concept",
+  "aliases": [
+   "disproportionality"
+  ],
+  "owner": "13",
+  "home": "sec-safety-gps",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "proportional-reporting-ratio",
+  "name": "Proportional reporting ratio",
+  "type": "method",
+  "aliases": [
+   "PRR"
+  ],
+  "owner": "13",
+  "home": "13/the-traditional-measure",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "gamma-poisson-shrinker",
+  "name": "Gamma-Poisson shrinker",
+  "type": "method",
+  "aliases": [
+   "GPS",
+   "MGPS"
+  ],
+  "owner": "13",
+  "home": "13/the-gamma-poisson-shrinker",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "toxicity-monitoring",
+  "name": "Toxicity monitoring",
+  "type": "method",
+  "aliases": [
+   "toxicity monitoring inside a trial"
+  ],
+  "owner": "13",
+  "home": "sec-safety-tox",
+  "chapters": [
+   "13",
+   "17"
+  ]
+ },
+ {
+  "id": "aggregate-safety-assessment",
+  "name": "Aggregate safety assessment",
+  "type": "concept",
+  "aliases": [],
+  "owner": "13",
+  "home": "sec-safety-aggregate",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "ind-safety-report",
+  "name": "IND safety report",
+  "type": "regulation",
+  "aliases": [],
+  "owner": "13",
+  "home": "sec-safety-aggregate",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "maxsprt",
+  "name": "MaxSPRT",
+  "type": "method",
+  "aliases": [
+   "maximized sequential probability ratio test"
+  ],
+  "owner": "13",
+  "home": "sec-safety-monitor",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "blinded-pooled-review",
+  "name": "Blinded pooled review",
+  "type": "method",
+  "aliases": [],
+  "owner": "13",
+  "home": "sec-safety-aggregate",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "adverse-event-hierarchy",
+  "name": "Adverse event hierarchy",
+  "type": "method",
+  "aliases": [
+   "hierarchical adverse event model"
+  ],
+  "owner": "13",
+  "home": "sec-safety-aggregate",
+  "chapters": [
+   "13"
+  ]
+ },
+ {
+  "id": "operating-characteristics",
+  "name": "Operating characteristics",
+  "type": "concept",
+  "aliases": [],
+  "owner": "14",
+  "home": "sec-simulation",
+  "chapters": [
+   "14",
+   "23"
+  ]
+ },
+ {
+  "id": "calibration",
+  "name": "Calibration of the success threshold",
+  "type": "method",
+  "aliases": [
+   "calibration",
+   "calibrating c and a"
+  ],
+  "owner": "14",
+  "home": "sec-sim-calibration",
+  "chapters": [
+   "14",
+   "7"
+  ]
+ },
+ {
+  "id": "clinical-trial-simulation",
+  "name": "Clinical trial simulation",
+  "type": "method",
+  "aliases": [
+   "simulation"
+  ],
+  "owner": "14",
+  "home": "sec-simulation",
+  "chapters": [
+   "14",
+   "23"
+  ]
+ },
+ {
+  "id": "scenario-grid",
+  "name": "Scenario grid",
+  "type": "concept",
+  "aliases": [
+   "worst case"
+  ],
+  "owner": "14",
+  "home": "sec-sim-grid",
+  "chapters": [
+   "14"
+  ]
+ },
+ {
+  "id": "expected-sample-size",
+  "name": "Expected sample size",
+  "type": "concept",
+  "aliases": [],
+  "owner": "14",
+  "home": "14/power-expected-sample-size-early-stopping-and-bias",
+  "chapters": [
+   "14"
+  ]
+ },
+ {
+  "id": "goldilocks-design",
+  "name": "Goldilocks design",
+  "type": "design",
+  "aliases": [],
+  "owner": "14",
+  "home": "sec-sim-goldilocks",
+  "chapters": [
+   "14",
+   "15"
+  ]
+ },
+ {
+  "id": "statistical-analysis-plan",
+  "name": "Statistical analysis plan",
+  "type": "concept",
+  "aliases": [
+   "SAP"
+  ],
+  "owner": "23",
+  "home": "23/the-statistical-analysis-plan-and-the-simulation-report",
+  "chapters": [
+   "23",
+   "14"
+  ]
+ },
+ {
+  "id": "simulation-report",
+  "name": "Simulation report",
+  "type": "concept",
+  "aliases": [],
+  "owner": "14",
+  "home": "sec-sim-report",
+  "chapters": [
+   "14",
+   "23"
+  ]
+ },
+ {
+  "id": "reproducibility",
+  "name": "Reproducibility",
+  "type": "concept",
+  "aliases": [
+   "simulation seed"
+  ],
+  "owner": "C",
+  "home": "sec-software-repro",
+  "chapters": [
+   "C",
+   "14"
+  ]
+ },
+ {
+  "id": "dawn-trial",
+  "name": "DAWN",
+  "type": "trial",
+  "aliases": [
+   "DAWN trial"
+  ],
+  "owner": "15",
+  "home": "15/dawn-predictive-probability-for-expected-success-and-futility",
+  "chapters": [
+   "15",
+   "14",
+   "23"
+  ]
+ },
+ {
+  "id": "conditional-power",
+  "name": "Conditional power",
+  "type": "concept",
+  "aliases": [],
+  "owner": "15",
+  "home": "15/conditional-power",
+  "chapters": [
+   "15"
+  ]
+ },
+ {
+  "id": "predictive-probability-of-success",
+  "name": "Predictive probability of success",
+  "type": "concept",
+  "aliases": [
+   "predictive probability",
+   "PPoS",
+   "predictive power"
+  ],
+  "owner": "15",
+  "home": "sec-pp",
+  "chapters": [
+   "15",
+   "18"
+  ]
+ },
+ {
+  "id": "sample-size-re-estimation",
+  "name": "Sample size re-estimation",
+  "type": "method",
+  "aliases": [
+   "promising zone"
+  ],
+  "owner": "15",
+  "home": "15/sample-size-re-estimation-and-the-promising-zone",
+  "chapters": [
+   "15"
+  ]
+ },
+ {
+  "id": "simon-two-stage-design",
+  "name": "Simon two-stage design",
+  "type": "design",
+  "aliases": [
+   "Simon two stage"
+  ],
+  "owner": "15",
+  "home": "sec-phase2-classic",
+  "chapters": [
+   "15"
+  ]
+ },
+ {
+  "id": "predictive-probability-monitoring",
+  "name": "Predictive probability monitoring",
+  "type": "method",
+  "aliases": [
+   "Lee-Liu design",
+   "phase 2 monitoring"
+  ],
+  "owner": "15",
+  "home": "sec-leeliu",
+  "chapters": [
+   "15"
+  ]
+ },
+ {
+  "id": "backward-induction",
+  "name": "Backward induction",
+  "type": "method",
+  "aliases": [
+   "optimal stopping",
+   "dynamic programming",
+   "Bellman equation"
+  ],
+  "owner": "15",
+  "home": "sec-bi",
+  "chapters": [
+   "15",
+   "16"
+  ]
+ },
+ {
+  "id": "calgb-49907",
+  "name": "CALGB 49907",
+  "type": "trial",
+  "aliases": [],
+  "owner": "15",
+  "home": "15/calgb-49907-futility-stopping-in-practice",
+  "chapters": [
+   "15"
+  ]
+ },
+ {
+  "id": "gbm-agile-trial",
+  "name": "GBM AGILE",
+  "type": "trial",
+  "aliases": [
+   "GBM AGILE trial"
+  ],
+  "owner": "20",
+  "home": "20/gbm-agile-a-registration-platform",
+  "chapters": [
+   "20",
+   "15"
+  ]
+ },
+ {
+  "id": "response-adaptive-randomization",
+  "name": "Response-adaptive randomization",
+  "type": "design",
+  "aliases": [
+   "RAR",
+   "adaptive randomization",
+   "patient benefit"
+  ],
+  "owner": "16",
+  "home": "sec-rar",
+  "chapters": [
+   "16",
+   "23"
+  ]
+ },
+ {
+  "id": "multi-armed-bandit",
+  "name": "Multi-armed bandit",
+  "type": "concept",
+  "aliases": [
+   "bandit problem"
+  ],
+  "owner": "16",
+  "home": "sec-rar-bandit",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "thompson-sampling",
+  "name": "Thompson sampling",
+  "type": "method",
+  "aliases": [],
+  "owner": "16",
+  "home": "16/thompson-sampling-in-four-lines",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "gittins-index",
+  "name": "Gittins index",
+  "type": "method",
+  "aliases": [],
+  "owner": "16",
+  "home": "16/the-gittins-index",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "regret",
+  "name": "Regret",
+  "type": "concept",
+  "aliases": [
+   "Lai-Robbins bound"
+  ],
+  "owner": "16",
+  "home": "16/regret-and-the-lai-robbins-bound",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "play-the-winner",
+  "name": "Play the winner",
+  "type": "method",
+  "aliases": [],
+  "owner": "16",
+  "home": "sec-rar-ecmo",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "ecmo-trial",
+  "name": "ECMO trial",
+  "type": "trial",
+  "aliases": [
+   "ECMO",
+   "Harvard two-stage trial"
+  ],
+  "owner": "16",
+  "home": "sec-rar-ecmo",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "time-trend-bias",
+  "name": "Time trend bias",
+  "type": "concept",
+  "aliases": [
+   "temporal drift",
+   "time trends"
+  ],
+  "owner": "16",
+  "home": "sec-rar-drift",
+  "chapters": [
+   "16",
+   "20"
+  ]
+ },
+ {
+  "id": "rar-critique",
+  "name": "Critiques of response-adaptive randomization",
+  "type": "concept",
+  "aliases": [
+   "critiques of adaptive randomization"
+  ],
+  "owner": "16",
+  "home": "sec-rar-critique",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "fixed-allocation",
+  "name": "Fixed allocation",
+  "type": "concept",
+  "aliases": [
+   "1:1 allocation"
+  ],
+  "owner": "16",
+  "home": "sec-rar-fixed",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "battle-trial",
+  "name": "BATTLE",
+  "type": "trial",
+  "aliases": [
+   "BATTLE trial"
+  ],
+  "owner": "16",
+  "home": "16/battle",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "shine-trial",
+  "name": "SHINE",
+  "type": "trial",
+  "aliases": [
+   "SHINE trial"
+  ],
+  "owner": "16",
+  "home": "16/shine-and-its-bayesian-re-analysis",
+  "chapters": [
+   "16"
+  ]
+ },
+ {
+  "id": "dose-finding",
+  "name": "Dose finding",
+  "type": "concept",
+  "aliases": [
+   "dose escalation"
+  ],
+  "owner": "17",
+  "home": "sec-dose",
+  "chapters": [
+   "17",
+   "2"
+  ]
+ },
+ {
+  "id": "three-plus-three-design",
+  "name": "3+3 design",
+  "type": "method",
+  "aliases": [
+   "3+3",
+   "three plus three"
+  ],
+  "owner": "17",
+  "home": "sec-dose-33",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "continual-reassessment-method",
+  "name": "Continual reassessment method",
+  "type": "method",
+  "aliases": [
+   "CRM"
+  ],
+  "owner": "17",
+  "home": "17/the-continual-reassessment-method",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "boin-design",
+  "name": "Bayesian optimal interval design",
+  "type": "method",
+  "aliases": [
+   "BOIN"
+  ],
+  "owner": "17",
+  "home": "17/the-bayesian-optimal-interval-design",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "mtpi-design",
+  "name": "mTPI design",
+  "type": "method",
+  "aliases": [
+   "mTPI",
+   "mTPI-2"
+  ],
+  "owner": "17",
+  "home": "17/the-other-interval-designs-mtpi-mtpi-2-and-keyboard",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "keyboard-design",
+  "name": "Keyboard design",
+  "type": "method",
+  "aliases": [],
+  "owner": "17",
+  "home": "17/the-other-interval-designs-mtpi-mtpi-2-and-keyboard",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "tite-boin",
+  "name": "TITE-BOIN",
+  "type": "method",
+  "aliases": [
+   "late-onset toxicity"
+  ],
+  "owner": "17",
+  "home": "17/late-onset-toxicity-and-utility-based-interval-designs",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "overdose-control",
+  "name": "Escalation with overdose control",
+  "type": "method",
+  "aliases": [
+   "overdose control",
+   "EWOC"
+  ],
+  "owner": "17",
+  "home": "17/escalation-with-overdose-control",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "bayesian-logistic-regression-model",
+  "name": "Bayesian logistic regression model",
+  "type": "method",
+  "aliases": [
+   "BLRM"
+  ],
+  "owner": "17",
+  "home": "sec-dose-blrm",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "project-optimus",
+  "name": "Project Optimus",
+  "type": "regulation",
+  "aliases": [
+   "dose optimization"
+  ],
+  "owner": "17",
+  "home": "17/what-the-fda-guidance-asks",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "utility-function",
+  "name": "Utility function",
+  "type": "concept",
+  "aliases": [
+   "utility"
+  ],
+  "owner": "17",
+  "home": "17/a-bayesian-formulation-utility",
+  "chapters": [
+   "17",
+   "15"
+  ]
+ },
+ {
+  "id": "efftox",
+  "name": "EffTox",
+  "type": "method",
+  "aliases": [
+   "phase 1/2 design",
+   "phase 12 designs"
+  ],
+  "owner": "17",
+  "home": "17/efftox-and-phase-12-designs",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "mcp-mod",
+  "name": "MCP-Mod",
+  "type": "method",
+  "aliases": [
+   "MCP Mod",
+   "dose response estimation"
+  ],
+  "owner": "17",
+  "home": "sec-dose-response",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "adaptive-enrichment",
+  "name": "Adaptive enrichment",
+  "type": "design",
+  "aliases": [],
+  "owner": "17",
+  "home": "sec-dose-enrich",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "seamless-phase-2-3-design",
+  "name": "Seamless phase 2/3 design",
+  "type": "design",
+  "aliases": [
+   "seamless design",
+   "seamless phase 2/3"
+  ],
+  "owner": "17",
+  "home": "17/phase-23",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "fda-fit-for-purpose-determination",
+  "name": "FDA fit-for-purpose determination",
+  "type": "regulation",
+  "aliases": [],
+  "owner": "17",
+  "home": "17/boin-and-fdas-fit-for-purpose-determination",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "sotorasib-dose-case",
+  "name": "Sotorasib dose optimization case",
+  "type": "history",
+  "aliases": [
+   "sotorasib"
+  ],
+  "owner": "17",
+  "home": "17/sotorasib-and-the-dose-that-was-not-optimized",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "lecanemab-phase-2b",
+  "name": "Lecanemab phase 2b dose finding",
+  "type": "trial",
+  "aliases": [
+   "lecanemab"
+  ],
+  "owner": "17",
+  "home": "17/lecanemab-bayesian-dose-finding-in-phase-2b",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "astin-trial",
+  "name": "ASTIN",
+  "type": "trial",
+  "aliases": [
+   "ASTIN trial"
+  ],
+  "owner": "17",
+  "home": "17/astin-a-bayesian-adaptive-dose-response-trial-in-stroke",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "award-5-trial",
+  "name": "AWARD-5",
+  "type": "trial",
+  "aliases": [
+   "AWARD 5",
+   "dulaglutide seamless dose finding"
+  ],
+  "owner": "17",
+  "home": "17/dulaglutide-award-5-seamless-dose-finding",
+  "chapters": [
+   "17"
+  ]
+ },
+ {
+  "id": "time-to-event-endpoint",
+  "name": "Time-to-event endpoint",
+  "type": "concept",
+  "aliases": [
+   "survival analysis",
+   "time to event"
+  ],
+  "owner": "18",
+  "home": "sec-survival",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "kaplan-meier-estimator",
+  "name": "Kaplan-Meier estimator",
+  "type": "method",
+  "aliases": [
+   "Kaplan and Meier"
+  ],
+  "owner": "18",
+  "home": "sec-survival-traditional",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "log-rank-test",
+  "name": "Log-rank test",
+  "type": "method",
+  "aliases": [
+   "log rank test"
+  ],
+  "owner": "18",
+  "home": "sec-survival-traditional",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "cox-model",
+  "name": "Cox model",
+  "type": "method",
+  "aliases": [
+   "Cox proportional hazards"
+  ],
+  "owner": "18",
+  "home": "sec-survival-traditional",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "hazard-ratio",
+  "name": "Hazard ratio",
+  "type": "concept",
+  "aliases": [
+   "HR"
+  ],
+  "owner": "18",
+  "home": "sec-survival-traditional",
+  "chapters": [
+   "18",
+   "6"
+  ]
+ },
+ {
+  "id": "event-driven-trial",
+  "name": "Event-driven trial",
+  "type": "design",
+  "aliases": [
+   "events are information"
+  ],
+  "owner": "18",
+  "home": "sec-survival-info",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "gamma-posterior-hazard",
+  "name": "Gamma posterior for a hazard",
+  "type": "method",
+  "aliases": [
+   "gamma posterior"
+  ],
+  "owner": "18",
+  "home": "sec-survival-gamma",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "proportional-hazards",
+  "name": "Proportional hazards",
+  "type": "concept",
+  "aliases": [
+   "proportional hazards assumption"
+  ],
+  "owner": "18",
+  "home": "sec-survival-nph",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "non-proportional-hazards",
+  "name": "Non-proportional hazards",
+  "type": "concept",
+  "aliases": [
+   "NPH"
+  ],
+  "owner": "18",
+  "home": "sec-survival-nph",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "delayed-treatment-effect",
+  "name": "Delayed treatment effect",
+  "type": "concept",
+  "aliases": [
+   "delayed effect",
+   "immunotherapy"
+  ],
+  "owner": "18",
+  "home": "sec-survival-power-loss",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "weighted-log-rank-test",
+  "name": "Weighted log-rank test",
+  "type": "method",
+  "aliases": [
+   "weighted log rank"
+  ],
+  "owner": "18",
+  "home": "sec-survival-nph-tests",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "restricted-mean-survival-time",
+  "name": "Restricted mean survival time",
+  "type": "method",
+  "aliases": [
+   "RMST"
+  ],
+  "owner": "18",
+  "home": "sec-survival-nph-tests",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "cure-fraction",
+  "name": "Cure fraction",
+  "type": "concept",
+  "aliases": [
+   "cure model"
+  ],
+  "owner": "18",
+  "home": "sec-survival-nph-tests",
+  "chapters": [
+   "18"
+  ]
+ },
+ {
+  "id": "bayesian-borrowing",
+  "name": "Bayesian borrowing",
+  "type": "concept",
+  "aliases": [
+   "borrowing information",
+   "dynamic borrowing"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-idea",
+  "chapters": [
+   "19",
+   "8"
+  ]
+ },
+ {
+  "id": "historical-control",
+  "name": "Historical control",
+  "type": "concept",
+  "aliases": [
+   "external control"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-external",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "power-prior",
+  "name": "Power prior",
+  "type": "method",
+  "aliases": [
+   "normalized power prior"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-power",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "commensurate-prior",
+  "name": "Commensurate prior",
+  "type": "method",
+  "aliases": [],
+  "owner": "19",
+  "home": "sec-borrowing-commensurate",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "meta-analytic-predictive-prior",
+  "name": "Meta-analytic-predictive prior",
+  "type": "method",
+  "aliases": [
+   "MAP prior"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-map",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "robust-mixture-prior",
+  "name": "Robust mixture prior",
+  "type": "method",
+  "aliases": [
+   "robust prior"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-map",
+  "chapters": [
+   "19",
+   "8"
+  ]
+ },
+ {
+  "id": "borrowing-under-drift",
+  "name": "Borrowing under drift",
+  "type": "concept",
+  "aliases": [
+   "drift"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-drift",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "pediatric-extrapolation",
+  "name": "Pediatric extrapolation",
+  "type": "concept",
+  "aliases": [],
+  "owner": "19",
+  "home": "sec-borrowing-pediatric",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "basket-trial",
+  "name": "Basket trial",
+  "type": "design",
+  "aliases": [],
+  "owner": "19",
+  "home": "sec-borrowing-basket",
+  "chapters": [
+   "19",
+   "20"
+  ]
+ },
+ {
+  "id": "umbrella-trial",
+  "name": "Umbrella trial",
+  "type": "design",
+  "aliases": [],
+  "owner": "20",
+  "home": "20/definitions-master-protocol-basket-umbrella-platform",
+  "chapters": [
+   "20"
+  ]
+ },
+ {
+  "id": "platform-trial",
+  "name": "Platform trial",
+  "type": "design",
+  "aliases": [],
+  "owner": "20",
+  "home": "sec-platform",
+  "chapters": [
+   "20",
+   "19"
+  ]
+ },
+ {
+  "id": "master-protocol",
+  "name": "Master protocol",
+  "type": "design",
+  "aliases": [],
+  "owner": "20",
+  "home": "20/definitions-master-protocol-basket-umbrella-platform",
+  "chapters": [
+   "20",
+   "3",
+   "10"
+  ]
+ },
+ {
+  "id": "indirect-comparison",
+  "name": "Indirect comparison",
+  "type": "method",
+  "aliases": [
+   "tirzepatide chain"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-chain",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "margin-synthesis",
+  "name": "Margin synthesis",
+  "type": "method",
+  "aliases": [],
+  "owner": "19",
+  "home": "19/margin-synthesis",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "prognostic-covariate-adjustment",
+  "name": "Prognostic covariate adjustment",
+  "type": "method",
+  "aliases": [
+   "PROCOVA",
+   "digital twin"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-procova",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "nsclc-borrowing-case",
+  "name": "NSCLC borrowing failure",
+  "type": "history",
+  "aliases": [
+   "NSCLC case study"
+  ],
+  "owner": "19",
+  "home": "sec-borrowing-nsclc",
+  "chapters": [
+   "19"
+  ]
+ },
+ {
+  "id": "multi-arm-multi-stage-design",
+  "name": "Multi-arm multi-stage design",
+  "type": "design",
+  "aliases": [
+   "MAMS"
+  ],
+  "owner": "20",
+  "home": "20/the-frequentist-platform-multi-arm-multi-stage-designs",
+  "chapters": [
+   "20"
+  ]
+ },
+ {
+  "id": "concurrent-control",
+  "name": "Concurrent control",
+  "type": "concept",
+  "aliases": [
+   "non-concurrent control"
+  ],
+  "owner": "20",
+  "home": "20/concurrent-and-non-concurrent-controls",
+  "chapters": [
+   "20"
+  ]
+ },
+ {
+  "id": "bayesian-time-machine",
+  "name": "Bayesian time machine",
+  "type": "method",
+  "aliases": [],
+  "owner": "20",
+  "home": "20/the-bayesian-time-machine",
+  "chapters": [
+   "20"
+  ]
+ },
+ {
+  "id": "governance-firewall",
+  "name": "Governance and firewalls",
+  "type": "concept",
+  "aliases": [
+   "firewall"
+  ],
+  "owner": "23",
+  "home": "23/the-data-monitoring-committee-firewalls-and-who-sees-what",
+  "chapters": [
+   "23",
+   "20"
+  ]
+ },
+ {
+  "id": "panoramic-trial",
+  "name": "PANORAMIC",
+  "type": "trial",
+  "aliases": [],
+  "owner": "20",
+  "home": "20/pragmatic-pandemic-platforms-recovery-and-panoramic",
+  "chapters": [
+   "20"
+  ]
+ },
+ {
+  "id": "epad-trial",
+  "name": "EPAD",
+  "type": "trial",
+  "aliases": [
+   "EPAD platform"
+  ],
+  "owner": "20",
+  "home": "20/epad-a-platform-that-never-opened-an-arm",
+  "chapters": [
+   "20"
+  ]
+ },
+ {
+  "id": "healey-als-platform",
+  "name": "HEALEY ALS platform trial",
+  "type": "trial",
+  "aliases": [
+   "HEALEY ALS"
+  ],
+  "owner": "20",
+  "home": "sec-platform",
+  "chapters": [
+   "20"
+  ]
+ },
+ {
+  "id": "rewind-trial",
+  "name": "REWIND",
+  "type": "trial",
+  "aliases": [
+   "REWIND trial"
+  ],
+  "owner": "21",
+  "home": "sec-cases-rewind",
+  "chapters": [
+   "21"
+  ]
+ },
+ {
+  "id": "trailblazer-alz-2",
+  "name": "TRAILBLAZER-ALZ 2",
+  "type": "trial",
+  "aliases": [],
+  "owner": "21",
+  "home": "sec-cases-alz",
+  "chapters": [
+   "21"
+  ]
+ },
+ {
+  "id": "cardiovascular-outcomes-trial",
+  "name": "Cardiovascular outcomes trial",
+  "type": "design",
+  "aliases": [
+   "CVOT"
+  ],
+  "owner": "21",
+  "home": "sec-cases",
+  "chapters": [
+   "21",
+   "9"
+  ]
+ },
+ {
+  "id": "vaccine-efficacy-trial",
+  "name": "Vaccine efficacy trial",
+  "type": "design",
+  "aliases": [],
+  "owner": "21",
+  "home": "sec-cases-bnt",
+  "chapters": [
+   "21",
+   "15"
+  ]
+ },
+ {
+  "id": "acceleration-bound",
+  "name": "Acceleration bound",
+  "type": "concept",
+  "aliases": [],
+  "owner": "21",
+  "home": "21/timeline-and-the-acceleration-bound",
+  "chapters": [
+   "21"
+  ]
+ },
+ {
+  "id": "label-revenue-brought-forward",
+  "name": "Label revenue brought forward",
+  "type": "concept",
+  "aliases": [],
+  "owner": "21",
+  "home": "21/label-revenue-brought-forward",
+  "chapters": [
+   "21"
+  ]
+ },
+ {
+  "id": "retatrutide-triumph-3",
+  "name": "TRIUMPH-3",
+  "type": "trial",
+  "aliases": [
+   "retatrutide"
+  ],
+  "owner": "21",
+  "home": "21/retatrutide-in-triumph-3",
+  "chapters": [
+   "21"
+  ]
+ },
+ {
+  "id": "ocean-a-outcomes-trial",
+  "name": "OCEAN(a)-Outcomes",
+  "type": "trial",
+  "aliases": [
+   "Lp(a)HORIZON"
+  ],
+  "owner": "21",
+  "home": "21/what-a-lpahorizon-result-does-to-oceana",
+  "chapters": [
+   "21"
+  ]
+ },
+ {
+  "id": "bayesian-reanalysis",
+  "name": "Bayesian reanalysis",
+  "type": "concept",
+  "aliases": [],
+  "owner": "22",
+  "home": "sec-reanalyses",
+  "chapters": [
+   "22"
+  ]
+ },
+ {
+  "id": "gusto-trial",
+  "name": "GUSTO",
+  "type": "trial",
+  "aliases": [
+   "GUSTO trial"
+  ],
+  "owner": "22",
+  "home": "sec-reanalyses-gusto",
+  "chapters": [
+   "22"
+  ]
+ },
+ {
+  "id": "normal-approximation-posterior",
+  "name": "Normal approximation to the posterior",
+  "type": "method",
+  "aliases": [
+   "normal approximation"
+  ],
+  "owner": "22",
+  "home": "sec-reanalyses-normal",
+  "chapters": [
+   "22"
+  ]
+ },
+ {
+  "id": "prespecification",
+  "name": "Prespecification",
+  "type": "concept",
+  "aliases": [],
+  "owner": "22",
+  "home": "22/prespecification",
+  "chapters": [
+   "22",
+   "23"
+  ]
+ },
+ {
+  "id": "reanalysis-critics",
+  "name": "Critiques of Bayesian reanalysis",
+  "type": "concept",
+  "aliases": [
+   "critics of reanalysis"
+  ],
+  "owner": "22",
+  "home": "sec-reanalyses-critics",
+  "chapters": [
+   "22"
+  ]
+ },
+ {
+  "id": "bayesian-protocol",
+  "name": "Bayesian protocol",
+  "type": "concept",
+  "aliases": [],
+  "owner": "23",
+  "home": "sec-protocol",
+  "chapters": [
+   "23"
+  ]
+ },
+ {
+  "id": "fda-meetings",
+  "name": "FDA meetings",
+  "type": "concept",
+  "aliases": [
+   "interacting with FDA",
+   "formal meetings"
+  ],
+  "owner": "3",
+  "home": "sec-regulatory-meetings",
+  "chapters": [
+   "3",
+   "23"
+  ]
+ },
+ {
+  "id": "rpact",
+  "name": "rpact",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "gsdesign",
+  "name": "gsDesign",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "rbest",
+  "name": "RBesT",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "samplesizeproportions",
+  "name": "SampleSizeProportions",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "boin-r-package",
+  "name": "BOIN R package",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C",
+   "17"
+  ]
+ },
+ {
+  "id": "trialr",
+  "name": "trialr",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "adaptr",
+  "name": "adaptr",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "bcrm",
+  "name": "bcrm",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "stan",
+  "name": "Stan",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "brms",
+  "name": "brms",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "facts",
+  "name": "FACTS",
+  "type": "software",
+  "aliases": [
+   "Fixed and Adaptive Clinical Trial Simulator"
+  ],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ },
+ {
+  "id": "east-horizon",
+  "name": "East Horizon",
+  "type": "software",
+  "aliases": [],
+  "owner": "C",
+  "home": "sec-software-tools",
+  "chapters": [
+   "C"
+  ]
+ }
+]

@@ -1,0 +1,17 @@
+id: eq-ss-standard
+section: 9/two-errors-and-one-guess
+title: Standard sample size formula
+tex: |-
+  \htmlClass{term c1}{n} = \frac{\htmlClass{term c2}{(z_\alpha + z_\beta)^2}}{\htmlClass{term c3}{I\,\theta^2}}.
+parts:
+  - "The "
+  - {k: c1, words: "sample size"}
+  - " is "
+  - {k: c2, words: "the squared sum of the quantiles for the type I error and for power"}
+  - ", divided by "
+  - {k: c3, words: "the information per observation times the squared effect"}
+  - "."
+notes:
+  c1: "Patients needed to detect the effect with the chosen power."
+  c2: "The whole error specification; 90% power needs a third more patients than 80% whatever the effect."
+  c3: "The whole of the science: the effect the trial is built to detect, on the scale of information."

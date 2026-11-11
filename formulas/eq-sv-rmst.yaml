@@ -1,0 +1,15 @@
+id: eq-sv-rmst
+section: sec-survival-nph
+title: Restricted mean survival time
+tex: \htmlClass{term c1}{\mathrm{RMST}(\tau)} = \htmlClass{term c2}{\int_0^\tau S(t)\,dt},
+parts:
+- 'The '
+- k: c1
+  words: restricted mean survival time up to horizon $\tau$
+- ' is '
+- k: c2
+  words: the area under the survival curve from zero to $\tau$
+- .
+notes:
+  c1: A difference in RMST is the average event-free time gained within $\tau$; it does not require proportional hazards, and $\tau$ must be fixed in the protocol.
+  c2: Its posterior is computed from draws of the survival curve $S(t)$.

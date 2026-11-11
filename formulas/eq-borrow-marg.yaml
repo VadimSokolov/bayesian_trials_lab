@@ -1,0 +1,15 @@
+id: eq-borrow-marg
+section: sec-borrowing-rare
+title: Marginal likelihood of the current controls
+tex: \htmlClass{term c1}{m(a_0)}=\htmlClass{term c2}{\frac{B\bigl(1+a_0y_h+y_c,\;1+a_0(n_h-y_h)+n_c-y_c\bigr)}{B\bigl(1+a_0y_h,\;1+a_0(n_h-y_h)\bigr)}},
+parts:
+- 'The '
+- k: c1
+  words: marginal likelihood of the current control data at borrowing weight $a_0$
+- ' is '
+- k: c2
+  words: 'a ratio of beta functions: the power-prior posterior after the current controls over the power prior before them'
+- .
+notes:
+  c1: Measures how well the historical controls predicted the current ones; an empirical Bayes choice of $a_0$ that is crude with small samples.
+  c2: $B$ is the beta function; $y_h$ of $n_h$ historical and $y_c$ of $n_c$ current controls responded.

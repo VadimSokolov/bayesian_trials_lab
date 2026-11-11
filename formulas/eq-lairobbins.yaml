@@ -1,0 +1,19 @@
+id: eq-lairobbins
+section: 16/regret-and-the-lai-robbins-bound
+title: Lai-Robbins lower bound
+tex: \liminf_{T\to\infty} \frac{\htmlClass{term c1}{\mathbb{E}[N_i(T)]}}{\htmlClass{term c2}{\log T}} \;\ge\; \htmlClass{term c3}{\frac{1}{\mathrm{KL}(p_i, p^\ast)}},
+parts:
+- 'For a uniformly good policy, '
+- k: c1
+  words: the expected number of patients on inferior arm $i$
+- ' relative to '
+- k: c2
+  words: the logarithm of the horizon
+- ' stays at least '
+- k: c3
+  words: the reciprocal of how distinguishable the arms are
+- .
+notes:
+  c1: $N_i(T)$ is the number of patients on arm $i$ out of $T$.
+  c2: A good policy must give the inferior arm a number of patients growing like $\log T$; the best policy's regret is logarithmic, not linear.
+  c3: $\mathrm{KL}$ is the Kullback-Leibler divergence between the inferior arm's response distribution and the best arm's.

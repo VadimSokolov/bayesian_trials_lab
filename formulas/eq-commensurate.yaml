@@ -1,0 +1,23 @@
+id: eq-commensurate
+section: sec-borrowing-commensurate
+title: Commensurate prior
+tex: \htmlClass{term c1}{\eta_c} \mid \htmlClass{term c2}{\eta_h}, \htmlClass{term c3}{\tau_c} \sim N(\htmlClass{term c2}{\eta_h},\; \htmlClass{term c4}{1/\tau_c}),
+parts:
+- 'The '
+- k: c1
+  words: current parameter
+- ' is normal, centered at '
+- k: c2
+  words: the historical parameter
+- ', with spread set by '
+- k: c3
+  words: the commensurability parameter
+- ', which enters as '
+- k: c4
+  words: a variance of one over $\tau_c$
+- .
+notes:
+  c1: For binary data, the logit of the current response rate.
+  c2: The logit of the historical response rate.
+  c3: A precision with its own prior; large posterior $\tau_c$ means the historical data count heavily, small means they are down-weighted.
+  c4: Small $\tau_c$ means a wide prior around the historical value, so little borrowing.

@@ -1,0 +1,19 @@
+id: eq-safety-benefitrisk
+section: 13/from-inference-to-decision
+title: Benefit-risk condition for rofecoxib
+tex: \htmlClass{term c1}{g\, d_G} > \htmlClass{term c2}{r_0 (\mathbb{E}[RR] - 1)}\, \htmlClass{term c3}{d_M}.
+parts:
+- 'Rofecoxib is preferred when '
+- k: c1
+  words: the bleeding events avoided per patient-year, weighted by their disutility
+- ' exceed '
+- k: c2
+  words: the extra heart attacks per year implied by the baseline risk and the posterior mean relative risk
+- ', weighted by '
+- k: c3
+  words: the disutility of a myocardial infarction
+- .
+notes:
+  c1: 'Benefit side: the gastrointestinal benefit $g$ against a traditional NSAID times the disutility $d_G$ of a serious bleed.'
+  c2: 'Harm side: baseline yearly risk $r_0$ times the excess relative risk; the cumulative evidence supplies $\mathbb{E}[RR]$.'
+  c3: The disutility of a myocardial infarction, against which a bleed is measured.

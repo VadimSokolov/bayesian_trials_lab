@@ -1,0 +1,13 @@
+id: eq-fda
+section: sec-evidence-fdacriterion
+title: "The FDA posterior probability criterion"
+tex: "\\htmlClass{term c1}{\\Pr(\\delta > a \\mid \\text{data})} \\;>\\; \\htmlClass{term c2}{c},"
+parts:
+  - "Success requires that "
+  - {k: c1, words: "the posterior probability that the treatment effect exceeds the threshold"}
+  - " be greater than "
+  - {k: c2, words: "the minimum required probability"}
+  - "."
+notes:
+  c1: "Two dials: the threshold $a$ says how big an effect counts (a minimum clinically relevant benefit, or zero)."
+  c2: "How sure one must be that the effect is at least that big."

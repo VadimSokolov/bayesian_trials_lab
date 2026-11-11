@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peek without penalty: e-values | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: a gambler's wealth shows whether a drug works, and you can peek at every patient without cheating.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<style>
+.tip { text-decoration: underline dotted var(--teal-dark); cursor: help; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 800px) { .two { grid-template-columns: 1fr; } }
+.figtitle { font-weight: 600; margin: 0 0 .25rem; }
+.block { margin: 1.5rem 0; }
+table.t { border-collapse: collapse; font-size: .9rem; margin: .5rem 0; }
+table.t th, table.t td { border-bottom: 1px solid var(--border); padding: .25rem .6rem; text-align: right; }
+table.t th:first-child, table.t td:first-child { text-align: left; }
+.kblock { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: .9rem 1rem; margin: 1rem 0; }
+.kblock h3 { font-size: .8rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-tertiary); margin: 0 0 .4rem; }
+.pillrow { display: flex; flex-wrap: wrap; gap: .4rem; margin: .4rem 0; }
+.legend { font-size: .85rem; color: var(--text-secondary); margin: .3rem 0 0; }
+.strip { width: 100%; max-width: 520px; height: 50px; cursor: crosshair; display: block; }
+#plotK, #plotBr, #plotKh { width: 100%; }
+</style>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">8. Peek without penalty: e-values</span>
+  <span class="pn"><a href="07-interim-looks.html">&larr; Prev</a><a href="./">Index</a><a href="09-adaptive-bayesian.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 8 &middot; Bet on the drug</div>
+  <h1>Peek without penalty</h1>
+  <p class="hook">Can you look at your trial after every patient and still not cheat?</p>
+  <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
+</section>
+
+<section id="lab" class="labgrid" aria-label="Betting lab">
+  <div class="panel">
+    <h3>1. The bet</h3>
+    <p class="note" style="margin:0">Start with $1 and bet part of it on each pair of patients (one on drug, one on placebo). If only the drug patient improves you win the bet, if only the placebo patient improves you lose it.</p>
+    <div class="field"><label for="sLam">Bet size <abbr class="tip" tabindex="0" title="How much of your money you bet on each pair.">?</abbr></label><output id="oLam"></output></div>
+    <input id="sLam" type="range" min="0.05" max="0.6" step="0.01" value="0.31" style="width:100%;accent-color:var(--teal-dark)">
+    <div class="field"><label for="sT">Drug: true response rate</label><output id="oT"></output></div>
+    <input id="sT" type="range" min="0.05" max="0.95" step="0.01" value="0.45" style="width:100%;accent-color:var(--teal-dark)">
+    <div class="field"><label for="sC">Placebo: true response rate</label><output id="oC"></output></div>
+    <input id="sC" type="range" min="0.05" max="0.95" step="0.01" value="0.30" style="width:100%;accent-color:var(--orange-fill)">
+    <h3>2. Add patients</h3>
+    <div class="row">
+      <button class="btn primary" data-n="10" type="button">+10 pairs</button>
+      <button class="btn primary" data-n="50" type="button">+50 pairs</button>
+      <button class="btn primary" data-n="all" type="button">To the end</button>
+    </div>
+    <div class="row" style="margin-top:.5rem">
+      <button class="btn" id="count" type="button">Run 2,000 trials</button>
+    </div>
+    <p class="note" id="mainNote" style="margin-top:.5rem"></p>
+  </div>
+  <div>
+    <div class="plotbox"><svg id="plot"></svg>
+      <div class="chips" aria-live="polite" id="chips"></div>
+      <p class="note" style="margin:.5rem 0 0">40 simulated trials. A trial that reaches $40 stops and declares the drug works. Your money at any moment is the <b>e-value</b>. Each step up the axis is 10 times more money.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Why a useless drug rarely wins</h2>
+  <p>If the drug does nothing, each bet is fair, so the money does not grow on average. Ville (1939) proved it reaches $40 in at most 1 trial in 40 (2.5%), however often you look. So a useless drug rarely wins.</p>
+  <p>A Bayes factor (how much better one story fits the data than another) against a simple “no effect” null is itself an e-value.</p>
+</section>
+
+<section class="section">
+  <h2>Peeking: p-value versus wealth</h2>
+  <p>One trial of a useless drug, checked after every pair.</p>
+  <div class="row" style="margin:.5rem 0"><button class="btn primary" id="newNull" type="button">New trial (drug does nothing)</button><button class="btn" id="findFA" type="button">Show a trial that fools the usual test</button></div>
+  <div class="two">
+    <div class="plotbox"><p class="figtitle">Usual test: checked after every pair</p><svg id="pplot"></svg></div>
+    <div class="plotbox"><p class="figtitle">E-value: wealth after every pair</p><svg id="wplot"></svg></div>
+  </div>
+  <div class="chips" id="replayChips" aria-live="polite"></div>
+  <p class="note">Same patients in both panels.</p>
+
+  <h3 style="margin-top:1.5rem">How often does each method cry wolf?</h3>
+  <div class="plotbox"><svg id="faplot"></svg>
+    <div class="chips" id="faChips"></div>
+    <p class="note" style="margin:.5rem 0 0">3,000 trials of a useless drug, 200 pairs each.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>The price: power</h2>
+  <p>If you fix the check times in advance, a planned-checks test finds a working drug more often. The e-value trades some of that for checking any time.</p>
+  <div class="plotbox"><svg id="pwplot"></svg>
+    <div class="chips" id="pwChips"></div>
+    <p class="note" style="margin:.5rem 0 0">Power = chance a working drug (45% vs 30%, 200 per arm) reaches the bar.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Predict, then check</h2>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="example">
+  <h2>Two real trials</h2>
+  <p><b>RECOVERY, dexamethasone:</b> in simulated trials with 2,000 patients per arm and RECOVERY's survival rates (77.1% vs 74.3%), only about a third reach $40. Small effects need big trials.</p>
+  <p><b>Ulcer surgery trial (illustrative counts based on Novick and Grizzle, 1965):</b> 100 patients per arm, four surgery types A to D, deaths 7, 1, 1, 3. Same deaths, different patient order: A vs B and A vs C reach different highest e-values.</p>
+  <div class="plotbox"><svg id="nvplot"></svg>
+    <table class="t"><tr><th>Comparison</th><th>Deaths</th><th>Highest e-value</th></tr>
+    <tr><td>A vs B</td><td>7 vs 1</td><td>15.3</td></tr>
+    <tr><td>A vs C</td><td>7 vs 1</td><td>45.8</td></tr>
+    <tr><td>A vs D</td><td>7 vs 3</td><td>7.2</td></tr>
+    <tr><td>D vs B</td><td>3 vs 1</td><td>1.7</td></tr>
+    <tr><td>D vs C</td><td>3 vs 1</td><td>5.2</td></tr></table>
+    <p class="note" style="margin:.5rem 0 0">The real patient order was not recorded, so the order here is simulated. An illustration, not a test. Bars show the highest e-value during the trial (log scale). Source: Sokolova and Sokolov, <a href="https://arxiv.org/abs/2602.06379">arXiv:2602.06379</a>, Table 7. RECOVERY: RECOVERY Collaborative Group (2021).</p>
+  </div>
+</section>
+
+<section class="reg">
+  <h3>Regulator's corner</h3>
+  <p>ICH E20 is a draft international rulebook for trials that change their plan midway. It says:</p>
+  <blockquote>"controlling the chances of false positive efficacy conclusions" is "an essential element of regulatory decision-making"</blockquote>
+  <p class="note"><a href="https://www.fda.gov/media/188961/download">ICH E20 draft</a>, section 3.3. E-values give this at every look, but regulators rarely use them yet.</p>
+</section>
+
+<div id="code"></div>
+
+<section class="section" id="kolm">
+  <h2>Extension: is it random? (Kolmogorov's test)</h2>
+  <p>Are the points spread evenly along a line? Count the points to the left of each spot: if they are even, that staircase hugs the straight line.</p>
+  <div class="kblock">
+    <div class="pillrow" id="kPick"><span class="lbl">Points:</span></div>
+    <svg id="plotK"></svg>
+    <p class="legend" id="kLegend"></p>
+    <div class="chips" id="kChips"></div>
+    <div class="pillrow"><button class="btn" id="kRegen" type="button">New random points</button></div>
+    <p class="note">Click the line to place points (up to 15).</p>
+    <svg id="kStrip" class="strip" tabindex="0" role="img" aria-label="Number line from 0 to 1: click to place points"></svg>
+    <div class="pillrow"><button class="btn" id="kAdd" type="button">Place a point at a random spot</button><button class="btn" id="kClear" type="button">Clear</button></div>
+    <div class="pillrow"><label for="kPos">Position (0 to 100):</label> <input id="kPos" type="number" min="0" max="100" step="1" value="50" style="width:5rem"> <button class="btn" id="kPlace" type="button">Place point</button></div>
+  </div>
+  <div class="kblock">
+    <h3>Random wiggles always come home</h3>
+    <p>Each path is the staircase minus the line for one simulated random set of 15 points. It starts at 0 and ends at 0, with wiggles in between.</p>
+    <svg id="plotBr"></svg>
+      </div>
+  <div class="kblock">
+    <h3>How big is a normal biggest gap?</h3>
+    <svg id="plotKh"></svg>
+    <p class="note">Scores of 10,000 random sets. Orange: scores at least as big as the selected set's.</p>
+    <div class="chips" id="kShare"></div>
+  </div>
+  <p id="kWho">Kolmogorov's test catches points that bunch up in one region, not points that are too evenly spaced.</p>
+  <div class="qcards" id="kCards"></div>
+  <div id="code2"></div>
+</section>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>Evidence is wealth from fair bets: if the drug does nothing, it does not grow on average, so it rarely reaches $40 (at most 1 time in 40).</li>
+    <li>You may peek after every patient. Usual p-values cry wolf far more than 2.5% of the time.</li>
+    <li>The price: with planned check times, a planned test finds a working drug more often.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/likelihood-ratio">Likelihood ratio</a>, <a href="encyclopedia/#/e/e-value">E-value</a>, <a href="encyclopedia/#/e/test-martingale">Test martingale</a>, <a href="encyclopedia/#/e/villes-inequality">Ville's inequality</a>, <a href="encyclopedia/#/e/anytime-valid-inference">Anytime-valid inference</a>, <a href="encyclopedia/#/e/mixture-method">Mixture method</a>, <a href="encyclopedia/#/e/confidence-sequence">Confidence sequence</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Sources</strong>
+  <ul>
+    <li>Ville, J. (1939). Etude critique de la notion de collectif. Gauthier-Villars, Paris.</li>
+    <li>Kolmogorov, A. N. (1933). Sulla determinazione empirica di una legge di distribuzione. Giornale dell'Istituto Italiano degli Attuari 4, 83-91.</li>
+    <li>Sokolova, A. O. and Sokolov, V. (2026). E-values for adaptive clinical trials: anytime-valid monitoring in practice. <a href="https://arxiv.org/abs/2602.06379">arXiv:2602.06379</a> (betting wealth, Tables 2, 5, 7)</li>
+  </ul>
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805 (see <a href="https://vsokolov.org/html/_book/03-bl.html">chapter 3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">chapter 6</a>)</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/11-evalues.html">12</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters</a>)</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', ORANGE = '#E07A3F', ODARK = '#B8531A', NAVY = '#0A1628';
+  var TH = Math.log10(40);
+  var rng = Lab.rng(2026);
+  var $ = function (id) { return document.getElementById(id); };
+  function chip(t, v, warm) { return '<span class="chip' + (warm ? ' warm' : '') + '">' + t + ' <b>' + v + '</b></span>'; }
+  function fmtW(v) { var x = Math.pow(10, v); return x >= 1 ? String(Math.round(x)) : x.toFixed(Math.max(0, Math.round(-v))); }
+  function fmtP(v) { var x = Math.pow(10, v); return x >= 0.1 ? x.toFixed(1) : x >= 0.01 ? x.toFixed(2) : x.toFixed(3); }
+  // Expected log-growth per pair (nats) of the bet lambda, treated rate pT, control rate pC.
+  function growth(pT, pC, lam) { return pT * (1 - pC) * Math.log(1 + lam) + (1 - pT) * pC * Math.log(1 - lam); }
+  // log10 wealth path of one trial: wealth multiplies by 1 + lam * (treated outcome minus control outcome).
+  function wealthPath(pT, pC, lam, N, r) {
+    var out = new Float64Array(N + 1), ln = 0;
+    for (var i = 1; i <= N; i++) { ln += Math.log(1 + lam * ((r() < pT ? 1 : 0) - (r() < pC ? 1 : 0))); out[i] = ln / Math.LN10; }
+    return out;
+  }
+  function firstCross(p) { for (var i = 0; i < p.length; i++) if (p[i] >= TH) return i; return Infinity; }
+  function median(a) { return Lab.quantile(a, 0.5); }
+  function series(n, f) { var o = []; for (var i = 0; i <= n; i++) o.push(f(i)); return o; }
+
+  /* ---------- Main lab ---------- */
+  var NP = 40;
+  var PRESETS = [
+    { label: 'Drug does nothing', pT: 0.30, pC: 0.30, lam: 0.31, N: 200, what: 'Drug and placebo both 30%. Every bet is fair.' },
+    { label: 'Drug works (45% vs 30%)', pT: 0.45, pC: 0.30, lam: 0.31, N: 200, what: 'Drug 45%, placebo 30%, bet 31%.' },
+    { label: 'Cancer drug (35% vs 20%)', pT: 0.35, pC: 0.20, lam: 0.37, N: 200, what: 'Drug 35%, placebo 20%, bet 37%.' },
+    { label: 'COVID trial RECOVERY (77% vs 74%)', pT: 0.771, pC: 0.743, lam: 0.076, N: 2000, what: 'Survival 77.1% versus 74.3% (RECOVERY, dexamethasone), 2,000 per arm.' }
+  ];
+  var S = { pT: 0.45, pC: 0.30, lam: 0.31, N: 200, n: 0, paths: [], cross: [] };
+  var plot;
+  function buildPlot() {
+    plot = Lab.Plot($('plot'), { xlim: [0, S.N], ylim: [-2, 3], xlabel: 'Pairs of patients', ylabel: 'Wealth in dollars (log scale)', yfmt: fmtW, label: 'Wealth paths of 40 simulated trials on a log scale with the $40 line' });
+    plot.line('one', [0, S.N], [0, 0], { stroke: '#8a94a3', width: 1, dash: '3 3' }, 0);
+    plot.line('thr', [0, S.N], [TH, TH], { stroke: ODARK, width: 2, dash: '6 4' }, 0);
+    plot.legend([{ label: 'Trial still running', color: 'rgba(10,22,40,0.45)', kind: 'line' }, { label: 'Reached $40: drug declared to work', color: TEAL, kind: 'line' }, { label: '$40 line', color: ODARK, kind: 'dash' }]);
+  }
+  function genPaths() {
+    S.paths = []; S.cross = [];
+    for (var i = 0; i < NP; i++) { var p = wealthPath(S.pT, S.pC, S.lam, S.N, rng); S.paths.push(p); S.cross.push(firstCross(p)); }
+  }
+  function draw() {
+    var k = 0, vals = [];
+    for (var i = 0; i < NP; i++) {
+      var hit = S.cross[i] <= S.n, end = hit ? S.cross[i] : S.n;
+      var ys = [], xs = [];
+      for (var j = 0; j <= end; j++) { xs.push(j); ys.push(Math.max(-2, S.paths[i][j])); }
+      plot.line('p' + i, xs, ys, { stroke: hit ? TEAL : 'rgba(10,22,40,0.35)', width: hit ? 2.5 : 1.2 }, 0);
+      if (hit) k++;
+      vals.push(Math.pow(10, S.paths[i][end]));
+    }
+    var g = growth(S.pT, S.pC, S.lam);
+    $('chips').innerHTML = chip('Pairs so far', S.n, true) + chip('Trials that reached $40', k + ' of ' + NP) + chip('Typical wealth', '$' + (median(vals) >= 10 ? median(vals).toFixed(0) : median(vals).toFixed(2))) +
+      chip('Pairs a typical trial needs to reach $40', g > 0 ? Math.round(Math.log(40) / g) : 'never');
+  }
+  function labels() { $('oLam').textContent = Lab.pct(S.lam, 0); $('oT').textContent = Lab.pct(S.pT, 0); $('oC').textContent = Lab.pct(S.pC, 0); }
+  function regen(keepN) { genPaths(); if (!keepN) S.n = 0; draw(); labels(); }
+  function setPreset(p, b) {
+    S.pT = p.pT; S.pC = p.pC; S.lam = p.lam; S.N = p.N; $('sT').value = p.pT; $('sC').value = p.pC; $('sLam').value = p.lam;
+    buildPlot(); S.n = 0; genPaths(); draw(); labels(); $('mainNote').textContent = p.what;
+    document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.toggle('on', x === b); });
+  }
+  PRESETS.forEach(function (p, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = p.label;
+    b.addEventListener('click', function () { setPreset(p, b); }); $('examples').appendChild(b);
+    if (i === 1) b.classList.add('on');
+  });
+  document.querySelectorAll('[data-n]').forEach(function (b) {
+    b.addEventListener('click', function () { S.n = b.dataset.n === 'all' ? S.N : Math.min(S.N, S.n + (+b.dataset.n)); draw(); });
+  });
+  [['sLam', 'lam'], ['sT', 'pT'], ['sC', 'pC']].forEach(function (a) {
+    $(a[0]).addEventListener('input', function () { S[a[1]] = +$(a[0]).value; $('mainNote').textContent = 'Custom settings.'; document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.remove('on'); }); regen(true); });
+  });
+  $('count').addEventListener('click', function () {
+    var R = 2000, c = 0;
+    for (var i = 0; i < R; i++) if (firstCross(wealthPath(S.pT, S.pC, S.lam, S.N, rng)) <= S.N) c++;
+    var el = document.createElement('span'); el.innerHTML = chip('Of 2,000 new trials, reached $40', Lab.pct(c / R, 1), true);
+    $('chips').appendChild(el.firstChild);
+  });
+
+  /* ---------- Peeking replay ---------- */
+  var LAMP = 0.312, RN = 200;
+  var pp = Lab.Plot($('pplot'), { xlim: [0, RN], ylim: [-3, 0], xlabel: 'Pairs', ylabel: 'Running p-value', yfmt: fmtP, label: 'Running p-value of one null trial' });
+  var wp = Lab.Plot($('wplot'), { xlim: [0, RN], ylim: [-2, 3], xlabel: 'Pairs', ylabel: 'Wealth (log scale)', yfmt: fmtW, label: 'Wealth of one null trial' });
+  pp.line('thr', [0, RN], [Math.log10(0.025), Math.log10(0.025)], { stroke: ODARK, width: 2, dash: '6 4' }, 0);
+  wp.line('thr', [0, RN], [TH, TH], { stroke: ODARK, width: 2, dash: '6 4' }, 0);
+  pp.legend([{ label: 'p = 0.025', color: ODARK, kind: 'dash' }, { label: 'Running p-value', color: NAVY, kind: 'line' }]);
+  wp.legend([{ label: '$40', color: ODARK, kind: 'dash' }, { label: 'Wealth', color: TEAL, kind: 'line' }]);
+  // One null trial: running one-sided z-test p-value (log10) from 10 pairs on, and the wealth path.
+  function nullTrial() {
+    var cT = 0, cC = 0, ln = 0, lp = [], w = [0], first = -1;
+    for (var n = 1; n <= RN; n++) {
+      var t = rng() < 0.3 ? 1 : 0, c = rng() < 0.3 ? 1 : 0; cT += t; cC += c; ln += Math.log(1 + LAMP * (t - c)); w.push(ln / Math.LN10);
+      if (n >= 10) {
+        var pb = (cT + cC) / (2 * n), z = pb > 0 && pb < 1 ? (cT - cC) / n / Math.sqrt(pb * (1 - pb) * 2 / n) : 0;
+        var p = 1 - Lab.normalCdf(z); lp.push(Math.max(-3, Math.log10(Math.max(p, 1e-12))));
+        if (first < 0 && p < 0.025) first = n;
+      }
+    }
+    return { lp: lp, w: w, first: first };
+  }
+  function showTrial(tr) {
+    pp.line('p', series(RN - 10, function (i) { return i + 10; }), tr.lp, { stroke: NAVY, width: 1.8 }, 0);
+    wp.line('w', series(RN, function (i) { return i; }), tr.w.map(function (v) { return Math.max(-2, v); }), { stroke: TEAL, width: 1.8 }, 0);
+    if (tr.first > 0) pp.vline('fa', tr.first, 'false alarm', { color: ODARK, dash: '4 3' }, 0); else pp.remove('fa');
+    var mx = Math.max.apply(null, tr.w);
+    $('replayChips').innerHTML = chip('Usual test', tr.first > 0 ? 'says the drug works at pair ' + tr.first : 'never says the drug works', tr.first > 0) +
+      chip('Highest wealth', '$' + Math.pow(10, mx).toFixed(2)) + chip('E-value', mx >= TH ? 'reaches $40' : 'never reached $40');
+  }
+  $('newNull').addEventListener('click', function () { showTrial(nullTrial()); });
+  $('findFA').addEventListener('click', function () {
+    var tr, tries = 0; do { tr = nullTrial(); tries++; } while (tr.first < 0 && tries < 3000);
+    showTrial(tr);
+  });
+  showTrial(nullTrial());
+
+  /* ---------- False alarms versus looks (computed once, cached) ---------- */
+  var LOOKS = [1, 2, 5, 10, 20, 50, 200], FA = null;
+  function falseAlarms() {
+    if (FA) return FA;
+    var R = 3000, naive = LOOKS.map(function () { return 0; }), ev = 0, r = Lab.rng(77);
+    for (var k = 0; k < R; k++) {
+      var cT = new Int16Array(RN + 1), cC = new Int16Array(RN + 1), ln = 0, hit = false;
+      for (var n = 1; n <= RN; n++) {
+        var t = r() < 0.3 ? 1 : 0, c = r() < 0.3 ? 1 : 0; cT[n] = cT[n - 1] + t; cC[n] = cC[n - 1] + c; ln += Math.log(1 + LAMP * (t - c));
+        if (ln / Math.LN10 >= TH) hit = true;
+      }
+      if (hit) ev++;
+      LOOKS.forEach(function (L, li) {
+        var step = RN / L, any = false;
+        for (var m = 1; m <= L && !any; m++) {
+          var nn = Math.round(m * step), pb = (cT[nn] + cC[nn]) / (2 * nn);
+          if (pb > 0 && pb < 1 && (cT[nn] - cC[nn]) / nn / Math.sqrt(pb * (1 - pb) * 2 / nn) > 1.96) any = true;
+        }
+        if (any) naive[li]++;
+      });
+    }
+    FA = { naive: naive.map(function (x) { return x / R; }), ev: ev / R };
+    return FA;
+  }
+  var fa = falseAlarms();
+  var faXT = LOOKS.map(function (L, i) { return { x: i, label: String(L) }; });
+  var fap = Lab.Plot($('faplot'), { xlim: [-0.5, 6.5], ylim: [0, 0.4], xticks: faXT, xlabel: 'Number of looks at the data', ylabel: 'False alarm rate', yfmt: function (v) { return Lab.pct(v, 0); }, label: 'False alarm rate against number of looks for naive p-values and e-values' });
+  var xs7 = LOOKS.map(function (L, i) { return i; });
+  fap.line('a', [-0.5, 6.5], [0.025, 0.025], { stroke: NAVY, width: 1.5, dash: '5 4' }, 0);
+  fap.line('n', xs7, fa.naive, { stroke: ODARK, width: 3 }, 0);
+  fap.line('e', xs7, xs7.map(function () { return fa.ev; }), { stroke: TEAL, width: 3 }, 0);
+  fap.legend([{ label: 'Usual test at each look', color: ODARK, kind: 'line' }, { label: 'E-value (stop at $40)', color: TEAL, kind: 'line' }, { label: 'Allowed false alarms: 2.5%', color: NAVY, kind: 'dash' }]);
+  $('faChips').innerHTML = chip('Usual test, 1 look', Lab.pct(fa.naive[0], 1)) + chip('Usual test, 20 looks', Lab.pct(fa.naive[4], 1), true) + chip('Usual test, every pair', Lab.pct(fa.naive[6], 1), true) + chip('E-value, checked every pair', Lab.pct(fa.ev, 1));
+
+  /* ---------- Power cost (paper Table 5) ---------- */
+  var T5 = { e: [0.686, 0.723, 0.679, 0.750], gs: [0.870, 0.861, 0.868, null] };
+  var pw = Lab.Plot($('pwplot'), { xlim: [0, 8], ylim: [0, 1], xticks: [{ x: 1, label: '5 planned looks' }, { x: 3, label: '20 planned looks' }, { x: 5, label: '5 unplanned looks' }, { x: 7, label: 'Every pair' }], xlabel: 'Look schedule', ylabel: 'Power', yfmt: function (v) { return Lab.pct(v, 0); }, label: 'Power of e-value and group sequential rules under four look schedules' });
+  pw.bars('e', [T5.e[0], 0, T5.e[1], 0, T5.e[2], 0, T5.e[3], 0], 0, 8, { fill: TEAL, opacity: 0.85 }, 0);
+  pw.bars('gs', [0, T5.gs[0], 0, T5.gs[1], 0, T5.gs[2], 0, 0], 0, 8, { fill: ORANGE, opacity: 0.85 }, 0);
+  pw.legend([{ label: 'E-value (bar $40 always)', color: TEAL, kind: 'box' }, { label: 'Planned-checks test', color: ORANGE, kind: 'box' }]);
+  $('pwChips').innerHTML = chip('5 planned looks: planned test finds the drug more often by', Math.round((T5.gs[0] - T5.e[0]) * 100) + ' points', true) + chip('Checked every pair: e-value power', Math.round(T5.e[3] * 100) + '%');
+
+  /* ---------- Novick ---------- */
+  var NV = [['A-B', 15.3], ['A-C', 45.8], ['A-D', 7.2], ['D-B', 1.7], ['D-C', 5.2]];
+  var nvp = Lab.Plot($('nvplot'), { xlim: [0, 5], ylim: [0, 2], xticks: NV.map(function (d, i) { return { x: i + 0.5, label: d[0] }; }), xlabel: 'Comparison', ylabel: 'Highest e-value during the trial (log scale)', yfmt: fmtW, label: 'Largest e-value for five Novick comparisons with the 40 line' });
+  nvp.bars('b', NV.map(function (d) { return Math.log10(d[1]); }), 0, 5, { fill: TEAL, opacity: 0.85 }, 0);
+  nvp.line('t', [0, 5], [TH, TH], { stroke: ODARK, width: 2, dash: '6 4' }, 0);
+  nvp.legend([{ label: 'Highest e-value', color: TEAL, kind: 'box' }, { label: '$40 line', color: ODARK, kind: 'dash' }]);
+
+  /* ---------- Question cards ---------- */
+  var score = Lab.Score($('score')), Q = $('qcards');
+  var CACHE = {};
+  function nullMaxes() {
+    if (!CACHE.nm) { var r = Lab.rng(5), a = []; for (var i = 0; i < 2000; i++) a.push(Math.max.apply(null, wealthPath(0.3, 0.3, 0.312, 200, r))); CACHE.nm = a; }
+    return CACHE.nm;
+  }
+  function mini(box, o) { return Lab.miniPlot(box, o); }
+  function miniBars2(box, vals, lab, cols, o) {
+    var P = mini(box, { xlim: [0, 2], ylim: [0, o.top || 1], xticks: [{ x: 0.5, label: lab[0] }, { x: 1.5, label: lab[1] }], ylabel: o.yl || 'Power', yfmt: o.yfmt || function (v) { return Lab.pct(v, 0); }, label: o.label });
+    P.bars('b0', [vals[0], 0], 0, 2, { fill: cols[0] }, 600); P.bars('b1', [0, vals[1]], 0, 2, { fill: cols[1] }, 600); return P;
+  }
+
+  // 1: how many null paths reach $40
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 1', score: score, type: 'choice',
+    q: 'The drug does nothing. Out of 40 trials, how many reach $40?',
+    options: [{ value: 'z', label: '0 or 1' }, { value: 'f', label: 'About 4' }, { value: 'h', label: 'About 20' }],
+    answer: function () { var m = nullMaxes(); return Lab.prob(m, function (x) { return x >= TH; }) * 40 <= 1.5 ? 'z' : 'f'; },
+    revealPlot: function (b) {
+      var m = nullMaxes(), h = Lab.histogram(m, 0, 2.6, 26), P = mini(b, { xlim: [0, 2.6], ylim: [0, Math.ceil(Math.max.apply(null, h.density) * 1.15 * 2) / 2], xlabel: 'Highest wealth ever', ylabel: 'share of trials', xfmt: fmtW, label: 'Histogram of highest wealth over 2,000 simulated null trials' });
+      P.bars('h', h.density, 0, 2.6, { fill: TEAL }, 600); P.vline('t', TH, '$40', { color: ODARK, dash: '4 3' }, 0);
+    },
+    explain: function () { var r = Lab.prob(nullMaxes(), function (x) { return x >= TH; }); return Lab.pct(r, 1) + ' of 2,000 simulated trials reach $40, so about ' + (r * 40).toFixed(1) + ' of 40. Ville caps it at 2.5%, or 1 in 40.'; }
+  });
+  // 2: naive peeking
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 2', score: score, type: 'choice',
+    q: 'Drug does nothing. You run a usual test (p < 0.025) at each of 20 looks. How often do you declare success?',
+    options: [{ value: 'a', label: '2.5%, as promised' }, { value: 'b', label: 'About 5%' }, { value: 'c', label: 'About 12% to 15%' }, { value: 'd', label: 'About 50%' }],
+    answer: function () { var r = falseAlarms().naive[4]; return r > 0.08 && r < 0.2 ? 'c' : 'b'; },
+    revealPlot: function (b) {
+      var f = falseAlarms(), P = mini(b, { xlim: [-0.5, 6.5], ylim: [0, 0.4], xticks: [0, 2, 4, 6].map(function (i) { return { x: i, label: String(LOOKS[i]) }; }), xlabel: 'looks', ylabel: 'false alarms', yfmt: function (v) { return Lab.pct(v, 0); }, label: 'False alarm rate by number of looks' });
+      P.line('n', xs7, f.naive, { stroke: ODARK, width: 2 }, 600); P.line('e', xs7, xs7.map(function () { return f.ev; }), { stroke: TEAL, width: 2 }, 0);
+    },
+    explain: function () { var f = falseAlarms(); return 'In 3,000 simulated trials: ' + Lab.pct(f.naive[4], 1) + ' at 20 looks. The e-value stays at ' + Lab.pct(f.ev, 1) + '.'; }
+  });
+  // 3: best bet size
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 3', score: score, type: 'choice',
+    q: 'The drug works (45% versus 30%). Which bet size grows your wealth fastest: 10%, 25% or 50%?',
+    options: [{ value: '0.1', label: '10%' }, { value: '0.25', label: '25%' }, { value: '0.5', label: '50%' }],
+    answer: function () { var best = '0.1', bg = -9; ['0.1', '0.25', '0.5'].forEach(function (l) { var g = growth(0.45, 0.30, +l); if (g > bg) { bg = g; best = l; } }); return best; },
+    revealPlot: function (b) {
+      var ls = Lab.linspace(0.01, 0.6, 60), P = mini(b, { xlim: [0, 0.6], ylim: [-0.04, 0.04], xlabel: 'bet size', ylabel: 'growth', yfmt: function (v) { return v.toFixed(2); }, label: 'Expected growth per pair against bet size' });
+      P.line('z', [0, 0.6], [0, 0], { stroke: '#8a94a3', width: 1 }, 0);
+      P.line('g', ls, ls.map(function (l) { return growth(0.45, 0.30, l); }), { stroke: TEAL, width: 2.5 }, 600); P.vline('o', 0.3125, '31%', { color: ODARK, dash: '4 3' }, 0);
+    },
+    explain: '25% grows fastest. Too small grows slowly, and at 50% the losses eat the wins. The best bet is about 31%.'
+  });
+  // 4: average wealth under the null
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 4', score: score, type: 'choice',
+    q: 'The drug does nothing. Averaged over many trials, what is the wealth after 200 pairs?',
+    options: [{ value: 'down', label: 'Near $0' }, { value: 'one', label: 'Exactly $1' }, { value: 'up', label: 'Above $10' }],
+    answer: 'one',
+    revealPlot: function (b) {
+      var r = Lab.rng(9), R = 3000, N = 200, at = [], i, j;
+      for (i = 0; i < R; i++) at.push(wealthPath(0.3, 0.3, 0.312, N, r));
+      var med = series(N, function (n) { return Math.pow(10, median(at.map(function (p) { return p[n]; }))); });
+      var P = mini(b, { xlim: [0, N], ylim: [0, 1.5], xlabel: 'pairs', ylabel: 'wealth', label: 'Average wealth is 1, typical wealth falls' });
+      P.line('m', series(N, function (n) { return n; }), series(N, function () { return 1; }), { stroke: TEAL, width: 2.5 }, 0);
+      P.line('d', series(N, function (n) { return n; }), med, { stroke: ODARK, width: 2.5, dash: '5 3' }, 0);
+      P.legend([{ label: 'Average (exact)', color: TEAL, kind: 'line' }, { label: 'Typical path (median)', color: ODARK, kind: 'dash' }]);
+    },
+    explain: 'On average each fair bet leaves your money unchanged, so the average stays at $1: most trials lose a little, and a few win big.'
+  });
+  // 5: product of e-values
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 5', score: score, type: 'choice',
+    q: 'Two separate trials of the same drug end at e-values 6 and 7. What is the combined e-value?',
+    options: [{ value: '7', label: '7 (the better one)' }, { value: '13', label: '13 (the sum)' }, { value: '42', label: '42 (the product)' }],
+    answer: '42',
+    revealPlot: function (b) {
+      var P = mini(b, { xlim: [0, 3], ylim: [0, 50], xticks: [{ x: 0.5, label: '6' }, { x: 1.5, label: '7' }, { x: 2.5, label: 'both' }], ylabel: 'e-value', yfmt: function (v) { return String(Math.round(v)); }, label: 'E-values 6, 7 and their product 42 against the 40 line' });
+      P.bars('b', [6, 7, 6 * 7], 0, 3, { fill: TEAL }, 600); P.line('t', [0, 3], [40, 40], { stroke: ODARK, width: 2, dash: '5 3' }, 0);
+    },
+    explain: function () { return 'Independent bets multiply: 6 x 7 = ' + 6 * 7 + ', which clears 40. Alone, neither study did.'; }
+  });
+  // 6: power cost
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 6', score: score, type: 'choice',
+    q: 'The drug works. You plan 5 checks in advance. Which finds it more often, the planned-checks test or the e-value?',
+    options: [{ value: 'gs', label: 'Planned-checks test' }, { value: 'e', label: 'E-value' }, { value: 'tie', label: 'Tie' }],
+    answer: function () { return T5.gs[0] > T5.e[0] ? 'gs' : 'e'; },
+    revealPlot: function (b) { miniBars2(b, [T5.e[0], T5.gs[0]], ['E-value', 'Planned test'], [TEAL, ORANGE], { label: 'Power with 5 fixed looks' }); },
+    explain: function () { return 'Planned test ' + Lab.pct(T5.gs[0], 1) + ' versus e-value ' + Lab.pct(T5.e[0], 1) + '. The planned test is built for planned checks.'; }
+  });
+  // 8: RECOVERY-like
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 7', score: score, type: 'slider', min: 0, max: 100, step: 1, start: 50, tol: 10, fmt: function (v) { return Math.round(v) + ' of 100'; },
+    q: 'A trial like RECOVERY: 2,000 per arm, survival 77.1% versus 74.3%. In 100 trials, how many reach $40?',
+    answer: function () { rec(); return Math.round(CACHE.rec.rate * 100); },
+    revealPlot: function (b) {
+      rec(); var R = CACHE.rec, xs = [], ys = [], i, n;
+      for (n = 0; n <= 2000; n += 50) { xs.push(n); ys.push(R.times.filter(function (t) { return t <= n; }).length / R.n); }
+      var P = mini(b, { xlim: [0, 2000], ylim: [0, 1], xlabel: 'pairs', ylabel: 'rejected so far', yfmt: function (v) { return Lab.pct(v, 0); }, label: 'Share of trials that have reached 40 by number of pairs' });
+      P.line('c', xs, ys, { stroke: TEAL, width: 2.5 }, 600);
+    },
+    explain: function () { return 'In 400 simulated trials: ' + Lab.pct(CACHE.rec.rate, 0) + ' (paper: 31.4% of 10,000). A 2.8 point effect needs a much longer trial.'; }
+  });
+  function rec() {
+    if (CACHE.rec) return;
+    var r = Lab.rng(31), R = 400, times = [], g = growth(0.771, 0.743, 0.076);
+    for (var i = 0; i < R; i++) { var c = firstCross(wealthPath(0.771, 0.743, 0.076, 2000, r)); if (c <= 2000) times.push(c); }
+    CACHE.rec = { n: R, rate: times.length / R, times: times, g: g };
+  }
+
+  Lab.CodeBox($('code'), {
+    py: 'import numpy as np\n' +
+      'rng = np.random.default_rng(1)\n' +
+      'lam, N, R = 0.312, 200, 20000          # bet size, pairs, trials\n' +
+      'def reject_rate(pT, pC):\n' +
+      '    D = (rng.random((R, N)) < pT).astype(int) - (rng.random((R, N)) < pC)\n' +
+      '    E = np.cumprod(1 + lam * D, axis=1)   # wealth after each pair\n' +
+      '    return (E.max(axis=1) >= 40).mean()   # ever reaches 1/alpha\n' +
+      'print(reject_rate(0.30, 0.30))   # null: about 0.015, below the 0.025 bound\n' +
+      'print(reject_rate(0.45, 0.30))   # drug works: about 0.75',
+    r: 'set.seed(1); lam <- 0.312; N <- 200; R <- 20000\n' +
+      'reject_rate <- function(pT, pC) {\n' +
+      '  D <- matrix(rbinom(R * N, 1, pT) - rbinom(R * N, 1, pC), R, N)\n' +
+      '  E <- t(apply(1 + lam * D, 1, cumprod))   # wealth after each pair\n' +
+      '  mean(apply(E, 1, max) >= 40)             # ever reaches 1/alpha\n' +
+      '}\n' +
+      'reject_rate(0.30, 0.30)   # null: below 0.025\n' +
+      'reject_rate(0.45, 0.30)   # drug works'
+  });
+
+  buildPlot(); genPaths(); S.n = 60; draw(); labels(); $('mainNote').textContent = PRESETS[1].what;
+})();
+</script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', OR = '#E07A3F', NAVY = '#0A1628', AT = 15;
+  var rng = Lab.rng(603);
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function chip(t, v, warm) { return '<span class="chip' + (warm ? ' warm' : '') + '">' + t + ' <b>' + v + '</b></span>'; }
+  function pct(x, d) { return (100 * x).toFixed(d == null ? 0 : d) + '%'; }
+  function nice(top) { return Math.max(5, Math.ceil(top * 1.2 / 5) * 5); }
+  function fmtShare(f) { return f < 0.001 ? 'under 0.1%' : pct(f, 1); }
+  function randSet() { var a = [], i; for (i = 0; i < AT; i++) a.push(rng() * 100); return a; }
+  function evenSet() { var a = [], i; for (i = 0; i < AT; i++) a.push((i + 0.5) * 100 / AT); return a; }
+  function leftSet() { var a = [], i; for (i = 0; i < AT; i++) a.push(rng() * 50); return a; }
+  var NSVG = 'http://www.w3.org/2000/svg';
+  function sv(tag, attrs, parent) { var e = document.createElementNS(NSVG, tag); Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); }); if (parent) parent.appendChild(e); return e; }
+  function kstat(pts) {
+    var x = pts.map(function (v) { return v / 100; }).sort(function (a, b) { return a - b; }), k = x.length, best = 0, bx = 0, i, d, c;
+    for (i = 0; i < k; i++) {
+      [i / k, (i + 1) / k].forEach(function (f) { d = Math.abs(f - x[i]); if (d > best) { best = d; bx = x[i]; c = f; } });
+    }
+    return { x: x, k: k, D: best, lam: k ? Math.sqrt(k) * best : 0, bx: bx, fv: c };
+  }
+  var KB = { lo: 0, hi: 2.5, nb: 50 };
+  var KHC = {};
+  function KHn(n) {
+    n = Math.max(1, n);
+    if (KHC[n]) return KHC[n];
+    var N = n === AT ? 10000 : 2000, h = new Array(KB.nb).fill(0), sc = [], i, a, s, j;
+    for (i = 0; i < N; i++) { a = []; for (j = 0; j < n; j++) a.push(rng() * 100); s = kstat(a).lam; sc.push(s); h[Math.min(KB.nb - 1, Math.floor(s / KB.hi * KB.nb))]++; }
+    return (KHC[n] = { h: h, sc: sc, mean: Lab.mean(sc) });
+  }
+  function kdens(l) { var s = 0, k; for (k = 1; k <= 60; k++) s += (k % 2 ? 1 : -1) * k * k * Math.exp(-2 * k * k * l * l); return 8 * l * s; }
+  function kShareGE(l, n) { var H = KHn(n), c = 0; H.sc.forEach(function (x) { if (x >= l) c++; }); return c / H.sc.length; }
+  var KS = { sets: [], cur: 2, mine: [] };
+  KS.sets = [{ n: 'Evenly spaced', p: evenSet() }, { n: 'Bunched on the left', p: leftSet() }, { n: 'Simulated random', p: randSet() }, { n: 'Yours', p: KS.mine }];
+  function kStair(pts) {
+    var s = kstat(pts), xs = [0], ys = [0], i;
+    for (i = 0; i < s.k; i++) { xs.push(s.x[i]); ys.push(i); xs.push(s.x[i]); ys.push(i + 1); }
+    xs.push(1); ys.push(s.k); return { xs: xs, ys: ys, s: s };
+  }
+  function kDraw() {
+    var set = KS.sets[KS.cur], pts = KS.cur === 3 ? KS.mine : set.p, k = pts.length;
+    KS.sets[3].p = KS.mine;
+    var P = Lab.Plot($('plotK'), { xlim: [0, 1], ylim: [0, Math.max(k, 1)], xlabel: 'position on the line', ylabel: 'points to the left', label: 'Staircase of points to the left against the straight line' });
+    if (k) {
+      var st = kStair(pts), s = st.s;
+      P.line('diag', [0, 1], [0, k], { stroke: OR, width: 2, dash: '6 4' }, 0);
+      P.line('stair', st.xs, st.ys, { stroke: TEAL, width: 2.5 }, 0);
+      var a = s.bx * k, b = s.fv * k;
+      P.line('bar', [s.bx, s.bx], [a, b], { stroke: '#C0392B', width: 5 }, 0);
+      $('kLegend').textContent = 'Teal: the staircase. Orange dashed: where perfectly spread points would be. Red bar: the biggest gap.';
+      $('kChips').innerHTML = chip('biggest gap', Math.abs(a - b).toFixed(2) + ' points') + chip('score (biggest gap, scaled for ' + k + (k === 1 ? ' point' : ' points') + ')', s.lam.toFixed(3), true) + chip('random sets of ' + k + (k === 1 ? ' point' : ' points') + ' average', KHn(k).mean.toFixed(2));
+      var P2 = Lab.Plot($('plotKh'), { xlim: [KB.lo, KB.hi], ylim: [0, 10], xlabel: 'score (biggest gap, scaled)', ylabel: '% of random sets', label: 'Histogram of scores for simulated random sets with Kolmogorov curve' });
+      var H = KHn(k), hs = H.h.map(function (c) { return 100 * c / H.sc.length; }), top = Math.max.apply(null, hs), w = (KB.hi - KB.lo) / KB.nb, cx = [], cy = [], i;
+      for (i = 0; i <= 100; i++) { var xx = KB.hi * i / 100; cx.push(xx); cy.push(100 * w * kdens(xx)); }
+      P2.setYlim(0, nice(top));
+      P2.bars('all', hs, KB.lo, KB.hi, { fill: TEAL, opacity: 0.8 }, 0);
+      P2.bars('sh', hs.map(function (v, j) { return (j + 0.5) * w >= s.lam ? v : 0; }), KB.lo, KB.hi, { fill: OR, opacity: 0.95 }, 0);
+      P2.line('curve', cx, cy, { stroke: NAVY, width: 2 }, 0);
+      KS.sets.forEach(function (t, j) { if (t.p.length) P2.vline('m' + j, Math.min(kstat(t.p).lam, 2.49), j === KS.cur ? 'selected' : '', { color: j === KS.cur ? '#C0392B' : NAVY, dash: '5 4' }, 0); });
+      $('kShare').innerHTML = KS.sets.map(function (t) { if (!t.p.length) return ''; var l = kstat(t.p).lam; return chip(t.n + ': score', l.toFixed(2) + ', ' + fmtShare(kShareGE(l, t.p.length)) + ' of random sets of ' + t.p.length + (t.p.length === 1 ? ' point' : ' points') + ' score this high or higher', t.n !== 'Simulated random' && t.n !== 'Yours'); }).join('');
+    } else { $('kChips').innerHTML = ''; $('kShare').innerHTML = ''; $('kLegend').textContent = 'Place some points first.'; }
+    document.querySelectorAll('#kPick .btn').forEach(function (b, j) { b.classList.toggle('on', j === KS.cur); });
+    var st2 = $('kStrip'); st2.setAttribute('viewBox', '0 0 520 50'); st2.innerHTML = '';
+    sv('line', { x1: 10, y1: 25, x2: 510, y2: 25, stroke: '#9aa8a8', 'stroke-width': 2 }, st2);
+    KS.mine.forEach(function (p) { sv('circle', { cx: 10 + 5 * p, cy: 25, r: 6, fill: NAVY }, st2); });
+  }
+  function kBridges() {
+    var P = Lab.Plot($('plotBr'), { xlim: [0, 1], ylim: [-1.6, 1.6], xlabel: 'position on the line', ylabel: 'staircase minus line, scaled', label: 'Eight random wiggly paths that start and end at zero' }), g = [], i, j;
+    for (i = 0; i <= 200; i++) g.push(i / 200);
+    for (j = 0; j < 8; j++) {
+      var x = randSet().map(function (v) { return v / 100; }).sort(function (a, b) { return a - b; }), ys = g.map(function (t) { var c = 0; x.forEach(function (v) { if (v <= t) c++; }); return (c - AT * t) / Math.sqrt(AT); });
+      P.line('b' + j, g, ys, { stroke: TEAL, width: 1.5 }, 0);
+    }
+  }
+  var pk = $('kPick');
+  KS.sets.forEach(function (t, j) { var b = el('button', 'btn', t.n); b.type = 'button'; b.addEventListener('click', function () { KS.cur = j; kDraw(); }); pk.appendChild(b); });
+  $('kRegen').addEventListener('click', function () { KS.sets[2].p = randSet(); KS.cur = 2; kDraw(); });
+  $('kStrip').addEventListener('click', function (e) { var r = this.getBoundingClientRect(), p = ((e.clientX - r.left) / r.width * 520 - 10) / 5; if (p >= 0 && p <= 100 && KS.mine.length < AT) { KS.mine.push(p); KS.cur = 3; kDraw(); } });
+  $('kAdd').addEventListener('click', function () { if (KS.mine.length < AT) { KS.mine.push(rng() * 100); KS.cur = 3; kDraw(); } });
+  $('kPlace').addEventListener('click', function () { var p = parseFloat($('kPos').value); if (isFinite(p) && p >= 0 && p <= 100 && KS.mine.length < AT) { KS.mine.push(p); KS.cur = 3; kDraw(); } });
+  $('kClear').addEventListener('click', function () { KS.mine.length = 0; kDraw(); });
+  Lab.QuestionCard($('kCards'), {
+    tag: 'Predict', type: 'choice',
+    q: 'All the points land in the first half of the line. Is the biggest gap between staircase and line big or small?',
+    options: [{ value: 'big', label: 'Big' }, { value: 'small', label: 'Small' }],
+    answer: 'big',
+    revealPlot: function (b) {
+      var pts = []; for (var i = 0; i < AT; i++) pts.push(rng() * 50);
+      var st = kStair(pts), P = Lab.miniPlot(b, { xlim: [0, 1], ylim: [0, AT], xlabel: 'position', ylabel: 'points to the left', label: 'Staircase for points in the first half against the line' });
+      P.line('d', [0, 1], [0, AT], { stroke: OR, width: 2, dash: '6 4' }, 0); P.line('s', st.xs, st.ys, { stroke: TEAL, width: 2.5 }, 0);
+    },
+    explain: function () { return 'Big. The staircase shoots up early while the line is still low, so the score is large (about ' + kstat((function () { var a = [], i; for (i = 0; i < AT; i++) a.push(i * 50 / AT); return a; })()).lam.toFixed(1) + ' here).'; }
+  });
+  Lab.CodeBox($('code2'), {
+    title: 'See the code for this test',
+    py: 'import numpy as np\n' +
+      'from scipy.stats import kstest\n' +
+      'x = np.random.default_rng(0).uniform(0, 100, 15)   # 15 points on a line of length 100\n' +
+      'print(kstest(x / 100, "uniform").statistic * np.sqrt(len(x)))   # biggest gap, scaled',
+    r: 'set.seed(0); x <- runif(15, 0, 100)\n' +
+      'unname(ks.test(x / 100, "punif")$statistic) * sqrt(length(x))   # biggest gap, scaled'
+  });
+  kBridges(); kDraw();
+})();
+</script>
+</body>
+</html>

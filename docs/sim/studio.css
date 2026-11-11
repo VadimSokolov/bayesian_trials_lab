@@ -1,0 +1,70 @@
+/* Trial simulator studio: page styles. Loads after base.css and lab.css. MIT License, Copyright 2026 Nytel. */
+.studio { margin: 1rem 0 2rem; }
+.hero .intro { margin: 0 0 .6rem; }
+.hero .lic { font-size: .9rem; color: var(--text-secondary); margin: .6rem 0 0; }
+.tabs { display: flex; gap: .35rem; overflow-x: auto; padding-bottom: .25rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+.tab { font: inherit; font-size: .92rem; font-weight: 600; padding: .5rem .85rem; border: 1.5px solid var(--border-strong); border-bottom: none; border-radius: 8px 8px 0 0; background: var(--white); color: var(--text-secondary); cursor: pointer; white-space: nowrap; min-height: 40px; }
+.tab[aria-selected=true] { background: var(--teal-dark); color: #fff; border-color: var(--teal-dark); }
+.tab:hover:not([aria-selected=true]) { background: var(--teal-light); }
+.tab:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.tab .n { font-family: var(--mono); font-size: .8rem; margin-right: .3rem; opacity: .8; }
+.tp { min-width: 0; }
+.tp[hidden] { display: none; }
+.tp h2 { font-size: 1.35rem; margin-top: 0; }
+.tp h3 { font-size: .8rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-tertiary); margin: 1.4rem 0 .5rem; }
+.card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; margin: 0 0 1rem; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .5rem 1.25rem; }
+.fld { display: flex; flex-direction: column; gap: .2rem; font-size: .9rem; min-width: 0; }
+.fld > span { color: var(--text-secondary); font-weight: 600; }
+.fld input, .fld select, .studio table input, .studio table select, .inl input, .inl select, textarea.json { font: inherit; font-size: .92rem; padding: .3rem .45rem; border: 1px solid var(--border-strong); border-radius: 6px; background: #fff; color: var(--text); max-width: 100%; }
+.studio table input[type=number] { width: 5.2rem; }
+.studio table input[type=text] { width: 9rem; }
+.fld input[type=number] { width: 100%; }
+.fld input[type=checkbox], .inl input[type=checkbox] { width: auto; }
+.inl { display: flex; flex-wrap: wrap; gap: .4rem .6rem; align-items: center; margin: .35rem 0; font-size: .92rem; }
+.inl input[type=number] { width: 5rem; }
+.st { border-collapse: collapse; width: 100%; font-size: .92rem; }
+.st th, .st td { border-bottom: 1px solid var(--border); padding: .35rem .5rem; text-align: left; vertical-align: top; white-space: nowrap; }
+.st th { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; color: var(--text-tertiary); font-weight: 600; vertical-align: bottom; }
+.st td small { display: block; color: var(--text-tertiary); font-size: .76rem; }
+.st td.num { font-family: var(--mono); font-size: .88rem; }
+.st tr.sep td { border-top: 2px solid var(--border-strong); }
+.st td.win { color: var(--good); font-weight: 600; }
+.studio table { display: block; overflow-x: auto; }
+.btn.sm { padding: .25rem .6rem; min-height: 32px; font-size: .85rem; }
+.btn.danger { border-color: var(--bad); color: var(--bad); }
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: .75rem 0; }
+.msg { font-size: .92rem; padding: .5rem .8rem; border-radius: 8px; background: var(--teal-light); border: 1px solid rgba(31,107,107,.25); margin: .5rem 0; }
+.msg.err { background: #FBEAE6; border-color: rgba(168,52,31,.35); color: var(--bad); }
+.msg.warn { background: var(--orange-light); border-color: rgba(184,83,26,.3); }
+.rule { border: 1px solid var(--border); border-left: 4px solid var(--teal-dark); border-radius: 8px; padding: .6rem .8rem; margin: .5rem 0; background: #fff; min-width: 0; }
+.rule.fut { border-left-color: var(--orange-fill); }
+.rule .cond { display: flex; flex-wrap: wrap; gap: .35rem .5rem; align-items: center; margin: .3rem 0; padding: .3rem 0; border-top: 1px dashed var(--border); }
+.rule .cond input[type=number] { width: 5rem; }
+.rule h4 { margin: 0 0 .3rem; font-size: .98rem; }
+.scnplots { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: .75rem; margin-top: .75rem; }
+.scnplots .plotbox { padding: .4rem; }
+.scnplots h4 { margin: 0; font-size: .85rem; }
+.progress[role=progressbar] { height: 10px; }
+.plots { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 1rem; }
+.plots h4 { margin: 0 0 .25rem; font-size: .95rem; }
+.legend2 { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .82rem; color: var(--text-secondary); margin: .2rem 0 0; }
+.legend2 i { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: .3rem; vertical-align: -1px; }
+.slid { display: grid; grid-template-columns: minmax(9rem, 14rem) minmax(8rem, 1fr) 4.5rem; gap: .5rem; align-items: center; margin: .35rem 0; font-size: .92rem; }
+.slid input[type=range] { width: 100%; accent-color: var(--teal-dark); }
+.slid output { font-family: var(--mono); }
+.pp { width: 12px; height: 15px; display: block; }
+.pp.yes { fill: #2D8B8B; stroke: none; }
+.pp.no { fill: none; stroke: #9AA3AE; stroke-width: 1.3; }
+.pp.gone { opacity: .3; }
+.trow { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; min-height: 18px; }
+.rowwrap { display: grid; grid-template-columns: 8rem 1fr; gap: .6rem; align-items: center; margin: .45rem 0; }
+.rowwrap .rl { font-weight: 600; font-size: .92rem; line-height: 1.25; }
+.rowwrap .rl b { display: block; font-family: var(--mono); font-size: .8rem; color: var(--teal-dark); font-weight: 600; }
+.key { display: inline-flex; align-items: center; gap: .3rem; margin-right: .8rem; font-size: .85rem; }
+.key .pp { display: inline-block; width: 13px; height: 16px; }
+textarea.json { width: 100%; min-height: 6rem; font-family: var(--mono); font-size: .8rem; }
+.hide { display: none !important; }
+.mono { font-family: var(--mono); font-size: .85rem; overflow-wrap: anywhere; }
+@media (max-width: 800px) { .rowwrap { grid-template-columns: 5.5rem 1fr; } .slid { grid-template-columns: 1fr 4rem; } .slid label { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) { .progress i { transition: none; } }

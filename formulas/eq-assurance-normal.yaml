@@ -1,0 +1,17 @@
+id: eq-assurance-normal
+section: 9/a-closed-form
+title: Assurance with a normal prior
+tex: |-
+  \htmlClass{term c1}{\text{Assurance}} = \Phi\!\left(\frac{\htmlClass{term c2}{m - z_\alpha\,\mathrm{se}}}{\htmlClass{term c3}{\sqrt{s^2 + \mathrm{se}^2}}}\right).
+parts:
+  - "The "
+  - {k: c1, words: "assurance"}
+  - " is the standard normal distribution function of "
+  - {k: c2, words: "how far the prior mean sits above the success bar"}
+  - ", measured in units of "
+  - {k: c3, words: "the combined spread of prior uncertainty and sampling error"}
+  - "."
+notes:
+  c1: "The chance the z test succeeds under a $N(m, s^2)$ prior on the effect."
+  c2: "The test succeeds when the estimate exceeds $z_\\alpha\\,\\mathrm{se}$; $m$ is the prior mean."
+  c3: "The trial's estimate is marginally normal with variance $s^2 + \\mathrm{se}^2$."

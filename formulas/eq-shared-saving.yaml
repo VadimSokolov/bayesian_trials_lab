@@ -1,0 +1,14 @@
+id: eq-shared-saving
+section: 20/separate-trials-and-what-they-cost
+title: Patient saving from a shared control
+tex: \htmlClass{term c1}{1 - \frac{k+1}{2k}} = \htmlClass{term c2}{\frac{k-1}{2k}},
+parts:
+- k: c1
+  words: One minus the ratio of platform enrollment, $(k+1)m$, to separate-trial enrollment, $2km$,
+- ' equals '
+- k: c2
+  words: the fraction of patients saved
+- .
+notes:
+  c1: A platform answers $k$ questions with one control group of size $m$, each comparison keeping the same precision.
+  c2: 25% for two drugs, 37.5% for four and 40% for five, approaching one half as $k$ grows.

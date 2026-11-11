@@ -1,0 +1,31 @@
+id: eq-cp
+section: 15/conditional-power
+title: Conditional power
+tex: \htmlClass{term c1}{\mathrm{CP}(\xi)} = \htmlClass{term c2}{\Pr(Z_1 > z_\alpha \mid Z_t)} = 1 - \Phi\!\left(\frac{\htmlClass{term c3}{z_\alpha} - \htmlClass{term c4}{Z_t\sqrt{t}} - \htmlClass{term c5}{\xi(1-t)}}{\htmlClass{term c6}{\sqrt{1-t}}}\right).
+parts:
+- 'The '
+- k: c1
+  words: conditional power at drift $\xi$
+- ' is '
+- k: c2
+  words: the chance the final statistic exceeds the critical value, given the interim statistic
+- '. It is computed from the gap between '
+- k: c3
+  words: the critical value
+- ' and '
+- k: c4
+  words: the B-value so far
+- ' less '
+- k: c5
+  words: the expected future increment
+- ', scaled by '
+- k: c6
+  words: the standard deviation of that increment
+- .
+notes:
+  c1: Power computed as if the final drift were known to be $\xi$.
+  c2: 'The definition: success at the end given the data at information fraction $t$.'
+  c3: What the final statistic must beat.
+  c4: The B-value $B_t = Z_t\sqrt{t}$, the cumulative standardized information.
+  c5: The future increment is normal with mean $\xi(1-t)$, whatever the past was.
+  c6: The future increment has variance $1-t$.

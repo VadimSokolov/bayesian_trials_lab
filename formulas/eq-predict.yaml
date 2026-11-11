@@ -1,0 +1,19 @@
+id: eq-predict
+section: 15/the-sufficient-statistic-reduction
+title: Predictive probability of the next response
+tex: \htmlClass{term c1}{\tilde p_i(s_i, k)} = \frac{\htmlClass{term c2}{a_{0i} + s_i}}{\htmlClass{term c3}{a_{0i} + b_{0i} + k}},
+parts:
+- 'The '
+- k: c1
+  words: predictive probability that the next patient in arm $i$ responds
+- ' is '
+- k: c2
+  words: the prior successes plus observed successes
+- ' divided by '
+- k: c3
+  words: the prior total plus the number of patients so far
+- .
+notes:
+  c1: The future depends on the past only through $(s_1, s_0, k)$, the sufficient-statistic reduction.
+  c2: Prior Beta parameter $a_{0i}$ plus $s_i$ successes in arm $i$.
+  c3: Prior Beta$(a_{0i}, b_{0i})$ total plus $k$ patients in the arm.

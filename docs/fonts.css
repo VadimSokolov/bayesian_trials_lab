@@ -1,0 +1,11 @@
+/* Self-hosted IBM Plex. Unique family names ('Lab Plex …') so a locally installed IBM Plex is never matched; url()s are relative to this file (works on https and file://). The two Fallback faces use local() on purpose: metric-matched system fonts while Plex loads. */
+/* Self-hosted IBM Plex (OFL) with size-adjusted fallbacks to remove font-swap CLS */
+@font-face { font-family: 'Lab Plex Sans'; font-weight: 300; font-display: swap; font-style: normal; src: url(fonts/ibm-plex-sans-latin-300-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Lab Plex Sans'; font-weight: 400; font-display: swap; font-style: normal; src: url(fonts/ibm-plex-sans-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Lab Plex Sans'; font-weight: 500; font-display: swap; font-style: normal; src: url(fonts/ibm-plex-sans-latin-500-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Lab Plex Sans'; font-weight: 600; font-display: swap; font-style: normal; src: url(fonts/ibm-plex-sans-latin-600-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Lab Plex Mono'; font-weight: 400; font-display: swap; font-style: normal; src: url(fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Lab Plex Mono'; font-weight: 500; font-display: swap; font-style: normal; src: url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Plex Sans Fallback'; src: local('Arial'), local('Liberation Sans'), local('Helvetica'); size-adjust: 101.1%; ascent-override: 102.5%; descent-override: 27.5%; line-gap-override: 0%; }
+@font-face { font-family: 'Plex Mono Fallback'; src: local('Courier New'), local('Liberation Mono'), local('Menlo'); size-adjust: 100%; ascent-override: 102.5%; descent-override: 27.5%; line-gap-override: 0%; }
+:root { --sans: 'Lab Plex Sans', 'Plex Sans Fallback', system-ui, sans-serif; --mono: 'Lab Plex Mono', 'Plex Mono Fallback', ui-monospace, monospace; }

@@ -1,0 +1,23 @@
+id: eq-betabinom
+section: 15/the-exact-beta-binomial-computation
+title: Beta-binomial predictive distribution
+tex: \htmlClass{term c1}{\Pr(X = x \mid s, n)} = \htmlClass{term c2}{\binom{m}{x}}\htmlClass{term c3}{\frac{B(a_0+s+x,\; b_0+n-s+m-x)}{B(a_0+s,\; b_0+n-s)}}, \qquad \htmlClass{term c4}{x = 0,\dots,m},
+parts:
+- 'The chance of '
+- k: c1
+  words: $x$ responders among the remaining patients, given $s$ responders in $n$
+- ' is '
+- k: c2
+  words: the number of ways to choose which $x$ of the $m$ respond
+- ' times '
+- k: c3
+  words: a ratio of beta functions comparing the posterior after the future data with the posterior now
+- ', for '
+- k: c4
+  words: every possible future count
+- .
+notes:
+  c1: The beta-binomial predictive distribution for the $m = N - n$ remaining patients.
+  c2: Binomial coefficient.
+  c3: $B$ is the beta function; the numerator uses the updated Beta parameters, the denominator the current posterior Beta$(a_0+s, b_0+n-s)$.
+  c4: Each value of $x$ completes a data set of $N$ patients.

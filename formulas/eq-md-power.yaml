@@ -1,0 +1,17 @@
+id: eq-md-power
+section: 9/the-power-function-and-the-sample-size-equation
+title: Power of the moderate deviation rule
+tex: |-
+  \htmlClass{term c1}{\text{Power}_n(\theta)} = \Phi\!\left(\htmlClass{term c2}{\sqrt{nI}\,\theta} - \htmlClass{term c3}{\sqrt{\log n + C}}\right) + o(1), \qquad \theta > 0 \text{ for the one-sided benefit rule}.
+parts:
+  - "The "
+  - {k: c1, words: "power at sample size $n$"}
+  - " is the standard normal distribution function of "
+  - {k: c2, words: "the effect measured in standard errors"}
+  - " less "
+  - {k: c3, words: "the boundary that now grows with $n$"}
+  - "."
+notes:
+  c1: "The chance the Bayes rule acts when the true effect is $\\theta>0$."
+  c2: "The mean of the standardized statistic."
+  c3: "Replaces the fixed $z_\\alpha$ of the usual power formula."

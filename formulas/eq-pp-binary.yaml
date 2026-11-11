@@ -1,0 +1,23 @@
+id: eq-pp-binary
+section: 15/the-exact-beta-binomial-computation
+title: Predictive probability for a binary endpoint
+tex: \htmlClass{term c1}{\mathrm{PP}(s, n)} = \htmlClass{term c2}{\sum_{x=0}^{m}} \htmlClass{term c3}{\Pr(X=x \mid s,n)}\; \htmlClass{term c4}{\mathbf{1}\{\Pr(p > p_0 \mid s+x,\, N) > \eta\}}.
+parts:
+- 'The '
+- k: c1
+  words: predictive probability of success
+- ' adds up, over '
+- k: c2
+  words: all possible future counts
+- ', '
+- k: c3
+  words: the beta-binomial probability of each count
+- ' counted only when '
+- k: c4
+  words: the final success criterion is met for that completed data set
+- .
+notes:
+  c1: No integration and no simulation is needed; the sum is exact.
+  c2: From no further responders to all $m$ remaining.
+  c3: From the beta-binomial formula above.
+  c4: 'An indicator: one if the posterior probability that $p$ exceeds $p_0$ with $s+x$ responders among $N$ patients is above $\eta$, zero otherwise.'

@@ -1,0 +1,16 @@
+id: eq-conjugate
+section: sec-beta
+title: "Beta prior updated by coin flips"
+tex: "\\htmlClass{term c1}{\\theta \\sim \\mathrm{Beta}(a, b)}, \\quad \\htmlClass{term c2}{h \\text{ heads}, \\; t \\text{ tails}} \\quad\\Longrightarrow\\quad \\htmlClass{term c3}{\\theta \\mid y \\sim \\mathrm{Beta}(a + h,\\; b + t)}."
+parts:
+  - "Start from "
+  - {k: c1, words: "a Beta prior for the response rate"}
+  - "; after "
+  - {k: c2, words: "seeing h responders and t non-responders"}
+  - ", "
+  - {k: c3, words: "the posterior is again a Beta, with the responders added to a and the non-responders added to b"}
+  - "."
+notes:
+  c1: "Flat when a and b are 1; larger values give narrower bells."
+  c2: "The data enter through the likelihood, which has the same algebraic form as the Beta density."
+  c3: "This is conjugacy: the update is addition."

@@ -1,0 +1,19 @@
+id: eq-ni-synth
+section: 19/margin-synthesis
+title: Synthesis noninferiority probability
+tex: \Pr\bigl(\htmlClass{term c2}{\theta_{NC}}<\htmlClass{term c3}{(1-f)\,\delta_{CP}}\mid\htmlClass{term c1}{\text{data}}\bigr),
+parts:
+- 'The posterior probability that the new drug retains at least the fraction $f$ of the control effect is the chance, given '
+- k: c1
+  words: all the data
+- ', that '
+- k: c2
+  words: the new-minus-control difference
+- ' is below '
+- k: c3
+  words: the part of the control's effect over placebo that may be lost, $(1-f)$ times that effect
+- .
+notes:
+  c1: "All the data: the historical trials and the noninferiority trial."
+  c2: $\theta_{NC}$ with events bad, so smaller is better.
+  c3: $\delta_{CP}$ is the control effect against placebo, estimated from historical trials; $1-f$ is the loss of effect that is allowed.

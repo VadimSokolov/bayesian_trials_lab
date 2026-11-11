@@ -1,0 +1,20 @@
+id: eq-sqrt-rule
+section: sec-power-population
+title: Square root rule
+tex: |-
+  \htmlClass{term c1}{n^\star} = \htmlClass{term c2}{\frac{\sigma}{\tau}\sqrt{\frac{N}{2}}}, \qquad \htmlClass{term c3}{L(n^\star)} \approx \htmlClass{term c4}{2\sigma\sqrt{\frac{N}{\pi}}},
+parts:
+  - "The "
+  - {k: c1, words: "best trial size"}
+  - " is "
+  - {k: c2, words: "the noise-to-prior-spread ratio times the square root of half the population"}
+  - ", and "
+  - {k: c3, words: "the loss at that size"}
+  - " is about "
+  - {k: c4, words: "twice the noise times the square root of the population over $\\pi$"}
+  - "."
+notes:
+  c1: "The loss-minimizing number per arm for large $N$."
+  c2: "The optimal trial enrolls patients of order $\\sqrt{N}$, not a multiple of $N$."
+  c3: "The minimized expected loss."
+  c4: "Grows only like $\\sqrt{N}$; the leading-order approximation balances the two loss terms."

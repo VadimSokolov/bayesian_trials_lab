@@ -1,0 +1,14 @@
+id: eq-ess-beta
+section: sec-priors-ess
+title: Effective sample size of a Beta prior
+tex: |-
+  \htmlClass{term c1}{\mathrm{ESS}} = \htmlClass{term c2}{a + b}.
+parts:
+  - "The "
+  - {k: c1, words: "effective sample size of the prior"}
+  - " is "
+  - {k: c2, words: "the sum of its two Beta parameters"}
+  - "."
+notes:
+  c1: "How many patients the prior is worth."
+  c2: "For a Beta(a, b) prior on a response probability, the other definitions roughly agree with this."

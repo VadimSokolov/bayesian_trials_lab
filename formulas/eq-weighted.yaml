@@ -1,0 +1,19 @@
+id: eq-weighted
+section: sec-ess
+title: "Posterior mean as a weighted average"
+tex: "\\htmlClass{term c1}{\\mathbb{E}[\\theta \\mid y]} = \\htmlClass{term c2}{\\frac{a + h}{a + b + n}} = \\htmlClass{term c3}{\\frac{a + b}{a + b + n} \\cdot \\frac{a}{a+b}} + \\htmlClass{term c4}{\\frac{n}{a + b + n} \\cdot \\hat p} ."
+parts:
+  - "The "
+  - {k: c1, words: "posterior mean"}
+  - " is "
+  - {k: c2, words: "the responders plus the prior's pseudo-responders over all patients plus the prior's pseudo-patients"}
+  - ", a weighted average of "
+  - {k: c3, words: "the prior mean, weighted by the prior's effective sample size"}
+  - ", and "
+  - {k: c4, words: "the observed proportion, weighted by the number of patients"}
+  - "."
+notes:
+  c1: "Our best single estimate of the response rate after the data."
+  c2: "The simple form of the Beta-binomial update."
+  c3: "The prior acts as if it were a sample of size $a+b$, its effective sample size."
+  c4: "The more patients, the more the data outweigh the prior."

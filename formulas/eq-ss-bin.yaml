@@ -1,0 +1,20 @@
+id: eq-ss-bin
+section: 9/the-same-formula-for-three-kinds-of-endpoint
+title: Sample size for a binary endpoint
+tex: |-
+  \htmlClass{term c1}{n_{\text{per arm}}} = \frac{\htmlClass{term c2}{(z_\alpha+z_\beta)^2}\,\htmlClass{term c3}{\bigl[p_0(1-p_0) + p_1(1-p_1)\bigr]}}{\htmlClass{term c4}{(p_1-p_0)^2}}.
+parts:
+  - "The "
+  - {k: c1, words: "patients needed in each arm"}
+  - " are "
+  - {k: c2, words: "the squared error-rate quantiles"}
+  - " times "
+  - {k: c3, words: "the sum of the two arms' response-rate variances"}
+  - ", divided by "
+  - {k: c4, words: "the squared difference in response rates"}
+  - "."
+notes:
+  c1: "Sample size per arm for a difference in proportions."
+  c2: "The same error specification as in the standard formula."
+  c3: "The variance depends on the unknown rates, so the control rate becomes a second assumption."
+  c4: "The effect the trial is built to detect."

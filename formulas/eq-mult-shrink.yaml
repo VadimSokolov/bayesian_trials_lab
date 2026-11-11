@@ -1,0 +1,20 @@
+id: eq-mult-shrink
+section: 10/the-idea
+title: Partial pooling of a group effect
+tex: |-
+  \htmlClass{term c1}{\mathbb{E}[\theta_j \mid y]} = \htmlClass{term c2}{(1-B_j)\,\hat\theta_j} + \htmlClass{term c3}{B_j\,\mu}, \qquad \htmlClass{term c4}{B_j = \frac{s_j^2}{s_j^2 + \tau_g^2}}.
+parts:
+  - "The "
+  - {k: c1, words: "posterior mean for group $j$"}
+  - " is "
+  - {k: c2, words: "its own estimate, weighted by one minus the pooling weight"}
+  - " plus "
+  - {k: c3, words: "the common mean, weighted by the pooling weight"}
+  - ", where "
+  - {k: c4, words: "the weight is the group's variance as a share of its variance plus the between-group variance"}
+  - "."
+notes:
+  c1: "The shrunken estimate for the group."
+  c2: "A group with a small standard error stays near its own estimate."
+  c3: "A group with little information is pulled toward the mean."
+  c4: "A large $\\tau_g$ means little pooling; a small $\\tau_g$ reproduces the pooled analysis."

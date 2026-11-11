@@ -1,0 +1,19 @@
+id: eq-definetti
+section: sec-exchangeability
+title: "de Finetti's representation"
+tex: "\\htmlClass{term c1}{\\mathbb{P}(y_1, \\ldots, y_n)} = \\htmlClass{term c2}{\\int_0^1} \\htmlClass{term c3}{\\prod_{i=1}^n \\theta^{y_i} (1-\\theta)^{1-y_i}} \\, \\htmlClass{term c4}{d\\Pi(\\theta)} ."
+parts:
+  - "The "
+  - {k: c1, words: "joint probability of the binary outcomes"}
+  - " is a mixture, "
+  - {k: c2, words: "over all possible response rates"}
+  - ", of "
+  - {k: c3, words: "the independent-coin probabilities at that rate"}
+  - ", weighted by "
+  - {k: c4, words: "our uncertainty about the response rate"}
+  - "."
+notes:
+  c1: "What exchangeability alone lets us write down for the data."
+  c2: "The unknown response rate runs over zero to one."
+  c3: "Each patient responds with probability $\\theta$, independently, given $\\theta$."
+  c4: "The mixing distribution, which plays the role of the prior; the theorem produces both parameter and prior."

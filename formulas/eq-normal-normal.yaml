@@ -1,0 +1,16 @@
+id: eq-normal-normal
+section: sec-normal-normal
+title: "Normal-normal posterior"
+tex: "\\htmlClass{term c1}{\\theta \\mid \\hat\\theta \\;\\sim\\; N\\!\\left(m_1, s_1^2\\right)}, \\quad\n\\htmlClass{term c2}{\\frac{1}{s_1^2} = \\frac{1}{\\tau^2} + \\frac{d}{4}}, \\quad\n\\htmlClass{term c3}{m_1 = \\frac{m_0/\\tau^2 + \\hat\\theta\\, d/4}{1/\\tau^2 + d/4}}."
+parts:
+  - "The "
+  - {k: c1, words: "posterior of the effect is normal"}
+  - ", with "
+  - {k: c2, words: "precision equal to the prior precision plus the data precision"}
+  - ", and "
+  - {k: c3, words: "a mean that averages the prior mean and the observed estimate with weights given by precision"}
+  - "."
+notes:
+  c1: "Mean $m_1$ and variance $s_1^2$."
+  c2: "Precision is the reciprocal of variance; each event carries a quarter of a unit, so the prior is worth $4/\\tau^2$ events."
+  c3: "The same weighted average as for the Beta-binomial model."

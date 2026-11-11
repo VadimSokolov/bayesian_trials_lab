@@ -1,0 +1,17 @@
+id: eq-events
+section: sec-priors-implicit
+title: Events needed for a time-to-event trial
+tex: |-
+  \htmlClass{term c1}{d} = \frac{\htmlClass{term c2}{4(z_{\alpha} + z_{\beta})^2}}{\htmlClass{term c3}{\theta_a^2}}
+parts:
+  - "The number of "
+  - {k: c1, words: "events the design needs"}
+  - " is "
+  - {k: c2, words: "four times the squared sum of the error-rate quantiles"}
+  - ", divided by "
+  - {k: c3, words: "the square of the design effect"}
+  - "."
+notes:
+  c1: "Total events d that a trial with 1:1 allocation must see."
+  c2: "Fixed by the chosen type I error and power, not by the science."
+  c3: "The design alternative, $\\theta_a = -\\log\\mathrm{HR}$ (0.288 for HR 0.75): a planning assumption that assigns no prior probability to any effect."

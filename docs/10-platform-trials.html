@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform trials | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: one shared control group, arms that come and go, and patients steered toward what works.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<style>
+.tip { border-bottom: 1.5px dotted var(--teal-dark); cursor: help; position: relative; }
+.tip:hover::after, .tip:focus::after { content: attr(data-tip); position: absolute; left: 0; top: 1.6em; z-index: 30; width: 15rem; background: var(--navy); color: #fff; font-size: .8rem; font-weight: 400; line-height: 1.35; padding: .4rem .6rem; border-radius: 6px; }
+.dots { display: flex; flex-direction: column; gap: 4px; margin-top: .75rem; }
+.dotrow { display: flex; align-items: center; gap: .5rem; font-size: .8rem; }
+.dotrow .nm { width: 5.5rem; flex: none; font-weight: 600; }
+.dotrow .dd { display: flex; flex-wrap: wrap; gap: 2px; }
+.fig3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.fig3 .pn3 { border: 2px solid transparent; border-radius: 10px; padding: .25rem; }
+.fig3 .pn3.hl { border-color: var(--teal-dark); background: var(--teal-light); }
+.fig3 svg { width: 100%; height: auto; }
+.fig3 text, .figsvg text { font-family: var(--sans); font-size: 12px; fill: #333; }
+.sqs { display: flex; flex-wrap: wrap; gap: .6rem; margin: .5rem 0; align-items: flex-start; }
+.sqg { display: grid; grid-template-columns: repeat(8, 10px); gap: 2px; padding: 3px; border: 1px solid var(--border); border-radius: 4px; }
+.sqg i { width: 10px; height: 14px; background: var(--teal); display: block; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Ccircle cx='5' cy='3.2' r='2.8'/%3E%3Cpath d='M0.5 14v-4.5a4.5 3.5 0 0 1 9 0V14z'/%3E%3C/svg%3E") center/100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Ccircle cx='5' cy='3.2' r='2.8'/%3E%3Cpath d='M0.5 14v-4.5a4.5 3.5 0 0 1 9 0V14z'/%3E%3C/svg%3E") center/100% 100% no-repeat; }
+.sqg i.c { background: var(--orange-fill); }
+.lbl2 { font-size: .85rem; font-weight: 600; margin-top: .75rem; }
+.ispy { display: flex; flex-wrap: wrap; gap: 6px; margin: .5rem 0; max-width: 520px; }
+.ispy b { width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid #bbb; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #fff; transition: all .5s; }
+.ispy b.g { background: var(--teal-dark); border-color: var(--teal-dark); }
+.ispy b.a::after { content: "\2605"; }
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 800px) { .twocol, .fig3 { grid-template-columns: 1fr; } .figsvg text { font-size: 21px; } }
+.pp { width: 12px; height: 15px; display: block; flex: none; }
+.pp.yes { fill: #2D8B8B; stroke: none; }
+.pp.no { fill: none; stroke: #9AA3AE; stroke-width: 1.3; }
+.k { font-family: var(--mono); font-weight: 600; color: var(--teal-dark); }
+</style>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">10. Platform trials</span>
+  <span class="pn"><a href="09-adaptive-bayesian.html">&larr; Prev</a><a href="11-substantial-evidence.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 10</div>
+  <h1>Platform trials</h1>
+  <p class="hook">Ten new drugs to test. Do you run ten trials, or one that keeps running?</p>
+</section>
+
+<section class="section">
+  <h2>Three kinds of master protocol</h2>
+  <p>A <span class="tip" tabindex="0" data-tip="One rulebook, one team and one database for many sub-studies.">master protocol</span> runs many sub-studies under one roof.</p>
+  <figure class="figure" id="fig3box">
+    <div class="fig3" id="fig3"></div>
+    <figcaption><b>Basket:</b> one drug, many diseases. <b>Umbrella:</b> many drugs, one disease. <b>Platform:</b> drugs enter and leave over time.</figcaption>
+  </figure>
+</section>
+
+<section class="section">
+  <h2>Steer patients to the better drug</h2>
+  <p>Adaptive: more new patients go to the drug doing better so far. Will more patients get the better drug?</p>
+  <p>The lab's rule is Bayesian (Thompson-style): treatments with a higher chance of being the best, given the data so far, get more patients.</p>
+  <p>The cost: this can cut power (<a href="03-errors-power.html">module 3</a>). A drift in the response rate over time can also raise false positives.</p>
+</section>
+
+<section id="lab" class="labgrid" aria-label="Platform allocation lab">
+  <div class="panel">
+    <h3>1. Scenario</h3>
+    <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
+    <p class="note" id="scenNote"></p>
+    <h3>2. Enroll patients</h3>
+    <div class="field"><label for="nn">Patients: <b id="nnv">120</b></label></div>
+    <div class="field"><input id="nn" type="range" min="30" max="300" step="10" value="120"></div>
+    <div class="row"><button class="btn primary" id="runBtn" type="button">Run again</button></div>
+    <h3>Option</h3>
+    <label class="field"><input type="checkbox" id="prot"> Keep 20% of patients on control</label>
+    <p class="note">Keeps enough control patients for a fair comparison.</p>
+  </div>
+  <div>
+    <div class="plotbox"><svg id="plot"></svg>
+      <p class="note" id="plotNote" style="margin:.5rem 0 0"></p>
+      <div class="chips" aria-live="polite" id="chips"></div>
+      <div class="dots" id="dots" aria-label="Each person icon is one patient; filled means responded"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Share a control group</h2>
+  <p>Each person icon stands for 10 patients: <span style="color:var(--teal-dark)">drug</span> or <span style="color:var(--orange)">control</span>. 80 patients per arm.</p>
+  <figure class="figure">
+    <div class="field" style="max-width:420px"><label for="kd">Drugs to test: <b id="kdv">3</b></label><input id="kd" type="range" min="1" max="10" step="1" value="3"></div>
+    <div class="lbl2">Separate trials</div><div class="sqs" id="sepSq"></div>
+    <div class="lbl2">One platform, one shared control</div><div class="sqs" id="shSq"></div>
+    <div class="chips" id="shChips"></div>
+  </figure>
+</section>
+
+<section class="section">
+  <h2>Arms come and go</h2>
+  <p>Suppose the drug does nothing. Pick one and compare it only with control patients enrolled at the same time (dark orange).</p>
+  <figure class="figure">
+    <div class="row" id="armBtns"></div>
+    <div class="field" style="max-width:460px"><label for="dr">Response rate on standard care rises <b id="drv">2</b> percentage points a year</label><input id="dr" type="range" min="0" max="4" step="1" value="2"></div>
+    <svg class="figsvg" id="tl" viewBox="0 0 640 210" role="img" aria-label="Timeline of arms entering and leaving a platform trial with a shared control"></svg>
+    <div class="chips" id="tlChips"></div>
+    <figcaption>Controls from another time can bias the comparison either way. Older controls can favor drugs that joined later (<a href="06-fair-comparisons.html">module 6</a>).</figcaption>
+  </figure>
+</section>
+
+<section class="section">
+  <h2>Predict, then check</h2>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="example">
+  <h2>Real example 1: I-SPY 2</h2>
+  <p>A breast cancer platform that ran from 2010 to 2022. An arm <span class="tip" tabindex="0" data-tip="It cleared the bar to move on to a confirmatory trial: a larger trial run to prove the early signal.">graduates</span> when its chance of winning a later trial reaches 85%.</p>
+  <figure class="figure narrow">
+    <div class="ispy" id="ispy" aria-label="23 circles, one per therapy"></div>
+    <div class="row"><button class="btn" id="ispyBtn" type="button">Show the graduates</button></div>
+    <div class="chips" id="ispyChips"></div>
+    <figcaption>Star = later approved by FDA.</figcaption>
+  </figure>
+  <p class="note">Source: <a href="https://arxiv.org/abs/2602.09208">Sokolova, Sokolov and Polson (2026)</a> and the platform trial chapters of <a href="https://vsokolov.org/clinical_trials_in_practice/">Clinical Trials in Practice</a>.</p>
+</section>
+
+<section class="example">
+  <h2>Real example 2: STAMPEDE</h2>
+  <p>A UK prostate cancer platform shared one control arm across 10 other arms, and abiraterone cut the death rate by about a third.</p>
+  <figure class="figure">
+    <svg class="figsvg" id="stamp" viewBox="0 0 640 300" role="img" aria-label="Patients per arm in STAMPEDE"></svg>
+    <figcaption>Patients per arm, 2005 to March 2023. Control arm A: <b id="stShare"></b>.</figcaption>
+  </figure>
+  <p class="note">Sources: STAMPEDE <a href="https://www.stampedetrial.org/centres/final-recruitment-figures/">final recruitment figures</a>; abiraterone result, James et al. (2017), as cited in <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice</a>.</p>
+</section>
+
+<section class="reg">
+  <h3>Regulator's corner</h3>
+  <p>The FDA's revised draft guidance on master protocols (June 2026) says some master protocols may:</p>
+  <blockquote>"improve efficiency by using a shared control arm in evaluating multiple drugs"</blockquote>
+  <p class="note"><a href="https://www.fda.gov/media/174976/download">FDA draft guidance, Master Protocols for Drug and Biological Product Development</a>. Revised draft (June 2026). In the lab: fewer control patients per drug.</p>
+</section>
+
+<div id="code"></div>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>One shared control group saves patients: 480 instead of 800 for five drugs.</li>
+    <li>Steering patients to the better drug helps them, but one trial can steer the wrong way.</li>
+    <li>Compare each drug with controls from the same time.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/platform-trial">Platform trial</a>, <a href="encyclopedia/#/e/concurrent-control">Concurrent control</a>, <a href="encyclopedia/#/e/master-protocol">Master protocol</a>, <a href="encyclopedia/#/e/multi-arm-multi-stage-design">Multi-arm multi-stage design</a>, <a href="encyclopedia/#/e/shared-control-arithmetic">Shared-control arithmetic</a>, <a href="encyclopedia/#/e/umbrella-trial">Umbrella trial</a>, <a href="encyclopedia/#/e/multiplicity-across-arms">Multiplicity across arms</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/17-platform.html">20</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', ORANGE = '#E07A3F', NAVY = '#0A1628', PURPLE = '#6B5B95', GREY = '#9aa4b2';
+  var COLS = [ORANGE, TEAL, PURPLE, NAVY];
+  var $ = function (id) { return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  function pc(x, d) { return (100 * x).toFixed(d == null ? 0 : d) + '%'; }
+  function chip(t, v, warm) { return '<span class="chip' + (warm ? ' warm' : '') + '">' + t + ' <b>' + v + '</b></span>'; }
+
+  /* ---------- Figure: three kinds ---------- */
+  function box(x, y, w, h, t, fill) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="5" fill="' + (fill || '#fff') + '" stroke="#667" /><text x="' + (x + w / 2) + '" y="' + (y + h / 2 + 4) + '" text-anchor="middle">' + t + '</text>'; }
+  function arrow(x1, y1, x2, y2) { return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="#667" stroke-width="1.5" marker-end="url(#ah)" />'; }
+  var defs = '<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#667" /></marker></defs>';
+  var PANELS = {
+    basket: '<svg viewBox="0 0 200 190">' + defs + '<text x="100" y="16" text-anchor="middle" font-weight="600">Basket</text>' + box(60, 28, 80, 28, 'One drug', '#E8F4F4') + arrow(80, 58, 35, 108) + arrow(100, 58, 100, 108) + arrow(120, 58, 165, 108) + box(5, 110, 62, 28, 'Lung', '#fff') + box(69, 110, 62, 28, 'Breast', '#fff') + box(133, 110, 62, 28, 'Colon', '#fff') + '<text x="100" y="170" text-anchor="middle">same gene change</text></svg>',
+    umbrella: '<svg viewBox="0 0 200 190">' + defs + '<text x="100" y="16" text-anchor="middle" font-weight="600">Umbrella</text>' + box(5, 28, 62, 28, 'Drug 1', '#E8F4F4') + box(69, 28, 62, 28, 'Drug 2', '#E8F4F4') + box(133, 28, 62, 28, 'Drug 3', '#E8F4F4') + arrow(36, 58, 85, 108) + arrow(100, 58, 100, 108) + arrow(164, 58, 115, 108) + box(60, 110, 80, 28, 'One disease', '#fff') + '<text x="100" y="170" text-anchor="middle">matched by a tumor test</text></svg>',
+    platform: '<svg viewBox="0 0 200 190">' + defs + '<text x="100" y="16" text-anchor="middle" font-weight="600">Platform</text><rect x="10" y="30" width="180" height="22" rx="4" fill="#FDF0E8" stroke="#B8531A"/><text x="100" y="45" text-anchor="middle">shared control</text><rect x="10" y="62" width="70" height="16" rx="4" fill="#2D8B8B"/><rect x="50" y="86" width="90" height="16" rx="4" fill="#6B5B95"/><rect x="100" y="110" width="90" height="16" rx="4" fill="#0A1628"/><text x="100" y="150" text-anchor="middle">drugs enter and leave</text><text x="100" y="170" text-anchor="middle">time &rarr;</text></svg>'
+  };
+  Object.keys(PANELS).forEach(function (k) { var d = document.createElement('div'); d.className = 'pn3'; d.id = 'pn-' + k; d.innerHTML = PANELS[k]; $('fig3').appendChild(d); });
+  function hlPanel(k) { Object.keys(PANELS).forEach(function (x) { $('pn-' + x).classList.toggle('hl', x === k); }); }
+
+  /* ---------- Main lab: Thompson vs equal split ---------- */
+  var PRES = [
+    { id: 'two', label: 'Old vs new drug', names: ['Old drug', 'New drug'], rates: [0.30, 0.45], ctl: true, note: 'True response rates: old drug 30%, new drug 45%. The trial does not know them.' },
+    { id: 'drills', label: 'Three dose levels', names: ['Dose A', 'Dose B', 'Dose C'], rates: [0.55, 0.65, 0.80], ctl: false, note: 'Three dose levels: true response rates 55%, 65%, 80%. The trial does not know them.' },
+    { id: 'star', label: 'One good drug of three', names: ['Control', 'Drug 1', 'Drug 2', 'Drug 3'], rates: [0.30, 0.30, 0.30, 0.50], ctl: true, note: 'Only Drug 3 is better (50% vs 30%). The trial does not know this.' },
+    { id: 'none', label: 'Nothing works', names: ['Control', 'Drug 1', 'Drug 2'], rates: [0.30, 0.30, 0.30], ctl: true, note: 'All arms are the same, 30%. Does the trial still pick favorites?' }
+  ];
+  var S = { p: PRES[0], seed: 7, n: 120 };
+  var plot;
+
+  // Run both policies on n patients. Returns arrays of arm indices, outcomes, and counts.
+  function simulate(p, n, seed, protect, policy) {
+    var r = Lab.rng(seed), k = p.rates.length, a = [], b = [], i, assign = [], win = [];
+    for (i = 0; i < k; i++) { a.push(1); b.push(1); }
+    var first = (protect && p.ctl) ? 1 : 0;
+    for (i = 0; i < n; i++) {
+      var arm;
+      if (policy === 'equal') arm = i % k;
+      else if (protect && p.ctl && r() < 0.2) arm = 0;
+      else {
+        var best = -1; arm = first;
+        for (var j = first; j < k; j++) { var d = Lab.beta(r, a[j], b[j]); if (d > best) { best = d; arm = j; } }
+      }
+      var w = r() < p.rates[arm] ? 1 : 0;
+      a[arm] += w; b[arm] += 1 - w; assign.push(arm); win.push(w);
+    }
+    return { assign: assign, win: win };
+  }
+  function counts(run, k) { var c = [], s = [], i; for (i = 0; i < k; i++) { c.push(0); s.push(0); } run.assign.forEach(function (a, i2) { c[a]++; s[a] += run.win[i2]; }); return { n: c, s: s, total: s.reduce(function (x, y) { return x + y; }, 0) }; }
+
+  function renderLab() {
+    var p = S.p, k = p.rates.length, N = S.n, prot = $('prot').checked;
+    var T = simulate(p, N, S.seed, prot, 'ts'), E = simulate(p, N, S.seed + 1000, false, 'equal');
+    var cT = counts(T, k), cE = counts(E, k);
+    plot = Lab.Plot($('plot'), { xlim: [0, N], ylim: [0, 1], xlabel: 'Patients enrolled', ylabel: 'Share of patients per arm', label: 'Share of patients going to each arm as the trial runs', yfmt: function (v) { return Math.round(v * 100) + '%'; } });
+    var xs = [], i, j;
+    for (i = 1; i <= N; i++) xs.push(i);
+    var run = [];
+    for (j = 0; j < k; j++) run.push(0);
+    var series = []; for (j = 0; j < k; j++) series.push([]);
+    for (i = 0; i < N; i++) { run[T.assign[i]]++; for (j = 0; j < k; j++) series[j].push(run[j] / (i + 1)); }
+    for (j = 0; j < k; j++) plot.line('a' + j, xs, series[j], { stroke: COLS[j], width: 2.5 }, 0);
+    plot.line('eq', [1, N], [1 / k, 1 / k], { stroke: GREY, dash: '5 4', width: 1.5 }, 0);
+    plot.legend(p.names.map(function (nm, j2) { return { label: nm, color: COLS[j2], kind: 'line' }; }).concat([{ label: 'Equal split', color: GREY, kind: 'dash' }]));
+    var bestIdx = 0; p.rates.forEach(function (r, j2) { if (r > p.rates[bestIdx]) bestIdx = j2; });
+    var allSame = p.rates.every(function (r) { return r === p.rates[0]; });
+    var h = '';
+    h += chip('Responded, adaptive trial', cT.total + ' of ' + N, false) + chip('Responded, equal-split trial', cE.total + ' of ' + N, true);
+    if (!allSame) h += chip('Patients on ' + p.names[bestIdx].toLowerCase() + ', adaptive', pc(cT.n[bestIdx] / N), false) + chip('Patients on ' + p.names[bestIdx].toLowerCase() + ', equal split', pc(cE.n[bestIdx] / N), true);
+    else h += chip('Biggest arm, adaptive', pc(Math.max.apply(null, cT.n) / N) + ' of patients', false);
+    $('chips').innerHTML = h;
+    // dots
+    var dh = '';
+    for (j = 0; j < k; j++) {
+      var dd = '';
+      for (i = 0; i < N; i++) if (T.assign[i] === j) dd += '<svg class="pp ' + (T.win[i] ? 'yes' : 'no') + '" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>';
+      dh += '<div class="dotrow"><span class="nm" style="color:' + COLS[j] + '">' + p.names[j] + ' (' + cT.n[j] + ')</span><span class="dd">' + dd + '</span></div>';
+    }
+    $('dots').innerHTML = dh;
+    $('plotNote').innerHTML = 'Each new patient is more likely to get the drug doing better so far.';
+    $('scenNote').textContent = p.note;
+    $('nnv').textContent = N;
+  }
+  function setN() { S.n = +$('nn').value; renderLab(); }
+
+  PRES.forEach(function (p) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = p.label; b.dataset.id = p.id;
+    b.addEventListener('click', function () {
+      S.p = p; S.seed = 7;
+      document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.toggle('on', x.dataset.id === p.id); });
+      $('prot').disabled = !p.ctl; if (!p.ctl) $('prot').checked = false;
+      renderLab();
+    });
+    $('examples').appendChild(b);
+  });
+  $('runBtn').addEventListener('click', function () { S.seed += 1; renderLab(); });
+  $('nn').addEventListener('input', setN);
+  $('prot').addEventListener('change', renderLab);
+
+  /* ---------- Figure: shared control arithmetic ---------- */
+  var PER = 80;
+  function sq(cls, n) { var s = ''; for (var i = 0; i < n; i++) s += '<i class="' + cls + '"></i>'; return s; }
+  function grp(nd, nc) { return '<div class="sqg">' + sq('', nd) + sq('c', nc) + '</div>'; }
+  function drawShared(k) {
+    var sepTotal = 2 * PER * k, shTotal = PER * k + PER, sq10 = PER / 10, s = '', i;
+    for (i = 0; i < k; i++) s += grp(sq10, sq10);
+    $('sepSq').innerHTML = s;
+    s = '';
+    for (i = 0; i < k; i++) s += grp(sq10, 0);
+    s += grp(0, sq10);
+    $('shSq').innerHTML = s;
+    $('kdv').textContent = k;
+    $('shChips').innerHTML = chip('Separate trials', sepTotal + ' patients', true) + chip('Platform', shTotal + ' patients') + chip('Saved', pc(1 - shTotal / sepTotal));
+  }
+  $('kd').addEventListener('input', function () { drawShared(+$('kd').value); });
+
+  /* ---------- Figure: timeline with concurrent controls ---------- */
+  var ARMS = [{ n: 'Drug A', s: 0, e: 3, c: TEAL }, { n: 'Drug B', s: 1, e: 5, c: PURPLE }, { n: 'Drug C', s: 3.5, e: 8, c: NAVY }];
+  var CTL = { s: 0, e: 8 };
+  var TLS = { sel: 2, drift: 2 };
+  function drawTL() {
+    var X = function (y) { return 70 + y * 70; }, svg = $('tl'), h = '', i;
+    for (i = 0; i <= 8; i++) h += '<line x1="' + X(i) + '" x2="' + X(i) + '" y1="20" y2="168" stroke="#e3e6eb" /><text x="' + X(i) + '" y="186" text-anchor="middle">' + i + '</text>';
+    h += '<text x="340" y="204" text-anchor="middle">Years since the platform opened</text>';
+    var a = ARMS[TLS.sel], ov0 = Math.max(a.s, CTL.s), ov1 = Math.min(a.e, CTL.e);
+    h += '<text x="64" y="40" text-anchor="end">Control</text>';
+    h += '<rect x="' + X(CTL.s) + '" y="28" width="' + (X(CTL.e) - X(CTL.s)) + '" height="18" rx="3" fill="#FDF0E8" stroke="#B8531A" />';
+    h += '<rect x="' + X(ov0) + '" y="28" width="' + (X(ov1) - X(ov0)) + '" height="18" rx="3" fill="' + ORANGE + '" />';
+    ARMS.forEach(function (r, j) {
+      var y = 62 + j * 34;
+      h += '<text x="64" y="' + (y + 13) + '" text-anchor="end" font-weight="' + (j === TLS.sel ? 700 : 400) + '">' + r.n + '</text>';
+      h += '<rect x="' + X(r.s) + '" y="' + y + '" width="' + (X(r.e) - X(r.s)) + '" height="18" rx="3" fill="' + r.c + '" opacity="' + (j === TLS.sel ? 1 : 0.35) + '" />';
+    });
+    var ay = 62 + TLS.sel * 34;
+    h += '<rect x="' + X(a.s) + '" y="22" width="' + (X(a.e) - X(a.s)) + '" height="' + (ay + 24 - 22) + '" fill="none" stroke="' + NAVY + '" stroke-dasharray="4 3" />';
+    svg.innerHTML = h;
+    var mid = function (r) { return (r.s + r.e) / 2; };
+    var overlapMid = (ov0 + ov1) / 2;
+    var bias = TLS.drift * (mid(a) - mid(CTL));
+    $('tlChips').innerHTML = chip('Concurrent controls', (ov1 - ov0).toFixed(1) + ' of ' + (CTL.e - CTL.s) + ' years') + chip('Bias if all controls are used (+ favors the drug)', (bias >= 0 ? '+' : '') + bias.toFixed(1) + ' points', true) + chip('Bias with concurrent controls', (TLS.drift * (mid(a) - overlapMid)).toFixed(1) + ' points');
+    $('drv').textContent = TLS.drift;
+  }
+  ARMS.forEach(function (r, j) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn' + (j === TLS.sel ? ' on' : ''); b.textContent = r.n; b.dataset.j = j;
+    b.addEventListener('click', function () { TLS.sel = j; document.querySelectorAll('#armBtns .btn').forEach(function (x) { x.classList.toggle('on', +x.dataset.j === j); }); drawTL(); });
+    $('armBtns').appendChild(b);
+  });
+  $('dr').addEventListener('input', function () { TLS.drift = +$('dr').value; drawTL(); });
+  function setTL(sel, drift) { TLS.sel = sel; TLS.drift = drift; $('dr').value = drift; document.querySelectorAll('#armBtns .btn').forEach(function (x) { x.classList.toggle('on', +x.dataset.j === sel); }); drawTL(); }
+
+  /* ---------- Question cards ---------- */
+  var score = Lab.Score($('score')), Q = $('qcards');
+  function miniBars2(box, labels, v1, v2, ylim, fmt) {
+    var P = Lab.miniPlot(box, { xlim: [0, 2], ylim: ylim, xlabel: '', ylabel: '', label: 'Two bars', xticks: [{ x: 0.5, label: labels[0] }, { x: 1.5, label: labels[1] }], yfmt: fmt });
+    P.bars('a', [v1, 0], 0, 2, { fill: ORANGE, opacity: 0.85 }, 700);
+    P.bars('b', [0, v2], 0, 2, { fill: TEAL, opacity: 0.85 }, 700);
+    return P;
+  }
+
+  // Q1
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 1', score: score, type: 'choice',
+    q: '5 drugs, each tested on 80 patients against 80 control patients. How many patients if all 5 share one control group of 80?',
+    options: [{ value: 800, label: '800' }, { value: 640, label: '640' }, { value: 480, label: '480' }, { value: 400, label: '400' }],
+    answer: function () { return PER * 5 + PER; },
+    onReveal: function () { $('kd').value = 5; drawShared(5); },
+    revealPlot: function (b) { miniBars2(b, ['5 trials', 'platform'], 2 * PER * 5, PER * 5 + PER, [0, 1000]); },
+    explain: function () { return 'Five separate trials need ' + (2 * PER * 5) + '. The platform needs ' + (PER * 6) + ', which is ' + pc(1 - 6 / 10) + ' fewer.'; }
+  });
+  // Q2
+  function share(k) { return Math.sqrt(k) / (Math.sqrt(k) + k); }
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 2', score: score, type: 'choice',
+    q: 'With 4 drugs, the control group gets 2 times as many patients as each drug. What share of all patients is control?',
+    options: [{ value: 20, label: '20%' }, { value: 33, label: 'About 33%' }, { value: 50, label: '50%' }],
+    answer: function () { return Math.abs(share(4) - 0.33) < 0.01 ? 33 : 20; },
+    revealPlot: function (b) {
+      var P = Lab.miniPlot(b, { xlim: [2, 6], ylim: [0, 0.5], xlabel: 'drug arms', ylabel: 'control share', label: 'Best control share by number of drug arms', xticks: [2, 3, 4, 5].map(function (k) { return { x: k + 0.5, label: '' + k }; }), yfmt: function (v) { return Math.round(v * 100) + '%'; } });
+      P.bars('s', [2, 3, 4, 5].map(share), 2, 6, { fill: ORANGE, opacity: 0.5 }, 700);
+      P.bars('h', [0, 0, share(4), 0], 2, 6, { fill: TEAL, opacity: 0.9 }, 700);
+    },
+    explain: function () { return 'Control gets 2 times as many patients as each drug, so 2 of 6 = ' + pc(share(4), 1) + '.'; }
+  });
+  // Q3
+  var ecmoMC = (function () { var r = Lab.rng(99), c = 0, n = 20000; for (var i = 0; i < n; i++) if (Lab.beta(r, 12, 1) > Lab.beta(r, 1, 2)) c++; return c / n; })();
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 3', score: score, type: 'choice',
+    q: 'ECMO (a heart-lung machine for very sick newborns) trial: 11 of 11 babies survived on ECMO, 0 of 1 on the other treatment. The adaptive rule from the lab sends each baby to ECMO with the chance that ECMO is better. Chance the next baby goes to ECMO?',
+    options: [{ value: 50, label: '50%' }, { value: 75, label: '75%' }, { value: 99, label: 'About 99%' }],
+    answer: function () { return ecmoMC > 0.95 ? 99 : 75; },
+    revealPlot: function (b) {
+      var P = Lab.miniPlot(b, { xlim: [0, 1], ylim: [0, 12], xlabel: 'survival chance', ylabel: 'how likely', label: 'Two curves of survival chance for the ECMO trial' });
+      var xs = Lab.linspace(0.005, 0.995, 120);
+      P.line('c', xs, xs.map(function (x) { return Lab.betaPdf(x, 1, 2); }), { stroke: ORANGE, fill: ORANGE, width: 2 }, 600);
+      P.line('e', xs, xs.map(function (x) { return Lab.betaPdf(x, 12, 1); }), { stroke: TEAL, width: 2 }, 600);
+      P.legend([{ label: 'Other', color: ORANGE, kind: 'line' }, { label: 'ECMO', color: TEAL, kind: 'line' }]);
+    },
+    explain: function () { return 'ECMO\'s curve sits almost entirely above the other one. Chance ECMO is better: ' + pc(ecmoMC, 0) + '.'; }
+  });
+  // Q4: eight runs
+  var R4 = (function () {
+    var paths = [], above = 0, p = { rates: [0.30, 0.45], ctl: true };
+    for (var s = 0; s < 8; s++) {
+      var t = simulate(p, 200, 500 + s, false, 'ts'), c = 0, path = [];
+      for (var i = 0; i < 200; i++) { if (t.assign[i] === 1) c++; if (i % 4 === 3) path.push(c / (i + 1)); }
+      paths.push(path); if (c > 100) above++;
+    }
+    return { paths: paths, above: above };
+  })();
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 4', score: score, type: 'slider', min: 0, max: 8, step: 1, start: 4, tol: 1, fmt: function (v) { return v.toFixed(0) + ' of 8'; },
+    q: 'Adaptive trial, old drug 30%, new drug 45%. Eight trials of 200 patients each. In how many does the new drug get more than half of the patients?',
+    answer: function () { return R4.above; },
+    revealPlot: function (b) {
+      var P = Lab.miniPlot(b, { xlim: [0, 200], ylim: [0, 1], xlabel: 'patients', ylabel: 'share on new drug', label: 'Eight runs of the share of patients on the new drug', yfmt: function (v) { return Math.round(v * 100) + '%'; } });
+      var xs = R4.paths[0].map(function (_, i) { return 4 * (i + 1); });
+      R4.paths.forEach(function (pp, i) { P.line('r' + i, xs, pp, { stroke: TEAL, width: 1.5 }, 600); });
+      P.line('h', [0, 200], [0.5, 0.5], { stroke: GREY, dash: '4 3', width: 1.5 }, 0);
+    },
+    explain: function () { return 'In ' + R4.above + ' of 8 trials. 200 patients are not always enough to find the better drug.'; }
+  });
+  // Q5: identical arms
+  var R5 = (function () {
+    var bins = new Array(10).fill(0), runs = 400, tot = 0, far = 0, p = { rates: [0.3, 0.3], ctl: true };
+    for (var s = 0; s < runs; s++) {
+      var t = simulate(p, 100, 9000 + s, false, 'ts'), c = t.assign.filter(function (a) { return a === 1; }).length, f = c / 100;
+      bins[Math.min(9, Math.floor(f * 10))]++; tot += f; if (f > 0.65 || f < 0.35) far++;
+    }
+    return { bins: bins.map(function (c) { return c / runs; }), avg: tot / runs, far: far / runs };
+  })();
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 5', score: score, type: 'choice',
+    q: 'Two arms are identical (30% each). Adaptive trial, 100 patients, repeated 400 times. What happens to the share on arm B?',
+    options: [{ value: 'tight', label: 'Always near 50%' }, { value: 'wide', label: 'Averages 50%, but many trials are far off' }, { value: 'b', label: 'Arm B wins most runs' }],
+    answer: 'wide',
+    revealPlot: function (b) {
+      var P = Lab.miniPlot(b, { xlim: [0, 1], ylim: [0, Math.ceil(Math.max.apply(null, R5.bins) * 20) / 20], xlabel: 'share on arm B', ylabel: 'runs', label: 'Histogram of the share on arm B over 400 simulated runs', yfmt: function (v) { return Math.round(v * 100) + '%'; } });
+      P.bars('h', R5.bins, 0, 1, { fill: TEAL, opacity: 0.85 }, 700);
+      P.vline('m', R5.avg, '', { color: NAVY, dash: '4 3' }, 0);
+    },
+    explain: function () { return 'Average ' + pc(R5.avg, 0) + ', but in ' + Math.round(R5.far * 400) + ' of 400 trials one drug got over 65% of patients, even though both drugs work the same.'; }
+  });
+  // Q6: drift
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 6', score: score, type: 'choice',
+    q: 'Care improves 2 points per year. A drug that does nothing opens in year 4 and is compared with controls from years 1 to 3. How does it look?',
+    options: [{ value: 'worse', label: 'Worse than control' }, { value: 'same', label: 'Same as control' }, { value: 'better', label: 'Better than control' }],
+    answer: 'better',
+    revealPlot: function (b) {
+      var old = (0.30 + 0.32 + 0.34) / 3, now = (0.36 + 0.38 + 0.40) / 3;
+      miniBars2(b, ['controls, yrs 1-3', 'drug, yrs 4-6'], old, now, [0, 0.5], function (v) { return Math.round(v * 100) + '%'; });
+    },
+    explain: function () { return 'Old controls average 32%, patients in years 4 to 6 average 38%. A do-nothing drug looks 6 points better. Compare with controls from the same years.'; }
+  });
+  // Q7, Q8: sorting
+  function sortCard(tag, q, ans, expl) {
+    Lab.QuestionCard(Q, {
+      tag: tag, score: score, type: 'choice', q: q,
+      options: [{ value: 'basket', label: 'Basket' }, { value: 'umbrella', label: 'Umbrella' }, { value: 'platform', label: 'Platform' }],
+      answer: ans, onGuess: function () { hlPanel(null); }, onReveal: function () { hlPanel(ans); $('fig3box').scrollIntoView({ behavior: 'smooth', block: 'center' }); }, explain: expl
+    });
+  }
+  sortCard('Sort 1', 'One drug is tried in lung, breast and colon cancer, all with the same gene change. Which kind of master protocol?', 'basket', 'One drug, many diseases: a basket.');
+  sortCard('Sort 2', 'A trial keeps running for years. New drugs join and weak ones leave, all against one control group. Which kind?', 'platform', 'Drugs enter and leave over time: a platform.');
+
+  /* ---------- Real example figures ---------- */
+  (function () {
+    var h = '', i;
+    for (i = 0; i < 23; i++) h += '<b class="" id="is' + i + '"></b>';
+    $('ispy').innerHTML = h;
+    $('ispyChips').innerHTML = chip('Graduated', '9 of 23 = ' + pc(9 / 23)) + chip('Approved', '4 of 9 = ' + pc(4 / 9), true);
+    $('ispyBtn').addEventListener('click', function () {
+      for (var j = 0; j < 9; j++) (function (j2) { setTimeout(function () { var e = $('is' + j2); e.classList.add('g'); if (j2 < 4) e.classList.add('a'); }, 120 * j2); })(j);
+      $('ispyBtn').disabled = true;
+    });
+    var arms = [['A (control)', 4754], ['B', 593], ['C', 592], ['D', 312], ['E', 593], ['F', 311], ['G', 960], ['H', 1032], ['J', 989], ['K', 1509], ['L', 347]], tot = arms.reduce(function (s, a) { return s + a[1]; }, 0), svg = '', max = 4754;
+    arms.forEach(function (a, j) {
+      var y = 12 + j * 25, w = a[1] / max * 430;
+      svg += '<text x="80" y="' + (y + 14) + '" text-anchor="end">' + a[0] + '</text><rect x="90" y="' + y + '" width="' + w + '" height="18" rx="3" fill="' + (j === 0 ? ORANGE : TEAL) + '" /><text x="' + (96 + w) + '" y="' + (y + 14) + '">' + a[1].toLocaleString('en-US') + '</text>';
+    });
+    $('stamp').innerHTML = svg;
+    $('stShare').textContent = '4,754 of ' + tot.toLocaleString('en-US') + ' patients (' + pc(4754 / tot) + ')';
+  })();
+
+  /* ---------- Code ---------- */
+  Lab.CodeBox($('code'), {
+    py: 'import numpy as np\n' +
+      'rng = np.random.default_rng(1)\n' +
+      'p = [0.30, 0.45]                     # hidden true rates\n' +
+      'a, b, n = [1, 1], [1, 1], [0, 0]     # Beta(1,1) per arm\n' +
+      'for i in range(200):\n' +
+      '    arm = int(np.argmax(rng.beta(a, b)))   # one draw per arm\n' +
+      '    win = int(rng.random() < p[arm])\n' +
+      '    a[arm] += win; b[arm] += 1 - win; n[arm] += 1\n' +
+      'print(n)                             # patients per arm',
+    r: 'set.seed(1)\n' +
+      'p <- c(0.30, 0.45)                   # hidden true rates\n' +
+      'a <- c(1, 1); b <- c(1, 1); n <- c(0, 0)\n' +
+      'for (i in 1:200) {\n' +
+      '  arm <- which.max(rbeta(2, a, b))   # one draw per arm\n' +
+      '  win <- rbinom(1, 1, p[arm])\n' +
+      '  a[arm] <- a[arm] + win; b[arm] <- b[arm] + 1 - win; n[arm] <- n[arm] + 1\n' +
+      '}\n' +
+      'n                                    # patients per arm'
+  });
+
+  /* ---------- Start ---------- */
+  drawShared(3); drawTL();
+  var firstBtn = document.querySelector('#examples .btn'); firstBtn.click();
+})();
+</script>
+</body>
+</html>

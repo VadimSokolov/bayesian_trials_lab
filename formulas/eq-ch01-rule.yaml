@@ -1,0 +1,13 @@
+id: eq-ch01-rule
+section: sec-decision-decision
+title: "Approval threshold from the two costs"
+tex: "\\htmlClass{term c1}{p} > \\htmlClass{term c2}{\\frac{L_{\\mathrm{I}}}{L_{\\mathrm{I}} + L_{\\mathrm{II}}}}."
+parts:
+  - "Approve when "
+  - {k: c1, words: "the posterior probability that the drug works"}
+  - " is larger than "
+  - {k: c2, words: "the cost of a false approval divided by the sum of that cost and the cost of a missed drug"}
+  - "."
+notes:
+  c1: "Today's probability that the drug works, given the data."
+  c2: "A threshold that depends only on the ratio of the two costs; with a false approval 39 times as costly it is 0.975."

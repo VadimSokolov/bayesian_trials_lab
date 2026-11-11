@@ -1,0 +1,19 @@
+id: eq-fpr
+section: sec-evidence-fpr
+title: "False positive risk"
+tex: "\\htmlClass{term c1}{\\text{FPR}} \\;=\\; \\htmlClass{term c2}{\\Pr(\\text{no effect} \\mid \\text{significant})} \\;=\\; \\frac{\\htmlClass{term c3}{\\alpha\\,(1-\\pi_a)}}{\\htmlClass{term c3}{\\alpha\\,(1-\\pi_a)} + \\htmlClass{term c4}{(1-\\beta)\\,\\pi_a}}."
+parts:
+  - "The "
+  - {k: c1, words: "false positive risk"}
+  - " is "
+  - {k: c2, words: "the chance the drug does not work given a significant result"}
+  - ", which is "
+  - {k: c3, words: "the false alarms from drugs that do not work"}
+  - " as a share of those plus "
+  - {k: c4, words: "the true detections from drugs that work"}
+  - "."
+notes:
+  c1: "The fraction of significant trials in which the drug does not work."
+  c2: "Bayes' theorem applied to the event that the trial was significant."
+  c3: "Type I error times the share of drugs that do not work."
+  c4: "Power times the prior probability that the drug works."

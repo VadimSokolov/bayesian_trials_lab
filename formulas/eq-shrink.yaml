@@ -1,0 +1,23 @@
+id: eq-shrink
+section: sec-borrowing-hier
+title: Shrinkage estimate of a group effect
+tex: \htmlClass{term c1}{\mathbb{E}[\theta_k \mid y]} \approx \htmlClass{term c2}{\lambda_k \bar\theta} + \htmlClass{term c3}{(1-\lambda_k)\hat\theta_k},\qquad \htmlClass{term c4}{\lambda_k = \frac{\sigma_k^2}{\sigma_k^2+\tau_b^2}},
+parts:
+- 'The '
+- k: c1
+  words: posterior mean of group $k$
+- ' is a weighted average of '
+- k: c2
+  words: the overall mean
+- ' and '
+- k: c3
+  words: the group's own estimate
+- ', where '
+- k: c4
+  words: the weight on the overall mean grows with the group's sampling variance and falls with the between-group variance
+- .
+notes:
+  c1: Approximate posterior mean for a normal outcome.
+  c2: $\bar\theta$ is the precision-weighted overall mean.
+  c3: $\hat\theta_k$ is the group's own estimate.
+  c4: A small group has large $\sigma_k^2$ and so is shrunk more.

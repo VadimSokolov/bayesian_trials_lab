@@ -1,0 +1,17 @@
+id: eq-selected-lik
+section: sec-mult-selected
+title: Likelihood of a reported maximum
+tex: |-
+  \htmlClass{term c1}{\mathcal{L}_\varsigma(\theta; m)} = \sum_{k=1}^{K} \htmlClass{term c2}{p(m \mid \theta_k)} \htmlClass{term c3}{\prod_{j \ne k} F(m \mid \theta_j)},
+parts:
+  - "The "
+  - {k: c1, words: "likelihood of the reported value $m$"}
+  - " adds up, over each component $k$, "
+  - {k: c2, words: "the density that component $k$ produced $m$"}
+  - " times "
+  - {k: c3, words: "the chance that all the other components fell below $m$"}
+  - "."
+notes:
+  c1: "Likelihood when the report is the largest of $K$ independent components."
+  c2: "The naive likelihood, which the book calls the wrong one for a reported maximum."
+  c3: "$F$ is the distribution function of a component; in the upper tail it approaches 1."

@@ -1,0 +1,78 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "crm-fit-A",
+      "description": "dfcrm::crm empiric model a ~ N(0, 1.34), Bayesian posterior mean of a via numerical integration; ptox.estimate are plug-in using posterior mean of a",
+      "package": "dfcrm",
+      "version": "0.2.2.1",
+      "r_version": "4.5.2",
+      "call": "crm(prior=c(0.05,0.12,0.25,0.4,0.55), target=0.25, tox=c(0,0,0,0,0,1,0,1,0), level=c(1,1,1,2,2,2,3,3,3), model='empiric', scale=sqrt(1.34))",
+      "inputs": {
+        "skeleton": [0.05, 0.12, 0.25, 0.4, 0.55],
+        "target": 0.25,
+        "prior_var": 1.34,
+        "model": "empiric",
+        "level": [1, 1, 1, 2, 2, 2, 3, 3, 3],
+        "tox": [0, 0, 0, 0, 0, 1, 0, 1, 0]
+      },
+      "outputs": {
+        "post_mean_a": -0.2708375086522,
+        "post_var_a": 0.1660827486138,
+        "ptox_estimate": [0.1017775115234, 0.1984514663369, 0.3473637593584, 0.4971358340377, 0.6338173559981],
+        "recommended_next_dose": 2,
+        "n_patients": 9
+      }
+    },
+    {
+      "id": "crm-fit-B",
+      "description": "dfcrm::crm empiric model a ~ N(0, 1.34), Bayesian posterior mean of a via numerical integration; ptox.estimate are plug-in using posterior mean of a",
+      "package": "dfcrm",
+      "version": "0.2.2.1",
+      "r_version": "4.5.2",
+      "call": "crm(prior=c(0.05,0.12,0.25,0.4,0.55), target=0.25, tox=c(0,0,0,0,1,0,1,1,0,0,0,1), level=c(1,1,1,2,2,2,3,3,3,2,2,2), model='empiric', scale=sqrt(1.34))",
+      "inputs": {
+        "skeleton": [0.05, 0.12, 0.25, 0.4, 0.55],
+        "target": 0.25,
+        "prior_var": 1.34,
+        "model": "empiric",
+        "level": [1, 1, 1, 2, 2, 2, 3, 3, 3, 2, 2, 2],
+        "tox": [0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1]
+      },
+      "outputs": {
+        "post_mean_a": -0.5682287526413,
+        "post_var_a": 0.1307644712996,
+        "ptox_estimate": [0.1832019378966, 0.3008363993916, 0.4559488767486, 0.5950532589866, 0.7127023498243],
+        "recommended_next_dose": 2,
+        "n_patients": 12
+      }
+    },
+    {
+      "id": "crmsim-scenario1",
+      "description": "dfcrm::crmsim, true tox = skeleton, N=21 (7 cohorts of 3), start level 1, restrict=TRUE (no dose skipping on escalation, no escalation right after a DLT), nsim 2000, seed 123. Simulation, Monte Carlo tolerance.",
+      "package": "dfcrm",
+      "version": "0.2.2.1",
+      "r_version": "4.5.2",
+      "call": "crmsim(PI=c(0.05,0.12,0.25,0.4,0.55), prior=c(0.05,0.12,0.25,0.4,0.55), target=0.25, n=21, x0=1, nsim=2000, mcohort=3, restrict=TRUE, count=FALSE, scale=sqrt(1.34), model='empiric', seed=123)",
+      "inputs": {
+        "true_tox": [0.05, 0.12, 0.25, 0.4, 0.55],
+        "skeleton": [0.05, 0.12, 0.25, 0.4, 0.55],
+        "target": 0.25,
+        "n": 21,
+        "mcohort": 3,
+        "x0": 1,
+        "nsim": 2000,
+        "seed": 123,
+        "prior_var": 1.34
+      },
+      "outputs": {
+        "recommended_dose_proportion": [0.0075, 0.165, 0.589, 0.2185, 0.02],
+        "mean_patients_per_dose": [3.876, 6.4515, 7.4505, 2.847, 0.375],
+        "mean_dlt_per_dose": [0.1905, 0.726, 1.8375, 1.133, 0.2065],
+        "mean_total_dlt": 4.0935,
+        "names_in_result": ["PI", "prior", "target", "n", "x0", "nsim", "MTD", "level", "tox", "beta.hat", "final.est", "design", "method", "prior.var", "model", "intcpt", "mcohort", "restriction", "seed", "tite", "dosescaled", "msg"]
+      }
+    }
+  ]
+}

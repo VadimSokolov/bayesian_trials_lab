@@ -1,0 +1,16 @@
+id: eq-testing-se
+section: sec-testing-sampling
+title: "Standard error of a difference in response rates"
+tex: "\\htmlClass{term c1}{\\mathrm{SE}(\\hat\\theta)} = \\sqrt{\\htmlClass{term c2}{\\frac{p_0(1-p_0)}{n}} + \\htmlClass{term c3}{\\frac{p_1(1-p_1)}{n}}} ,"
+parts:
+  - "The "
+  - {k: c1, words: "standard error, the standard deviation of the observed difference,"}
+  - " is the square root of "
+  - {k: c2, words: "the variability of the control arm's response rate"}
+  - " plus "
+  - {k: c3, words: "the variability of the treatment arm's response rate"}
+  - "."
+notes:
+  c1: "The width of the histogram of the observed difference across repeated trials."
+  c2: "Control arm contribution; it shrinks as the arm size n grows."
+  c3: "Treatment arm contribution; with both terms shrinking like 1/n, the standard error shrinks like $1/\\sqrt{n}$."

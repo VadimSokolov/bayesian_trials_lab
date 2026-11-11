@@ -1,0 +1,17 @@
+id: eq-md-boundary
+section: 9/the-fixed-n-test-has-no-memory-of-n
+title: Moderate deviation boundary
+tex: |-
+  \htmlClass{term c1}{t_{\text{crit}}} = \htmlClass{term c2}{\sqrt{\log n + C}}\,\bigl(1 + o(1)\bigr), \qquad \htmlClass{term c3}{C = 2\log\frac{\pi_0/\pi_a}{\pi(\theta_0)\sqrt{2\pi/I(\theta_0)}}},
+parts:
+  - "The "
+  - {k: c1, words: "critical value on the standardized scale"}
+  - " is about "
+  - {k: c2, words: "the square root of the log of the sample size plus a constant"}
+  - ", where "
+  - {k: c3, words: "the constant depends on the prior odds of null against alternative and the prior density at the null"}
+  - "."
+notes:
+  c1: "The Bayes-optimal bar for the test statistic; unlike the fixed $z_\\alpha$, it grows with $n$."
+  c2: "Grows slowly with sample size."
+  c3: "With a unit-information prior and equal prior odds it is zero, and the boundary is $\\sqrt{\\log n}$."

@@ -1,0 +1,19 @@
+id: eq-npp
+section: sec-borrowing-power
+title: Normalized power prior
+tex: \htmlClass{term c1}{\pi(\theta, a_0 \mid D_h)} = \htmlClass{term c2}{\frac{L(\theta\mid D_h)^{a_0}\,\pi_0(\theta)}{\int L(\theta\mid D_h)^{a_0}\,\pi_0(\theta)\,d\theta}}\;\htmlClass{term c3}{\pi(a_0)},
+parts:
+- 'The '
+- k: c1
+  words: joint prior on the effect and the borrowing weight
+- ' is '
+- k: c2
+  words: the power prior divided by its own normalizing constant
+- ', times '
+- k: c3
+  words: a prior on $a_0$
+- .
+notes:
+  c1: Treats $a_0$ as unknown so the data choose it.
+  c2: Dividing by the constant that depends on $a_0$ stops the posterior from favoring small $a_0$ for reasons unrelated to agreement between datasets.
+  c3: The marginal posterior of $a_0$ rises when current data resemble the historical data and falls when they do not.

@@ -1,0 +1,23 @@
+id: eq-power
+section: sec-borrowing-power
+title: Power prior
+tex: \htmlClass{term c1}{\pi(\theta \mid D_h, a_0)} \propto \htmlClass{term c2}{L(\theta \mid D_h)^{a_0}}\,\htmlClass{term c3}{\pi_0(\theta)},\qquad \htmlClass{term c4}{0\le a_0\le 1}.
+parts:
+- 'The '
+- k: c1
+  words: power prior
+- ' is proportional to '
+- k: c2
+  words: the historical likelihood raised to the power $a_0$
+- ' times '
+- k: c3
+  words: a vague initial prior
+- ', with '
+- k: c4
+  words: $a_0$ between zero and one
+- .
+notes:
+  c1: Prior for $\theta$ built from the historical data $D_h$.
+  c2: Down-weights the historical data; $a_0 = 0$ discards them and $a_0 = 1$ pools them fully.
+  c3: The vague initial prior.
+  c4: Can be read as the fraction of historical patients that count.

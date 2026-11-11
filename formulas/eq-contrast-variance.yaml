@@ -1,0 +1,23 @@
+id: eq-contrast-variance
+section: 20/shared-control-arithmetic
+title: Variance of a treatment-control contrast
+tex: \htmlClass{term c1}{\mathrm{Var}(\hat\theta_j)} = \htmlClass{term c2}{\frac{1}{n}} + \htmlClass{term c3}{\frac{1}{n_0}} = \frac{1}{n}\left(1 + \htmlClass{term c4}{\frac{1}{r}}\right),
+parts:
+- 'The '
+- k: c1
+  words: variance of the effect estimate for arm $j$
+- ' is '
+- k: c2
+  words: the variance from the experimental arm mean
+- ' plus '
+- k: c3
+  words: the variance from the control mean
+- ', which is the first term times one plus '
+- k: c4
+  words: the inverse of the control-to-arm size ratio
+- .
+notes:
+  c1: Difference of arm mean and control mean, with unit outcome variance.
+  c2: Each experimental arm has $n$ patients.
+  c3: The control has $n_0 = rn$ patients.
+  c4: $r = n_0/n$; the variance depends on $r$ and $n$, and Dunnett's rule $r = \sqrt{k}$ minimizes it at fixed total enrollment.

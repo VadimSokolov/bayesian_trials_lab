@@ -1,0 +1,97 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "betabinom-posterior-prob",
+      "description": "Beta(1,1) prior + 12 responses of 20 gives Beta(13,9); P(p>0.5)",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "1 - pbeta(0.5, 13, 9)",
+      "inputs": {
+        "a0": 1,
+        "b0": 1,
+        "n": 20,
+        "r": 12,
+        "threshold": 0.5
+      },
+      "outputs": {
+        "post_a": 13,
+        "post_b": 9,
+        "p_gt_0.5": 0.8083448410034,
+        "post_mean": 0.5909090909091,
+        "q025": 0.3843543903786,
+        "q975": 0.7818031431149
+      }
+    },
+    {
+      "id": "betabinom-ppos-prior1_1",
+      "description": "Predictive probability of success, single arm, nmax 40, interim 15 pts with 7 responses; success at final if P(p>0.2|data)>=0.95 under Beta prior (min total responses xmin derived exactly); also the fixed >=14 of 40 rule. Predictive of the remaining 25 is beta-binomial. Exact, no simulation",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "pbeta / choose / beta closed forms (see /tmp/oracle/f9.R)",
+      "inputs": {
+        "a0": 1,
+        "b0": 1,
+        "nmax": 40,
+        "n_interim": 15,
+        "r_interim": 7,
+        "p0": 0.2,
+        "post_prob_threshold": 0.95
+      },
+      "outputs": {
+        "min_total_responses_for_success": 13,
+        "ppos_posterior_rule": 0.9518575321316,
+        "ppos_fixed_ge14_rule": 0.9148984414503,
+        "predictive_pmf_remaining_responses": [0.0001346963515656, 0.0008163415246402, 0.002755152645661, 0.006813818370989, 0.01374120038149, 0.02388125859405, 0.03695909068126, 0.05201649799585, 0.06752141566769, 0.08162588916272, 0.09250934105108, 0.0987253837304, 0.09947330330412, 0.09473647933726, 0.08526283140353, 0.07239861473563, 0.05781833815693, 0.04321370602732, 0.03000951807453, 0.01916397294584, 0.01108772720438, 0.005686013950963, 0.002498400069363, 0.0008887589179551, 0.0002295960538051, 3.265366098561e-05],
+        "interim_posterior_a": 8,
+        "interim_posterior_b": 9,
+        "interim_post_prob_gt_0.2": 0.9929964388352
+      }
+    },
+    {
+      "id": "betabinom-ppos-prior0.5_0.5",
+      "description": "Predictive probability of success, single arm, nmax 40, interim 15 pts with 7 responses; success at final if P(p>0.2|data)>=0.95 under Beta prior (min total responses xmin derived exactly); also the fixed >=14 of 40 rule. Predictive of the remaining 25 is beta-binomial. Exact, no simulation",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "pbeta / choose / beta closed forms (see /tmp/oracle/f9.R)",
+      "inputs": {
+        "a0": 0.5,
+        "b0": 0.5,
+        "nmax": 40,
+        "n_interim": 15,
+        "r_interim": 7,
+        "p0": 0.2,
+        "post_prob_threshold": 0.95
+      },
+      "outputs": {
+        "min_total_responses_for_success": 13,
+        "ppos_posterior_rule": 0.947482270855,
+        "ppos_fixed_ge14_rule": 0.9089193095973,
+        "predictive_pmf_remaining_responses": [0.0001719666345286, 0.0009921151992033, 0.003212563502182, 0.007671531423243, 0.01501799795567, 0.02545155443014, 0.03856296125778, 0.05332290869338, 0.06822195671065, 0.08152601176079, 0.09158666853128, 0.09713737571499, 0.09751387717125, 0.09275710267509, 0.08358332328964, 0.07123407552432, 0.05724166783205, 0.04316082975571, 0.03032086964918, 0.01964528215019, 0.01156888837734, 0.006059893911937, 0.002730545082849, 0.001000634533467, 0.0002677136251818, 3.968460796813e-05],
+        "interim_posterior_a": 7.5,
+        "interim_posterior_b": 8.5,
+        "interim_post_prob_gt_0.2": 0.9909908683423
+      }
+    },
+    {
+      "id": "betabinom-success-thresholds",
+      "description": "Min responses r such that P(p>0.2|r of n, Beta(1,1))>=0.95",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "1 - pbeta(0.2, 1+r, 1+n-r) >= 0.95",
+      "inputs": {
+        "n": [10, 20, 30, 40],
+        "p0": 0.2,
+        "thr": 0.95
+      },
+      "outputs": {
+        "min_responses": [5, 7, 10, 13]
+      }
+    }
+  ]
+}

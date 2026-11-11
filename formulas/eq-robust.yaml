@@ -1,0 +1,19 @@
+id: eq-robust
+section: sec-borrowing-map
+title: Robust MAP prior
+tex: \htmlClass{term c1}{\pi_{\text{rob}}(\theta)} = \htmlClass{term c2}{w\,\pi_{\text{MAP}}(\theta)} + \htmlClass{term c3}{(1-w)\,\pi_{\text{vague}}(\theta)}.
+parts:
+- 'The '
+- k: c1
+  words: robust prior
+- ' mixes '
+- k: c2
+  words: the informative MAP prior with weight $w$
+- ' and '
+- k: c3
+  words: a vague prior with weight $1-w$
+- .
+notes:
+  c1: Protects against a new trial that differs systematically from the historical ones.
+  c2: Confidently wrong if the new control rate is not another draw from the historical distribution.
+  c3: If the current data disagree with the MAP prior, weight moves to this component and the posterior reverts to the current data.

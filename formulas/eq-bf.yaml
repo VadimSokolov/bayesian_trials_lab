@@ -1,0 +1,27 @@
+id: eq-bf
+section: 11/set-up
+title: Mixture Bayes factor
+tex: |-
+  \htmlClass{term c1}{\mathrm{BF}_n} = \htmlClass{term c2}{(1 + I_n\tau^2)^{-1/2}} \htmlClass{term c3}{\exp\Bigl\{\frac{Z_n^2}{2}\cdot\frac{I_n\tau^2}{1+I_n\tau^2}\Bigr\}}, \qquad
+  \htmlClass{term c4}{2\log \mathrm{BF}_n} = Z_n^2 - \htmlClass{term c5}{L_n} - \htmlClass{term c6}{\frac{Z_n^2}{1+q}}, \qquad q = I_n\tau^2,
+parts:
+  - "The "
+  - {k: c1, words: "Bayes factor for the alternative against the null"}
+  - " is "
+  - {k: c2, words: "a penalty for the prior spread"}
+  - " times "
+  - {k: c3, words: "a reward growing with the squared standardized score"}
+  - ". Equivalently, "
+  - {k: c4, words: "twice its log"}
+  - " is the squared score less "
+  - {k: c5, words: "the Ockham penalty"}
+  - " less "
+  - {k: c6, words: "a remainder that is small near the boundaries"}
+  - "."
+notes:
+  c1: "Mixture over a $N(0,\\tau^2)$ prior on the effect; $I_n$ is the information."
+  c2: "Falls as information or prior spread grows."
+  c3: "$Z_n=\\hat\\theta_n\\sqrt{I_n}$ is the standardized score."
+  c4: "The scale on which the penalty is easy to read; $q=I_n\\tau^2$."
+  c5: "The price for integrating out the parameter."
+  c6: "Exact, and negligible where $Z_n^2=O(\\log q)$."

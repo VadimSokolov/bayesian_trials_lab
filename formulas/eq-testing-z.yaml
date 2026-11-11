@@ -1,0 +1,16 @@
+id: eq-testing-z
+section: sec-testing-z
+title: "The z statistic for two response rates"
+tex: "\\htmlClass{term c1}{Z} = \\frac{\\htmlClass{term c2}{\\hat p_1 - \\hat p_0}}{\\htmlClass{term c3}{\\sqrt{2\\bar p(1-\\bar p)/n}}} ."
+parts:
+  - "The "
+  - {k: c1, words: "z statistic"}
+  - " is "
+  - {k: c2, words: "the observed difference in response rates"}
+  - " divided by "
+  - {k: c3, words: "its standard error under the null, computed from the pooled response rate"}
+  - "."
+notes:
+  c1: "How many standard errors the observed difference is from zero."
+  c2: "Treatment response rate minus control response rate."
+  c3: "The pooling uses the null hypothesis that both arms have the same response probability."

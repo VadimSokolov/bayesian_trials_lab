@@ -1,0 +1,14 @@
+id: eq-fwer
+section: sec-mult-problem
+title: Familywise error rate for independent tests
+tex: |-
+  \htmlClass{term c1}{\Pr(\text{at least one false positive})} = 1 - \htmlClass{term c2}{(1-\alpha)^k} .
+parts:
+  - "The "
+  - {k: c1, words: "chance of at least one false positive"}
+  - " is one minus "
+  - {k: c2, words: "the chance that all $k$ tests stay below the bar"}
+  - "."
+notes:
+  c1: "The familywise error rate when all $k$ null hypotheses are true."
+  c2: "Each test passes at $1-\\alpha$; independence lets the chances multiply. With twenty tests the book gets about 0.40."

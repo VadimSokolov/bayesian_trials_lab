@@ -1,0 +1,131 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "rbest-robust-prior",
+      "description": "Robust mixture prior 0.8*Beta(12,28)+0.2*Beta(1,1) via mixbeta",
+      "package": "RBesT",
+      "version": "1.12.0",
+      "r_version": "4.5.2",
+      "call": "mixbeta(inf=c(0.8,12,28), rob=c(0.2,1,1))",
+      "inputs": {
+        "weights": [0.8, 0.2],
+        "a": [12, 1],
+        "b": [28, 1]
+      },
+      "outputs": {
+        "mean": 0.34,
+        "sd": 0.1648157384544,
+        "q025": 0.1192457729152,
+        "q50": 0.3055610942757,
+        "q975": 0.8749989086817,
+        "cdf_at_0.3": 0.4747365999336
+      }
+    },
+    {
+      "id": "rbest-ess",
+      "description": "ESS of informative Beta(12,28) and robust mixture, methods elir, moment, morita (morita eps=0.1 default)",
+      "package": "RBesT",
+      "version": "1.12.0",
+      "r_version": "4.5.2",
+      "call": "ess(prior, method=\"elir\"|\"moment\"|\"morita\")",
+      "inputs": {
+        "priors": ["Beta(12,28)", "0.8*Beta(12,28)+0.2*Beta(1,1)"]
+      },
+      "outputs": {
+        "beta_12_28": {
+          "elir": 40.000000000052,
+          "moment": 40,
+          "morita": 39.990211073642
+        },
+        "robust": {
+          "elir": 25.660632315883,
+          "moment": 7.26086436011,
+          "morita": 35.529971435901
+        }
+      }
+    },
+    {
+      "id": "rbest-posterior",
+      "description": "Posterior of robust mixture prior after r=12 responses in n=20",
+      "package": "RBesT",
+      "version": "1.12.0",
+      "r_version": "4.5.2",
+      "call": "postmix(rob, n=20, r=12)",
+      "inputs": {
+        "prior_weights": [0.8, 0.2],
+        "n": 20,
+        "r": 12
+      },
+      "outputs": {
+        "weights": [0.4888898188109, 0.5111101811891],
+        "a": [24, 13],
+        "b": [36, 9],
+        "mean": 0.4975755800452,
+        "q025": 0.2979407504805,
+        "q50": 0.4751008800191,
+        "q975": 0.7559452770819,
+        "p_gt_0.5": 0.4418700183864
+      }
+    },
+    {
+      "id": "rbest-oc2s",
+      "description": "oc2S: treatment arm vague Beta(1,1) n1=40, control arm robust prior n2=20, success if P(pt-pc>0)>=0.975. Exact (conditional on beta-binomial counts) via RBesT oc2S, no simulation",
+      "package": "RBesT",
+      "version": "1.12.0",
+      "r_version": "4.5.2",
+      "call": "dec <- decision2S(pc=0.975, qc=0, lower.tail=FALSE); oc <- oc2S(mixbeta(c(1,1,1)), rob, n1=40, n2=20, decision=dec); oc(pc, pt)",
+      "inputs": {
+        "treat_prior": [1, 1, 1],
+        "control_prior_weights": [0.8, 0.2],
+        "control_prior_a": [12, 1],
+        "control_prior_b": [28, 1],
+        "n1": 40,
+        "n2": 20,
+        "pc_threshold": 0.975,
+        "qc": 0,
+        "scenarios": [
+          {
+            "pc": 0.3,
+            "pt": 0.3
+          },
+          {
+            "pc": 0.3,
+            "pt": 0.5
+          },
+          {
+            "pc": 0.3,
+            "pt": 0.6
+          },
+          {
+            "pc": 0.4,
+            "pt": 0.4
+          }
+        ]
+      },
+      "outputs": {
+        "prob_success": [0.01190429335321, 0.0007837020384879, 0.0001018152476964, 0.06091043429279]
+      }
+    },
+    {
+      "id": "rbest-oc1s",
+      "description": "oc1S: robust prior, n=30, success if P(p>0.3|data)>=0.95",
+      "package": "RBesT",
+      "version": "1.12.0",
+      "r_version": "4.5.2",
+      "call": "oc1S(rob, 30, decision1S(0.95, 0.3, lower.tail=FALSE))(p)",
+      "inputs": {
+        "prior": "robust",
+        "n": 30,
+        "pc": 0.95,
+        "q": 0.3,
+        "p": [0.3, 0.4, 0.5, 0.6]
+      },
+      "outputs": {
+        "prob_success": [0.006370346377312, 0.09705684382075, 0.4277677759528, 0.8246309464932],
+        "decision_cutoff_count": 16
+      }
+    }
+  ]
+}

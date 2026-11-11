@@ -1,0 +1,23 @@
+id: eq-evalues-mix
+section: 12/mixtures
+title: E-value from a half-normal mixture of likelihood ratios
+tex: \htmlClass{term c1}{E_n^{+}} = \htmlClass{term c2}{\frac{2}{\rho\sqrt{A_n}}}\exp\!\Bigl(\htmlClass{term c3}{\frac{S_n^2}{2A_n}}\Bigr)\,\htmlClass{term c4}{\Phi\!\Bigl(\frac{S_n}{\sqrt{A_n}}\Bigr)}.
+parts:
+- 'The '
+- k: c1
+  words: e-value after $n$ pairs
+- ' is a factor '
+- k: c2
+  words: set by the hedging scale $\rho$ and $A_n = n + \rho^{-2}$
+- ', times an exponential that grows with '
+- k: c3
+  words: the squared running sum of standardized differences, relative to $A_n$
+- ', times '
+- k: c4
+  words: a normal cumulative probability of the scaled running sum
+- .
+notes:
+  c1: The test martingale obtained by mixing the likelihood ratios over a half-normal distribution for the effect; Ville's inequality applies to it.
+  c2: Normalizing factor from the half-normal mixing; the scale $\rho$ plays the role of a prior standard deviation on the effect, a design parameter.
+  c3: Grows when the cumulative treatment-minus-control difference $S_n$ is large for the information accrued.
+  c4: The one-sided piece that comes from mixing over positive effects only.

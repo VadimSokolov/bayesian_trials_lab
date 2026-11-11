@@ -1,0 +1,16 @@
+id: eq-ockham-ch10
+section: 11/set-up
+title: Ockham penalty
+tex: |-
+  \htmlClass{term c1}{L_n} = \htmlClass{term c2}{\log(1 + I_n\tau^2)} \sim \htmlClass{term c3}{\log I_n}
+parts:
+  - {k: c1, words: "The Ockham penalty"}
+  - " is "
+  - {k: c2, words: "the log of one plus the information times the prior variance"}
+  - ", which grows like "
+  - {k: c3, words: "the log of the information"}
+  - "."
+notes:
+  c1: "The price for integrating the parameter out; the finite-sample form of the Schwarz penalty."
+  c2: "Exact form."
+  c3: "Large-information form; the bar rises slowly with information."

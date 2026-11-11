@@ -1,0 +1,20 @@
+id: eq-sqrt-loss
+section: sec-power-population
+title: Expected loss against full information
+tex: |-
+  \htmlClass{term c1}{L(n)} = \htmlClass{term c2}{n\,\tau\sqrt{2/\pi}} + \htmlClass{term c3}{(N - 2n)\,\frac{\tau(1 - \rho)}{\sqrt{2\pi}}}, \qquad \htmlClass{term c4}{\rho = \frac{\tau}{\sqrt{\tau^2 + 2\sigma^2/n}}},
+parts:
+  - "The "
+  - {k: c1, words: "expected loss of a trial with $n$ patients per arm"}
+  - " is "
+  - {k: c2, words: "the price of experimentation"}
+  - " plus "
+  - {k: c3, words: "the price of residual ignorance on the remaining patients"}
+  - ", where "
+  - {k: c4, words: "$\\rho$ measures how much the trial resolves the prior uncertainty"}
+  - "."
+notes:
+  c1: "Loss against a planner who knew the effect."
+  c2: "Half of the trial participants receive the inferior arm."
+  c3: "The $N-2n$ patients treated after the trial get the arm with the higher posterior mean, which may be wrong."
+  c4: "Depends on the prior spread $\\tau$ and the noise $\\sigma^2/n$."

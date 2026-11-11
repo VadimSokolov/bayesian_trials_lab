@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What counts as proof | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: why regulators ask for substantial evidence, and what a repeat trial tells you.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<style>
+.tip { border-bottom: 1.5px dotted var(--teal-dark); cursor: help; position: relative; text-decoration: none; }
+.tip:hover::after, .tip:focus::after { content: attr(data-tip); position: absolute; left: 0; top: 1.6em; z-index: 30; width: 16rem; max-width: 80vw; background: var(--navy); color: #fff; padding: .45rem .6rem; border-radius: 6px; font-size: .82rem; font-weight: 400; line-height: 1.35; }
+.slide { width: 100%; }
+.slide output { font-family: 'IBM Plex Mono', monospace; font-weight: 600; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 800px) { .two { grid-template-columns: 1fr; } }
+.icons rect.d { fill: #cfd6de; }
+.icons rect.f { fill: #E07A3F; }
+.tl text, .pw text { font-family: 'IBM Plex Sans', sans-serif; fill: #0A1628; }
+.mini-val { font-size: 10px; font-weight: 600; fill: #0A1628; text-anchor: middle; }
+.section p.q2 { margin: .2rem 0 .6rem; }
+.figure { overflow-x: auto; }
+@media (max-width: 800px) { .tl, .pw { min-width: 640px; } }
+</style>
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">11. What counts as proof</span>
+  <span class="pn"><a href="10-platform-trials.html">&larr; Prev</a><a href="12-decisions.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 11</div>
+  <h1>What counts as proof</h1>
+  <p class="hook">One trial wins. If you ran it again, would it win again?</p>
+  <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
+</section>
+
+<section id="lab" class="labgrid" aria-label="Replication lab">
+  <div class="panel">
+    <h3>1. First trial result</h3>
+    <label class="slide">The two-sided <abbr class="tip" tabindex="0" data-tip="p-value: how often a useless drug would look this good by luck alone. Smaller means stronger.">p-value</abbr> of trial 1: <output id="pOut"></output>
+      <input type="range" id="pSlide" min="-4" max="-0.7" step="0.01" value="-1.4"></label>
+    <p class="note">A trial wins if the drug looks better with one-sided p below 0.025 (the same line as the familiar two-sided 0.05). A useless drug wins by luck 1 time in 40.</p>
+    <h3>2. Run trial 2</h3>
+    <div class="row">
+      <button class="btn primary" id="run1" type="button">Run again</button>
+      <button class="btn" id="resetBtn" type="button">Reset</button>
+    </div>
+    <p class="note" id="runNote"></p>
+    <h3>What the picture shows</h3>
+    <p class="note">Each bar counts repeat trials of the same drug. Teal: the repeat wins.</p>
+    <p class="note">The <abbr class="tip" tabindex="0" data-tip="A bell-shaped curve centred on trial 1's result. Module 1 and 2 use it too.">Black curve</abbr>: the same answer from a formula.</p>
+    <p class="note">This assumes the drug is really as good as trial 1 showed. Real drugs are often a bit worse, so real chances are lower.</p>
+  </div>
+  <div>
+    <div class="plotbox"><svg id="plot"></svg>
+      <div class="chips" aria-live="polite" id="chips"></div>
+      <p class="note" id="plotNote" style="margin:.5rem 0 0"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Useless drugs that win by luck</h2>
+  <p>Each dot is a <abbr class="tip" tabindex="0" data-tip="A drug with exactly zero effect. Any win is luck.">useless drug</abbr>. Orange dots got lucky and "won". Pick a rule.</p>
+  <div class="presets" id="rules"></div>
+  <figure class="figure narrow"><svg id="icons" class="icons" viewBox="0 0 360 360" role="img" aria-label="10,000 dots, the orange ones are useless drugs that pass by luck"></svg>
+    <figcaption id="iconCap"></figcaption></figure>
+</section>
+
+<section class="section">
+  <h2>Predict, then check</h2>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="section">
+  <h2>How the rule changed</h2>
+  <figure class="figure"><svg id="timeline" class="tl" viewBox="0 0 900 230" role="img" aria-label="Timeline of the evidence rule: 1962, 1997, 1998, 2019, 2026"></svg>
+    <figcaption><b>Timeline.</b> Sources: <a href="https://vsokolov.org/clinical_trials_in_practice/">Clinical Trials in Practice</a>, chapters 1, 9 (history, Phase 3) and the FDA guidance below.</figcaption></figure>
+</section>
+
+<section class="section">
+  <h2>Faster is not easier</h2>
+  <p>FDA can speed up drugs for serious diseases. It does not lower the proof.</p>
+  <figure class="figure"><svg id="paths" class="pw" viewBox="0 0 900 250" role="img" aria-label="Four FDA expedited programs, all with the same standard of evidence"></svg>
+    <figcaption>Source: Clinical Trials in Practice, chapter 29 (submission); FDA, <i>Expedited Programs for Serious Conditions</i> (2014).</figcaption></figure>
+</section>
+
+<section class="example">
+  <h2>Real cases: when "it helps" was wrong</h2>
+      <p><b>Thalidomide (1950s to 1962).</b> About 10,000 babies were born with birth defects, mostly outside the US, where FDA's Frances Kelsey had refused it.</p>
+      <p>Congress then required proof that drugs work (1962), with <abbr class="tip" tabindex="0" data-tip="A trial with a fair comparison group, chance assignment, steps against bias, and a plan made before the data.">adequate and well-controlled</abbr> trials.</p>
+      <p><b>CAST (late 1980s).</b> Heart drugs fixed a rhythm marker on a heart monitor, but more patients died than on placebo. The trial stopped early.</p>
+  <p class="note">Sources: Sokolova and Sokolov (2026), <i>Clinical Trials in Practice</i>, chapters 1 (history), 17 (endpoints) and 16 (randomization); Rossouw et al., Women's Health Initiative, JAMA 2002; CAST Investigators, N Engl J Med 1989.</p>
+</section>
+
+<section class="reg">
+  <h3>Regulator's corner</h3>
+  <p>"Substantial evidence" is the law's phrase for this page's question: adequate, well-controlled trials. FDA's revised draft guidance (June 2026; it revises the December 2019 draft and will replace the 1998 guidance) (section IV.A) describes one adequate, well-controlled trial plus confirmatory evidence. The evidence can come from a highly persuasive trial or from strong confirmatory evidence:</p>
+  <blockquote>"a highly persuasive trial or a source of strong confirmatory evidence"</blockquote>
+  <p class="note"><a href="https://www.fda.gov/media/133660/download">FDA draft guidance, Demonstrating Substantial Evidence of Effectiveness for Human Drug and Biological Products</a>. Revised draft. FDA also weighs trial quality and what the result means for patients.</p>
+</section>
+
+<div id="code"></div>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>If the true effect equals the first estimate, an equally large repeat trial barely wins about half the time.</li>
+    <li>Two wins by luck are rare (1 in 1,600). One very strong win plus other evidence can also count.</li>
+    <li>A fast review is not a weaker standard. A marker that improves is not proof that patients do better.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/substantial-evidence">Substantial evidence</a>, <a href="encyclopedia/#/e/adequate-and-well-controlled-investigation">Adequate and well-controlled investigation</a>, <a href="encyclopedia/#/e/one-trial-with-confirmatory-evidence">One trial with confirmatory evidence</a>, <a href="encyclopedia/#/e/fda-substantial-evidence-draft-2026">FDA substantial-evidence draft guidance 2026</a>, <a href="encyclopedia/#/e/special-protocol-assessment">Special Protocol Assessment</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/02-regulatory.html">3</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/19-protocol.html">23</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
+    <li>Sokolova, A. and Sokolov, V. (2026). E-values for adaptive clinical trials. <a href="https://arxiv.org/abs/2602.06379">arXiv:2602.06379</a></li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', ORANGE = '#E07A3F', NAVY = '#0A1628', NS = 'http://www.w3.org/2000/svg';
+  var $ = function (id) { return document.getElementById(id); };
+  var rng = Lab.rng(1962);
+  var CRIT = Lab.normalQuantile(0.975);           // 1.96: the two-sided 0.05 win line
+  function zOf(p) { return Lab.normalQuantile(1 - p / 2); }
+  function power(p) { return 1 - Lab.normalCdf(CRIT - zOf(p)); }   // chance trial 2 also wins
+  function fmtP(p) { return String(Number(p.toPrecision(2))); }
+  function svgEl(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function num(x) { return String(Number(x.toFixed(2))); }
+
+  /* ---------- Main lab ---------- */
+  var LO = -3.04, HI = 7.96, NB = 55, WIN0 = 25;     // bin 25 starts at 1.96
+  var S = { p: 0.04, sim: [] , runs: 0 };
+  var plot = Lab.Plot($('plot'), { xlim: [LO, HI], ylim: [0, 0.5], xticks: [], xlabel: 'Trial 2 result (right = drug looks better)', ylabel: 'Share of trials', label: 'Histogram of simulated second-trial results. Bars right of the win line are wins.' });
+  var grid = Lab.linspace(LO, HI, 220);
+  function render(ms) {
+    var z1 = zOf(S.p), h = Lab.histogram(S.sim.length ? S.sim : [], LO, HI, NB).density;
+    if (!S.sim.length) h = h.map(function () { return 0; });
+    var lose = h.map(function (v, i) { return i < WIN0 ? v : 0; }), win = h.map(function (v, i) { return i >= WIN0 ? v : 0; });
+    plot.bars('lose', lose, LO, HI, { fill: ORANGE, opacity: 0.75 }, ms);
+    plot.bars('win', win, LO, HI, { fill: TEAL, opacity: 0.8 }, ms);
+    plot.line('exact', grid, grid.map(function (x) { return Lab.normalPdf(x, z1, 1); }), { stroke: NAVY, width: 1.5 }, ms);
+    plot.vline('crit', CRIT, 'win line', { color: NAVY, dash: '5 4' }, 0);
+    plot.vline('z1', z1, '', { color: '#B8531A' }, 0);
+    plot.legend([{ label: 'Trial 2 loses', color: ORANGE, kind: 'box' }, { label: 'Trial 2 wins', color: TEAL, kind: 'box' }, { label: 'Formula curve', color: NAVY, kind: 'line' }, { label: 'Trial 1 result', color: '#B8531A', kind: 'line' }]);
+    var pw = power(S.p), obs = S.sim.length ? Lab.prob(S.sim, function (z) { return z > CRIT; }) : null;
+    $('pOut').textContent = fmtP(S.p);
+    $('chips').innerHTML =
+      '<span class="chip warm">Trial 1: two-sided p = <b>' + fmtP(S.p) + '</b></span>' +
+      '<span class="chip">Chance trial 2 wins: <b>' + (S.runs ? Lab.pct(pw, 0) : 'press Run again') + '</b></span>';
+    $('plotNote').innerHTML = '';
+    $('runNote').innerHTML = '';
+  }
+  function runSim(ms) {
+    var z1 = zOf(S.p);
+    S.sim = Lab.draws(10000, rng, function (r) { return z1 + Lab.normal(r); });
+    S.runs++; render(ms);
+  }
+  function setP(p, ms) { S.p = p; S.sim = []; S.runs = 0; $('pSlide').value = Math.log10(p).toFixed(2); runSim(ms); }
+  var EX = [{ l: 'Barely (two-sided p = 0.04)', p: 0.04 }, { l: 'Solid (two-sided p = 0.01)', p: 0.01 }, { l: 'Strong (two-sided p = 0.001)', p: 0.001 }, { l: 'Huge trial (two-sided p = 0.0002)', p: 0.0002 }];
+  EX.forEach(function (e) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = e.l;
+    b.addEventListener('click', function () {
+      setP(e.p, 700);
+      document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.toggle('on', x === b); });
+    });
+    $('examples').appendChild(b);
+  });
+  $('pSlide').addEventListener('input', function () { S.p = Math.pow(10, +this.value); S.sim = []; S.runs = 0; document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.remove('on'); }); runSim(300); });
+  $('run1').addEventListener('click', function () { runSim(600); });
+  $('resetBtn').addEventListener('click', function () { S.sim = []; S.runs = 0; render(400); });
+
+  /* ---------- Figure: icon array of 10,000 useless drugs ---------- */
+  var icons = $('icons'), cells = [];
+  for (var i = 0; i < 10000; i++) {
+    var r = Math.floor(i / 100), c = i % 100;
+    cells.push(svgEl('rect', { x: 2 + c * 3.56, y: 2 + r * 3.56, width: 2.8, height: 2.8, 'class': 'd' }, icons));
+  }
+  var RULES = [
+    { l: 'One trial (1 in 40)', rate: 0.025 },
+    { l: 'One trial (1 in 1,000)', rate: 0.001 },
+    { l: 'Two trials (1 in 40 each)', rate: 0.025 * 0.025 }
+  ];
+  function showRule(k) {
+    var rl = RULES[k], exp = 10000 * rl.rate, n = Math.round(exp);
+    for (var i = 0; i < 10000; i++) cells[i].setAttribute('class', i < n ? 'f' : 'd');
+    $('iconCap').innerHTML = '<b>' + num(exp) + ' of 10,000</b> useless drugs pass by luck: 1 in ' + Math.round(1 / rl.rate).toLocaleString('en-US') + '.' + '';
+    document.querySelectorAll('#rules .btn').forEach(function (b, j) { b.classList.toggle('on', j === k); });
+  }
+  RULES.forEach(function (rl, k) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = rl.l;
+    b.addEventListener('click', function () { showRule(k); }); $('rules').appendChild(b);
+  });
+  showRule(0);
+
+  /* ---------- Figure: timeline ---------- */
+  (function () {
+    var s = $('timeline'), items = [
+      { x: 90, y: '1962', t: ['US law (Kefauver-Harris):', 'show it works,', 'not only that it is safe'] },
+      { x: 270, y: '1997', t: ['FDA Modernization Act:', 'one trial plus data that', 'backs it up is allowed'] },
+      { x: 450, y: '1998', t: ['FDA guidance (May 1998,', 'still in force): one trial', 'plus confirmatory', 'evidence can be enough'] },
+      { x: 630, y: '2019', t: ['Draft guidance:', 'two trials is the usual way'] },
+      { x: 810, y: '2026', t: ['Revised draft (revises', '2019; will replace the', '1998 guidance): one trial', 'plus confirmatory evidence'] }
+    ];
+    svgEl('line', { x1: 30, x2: 880, y1: 70, y2: 70, stroke: '#0A1628', 'stroke-width': 3 }, s);
+    items.forEach(function (it, k) {
+      svgEl('circle', { cx: it.x, cy: 70, r: 12, fill: k === 4 ? '#2D8B8B' : '#E07A3F' }, s);
+      var t = svgEl('text', { x: it.x, y: 40, 'text-anchor': 'middle', 'font-size': 20, 'font-weight': 600 }, s); t.textContent = it.y;
+      it.t.forEach(function (ln, j) { var q = svgEl('text', { x: it.x, y: 110 + j * 22, 'text-anchor': 'middle', 'font-size': 13.5 }, s); q.textContent = ln; });
+    });
+  })();
+
+  /* ---------- Figure: expedited programs ---------- */
+  (function () {
+    var s = $('paths'), P = [
+      ['Fast Track', 'Send the file', 'in pieces (rolling review)'],
+      ['Breakthrough', 'Extra advice', 'from FDA staff'],
+      ['Accelerated Approval', 'Approved on a marker, must', 'prove real benefit later'],
+      ['Priority Review', 'Review clock', '6 months, not 10']
+    ];
+    P.forEach(function (p, k) {
+      var x = 10 + k * 222;
+      svgEl('rect', { x: x, y: 10, width: 208, height: 120, rx: 10, fill: '#E8F4F4', stroke: '#2D8B8B', 'stroke-width': 1.5 }, s);
+      var t = svgEl('text', { x: x + 104, y: 45, 'text-anchor': 'middle', 'font-size': 16, 'font-weight': 600 }, s); t.textContent = p[0];
+      for (var j = 1; j < 3; j++) { var q = svgEl('text', { x: x + 104, y: 55 + j * 24, 'text-anchor': 'middle', 'font-size': 14 }, s); q.textContent = p[j]; }
+      svgEl('line', { x1: x + 104, x2: x + 104, y1: 130, y2: 168, stroke: '#0A1628', 'stroke-width': 2 }, s);
+    });
+    svgEl('rect', { x: 10, y: 168, width: 880, height: 62, rx: 10, fill: '#0A1628' }, s);
+    var w = svgEl('text', { x: 450, y: 207, 'text-anchor': 'middle', 'font-size': 20, 'font-weight': 600 }, s); w.setAttribute('style', 'fill:#fff'); w.textContent = 'Same standard of evidence for all four';
+  })();
+
+  /* ---------- Question cards ---------- */
+  var score = Lab.Score($('score')), _add = score.add; score.add = function (ok) { _add(ok); try { localStorage.setItem('bct-lab-11', '1'); } catch (e) {} };
+  var Q = $('qcards');
+  // Mini bar chart with value labels. vals in units; labels under bars.
+  function miniBars(box, labels, vals, ylim, ylabel, fmt) {
+    var n = vals.length, P = Lab.miniPlot(box, { xlim: [0, n], ylim: ylim, xlabel: '', ylabel: ylabel, label: ylabel,
+      xticks: labels.map(function (l, i) { return { x: i + 0.5, label: l }; }) });
+    P.bars('b', vals, 0, n, { fill: TEAL, opacity: 0.85 }, 800);
+    var svg = box.querySelector('svg');
+    vals.forEach(function (v, i) { var t = svgEl('text', { x: P.sx(i + 0.5), y: P.sy(v) - 4, 'class': 'mini-val' }, svg); t.textContent = fmt ? fmt(v) : num(v); });
+    return P;
+  }
+  var pct0 = function (v) { return Lab.pct(v, 0); };
+
+  // 1. Two trials by luck
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 1', score: score, type: 'choice',
+    q: 'A useless drug passes one trial 1 time in 40 by luck. How rare is passing two separate trials in a row?',
+    options: [{ value: '40', label: '1 in 40' }, { value: '400', label: '1 in 400' }, { value: '1600', label: '1 in 1,600' }, { value: '10000', label: '1 in 10,000' }],
+    answer: function () { return String(Math.round(1 / (0.025 * 0.025))); },
+    onReveal: function () { showRule(2); },
+    revealPlot: function (b) { miniBars(b, ['One trial', 'Two trials'], [250, 6.25], [0, 300], 'per 10,000 useless drugs'); },
+    explain: function () { return '1 in 40 times 1 in 40 = 1 in 1,600. The dots above changed to match.'; }
+  });
+  // 2. Strict single trial
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 2', score: score, type: 'choice',
+    q: 'One trial must pass a much stricter line: p below 0.001 (much stricter than 1 in 40). Out of 10,000 useless drugs, how many pass?',
+    options: [{ value: '10', label: 'About 10' }, { value: '100', label: 'About 100' }, { value: '250', label: 'About 250' }],
+    answer: function () { return String(Math.round(10000 * 0.001)); },
+    onReveal: function () { showRule(1); },
+    revealPlot: function (b) { miniBars(b, ['p < 0.025', 'p < 0.001', 'Two trials'], [250, 10, 6.25], [0, 300], 'per 10,000 useless drugs'); },
+    explain: function () { return '10,000 x 0.001 = 10. That is close to the 6 that pass two trials, so one very strong trial is almost as safe.'; }
+  });
+  // 3. Replication
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 3', score: score, type: 'slider', min: 0, max: 1, step: 0.01, start: 0.5, tol: 0.1,
+    fmt: function (v) { return Lab.pct(v, 0); },
+    q: 'Trial 1 barely won (two-sided p = 0.04, one-sided 0.02). You run the same trial again with new patients. Drag to the chance trial 2 also wins.',
+    answer: function () { return power(0.04); },
+    onReveal: function () { setP(0.04, 900); document.querySelectorAll('#examples .btn').forEach(function (x, i) { x.classList.toggle('on', i === 0); }); },
+    revealPlot: function (b, r) { miniBars(b, ['Wins again', 'Does not'], [r.answer, 1 - r.answer], [0, 1], 'chance', pct0); },
+    explain: function () { return 'About ' + Lab.pct(power(0.04), 0) + ': about half, if the drug is as good as trial 1 showed.'; }
+  });
+  // 4. Which is the strongest proof
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 4', score: score, type: 'choice',
+    q: 'A blood test is a marker: a stand-in for how patients do. Which single result is the strongest proof?',
+    options: [{ value: 'a', label: '(a) Huge trial, two-sided p = 0.0002, counts deaths' }, { value: 'b', label: '(b) Small, two-sided p = 0.04 (one-sided 0.02), blood test only' }, { value: 'c', label: '(c) 300 patients, no comparison group' }],
+    answer: 'a',
+    onReveal: function () { setP(0.0002, 900); document.querySelectorAll('#examples .btn').forEach(function (x, i) { x.classList.toggle('on', i === 3); }); },
+    revealPlot: function (b) { miniBars(b, ['(a) p=0.0002', '(b) p=0.04'], [power(0.0002), power(0.04)], [0, 1.1], 'chance a repeat wins', pct0); },
+    explain: function () { return 'A repeat of (a) wins ' + Lab.pct(power(0.0002), 0) + ' of the time, of (b) only ' + Lab.pct(power(0.04), 0) + '. (c) has no comparison group. It counts only in rare, deadly diseases.'; }
+  });
+  // 5. Rule of three
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 5', score: score, type: 'slider', min: 0, max: 1, step: 0.01, start: 0.5, tol: 0.1,
+    fmt: function (v) { return Lab.pct(v, 0); },
+    q: 'A side effect hits 1 in 1,000 people. A safety study gives the drug to 1,500 people. Drag to the chance it sees zero cases.',
+    answer: function () { return Lab.binomPmf(0, 1500, 0.001); },
+    revealPlot: function (b) {
+      var vals = [0, 1, 2, 3, 4, 5, 6].map(function (k) { return Lab.binomPmf(k, 1500, 0.001); });
+      var P = Lab.miniPlot(b, { xlim: [0, 7], ylim: [0, 0.4], xlabel: 'cases seen', ylabel: 'chance', label: 'Chance of seeing k cases among 1,500 people',
+        xticks: vals.map(function (v, k) { return { x: k + 0.5, label: String(k) }; }) });
+      P.bars('b', vals, 0, 7, { fill: TEAL, opacity: 0.85 }, 800);
+      var t = svgEl('text', { x: P.sx(0.5), y: P.sy(vals[0]) - 4, 'class': 'mini-val' }, b.querySelector('svg')); t.textContent = Lab.pct(vals[0], 1);
+    },
+    explain: function () { return 'About ' + Lab.pct(Lab.binomPmf(0, 1500, 0.001), 0) + ': one study in five sees no cases. Zero cases in 1,500 people does not prove the drug is safe.'; }
+  });
+  // 6. HRT
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 6', score: score, type: 'slider', min: -0.5, max: 0.5, step: 0.01, start: 0, tol: 0.1,
+    fmt: function (v) { return (v > 0 ? '+' : '') + Lab.pct(v, 0); },
+    q: 'Studies of women who chose hormone therapy said it protects the heart. Then a randomized trial checked. Drag to the change in heart disease risk.',
+    answer: 0.29,
+    revealPlot: function (b) { miniBars(b, ['Heart disease', 'Stroke'], [1.29, 1.41], [0, 1.7], 'risk vs placebo (1 = same)', function (v) { return num(v); }); },
+    explain: function () { return 'Risk went up about 29% for heart disease and 41% for stroke. Choosing hormones was not random, so the groups differed.'; }
+  });
+  // 7. Expedited pathways
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 7', score: score, type: 'choice',
+    q: 'A drug for a deadly disease gets Priority Review, one of FDA\'s programs for serious diseases. What does that change?',
+    options: [{ value: 'speed', label: 'How fast FDA reviews' }, { value: 'proof', label: 'How much proof is needed' }, { value: 'both', label: 'Both' }],
+    answer: 'speed',
+    revealPlot: function (b) { miniBars(b, ['Priority', 'Standard'], [6, 10], [0, 12], 'review clock (months)', function (v) { return String(v); }); },
+    explain: function () { return 'The clock shrinks from 10 months to 6. The standard of evidence stays the same.'; }
+  });
+
+  // 8. Single-trial winners
+  (function () {
+    var N = 1000, real = N * 0.10 * 0.80, fa1 = N * 0.90 * 0.025, fa2 = N * 0.90 * 0.025 * 0.025, real2 = N * 0.10 * 0.80 * 0.80;
+    var sh1 = fa1 / (fa1 + real), sh2 = fa2 / (fa2 + real2);
+    Lab.QuestionCard(Q, {
+      tag: 'Predict 8', score: score, type: 'slider', min: 0, max: 0.5, step: 0.01, start: 0.05, tol: 0.05,
+      fmt: function (v) { return Lab.pct(v, 0); },
+      q: 'Of 1,000 tested drugs, 100 really work. Trials have 80% power and a one-sided 0.025 line. Among the drugs that win one trial, drag to the share that are useless.',
+      answer: function () { return sh1; },
+      revealPlot: function (b) { miniBars(b, ['One trial', 'Two trials'], [sh1, sh2], [0, 0.3], 'winners that are useless', function (v) { return Lab.pct(v, 1); }); },
+      explain: function () { return 'One trial: ' + num(real) + ' real wins and ' + num(fa1) + ' false wins, so ' + Lab.pct(sh1, 0) + ' of winners are useless. Two trials: ' + num(real2) + ' real and ' + num(fa2) + ' false, under ' + Lab.pct(Math.ceil(sh2 * 100) / 100, 0) + '.'; }
+    });
+  })();
+
+  /* ---------- Code ---------- */
+  Lab.CodeBox($('code'), {
+    py: 'from scipy.stats import norm\n' +
+      'p1 = 0.04                      # trial 1 p-value (two-sided)\n' +
+      'z1 = norm.isf(p1 / 2)          # its z-score\n' +
+      'win = norm.isf(0.05 / 2)       # win line, 1.96\n' +
+      'print(norm.sf(win - z1))       # chance trial 2 also wins\n' +
+      'print(0.025 * 0.025)           # two lucky wins\n' +
+      'print(1 / 0.025 ** 2)          # 1 in 1600\n' +
+      'print(0.999 ** 1500)           # zero cases in 1500 people',
+    r: 'p1 <- 0.04                     # trial 1 p-value (two-sided)\n' +
+      'z1 <- qnorm(1 - p1 / 2)         # its z-score\n' +
+      'win <- qnorm(1 - 0.05 / 2)      # win line, 1.96\n' +
+      '1 - pnorm(win - z1)             # chance trial 2 also wins\n' +
+      '0.025 * 0.025                   # two lucky wins\n' +
+      '1 / 0.025^2                     # 1 in 1600\n' +
+      '0.999^1500                      # zero cases in 1500 people'
+  });
+
+  S.sim = []; S.runs = 0; render(0);
+})();
+</script>
+</body>
+</html>

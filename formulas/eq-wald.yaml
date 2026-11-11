@@ -1,0 +1,17 @@
+id: eq-wald
+section: sec-ch10-wald
+title: Wald approximation to expected sample size
+tex: |-
+  \htmlClass{term c1}{\mathbb{E}_1[T]} \approx \frac{\htmlClass{term c2}{(1-\beta)\log\{(1-\beta)/\alpha\} + \beta \log\{\beta/(1-\alpha)\}}}{\htmlClass{term c3}{\mathrm{KL}(P_1 \| P_0)}},
+parts:
+  - "The "
+  - {k: c1, words: "expected sample size when the drug works"}
+  - " is about "
+  - {k: c2, words: "the log-odds evidence needed at the error rates, averaged over the two ways to stop"}
+  - ", divided by "
+  - {k: c3, words: "the evidence per patient"}
+  - "."
+notes:
+  c1: "Expected stopping time of the sequential test under $H_1$."
+  c2: "Depends only on the chosen $\\alpha$ and $\\beta$."
+  c3: "Kullback-Leibler divergence per patient, $\\theta^2/2$ for the normal mean."

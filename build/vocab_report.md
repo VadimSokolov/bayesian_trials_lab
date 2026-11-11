@@ -1,0 +1,280 @@
+# Vocabulary report
+
+Total entities: 307
+
+## By type
+- concept: 122
+- method: 76
+- trial: 33
+- regulation: 26
+- design: 21
+- software: 12
+- history: 6
+- principle: 6
+- organization: 5
+
+## By owner chapter
+- 1: 4
+- 2: 11
+- 3: 20
+- 4: 11
+- 5: 19
+- 6: 13
+- 7: 11
+- 8: 11
+- 9: 9
+- C: 13
+- 10: 16
+- 11: 18
+- 12: 11
+- 13: 14
+- 14: 9
+- 15: 8
+- 16: 12
+- 17: 21
+- 18: 13
+- 19: 18
+- 20: 15
+- 21: 12
+- 22: 8
+- 23: 10
+
+## Merges and drops
+- clinical-trial: merged trial
+- decision-theory: merged statistical decision theory
+- bayesian-adaptive-design: merged Bayesian adaptive trial
+- select-trial: merged semaglutide cardiovascular outcomes trial; semaglutide
+- type-i-error: merged type I error rate; alpha; false positive rate
+- type-ii-error: merged beta error
+- power: merged power; power calculation
+- spending-function: merged alpha spending; alpha spending function
+- trial-cost: merged cost of a trial
+- substantial-evidence: merged regulatory standard; substantial evidence of effectiveness
+- history-of-bayesian-trials: merged short history
+- deviation-scale: merged three deviation scales; deviation scales
+- moderate-deviation-sample-size: merged moderate deviation; moderate deviation sample size equation
+- large-deviation: merged large deviation; large deviation ledger
+- evidence-toll: merged three tolls; tolls
+- two-bars: merged Bayes factor bar; level bar
+- surcharge: merged surcharge; seventy percent surcharge
+- phase-1-trial: merged phase I
+- phase-2-trial: merged phase II
+- phase-3-trial: merged phase III
+- phase-4-trial: merged phase IV; postmarketing
+- drug-development: merged drug development process
+- maximum-tolerated-dose: merged MTD
+- two-one-sided-tests: merged TOST
+- real-options: merged phases as options; option value
+- rofecoxib-case: merged rofecoxib; Vioxx
+- recruitment-speed: merged value of speed; recruitment
+- fda: merged Food and Drug Administration
+- ema: merged European Medicines Agency
+- mhra: merged Medicines and Healthcare products Regulatory Agency
+- ich: merged International Council for Harmonisation
+- adequate-and-well-controlled-investigation: merged adequate and well controlled
+- one-trial-with-confirmatory-evidence: merged one trial; 1997 amendment
+- fda-substantial-evidence-draft-2026: merged 2026 substantial-evidence draft
+- fda-bayesian-draft-guidance-2026: merged Bayesian draft guidance; Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products
+- fda-adaptive-design-guidance-2019: merged adaptive design guidance; Adaptive Designs for Clinical Trials of Drugs and Biologics
+- fda-master-protocols-guidance-2026: merged master protocol guidance; Master Protocols for Drug and Biological Product Development
+- fda-multiple-endpoints-guidance-2022: merged Multiple Endpoints in Clinical Trials
+- cid-program: merged CID program; CID paired meeting program; complex innovative trial design
+- midd-program: merged MIDD
+- pdufa: merged Prescription Drug User Fee Act; formal meetings under PDUFA
+- cpim: merged CPIM
+- ddt-qualification: merged DDT qualification
+- special-protocol-assessment: merged SPA
+- ich-e9-r1: merged E9(R1) addendum
+- ich-e11a: merged E11A; pediatric extrapolation guideline
+- ich-m11: merged M11; structured protocol
+- ace-reporting-guideline: merged ACE; Adaptive designs CONSORT Extension
+- robust-reporting-guideline: merged ROBUST
+- barg: merged BARG
+- asa-statement: merged ASA statement; dirty dozen
+- rebyota-trial: merged REBYOTA trial
+- bnt162b2-trial: merged BNT162b2; Pfizer-BioNTech phase 3; C4591001
+- belimumab-pediatric-lupus: merged belimumab; belimumab in children
+- superion-trial: merged Superion device trial
+- optimizer-smart-trial: merged OPTIMIZER Smart device trial
+- two-group-comparison: merged two group comparison
+- sampling-distribution: merged rerun ten thousand times
+- z-test: merged normal approximation test
+- p-value: merged p value
+- randomization-test: merged randomization inference; permutation test
+- confidence-interval: merged CI
+- one-sided-test: merged one sided test; 0.025; one sided alpha
+- noninferiority-trial: merged noninferiority
+- noninferiority-margin: merged margin
+- equivalence-trial: merged equivalence
+- surpass-cvot: merged SURPASS CVOT
+- recovery-trial: merged RECOVERY trial
+- andromeda-shock-trial: merged ANDROMEDA SHOCK
+- estimand: merged estimand framework
+- randomization: merged random allocation
+- permuted-block-randomization: merged permuted blocks
+- minimization: merged minimisation
+- allocation-concealment: merged concealment
+- blinding: merged masking
+- counterfactual: merged counterfactual problem
+- ignorability: merged ignorability; ignorable assignment mechanism
+- intention-to-treat: merged ITT; ITT principle
+- ancova: merged change from baseline; analysis of covariance
+- kolmogorov-complexity: merged randomness as incompressibility
+- mrc-streptomycin-trial: merged streptomycin trial
+- womens-health-initiative: merged WHI
+- bayes-rule: merged Bayes theorem
+- prior-distribution: merged prior
+- likelihood: merged likelihood function
+- posterior-distribution: merged posterior
+- de-finetti-representation: merged de Finetti
+- beta-prior: merged Beta distribution; Beta family
+- conjugate-prior: merged conjugacy
+- effective-sample-size: merged ESS; prior effective sample size
+- posterior-predictive-distribution: merged predictive distribution
+- normal-normal-model: merged normal normal model
+- sequential-updating: merged posterior today is the prior tomorrow
+- posterior-probability-success-criterion: merged success criterion; FDA success criterion; success threshold; posterior probability threshold
+- posterior-probability-of-benefit: merged probability of benefit
+- remap-cap-trial: merged REMAP-CAP trial
+- stopping-rule-principle: merged posterior does not depend on the stopping rule; likelihood principle
+- false-positive-risk: merged FPR
+- bayes-factor: merged BF
+- lindleys-paradox: merged Lindley paradox
+- jeffreys-scale: merged Jeffreys table
+- minimum-bayes-factor: merged calibrating the p-value; p-value calibration
+- bayes-risk: merged Bayes risk of a test
+- implied-loss: merged test as a Bayes rule
+- ockham-penalty: merged Lindley information
+- eolia-trial: merged EOLIA trial
+- noninformative-prior: merged default prior; flat prior
+- prior-data-conflict: merged prior data conflict
+- sensitivity-analysis: merged prior sensitivity analysis
+- tipping-point-analysis: merged tipping point; tipping-point prior
+- prior-elicitation: merged sources of priors
+- prior-specification: merged prior in the protocol
+- sample-size: merged sample size calculation
+- assurance: merged Bayesian power; expected power
+- prior-odds-constant: merged prior odds
+- phase-2-to-phase-3-optimism: merged phase 2 selection problem
+- shared-control-arithmetic: merged platform arithmetic; shared control
+- multiplicity: merged multiple comparisons
+- familywise-error-rate: merged FWER
+- false-discovery-rate: merged FDR
+- bonferroni-correction: merged Bonferroni
+- holm-procedure: merged Holm
+- hochberg-procedure: merged Hochberg
+- closed-testing: merged closed testing procedure
+- fixed-sequence-testing: merged hierarchical testing; fixed sequence
+- graphical-procedure: merged graphical multiple testing
+- subgroup-analysis: merged subgroups
+- forking-paths: merged garden of forking paths
+- shrinkage: merged shrinkage estimator
+- stein-estimator: merged James-Stein; Efron and Morris
+- hierarchical-model: merged Bayesian hierarchical model
+- four-operation-ulcer-trial: merged ulcer trial
+- i-spy-2-trial: merged I-SPY 2 trial
+- multiplicity-across-arms: merged master protocol multiplicity
+- group-sequential-design: merged interim looks
+- interim-analysis: merged repeated testing; interim look
+- obrien-fleming-boundary: merged O'Brien-Fleming
+- pocock-boundary: merged Pocock
+- futility-boundary: merged futility rule; futility; binding futility
+- data-monitoring-committee: merged DMC; DSMB
+- bayes-sequential-decision-problem: merged Bayesian sequential decision
+- wald-sprt: merged Wald SPRT; sequential probability ratio test
+- truncated-trial-bias: merged early stopping bias; truncated trials overestimate
+- covid-anticoagulation-multiplatform: merged therapeutic heparin trial
+- e-value: merged e value; betting score
+- villes-inequality: merged Ville inequality
+- e-value-growth-rate: merged growth rate
+- cornfield-betting-odds: merged Cornfield
+- mixture-method: merged mixture e-value
+- anytime-valid-inference: merged always valid p-value; optional stopping
+- select-reconstruction: merged reconstruction
+- safety-signal: merged safety monitoring
+- cumulative-meta-analysis: merged cumulative meta analysis
+- e-value-safety-monitoring: merged e-value monitoring; continuous monitoring
+- faers: merged spontaneous reports; FDA Adverse Event Reporting System
+- disproportionality-analysis: merged disproportionality
+- proportional-reporting-ratio: merged PRR
+- gamma-poisson-shrinker: merged GPS; MGPS
+- toxicity-monitoring: merged toxicity monitoring inside a trial
+- maxsprt: merged maximized sequential probability ratio test
+- adverse-event-hierarchy: merged hierarchical adverse event model
+- calibration: merged calibration; calibrating c and a
+- clinical-trial-simulation: merged simulation
+- scenario-grid: merged worst case
+- statistical-analysis-plan: merged SAP
+- reproducibility: merged simulation seed
+- dawn-trial: merged DAWN trial
+- predictive-probability-of-success: merged predictive probability; PPoS; predictive power
+- sample-size-re-estimation: merged promising zone
+- simon-two-stage-design: merged Simon two stage
+- predictive-probability-monitoring: merged Lee-Liu design; phase 2 monitoring
+- backward-induction: merged optimal stopping; dynamic programming; Bellman equation
+- gbm-agile-trial: merged GBM AGILE trial
+- response-adaptive-randomization: merged RAR; adaptive randomization; patient benefit
+- multi-armed-bandit: merged bandit problem
+- regret: merged Lai-Robbins bound
+- ecmo-trial: merged ECMO; Harvard two-stage trial
+- time-trend-bias: merged temporal drift; time trends
+- rar-critique: merged critiques of adaptive randomization
+- fixed-allocation: merged 1:1 allocation
+- battle-trial: merged BATTLE trial
+- shine-trial: merged SHINE trial
+- dose-finding: merged dose escalation
+- three-plus-three-design: merged 3+3; three plus three
+- continual-reassessment-method: merged CRM
+- boin-design: merged BOIN
+- mtpi-design: merged mTPI; mTPI-2
+- tite-boin: merged late-onset toxicity
+- overdose-control: merged overdose control; EWOC
+- bayesian-logistic-regression-model: merged BLRM
+- project-optimus: merged dose optimization
+- utility-function: merged utility
+- efftox: merged phase 1/2 design; phase 12 designs
+- mcp-mod: merged MCP Mod; dose response estimation
+- seamless-phase-2-3-design: merged seamless design; seamless phase 2/3
+- sotorasib-dose-case: merged sotorasib
+- lecanemab-phase-2b: merged lecanemab
+- astin-trial: merged ASTIN trial
+- award-5-trial: merged AWARD 5; dulaglutide seamless dose finding
+- time-to-event-endpoint: merged survival analysis; time to event
+- kaplan-meier-estimator: merged Kaplan and Meier
+- log-rank-test: merged log rank test
+- cox-model: merged Cox proportional hazards
+- hazard-ratio: merged HR
+- event-driven-trial: merged events are information
+- gamma-posterior-hazard: merged gamma posterior
+- proportional-hazards: merged proportional hazards assumption
+- non-proportional-hazards: merged NPH
+- delayed-treatment-effect: merged delayed effect; immunotherapy
+- weighted-log-rank-test: merged weighted log rank
+- restricted-mean-survival-time: merged RMST
+- cure-fraction: merged cure model
+- bayesian-borrowing: merged borrowing information; dynamic borrowing
+- historical-control: merged external control
+- power-prior: merged normalized power prior
+- meta-analytic-predictive-prior: merged MAP prior
+- robust-mixture-prior: merged robust prior
+- borrowing-under-drift: merged drift
+- indirect-comparison: merged tirzepatide chain
+- prognostic-covariate-adjustment: merged PROCOVA; digital twin
+- nsclc-borrowing-case: merged NSCLC case study
+- multi-arm-multi-stage-design: merged MAMS
+- concurrent-control: merged non-concurrent control
+- governance-firewall: merged firewall
+- epad-trial: merged EPAD platform
+- healey-als-platform: merged HEALEY ALS
+- rewind-trial: merged REWIND trial
+- cardiovascular-outcomes-trial: merged CVOT
+- retatrutide-triumph-3: merged retatrutide
+- ocean-a-outcomes-trial: merged Lp(a)HORIZON
+- gusto-trial: merged GUSTO trial
+- normal-approximation-posterior: merged normal approximation
+- reanalysis-critics: merged critics of reanalysis
+- fda-meetings: merged interacting with FDA; formal meetings
+- facts: merged Fixed and Adaptive Clinical Trial Simulator
+- Dropped as meta: key terms, thesis, case studies, notation, symbols, abbreviations, glossary, bayestrials arguments, checklist (23.10, no named list), document status, regulatory documents, R, software (generic), companion lab, bayesian reading summaries of sections, limits of reconstruction (merged into select-reconstruction), saving in events and time, biomarker strata, QALYs, patient benefit (alias of RAR), immunotherapy (alias of delayed-treatment-effect), bayestrials (excluded by SCHEMA)
+- Reproducibility kept because Appendix C.4 treats it.
+- Result topics were all covered by existing entities (evidence-toll, surcharge, two-bars, moderate-deviation-sample-size, select-reconstruction, posterior-probability-success-criterion/calibration, backward-induction, four-operation-ulcer-trial, bnt162b2-trial, shared-control-arithmetic).

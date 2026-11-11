@@ -1,0 +1,17 @@
+id: eq-excess
+section: 11/the-seventy-percent-result
+title: Excess information for anytime validity
+tex: |-
+  \htmlClass{term c1}{n_{\mathrm{LD}} - n_{\mathrm{MD}}} \approx \frac{\htmlClass{term c2}{2\log(1/\alpha)}}{\htmlClass{term c3}{\theta^2}},
+parts:
+  - "The "
+  - {k: c1, words: "extra information the anytime-valid rule needs over the Bayes rule"}
+  - " is about "
+  - {k: c2, words: "the constant surcharge"}
+  - ", divided by "
+  - {k: c3, words: "the squared effect"}
+  - "."
+notes:
+  c1: "Large deviation requirement minus moderate deviation requirement."
+  c2: "The surcharge, a constant independent of $n$."
+  c3: "Smaller effects make the same surcharge cost more patients."

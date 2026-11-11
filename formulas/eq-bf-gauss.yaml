@@ -1,0 +1,25 @@
+id: eq-bf-gauss
+section: sec-evidence-gaussian
+title: "Bayes factor for a normal effect"
+tex: "\\htmlClass{term c1}{\\mathrm{BF}_{10}} \\;=\\; \\htmlClass{term c2}{(1 + k)^{-1/2}} \\htmlClass{term c3}{\\exp\\!\\left\\{\\tfrac12 Z_n^2 \\,\\frac{k}{1+k}\\right\\}}, \\qquad \\htmlClass{term c4}{2 \\log \\mathrm{BF}_{10}} \\;=\\; \\htmlClass{term c5}{Z_n^2 \\,\\frac{k}{1+k}} \\;-\\; \\htmlClass{term c6}{\\log(1+k)}."
+parts:
+  - "The "
+  - {k: c1, words: "Bayes factor"}
+  - " combines "
+  - {k: c2, words: "a penalty that grows with the information in the data relative to the prior"}
+  - " with "
+  - {k: c3, words: "a reward for the observed standardized statistic"}
+  - ". On the log scale, "
+  - {k: c4, words: "twice the log Bayes factor"}
+  - " is "
+  - {k: c5, words: "the squared z statistic, nearly fully counted when the data are informative"}
+  - " minus "
+  - {k: c6, words: "the log of one plus the information ratio"}
+  - "."
+notes:
+  c1: "Evidence for the alternative against the point null."
+  c2: "Vague alternatives are charged."
+  c3: "Grows with the squared standardized statistic $Z_n^2$."
+  c4: "The same quantity on a scale that adds."
+  c5: "Fit to the data; $k$ is the information in the data relative to that in the prior."
+  c6: "The charge for flexibility."

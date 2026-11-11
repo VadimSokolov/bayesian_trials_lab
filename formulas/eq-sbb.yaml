@@ -1,0 +1,13 @@
+id: eq-sbb
+section: sec-evidence-calibration
+title: "Minimum Bayes factor from a p-value"
+tex: "\\htmlClass{term c1}{\\mathrm{BF}_{01}} \\;\\ge\\; \\htmlClass{term c2}{-e\\, p \\log p}."
+parts:
+  - "The "
+  - {k: c1, words: "Bayes factor in favor of the null"}
+  - " is at least "
+  - {k: c2, words: "a function of the p-value alone"}
+  - "."
+notes:
+  c1: "Valid for p below $1/e$ and for the stated class of alternatives."
+  c2: "A minimum Bayes factor: the most the data can favor the alternative within that class; it calibrates a p-value."

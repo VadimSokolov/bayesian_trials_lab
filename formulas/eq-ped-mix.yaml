@@ -1,0 +1,19 @@
+id: eq-ped-mix
+section: sec-borrowing-pediatric
+title: Mixture prior for a pediatric effect
+tex: \htmlClass{term c1}{\theta_P}\sim \htmlClass{term c2}{w\,N(\hat\theta_A,\,0.08^2+\omega^2)}+\htmlClass{term c3}{(1-w)\,N(0,1)},
+parts:
+- 'The '
+- k: c1
+  words: pediatric effect
+- ' is drawn from '
+- k: c2
+  words: an adult-centered normal with weight $w$
+- ' or, otherwise, from '
+- k: c3
+  words: a wide normal centered at no effect
+- .
+notes:
+  c1: The pediatric log odds ratio.
+  c2: Centered at the adult estimate; variance is the adult standard error squared plus $\omega^2$, where $\omega$ is the allowed adult-pediatric difference. $w$ is the prior probability that extrapolation is valid.
+  c3: The vague component that takes over if the pediatric data disagree with the adult effect.

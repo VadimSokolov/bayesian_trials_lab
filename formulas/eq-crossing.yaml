@@ -1,0 +1,19 @@
+id: eq-crossing
+section: sec-evidence-twobars
+title: "Where the two bars cross"
+tex: "\\htmlClass{term c1}{n^\\ast} \\;=\\; \\htmlClass{term c2}{e^{z_\\alpha^2}} \\;=\\; \\htmlClass{term c3}{e^{3.84}} \\;\\approx\\; \\htmlClass{term c4}{46}."
+parts:
+  - "The "
+  - {k: c1, words: "sample size where the two bars cross"}
+  - " is "
+  - {k: c2, words: "the exponential of the squared critical value"}
+  - " which, for "
+  - {k: c3, words: "one-sided 0.025"}
+  - " gives "
+  - {k: c4, words: "about 46 units of the prior's information"}
+  - "."
+notes:
+  c1: "Below it the Bayes rule is more lenient than the fixed-level test; above it, stricter."
+  c2: "Found by setting $\\log n + C = z_\\alpha^2$ with $C = 0$."
+  c3: "$z_\\alpha^2 = 3.84$ at $\\alpha = 0.025$."
+  c4: "Once the data carry this much information relative to the prior, the point-null Bayes rule asks for more than the fixed-level test."

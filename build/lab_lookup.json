@@ -1,0 +1,514 @@
+{
+ "00-are-they-different": [
+  [
+   "randomization",
+   "Randomization"
+  ],
+  [
+   "p-value",
+   "P-value"
+  ],
+  [
+   "confidence-interval",
+   "Confidence interval"
+  ],
+  [
+   "z-test",
+   "z test"
+  ],
+  [
+   "confounding-by-indication",
+   "Confounding by indication"
+  ],
+  [
+   "sampling-distribution",
+   "Sampling distribution of a trial result"
+  ],
+  [
+   "counterfactual",
+   "Counterfactual"
+  ]
+ ],
+ "01-prior-posterior": [
+  [
+   "posterior-distribution",
+   "Posterior distribution"
+  ],
+  [
+   "beta-prior",
+   "Beta prior"
+  ],
+  [
+   "likelihood",
+   "Likelihood"
+  ],
+  [
+   "bayes-rule",
+   "Bayes' rule"
+  ],
+  [
+   "credible-interval",
+   "Credible interval"
+  ],
+  [
+   "conjugate-prior",
+   "Conjugate prior"
+  ],
+  [
+   "normal-approximation-posterior",
+   "Normal approximation to the posterior"
+  ]
+ ],
+ "02-p-values": [
+  [
+   "p-value",
+   "P-value"
+  ],
+  [
+   "asa-statement",
+   "ASA statement on p-values"
+  ],
+  [
+   "bayes-factor",
+   "Bayes factor"
+  ],
+  [
+   "posterior-probability-of-benefit",
+   "Posterior probability of benefit"
+  ],
+  [
+   "false-positive-risk",
+   "False positive risk"
+  ],
+  [
+   "minimum-bayes-factor",
+   "Minimum Bayes factor"
+  ]
+ ],
+ "03-errors-power": [
+  [
+   "type-i-error",
+   "Type I error"
+  ],
+  [
+   "power",
+   "Statistical power"
+  ],
+  [
+   "one-sided-test",
+   "One-sided test"
+  ],
+  [
+   "sample-size",
+   "Sample size"
+  ],
+  [
+   "design-alternative",
+   "Design alternative"
+  ],
+  [
+   "type-ii-error",
+   "Type II error"
+  ],
+  [
+   "power-curve",
+   "Power curve"
+  ]
+ ],
+ "04-multiplicity": [
+  [
+   "multiplicity",
+   "Multiplicity"
+  ],
+  [
+   "familywise-error-rate",
+   "Familywise error rate"
+  ],
+  [
+   "bonferroni-correction",
+   "Bonferroni correction"
+  ],
+  [
+   "fixed-sequence-testing",
+   "Fixed-sequence testing"
+  ],
+  [
+   "holm-procedure",
+   "Holm procedure"
+  ],
+  [
+   "closed-testing",
+   "Closed testing"
+  ],
+  [
+   "subgroup-analysis",
+   "Subgroup analysis"
+  ]
+ ],
+ "05-ulcer-trial": [
+  [
+   "shrinkage",
+   "Shrinkage"
+  ],
+  [
+   "empirical-bayes",
+   "Empirical Bayes"
+  ],
+  [
+   "four-operation-ulcer-trial",
+   "Four-operation ulcer trial"
+  ]
+ ],
+ "06-fair-comparisons": [
+  [
+   "randomization",
+   "Randomization"
+  ],
+  [
+   "permuted-block-randomization",
+   "Permuted block randomization"
+  ],
+  [
+   "blinding",
+   "Blinding"
+  ],
+  [
+   "allocation-concealment",
+   "Allocation concealment"
+  ],
+  [
+   "intention-to-treat",
+   "Intention to treat"
+  ],
+  [
+   "simple-randomization",
+   "Simple randomization"
+  ],
+  [
+   "estimand",
+   "Estimand"
+  ]
+ ],
+ "07-interim-looks": [
+  [
+   "interim-analysis",
+   "Interim analysis"
+  ],
+  [
+   "information-fraction",
+   "Information fraction"
+  ],
+  [
+   "group-sequential-design",
+   "Group sequential design"
+  ],
+  [
+   "predictive-probability-of-success",
+   "Predictive probability of success"
+  ],
+  [
+   "obrien-fleming-boundary",
+   "O'Brien-Fleming boundary"
+  ],
+  [
+   "spending-function",
+   "Lan-DeMets spending function"
+  ],
+  [
+   "pocock-boundary",
+   "Pocock boundary"
+  ]
+ ],
+ "08-e-values": [
+  [
+   "likelihood-ratio",
+   "Likelihood ratio"
+  ],
+  [
+   "e-value",
+   "E-value"
+  ],
+  [
+   "test-martingale",
+   "Test martingale"
+  ],
+  [
+   "villes-inequality",
+   "Ville's inequality"
+  ],
+  [
+   "anytime-valid-inference",
+   "Anytime-valid inference"
+  ],
+  [
+   "mixture-method",
+   "Mixture method"
+  ],
+  [
+   "select-reconstruction",
+   "SELECT reconstruction"
+  ]
+ ],
+ "09-adaptive-bayesian": [
+  [
+   "response-adaptive-randomization",
+   "Response-adaptive randomization"
+  ],
+  [
+   "hierarchical-model",
+   "Hierarchical model"
+  ],
+  [
+   "bayesian-borrowing",
+   "Bayesian borrowing"
+  ],
+  [
+   "operating-characteristics",
+   "Operating characteristics"
+  ],
+  [
+   "posterior-probability-success-criterion",
+   "Posterior probability success criterion"
+  ],
+  [
+   "calibration",
+   "Calibration of the success threshold"
+  ],
+  [
+   "power-prior",
+   "Power prior"
+  ]
+ ],
+ "10-platform-trials": [
+  [
+   "platform-trial",
+   "Platform trial"
+  ],
+  [
+   "concurrent-control",
+   "Concurrent control"
+  ],
+  [
+   "master-protocol",
+   "Master protocol"
+  ],
+  [
+   "multi-arm-multi-stage-design",
+   "Multi-arm multi-stage design"
+  ],
+  [
+   "shared-control-arithmetic",
+   "Shared-control arithmetic"
+  ],
+  [
+   "umbrella-trial",
+   "Umbrella trial"
+  ],
+  [
+   "multiplicity-across-arms",
+   "Multiplicity across arms"
+  ]
+ ],
+ "11-substantial-evidence": [
+  [
+   "substantial-evidence",
+   "Substantial evidence"
+  ],
+  [
+   "adequate-and-well-controlled-investigation",
+   "Adequate and well-controlled investigation"
+  ],
+  [
+   "one-trial-with-confirmatory-evidence",
+   "One trial with confirmatory evidence"
+  ],
+  [
+   "fda-substantial-evidence-draft-2026",
+   "FDA substantial-evidence draft guidance 2026"
+  ],
+  [
+   "special-protocol-assessment",
+   "Special Protocol Assessment"
+  ]
+ ],
+ "12-decisions": [
+  [
+   "clinical-trial",
+   "Clinical trial"
+  ],
+  [
+   "decision-theory",
+   "Decision theory"
+  ],
+  [
+   "bayesian-adaptive-design",
+   "Bayesian adaptive design"
+  ],
+  [
+   "trial-cost",
+   "Trial cost"
+  ],
+  [
+   "cardiovascular-outcomes-trial",
+   "Cardiovascular outcomes trial"
+  ],
+  [
+   "select-reconstruction",
+   "SELECT reconstruction"
+  ],
+  [
+   "acceleration-bound",
+   "Acceleration bound"
+  ]
+ ],
+ "13-regulators-map": [
+  [
+   "fda-meetings",
+   "FDA meetings"
+  ],
+  [
+   "requires-recommends-permits",
+   "Requires, recommends, permits"
+  ],
+  [
+   "fda",
+   "FDA"
+  ],
+  [
+   "cid-program",
+   "Complex innovative trial design program"
+  ],
+  [
+   "ema",
+   "EMA"
+  ],
+  [
+   "midd-program",
+   "MIDD paired meeting program"
+  ],
+  [
+   "cpim",
+   "Critical Path Innovation Meetings"
+  ]
+ ],
+ "14-simulator": [
+  [
+   "reproducibility",
+   "Reproducibility"
+  ],
+  [
+   "clinical-trial-simulation",
+   "Clinical trial simulation"
+  ],
+  [
+   "operating-characteristics",
+   "Operating characteristics"
+  ],
+  [
+   "posterior-probability-success-criterion",
+   "Posterior probability success criterion"
+  ],
+  [
+   "calibration",
+   "Calibration of the success threshold"
+  ],
+  [
+   "scenario-grid",
+   "Scenario grid"
+  ],
+  [
+   "expected-sample-size",
+   "Expected sample size"
+  ]
+ ],
+ "14-studio": [
+  [
+   "dose-finding",
+   "Dose finding"
+  ],
+  [
+   "maximum-tolerated-dose",
+   "Maximum tolerated dose"
+  ],
+  [
+   "three-plus-three-design",
+   "3+3 design"
+  ],
+  [
+   "response-adaptive-randomization",
+   "Response-adaptive randomization"
+  ],
+  [
+   "clinical-trial-simulation",
+   "Clinical trial simulation"
+  ],
+  [
+   "bayesian-protocol",
+   "Bayesian protocol"
+  ],
+  [
+   "boin-design",
+   "Bayesian optimal interval design"
+  ]
+ ],
+ "15-reading-bayesian-trials": [
+  [
+   "prespecification",
+   "Prespecification"
+  ],
+  [
+   "posterior-probability-of-benefit",
+   "Posterior probability of benefit"
+  ],
+  [
+   "bayesian-reanalysis",
+   "Bayesian reanalysis"
+  ],
+  [
+   "normal-approximation-posterior",
+   "Normal approximation to the posterior"
+  ],
+  [
+   "reanalysis-critics",
+   "Critiques of Bayesian reanalysis"
+  ],
+  [
+   "barg",
+   "Bayesian Analysis Reporting Guidelines"
+  ],
+  [
+   "eolia-trial",
+   "EOLIA"
+  ]
+ ],
+ "16-bayesian-protocol": [
+  [
+   "prior-distribution",
+   "Prior distribution"
+  ],
+  [
+   "bayesian-borrowing",
+   "Bayesian borrowing"
+  ],
+  [
+   "skeptical-prior",
+   "Skeptical prior"
+  ],
+  [
+   "bayesian-protocol",
+   "Bayesian protocol"
+  ],
+  [
+   "prespecification",
+   "Prespecification"
+  ],
+  [
+   "effective-sample-size",
+   "Effective sample size"
+  ],
+  [
+   "enthusiastic-prior",
+   "Enthusiastic prior"
+  ]
+ ]
+}

@@ -1,0 +1,19 @@
+id: eq-re-se
+section: sec-reanalyses-normal
+title: Standard error from a reported 95 percent interval
+tex: \htmlClass{term c1}{s} = \frac{\htmlClass{term c2}{\log u - \log \ell}}{\htmlClass{term c3}{2 \times 1.96}}.
+parts:
+- 'The '
+- k: c1
+  words: standard error on the log scale
+- ' is '
+- k: c2
+  words: the width of the reported interval on the log scale
+- ' divided by '
+- k: c3
+  words: twice the 95 percent normal quantile
+- .
+notes:
+  c1: Standard error of the estimate $\hat\theta$ on the log scale.
+  c2: $(\ell, u)$ is the reported 95 percent interval.
+  c3: A 95 percent interval spans about 1.96 standard errors on each side.

@@ -1,0 +1,16 @@
+id: eq-bayes-risk
+section: sec-evidence-bayesrisk
+title: "Bayes risk of a decision rule"
+tex: "\\htmlClass{term c1}{r(D)} \\;=\\; \\htmlClass{term c2}{\\pi_0\\,\\ell_1\\,\\alpha(D)} \\;+\\; \\htmlClass{term c3}{(1-\\pi_0)\\,\\ell_0 \\int \\beta_\\theta(D)\\, g(\\theta)\\, d\\theta} ."
+parts:
+  - "The "
+  - {k: c1, words: "Bayes risk of the rule"}
+  - " is "
+  - {k: c2, words: "the prior probability of a useless drug times the loss of approving it times the type I error"}
+  - " plus "
+  - {k: c3, words: "the prior probability of a useful drug times the loss of withholding it times the type II error averaged over plausible effects"}
+  - "."
+notes:
+  c1: "Expected loss over parameter and data; reporting only $\\alpha$ and $\\beta$ leaves out the weights (prior probability times loss)."
+  c2: "The cost of false approvals."
+  c3: "The cost of missed drugs."

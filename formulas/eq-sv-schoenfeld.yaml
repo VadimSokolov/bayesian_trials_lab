@@ -1,0 +1,19 @@
+id: eq-sv-schoenfeld
+section: sec-survival-traditional
+title: Required number of events
+tex: \htmlClass{term c1}{D} = \frac{\htmlClass{term c2}{4\,(z_{\alpha} + z_{\beta})^2}}{\htmlClass{term c3}{(\log \mathrm{HR})^2}}
+parts:
+- 'The '
+- k: c1
+  words: number of events needed
+- ' is '
+- k: c2
+  words: four times the squared sum of the normal quantiles for the level and the power
+- ', divided by '
+- k: c3
+  words: the squared log hazard ratio to be detected
+- .
+notes:
+  c1: Total events, from inverting the variance formula.
+  c2: One-sided level $\alpha$ and power $1-\beta$.
+  c3: Shrinks toward zero as the target hazard ratio nears one, so the required events grow fast.

@@ -1,0 +1,13 @@
+id: eq-testing-pvalue
+section: sec-testing-pvalue
+title: "Definition of the p-value"
+tex: "\\htmlClass{term c1}{p} \\;=\\; \\htmlClass{term c2}{\\mathbb{P}\\bigl(\\text{test statistic at least as favorable to the drug as the one observed} \\;\\bigm|\\; H_0 \\text{ true}\\bigr)} ,"
+parts:
+  - "The "
+  - {k: c1, words: "p-value"}
+  - " is "
+  - {k: c2, words: "the probability, over repetitions of the trial and if the drug does nothing, of a result at least as favorable to the drug as the one observed"}
+  - "."
+notes:
+  c1: "The share of rerun trials, under no effect, whose statistic is beyond the observed value."
+  c2: "Answers: if nothing is going on, how often would luck look this good? It is about the data given the hypothesis, not the probability of the hypothesis."

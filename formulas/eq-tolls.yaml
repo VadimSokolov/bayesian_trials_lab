@@ -1,0 +1,27 @@
+id: eq-tolls
+section: 11/the-three-tolls
+title: The three evidence tolls
+tex: |-
+  \begin{aligned}
+  &\text{fixed level } \alpha: && \htmlClass{term c1}{Z_n \ge z_\alpha},\\
+  &\text{Bayes, threshold } b: && \htmlClass{term c2}{Z_n^2 \ge \Bigl(1 + \tfrac{1}{q}\Bigr)\{\log(1+q) + 2\log b\}} \approx \htmlClass{term c3}{L_n + 2\log b},\\
+  &\text{anytime valid } \alpha: && \htmlClass{term c4}{Z_n^2 \ge \Bigl(1 + \tfrac{1}{q}\Bigr)\{\log(1+q) + 2\log(1/\alpha)\}} \approx \htmlClass{term c5}{L_n + 2\log(1/\alpha)}.
+  \end{aligned}
+parts:
+  - "A claim is made when, under a fixed level, "
+  - {k: c1, words: "the score reaches a constant"}
+  - ". Under Bayes with threshold $b$, "
+  - {k: c2, words: "the squared score clears an exact bar"}
+  - " which is about "
+  - {k: c3, words: "the Ockham penalty plus a threshold term"}
+  - ". Under an anytime-valid level, "
+  - {k: c4, words: "the squared score clears a higher exact bar"}
+  - " which is about "
+  - {k: c5, words: "the Ockham penalty plus a fixed surcharge of $2\\log(1/\\alpha)$"}
+  - "."
+notes:
+  c1: "The fixed-sample bar does not move with information."
+  c2: "Exact for the symmetric normal mixture, with $q=I_n\\tau^2$."
+  c3: "Large-information form ($q\\to\\infty$); rises with $\\log I_n$."
+  c4: "Exact for the normal mixture."
+  c5: "At $\\alpha = 0.025$ the extra $2\\log(1/\\alpha) = 7.38$ over the Bayes bar at $b = 1$, at large information; a property of this construction."

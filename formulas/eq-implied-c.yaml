@@ -1,0 +1,16 @@
+id: eq-implied-c
+section: sec-evidence-implied
+title: "Bayes factor threshold implied by a fixed-level test"
+tex: "\\htmlClass{term c1}{2\\log b_n} \\;=\\; \\htmlClass{term c2}{z_{\\mathrm{crit}}^2\\,\\frac{q}{1+q} - \\log(1+q)}, \\qquad\\text{so}\\qquad \\htmlClass{term c3}{b_n \\approx \\frac{e^{z_{\\mathrm{crit}}^2/2}}{\\sqrt{q}} \\to 0} ."
+parts:
+  - "The "
+  - {k: c1, words: "implied threshold on the log Bayes factor scale"}
+  - " is "
+  - {k: c2, words: "the Bayes factor expression evaluated at the critical value"}
+  - " so "
+  - {k: c3, words: "the implied threshold shrinks toward zero as the information grows"}
+  - "."
+notes:
+  c1: "The fixed-level test is exactly the Bayes rule with this threshold, where $q = I_n\\tau^2$."
+  c2: "The Bayes factor at the boundary of significance."
+  c3: "A regulator that holds $\\alpha$ fixed behaves as if the prior odds on the null, or the harm of a false approval, shrank toward zero as trials grow."

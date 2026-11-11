@@ -1,0 +1,16 @@
+id: eq-bayes-toll
+section: sec-evidence-twobars
+title: "The Bayes rule bar"
+tex: "\\htmlClass{term c1}{Z_n^2} \\;\\ge\\; \\htmlClass{term c2}{L_n} + \\htmlClass{term c3}{C}, \\qquad L_n \\sim \\log n, \\qquad C = 2\\log\\frac{\\pi_0}{\\pi_a}."
+parts:
+  - "The Bayes rule acts when "
+  - {k: c1, words: "the squared z statistic"}
+  - " reaches "
+  - {k: c2, words: "a bar that grows with the logarithm of the sample size"}
+  - " plus "
+  - {k: c3, words: "a constant set by the prior odds"}
+  - "."
+notes:
+  c1: "The evidence in the data, which the fixed-level test compares with a constant."
+  c2: "Unlike the fixed-level test, the bar is not constant."
+  c3: "Zero if null and alternative are equally probable, positive if the null is favored, negative if the alternative is favored."

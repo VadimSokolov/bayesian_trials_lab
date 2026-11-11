@@ -1,0 +1,16 @@
+id: eq-testing-ci
+section: sec-testing-ci
+title: "The 95% confidence interval"
+tex: "\\htmlClass{term c1}{\\hat\\theta} \\;\\pm\\; \\htmlClass{term c2}{1.96} \\times \\htmlClass{term c3}{\\mathrm{SE}(\\hat\\theta)} ."
+parts:
+  - "The 95% interval is "
+  - {k: c1, words: "the estimate"}
+  - " plus and minus "
+  - {k: c2, words: "1.96"}
+  - " times "
+  - {k: c3, words: "the standard error"}
+  - "."
+notes:
+  c1: "The observed effect, such as a risk difference."
+  c2: "The multiplier for 95% coverage of an approximately normal estimator."
+  c3: "How much the estimate would vary across repeated trials; it sets the width of the range of effects the data do not rule out."

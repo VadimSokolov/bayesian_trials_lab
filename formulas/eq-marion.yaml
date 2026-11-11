@@ -1,0 +1,23 @@
+id: eq-marion
+section: 15/what-the-predictive-probability-design-is-and-is-not
+title: Normal approximation to predictive probability
+tex: \htmlClass{term c1}{\mathrm{PP}} \approx \Phi\!\left(\frac{\htmlClass{term c2}{\Phi^{-1}(q_n)} - \htmlClass{term c3}{\Phi^{-1}(\eta)\sqrt{r}}}{\htmlClass{term c4}{\sqrt{1-r}}}\right),
+parts:
+- 'The '
+- k: c1
+  words: predictive probability
+- ' is approximately a normal probability of the gap between '
+- k: c2
+  words: the current posterior probability of superiority on the normal scale
+- ' and '
+- k: c3
+  words: the final threshold, scaled by the information fraction
+- ', divided by '
+- k: c4
+  words: the share of information still to come
+- .
+notes:
+  c1: Avoids the exact calculation in normal-approximation settings.
+  c2: $q_n$ is the current posterior probability of superiority.
+  c3: $\eta$ is the final threshold and $r$ the information fraction.
+  c4: Assumes a Gaussian posterior and test statistic.

@@ -1,0 +1,16 @@
+id: eq-lifecycle-be
+section: sec-lifecycle-be
+title: "Posterior probability of bioequivalence"
+tex: "\\htmlClass{term c1}{\\Pr\\bigl(\\log 0.80 < \\eta < \\log 1.25 \\mid d\\bigr)} = \\htmlClass{term c2}{F_{t_{n-1}}\\!\\left(\\frac{\\log 1.25 - \\bar d}{s/\\sqrt n}\\right)} - \\htmlClass{term c3}{F_{t_{n-1}}\\!\\left(\\frac{\\log 0.80 - \\bar d}{s/\\sqrt n}\\right)}."
+parts:
+  - "The "
+  - {k: c1, words: "posterior probability that the true log difference lies between log 0.80 and log 1.25"}
+  - " equals "
+  - {k: c2, words: "the posterior probability that it is below the upper limit"}
+  - " minus "
+  - {k: c3, words: "the posterior probability that it is below the lower limit"}
+  - "."
+notes:
+  c1: "The reported quantity: how likely it is, given the data, that the two products are equivalent."
+  c2: "The scaled t distribution function at the upper limit, using the sample mean and standard error of the within-subject differences."
+  c3: "The same distribution function at the lower limit; subtracting it leaves the mass between the limits."

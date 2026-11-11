@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Are they different? | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: look at two rows of results and decide if they are different, then re-randomize to see what chance alone does.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<style>
+.trow { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; }
+.pp { width: 18px; height: 22px; display: block; }
+.pp.yes { fill: #2D8B8B; stroke: none; }
+.pp.no { fill: none; stroke: #9AA3AE; stroke-width: 1.3; }
+.pp.dead { fill: #C8682B; stroke: none; }
+.pi { flex: none; display: block; line-height: 0; }
+.pi.fade { opacity: .25; }
+.trow.mid .pp, .trow.dense .pp { width: 12px; height: 15px; }
+.legend .pp { display: inline-block; width: 14px; height: 17px; vertical-align: middle; }
+.tile { width: 26px; height: 26px; border-radius: 6px; font: 700 14px/26px var(--mono); text-align: center; flex: none; }
+.tile.y { background: var(--teal-dark); color: #fff; }
+.tile.n { background: #E6E9ED; color: #5B6470; }
+.trow.mid .tile { width: 16px; height: 16px; font-size: 10px; line-height: 16px; border-radius: 4px; }
+.trow.dense .tile { width: 10px; height: 10px; font-size: 0; border-radius: 2px; }
+.rowwrap { display: grid; grid-template-columns: 7.5rem 1fr; gap: .6rem; align-items: center; margin: .55rem 0; }
+.rl { font-weight: 600; font-size: .95rem; line-height: 1.25; }
+.rl b { display: block; font-family: var(--mono); font-weight: 600; color: var(--teal-dark); font-size: .85rem; }
+.block { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: .9rem 1rem; margin: 1rem 0; }
+.block h3 { font-size: .8rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-tertiary); margin: 0 0 .4rem; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.verdict { margin-top: .75rem; font-weight: 600; }
+.verdict.ok { color: var(--good); }
+.verdict.no { color: var(--bad); }
+.legend { font-size: .85rem; color: var(--text-secondary); margin: .3rem 0 0; }
+.legend .tile { display: inline-block; width: 18px; height: 18px; font-size: 11px; line-height: 18px; vertical-align: middle; border-radius: 4px; }
+.pillrow { display: flex; flex-wrap: wrap; gap: .4rem; margin: .4rem 0; }
+.btn[aria-pressed=true] { background: var(--teal-light); box-shadow: inset 0 0 0 1px var(--teal-dark); }
+.excard { background: var(--white); border: 1px solid var(--border); border-left: 5px solid var(--teal-dark); border-radius: 12px; padding: 1rem 1.1rem; }
+.excard h3 { font-size: 1.05rem; margin: 0 0 .25rem; }
+.excard .badge { font-size: .75rem; font-weight: 600; border-radius: 999px; padding: .1rem .6rem; background: var(--bg-alt); color: var(--text-secondary); }
+.excard .badge.real { background: var(--teal-dark); color: #fff; }
+.excard .btn { margin-top: .6rem; }
+.namebox { background: var(--teal-light); border: 1.5px dashed var(--teal-dark); border-radius: 10px; padding: .8rem 1rem; margin-top: 1rem; color: var(--navy); }
+.takeaway .namebox { background: rgba(255,255,255,.1); border-color: #8fd0d0; color: #fff; }
+.takeaway .namebox p { margin: 0; }
+@media (max-width: 800px) { .two { grid-template-columns: 1fr; } .rowwrap { grid-template-columns: 5.5rem 1fr; } }
+.arcs { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: .5rem 0; }
+.arcs .cell { text-align: center; }
+.circ { width: 260px; height: 260px; max-width: 100%; }
+.arcs .cell svg { width: 260px; height: 260px; max-width: 100%; }
+#arMine { cursor: crosshair; }
+#exbtns .lbl { font-size: .85rem; color: var(--text-tertiary); align-self: center; margin-right: .25rem; }
+.bridge { text-align: center; font-weight: 600; margin: 1.5rem 0; }
+#plotAr,#plotMine { width: 100%; }
+.strips { display: flex; flex-wrap: wrap; gap: .7rem 1.4rem; margin: .5rem 0; }
+.cluster .cl { font-size: .85rem; font-weight: 600; margin-bottom: .25rem; }
+.pcol { display: flex; flex-direction: column; gap: 2px; flex: none; }
+.pcol .tile.fade { opacity: .28; }
+.pcol.focus { outline: 2px solid var(--navy); outline-offset: 2px; border-radius: 4px; }
+.cwrap { display: flex; gap: 6px; align-items: flex-start; }
+.rlab { display: flex; flex-direction: column; gap: 2px; font-size: .7rem; color: var(--text-tertiary); text-align: right; }
+.rlab span { height: 22px; line-height: 22px; white-space: nowrap; }
+.rlab.dense span { height: 15px; line-height: 15px; font-size: .6rem; }
+.pcol .tile.seen { box-shadow: 0 0 0 1px var(--navy); }
+.striphead { font-size: .85rem; color: var(--text-secondary); margin: .6rem 0 0; }
+.coin { position: absolute; right: 12px; top: 8px; width: 26px; height: 26px; border-radius: 50%; background: #F3D9A4; border: 2px solid #B8861F; color: #6b4a08; font: 600 12px/22px var(--sans); text-align: center; opacity: 0; pointer-events: none; }
+.plotbox { position: relative; }
+.dealing .coin { animation: coinflip .8s ease-in-out both; }
+.dealing #gA .pi { animation: dealA .5s ease-out both; animation-delay: calc(var(--i) * 8ms); }
+.dealing #gB .pi { animation: dealB .5s ease-out both; animation-delay: calc(var(--i) * 8ms); }
+@keyframes coinflip { 0% { opacity: 1; transform: rotateY(0); } 70% { opacity: 1; transform: rotateY(720deg); } 100% { opacity: 0; transform: rotateY(720deg); } }
+@keyframes dealA { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes dealB { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .dealing .coin, .dealing #gA .pi, .dealing #gB .pi { animation: none; } }
+/* Randomization (scoped) */
+#why-coin .legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .85rem; color: var(--text-secondary); margin: .3rem 0; }
+#why-coin .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: .3rem; }
+#why-coin .legend .pp { display: inline-block; width: 18px; height: 22px; vertical-align: middle; }
+#why-coin #cfIcons, #why-coin #sbBars, #why-coin .mini svg { width: 100%; height: auto; display: block; }
+#why-coin svg text { font-family: var(--sans); font-size: 12px; fill: var(--text-secondary); }
+#why-coin svg .big { font-size: 13px; font-weight: 600; fill: var(--navy); }
+#why-coin .mini { margin-top: .8rem; border-top: 1px dashed var(--border-strong); padding-top: .6rem; }
+#why-coin .mini svg text { font-size: 11px; }
+#why-coin .mini .cap, #why-coin .cap { font-size: .8rem; color: var(--text-tertiary); margin: .2rem 0 0; }
+#why-coin .src { font-size: .85rem; color: var(--text-tertiary); }
+#why-coin .deal { position: relative; max-width: 600px; margin: .6rem auto 0; height: 100px; }
+#why-coin .deal .blk { position: absolute; top: 0; bottom: 0; border: 1.5px dashed var(--border-strong); border-radius: 10px; }
+#why-coin .deal .bl { position: absolute; left: 8px; top: 4px; font-size: .8rem; font-weight: 600; color: var(--text-secondary); }
+#why-coin .deal .dp { position: absolute; left: 0; top: 0; width: 12px; height: 15px; line-height: 0; }
+#why-coin .deal .dp svg { width: 12px; height: 15px; display: block; }
+#why-coin .deal .dcoin { position: absolute; left: 50%; top: 2px; margin-left: -14px; width: 28px; height: 28px; border-radius: 50%; background: #F3D9A4; border: 2px solid #B8861F; color: #6b4a08; font: 600 13px/24px var(--sans); text-align: center; }
+#why-coin .deal .dcoin.spin { animation: cspin .45s ease-in-out; }
+@keyframes cspin { from { transform: rotateY(0); } to { transform: rotateY(900deg); } }
+@media (prefers-reduced-motion: reduce) { #why-coin .deal .dcoin.spin { animation: none; } }
+#why-coin .bal { display: table; width: 100%; border-collapse: collapse; margin: .5rem 0; font-size: .95rem; }
+#why-coin .bal th, #why-coin .bal td { padding: .35rem .5rem; border-bottom: 1px solid var(--border); text-align: right; }
+#why-coin .bal th:first-child, #why-coin .bal td:first-child { text-align: left; }
+#why-coin .bal td.sym { text-align: center; font-weight: 600; font-size: 1.1rem; }
+#why-coin .bal td.ok { color: var(--teal-dark); } #why-coin .bal td.bad { color: #B8531A; }
+@media (max-width: 800px) { #why-coin #sbBars text { font-size: 14.5px; } #why-coin .bal { font-size: .85rem; } #why-coin .bal th, #why-coin .bal td { padding: .3rem .25rem; } #why-coin .deal .bl { font-size: .72rem; } #why-coin .mini svg text { font-size: 15px; } }
+</style>
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+</head>
+<body class="lab">
+<a class="skip" href="#arnold">Skip to the first activity</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">0. Are they different?</span>
+  <span class="pn"><a href="index.html">Index</a><a href="01-prior-posterior.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 0</div>
+  <h1>Are they different?</h1>
+  <p class="hook">Does the drug group really differ from the placebo group, or is it luck?</p>
+</section>
+
+<section class="section" id="arnold">
+  <p>Each set is 15 points on a circle. Real random points leave big and small gaps; made-up points are too even.</p>
+  <div class="block">
+    <div class="arcs" id="arSets"></div>
+    <p class="legend">One circle has truly random points. Which?</p>
+    <div class="pillrow"><button class="btn" id="arNew" type="button">New random set</button></div>
+    <div id="arOut" aria-live="polite" hidden>
+      <div class="verdict" id="arVerdict"></div>
+      <p class="note">The rule-made sets are too evenly spaced.</p>
+    </div>
+  </div>
+  <div class="block">
+    <h3>Your turn: can you make up random numbers?</h3>
+    <p>Click 15 points on the circle, as randomly as you can.</p>
+    <div class="arcs"><svg id="arMine" class="circ" tabindex="0" role="img" aria-label="Empty circle: click to place points"></svg></div>
+    <div class="pillrow">
+      <button class="btn" id="arRand" type="button">Place a point at a random spot</button>
+      <button class="btn" id="arReset" type="button">Clear</button>
+    </div>
+    <div id="arMineOut" aria-live="polite" hidden>
+      <div class="chips" id="arMineChip"></div>
+    </div>
+    <details class="code"><summary>Optional: how the gap score works (you can skip this)</summary>
+      <div style="padding:0 1rem 1rem">
+        <p>Walk around the circle and measure each gap between neighboring points, as a share of the whole circle. Square each gap, add them up, and multiply by the number of points: \(s = T \sum (\text{gap}/L)^2\), with \(T = 15\) points and \(L = 100\) the circle's length.</p>
+        <p>Perfectly even points have every gap equal to 1/15, so \(s = 1\). All points at one spot leave one gap equal to the whole circle, so \(s = 15\).</p>
+        <p>Random points score \(2T/(T+1) = 1.875\) on average, and most land between 1.4 and 2.6.</p>
+        <div class="plotbox"><svg id="plotMine"></svg><p class="note" style="margin:.5rem 0 0">Scores of 10,000 random sets. Yours is marked.</p></div>
+      </div>
+    </details>
+  </div>
+  <p class="note">Idea from V. I. Arnold, <a href="https://old.mccme.ru/free-books/arnold/VIA-eulergroups.pdf" target="_blank" rel="noopener">Euler Groups and Arithmetics of Geometric Progressions, paragraph 9</a>.</p>
+</section>
+
+
+<section class="section" id="game">
+  <h2>Same or different?</h2>
+  <p>Each round is a small trial of a drug against a placebo (a dummy pill). The drug's true response rate (the share of all patients it would help) is hidden; in half the trials it equals the placebo's.</p>
+  <div class="labgrid" id="lab" aria-label="Same or different trials">
+    <div class="panel">
+      <h3>1. Patients per group</h3>
+      <div class="row" id="nBtns" role="group" aria-label="Sample size"></div>
+      <h3>2. Your call</h3>
+      <div class="row">
+        <button class="btn primary" id="gSame" type="button">Same</button>
+        <button class="btn primary" id="gDiff" type="button">Different</button>
+      </div>
+      <div class="row" style="margin-top:.5rem"><button class="btn" id="gNext" type="button" disabled>Next round</button></div>
+    </div>
+    <div>
+      <div class="plotbox" id="gBox">
+        <div class="rowwrap"><div class="rl"><span id="lblA">Drug</span><b id="cntA"></b></div><div id="gA" role="img"></div></div>
+        <div class="rowwrap"><div class="rl"><span id="lblB">Placebo</span><b id="cntB"></b></div><div id="gB" role="img"></div></div>
+        <p class="legend"><svg class="pp yes" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> filled = improved &nbsp; <svg class="pp no" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> outline = did not.</p>
+        <div id="gOut" aria-live="polite" hidden>
+          <div class="verdict" id="gVerdict"></div>
+          <p class="legend" id="gStripLegend"><span class="pi"><svg class="pp yes" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg></span> bright = what the trial recorded &nbsp; <span class="pi fade"><svg class="pp yes" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg></span> pale = what would have happened on the other treatment</p>
+          <p class="striphead" id="gStripHead"></p>
+          <p class="striphead" id="gStripHead2"></p>
+          <div class="strips" id="gStrips" role="img"></div>
+          <p class="legend" id="gStripNote"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why-coin">
+  <h2>Randomization</h2>
+  <p>In physics, if you repeat an experiment the same way, you get almost the same result. So if you change one thing and the result changes, that change caused it.</p>
+  <p>Patients are not like that. Two patients on the same drug can do very differently, because of health, age, habits and things we cannot control.</p>
+  <p>Sicker patients tend to do worse no matter what they take. If more of them end up on placebo, the placebo group does worse because of who is in it, and the drug looks better even if it does nothing.</p>
+  <p>So we flip a coin for each patient: heads gets the drug, tails gets placebo. Then healthy and sick patients end up in both groups in about the same numbers. The coin also splits things we never measured, like sleep or diet. What is left is luck, and the randomization test below shows how big luck can be.</p>
+  <p class="note">Idea from D. R. Cox, <i>Planning of Experiments</i> (1958).</p>
+  <p>Each column is one of 40 patients: top icon = result on the drug, bottom = on placebo.</p>
+  <p>The colored bar is each patient's health at the start: orange sicker, teal healthier.</p>
+  <p><b>Who decides who gets the drug? Try both.</b> When patients choose, healthier ones tend to pick the drug. Watch how far the trial's answer lands from the true effect.</p>
+  <div class="row" id="cfMode" role="group" aria-label="Who decides">
+    <button class="btn prior" type="button" data-m="choose">Patients choose</button>
+    <button class="btn" type="button" data-m="coin">Coin decides</button>
+  </div>
+  <div class="field"><label for="cfEff">Drug raises each patient's chance of improving by: <b id="cfEffv"></b></label></div>
+  <div class="field"><input id="cfEff" type="range" min="0" max="20" step="1" value="10"></div>
+  <div class="row"><button class="btn primary" id="cfAgain" type="button">New assignment, same patients</button><button class="btn" id="cfNew" type="button">New patients</button><button class="btn primary" id="cfRun" type="button">Repeat this trial 500 times</button></div>
+  <div class="legend"><span><svg class="pp" viewBox="0 0 16 20" aria-hidden="true" style="fill:#2D8B8B"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> improved</span><span><svg class="pp" viewBox="0 0 16 20" aria-hidden="true" style="fill:none;stroke:#9AA3AE;stroke-width:1.3"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> did not improve</span><span><svg class="pp" viewBox="0 0 16 20" aria-hidden="true" style="fill:#2D8B8B;opacity:.25"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> faded = not seen by the trial</span></div>
+  <div class="deal" id="cfDeal" role="img" aria-label="Forty patients sorted into a drug block and a placebo block"></div>
+  <svg id="cfIcons" style="max-width:600px;margin:0 auto" role="img" aria-label="Forty patients, each shown twice as a person icon: outcome on the drug and outcome off the drug"></svg>
+  <div class="chips" aria-live="polite" id="cfChips"></div>
+  <p class="note" id="cfNote"></p>
+  <h3 style="margin-top:1.2rem">Why the gap is not the drug</h3>
+  <p>The gap you see is the drug's effect on the people who took it, plus how different the groups already were.</p>
+  <svg id="sbBars" viewBox="0 0 540 250" style="max-width:600px;margin:0 auto" role="img" aria-label="Three bars: drug group observed, the same drug group had it skipped the drug, placebo group observed"></svg>
+  <div class="chips" aria-live="polite" id="sbChips"></div>
+  <p class="note" id="sbNote"></p>
+  <h3 style="margin-top:1.2rem">Do the groups match?</h3>
+  <p>A fair comparison needs groups alike before the drug, including in what nobody measured.</p>
+  <table class="bal" id="balTab"><caption class="src" style="text-align:left;caption-side:top">Average per group</caption><thead><tr><th scope="col">Trait</th><th scope="col">Drug</th><th scope="col">Placebo</th><th scope="col">Match?</th></tr></thead><tbody id="balBody"></tbody></table>
+  <div class="row"><button class="btn" id="balRev" type="button" aria-pressed="false">Reveal hidden trait</button></div>
+  <p class="note" id="balNote"></p>
+  <div id="cfHist"></div>
+  <div class="qcards" id="cfCards"></div>
+</section>
+
+<section class="section" id="shuffle">
+  <h2>The randomization test</h2>
+  <p>In a trial, a coin flip decides who gets the drug. Suppose the drug does nothing, so each patient's result stays fixed. Re-randomizing flips the coins again and asks how big a gap luck makes.</p>
+  <div class="pillrow" id="exbtns" role="group" aria-label="Load an example"><span class="lbl">Load an example:</span></div>
+  <p class="note" id="srcLine"></p>
+  <div class="block">
+    <h3 id="s3title">Observed</h3>
+    <div id="obsBox"></div>
+    <div class="pillrow">
+      <button class="btn primary" id="b1" type="button">Re-randomize once</button>
+      <button class="btn primary" id="b1000" type="button">Re-randomize 1,000 times</button>
+      <button class="btn" id="bReset" type="button">Reset</button>
+      <button class="btn" id="bGame" type="button">Use your last trial above</button>
+    </div>
+    <h3 style="margin-top:.8rem" id="shufTitle">After re-randomizing</h3>
+    <div id="shufBox" style="min-height:60px"><p class="note">Press "Re-randomize once".</p></div>
+  </div>
+  <div class="plotbox"><svg id="plot3"></svg>
+    <div class="chips" aria-live="polite" id="chips3"></div>
+    <p class="note" id="note3" style="margin:.5rem 0 0"></p></div>
+</section>
+
+<section class="section">
+  <h2>Predict, then check</h2>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="section" id="examplesec">
+  <h2>Examples</h2>
+  <p>Each card re-randomizes 2,000 times in simulation. Orange bars are gaps at least as big as the real one.</p>
+  <div class="qcards" id="excards"></div>
+</section>
+
+<div id="code"></div>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>Chance makes differences too.</li>
+    <li>A test asks: is the gap bigger than chance usually makes?</li>
+    <li>Small trials fool everyone. Big trials let real gaps stand out.</li>
+  </ul>
+  <div class="namebox"><p>This is why trials randomize: the coin flip itself tells us what gaps chance makes. The share of re-randomizations with a gap at least as big as the real one is the p-value.</p></div>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/randomization">Randomization</a>, <a href="encyclopedia/#/e/p-value">P-value</a>, <a href="encyclopedia/#/e/confidence-interval">Confidence interval</a>, <a href="encyclopedia/#/e/z-test">z test</a>, <a href="encyclopedia/#/e/confounding-by-indication">Confounding by indication</a>, <a href="encyclopedia/#/e/sampling-distribution">Sampling distribution of a trial result</a>, <a href="encyclopedia/#/e/counterfactual">Counterfactual</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Sources</strong>
+  <ul>
+    <li>Arnold, V. I. <a href="https://old.mccme.ru/free-books/arnold/VIA-eulergroups.pdf">Euler Groups and Arithmetics of Geometric Progressions</a>, paragraph 9.</li>
+    <li>Novick, M. R. and Grizzle, J. E. (1965). A Bayesian approach to the analysis of data from clinical trials. Journal of the American Statistical Association 60, 81-96.</li>
+    <li>Cox, D. R. (1958). <i>Planning of Experiments</i>. Wiley.</li>
+    <li>Angrist, J. D. and Pischke, J.-S. (2009). Mostly Harmless Econometrics: An Empiricist's Companion. Princeton University Press (selection bias and the treated-versus-untreated decomposition, chapter 3).</li>
+    <li>Rossouw, J. E. et al. (2002). Risks and benefits of estrogen plus progestin in healthy postmenopausal women (Women's Health Initiative). JAMA 288, 321-333.</li>
+    <li>Bartlett, R. H. et al. (1985). Extracorporeal circulation in neonatal respiratory failure: a prospective randomized study. Pediatrics 76, 479-487. As cited in Sokolova, Sokolov and Polson (2026), arXiv:2602.09208.</li>
+    <li>Butler, C. C. et al. (2023). Molnupiravir plus usual care versus usual care alone as early treatment for adults with COVID-19 at increased risk of adverse outcomes (PANORAMIC). The Lancet 401, 281 to 293. <a href="https://doi.org/10.1016/S0140-6736(22)02597-1">doi:10.1016/S0140-6736(22)02597-1</a></li>
+    <li>RECOVERY Collaborative Group (2021). Dexamethasone in hospitalized patients with Covid-19. New England Journal of Medicine. <a href="https://doi.org/10.1056/NEJMoa2021436">doi:10.1056/NEJMoa2021436</a></li>
+  </ul>
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>, chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/03-testing.html">4</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/04-randomization.html">5</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/06-evidence.html">7</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570. Chapters at <a href="https://vsokolov.org/clinical_trials_in_practice/">vsokolov.org/clinical_trials_in_practice</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', OR = '#E07A3F', NAVY = '#0A1628';
+  var rng = Lab.rng(603);
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function chip(t, v, warm) { return '<span class="chip' + (warm ? ' warm' : '') + '">' + t + ' <b>' + v + '</b></span>'; }
+  function pct(x, d) { return (100 * x).toFixed(d == null ? 0 : d) + '%'; }
+  function fmtGap(g) { return Number.isInteger(g) ? String(g) : g.toFixed(1); }
+  function nice(top) { return Math.min(100, Math.max(5, Math.ceil(top * 1.2 / 5) * 5)); }
+
+  // Draw a row of tiles (1 = success glyph, 0 = failure glyph) into box.
+  function tiles(box, arr, yes, no, aria) {
+    box.innerHTML = '';
+    box.className = 'trow' + (arr.length > 60 ? ' dense' : arr.length > 32 ? ' mid' : '');
+    if (aria) box.setAttribute('aria-label', aria);
+    arr.forEach(function (v) { var s = el('span', 'pi'); s.innerHTML = ico(v, yes === '!'); s.setAttribute('aria-hidden', 'true'); box.appendChild(s); });
+  }
+  // Person icon: filled teal = yes, outline = no; in death rows (dead = true) value 1 is orange.
+  function ico(v, dead) { return '<svg class="pp ' + (v ? (dead ? 'dead' : 'yes') : 'no') + '" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>'; }
+  function sum(a) { var s = 0; a.forEach(function (x) { s += x; }); return s; }
+  function arrOf(n, k) { var a = [], i; for (i = 0; i < n; i++) a.push(i < k ? 1 : 0); return a; }
+  function addRow(box, name, sub, arr, yes, no) {
+    var rw = el('div', 'rowwrap'), lab = el('div', 'rl', name), tl = el('div');
+    if (sub) lab.appendChild(el('b', '', sub));
+    rw.appendChild(lab); rw.appendChild(tl); box.appendChild(rw);
+    tiles(tl, arr, yes, no, name + ': ' + sum(arr) + ' of ' + arr.length);
+  }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(rng() * (i + 1)), x = a[i]; a[i] = a[j]; a[j] = x; } }
+
+  /* ---------- Rates and best rule ---------- */
+  var NS = [10, 20, 50];
+  // Secretly pick two rates: same half the time, else 15 to 35 points apart.
+  function drawRates(r) {
+    var same = r() < 0.5, pa = 0.2 + 0.6 * r(), pb, d, up, dn;
+    if (same) pb = pa; else { d = 0.15 + 0.2 * r(); up = pa + d <= 0.95; dn = pa - d >= 0.05; pb = up && (!dn || r() < 0.5) ? pa + d : pa - d; }
+    return { pa: pa, pb: pb, same: same };
+  }
+  /* ---------- 2. Game ---------- */
+    var G = { n: 10, round: null, done: false, stats: {} };
+  NS.forEach(function (n) { G.stats[n] = { r: 0, t: 0 }; });
+  function gNames() { return ['Drug', 'Placebo']; }
+  // Short coin flip, then patients slide into the two rows (skipped for reduced motion via CSS).
+  function dealAnim() {
+    var box = $('gBox'); ['gA', 'gB'].forEach(function (id) { Array.prototype.forEach.call($(id).children, function (c, k) { c.style.setProperty('--i', k); }); });
+    box.classList.remove('dealing'); void box.offsetWidth; box.classList.add('dealing');
+    setTimeout(function () { box.classList.remove('dealing'); }, 1000);
+  }
+  function newRound() {
+    var q = drawRates(rng), n = G.n, a = [], b = [], i, dr = [], pl = [], idx = [];
+    // Every patient has two hidden outcomes. If the drug does nothing, they match.
+    for (i = 0; i < 2 * n; i++) { dr.push(rng() < q.pa ? 1 : 0); pl.push(q.same ? dr[i] : (rng() < q.pb ? 1 : 0)); idx.push(i); }
+    shuffle(idx); // the coin: first n patients get the drug, the rest placebo
+    var iD = idx.slice(0, n), iP = idx.slice(n);
+    iD.forEach(function (j) { a.push(dr[j]); }); iP.forEach(function (j) { b.push(pl[j]); });
+    G.round = { q: q, a: a, b: b, dr: dr, pl: pl, iD: iD, iP: iP }; G.done = false;
+    showRound(); dealAnim(); $('gOut').hidden = true; $('gSame').disabled = false; $('gDiff').disabled = false; $('gNext').disabled = true;
+    readout();
+  }
+  function showRound() {
+    var r = G.round, nm = gNames();
+    $('lblA').textContent = nm[0]; $('lblB').textContent = nm[1];
+    $('cntA').textContent = sum(r.a) + ' of ' + r.a.length; $('cntB').textContent = sum(r.b) + ' of ' + r.b.length;
+    tiles($('gA'), r.a, '✓', '✕', nm[0] + ': ' + sum(r.a) + ' of ' + r.a.length + ' worked');
+    tiles($('gB'), r.b, '✓', '✕', nm[1] + ': ' + sum(r.b) + ' of ' + r.b.length + ' worked');
+  }
+  // Ground truth: one column per patient, top icon = on drug, bottom icon = on placebo. The icon the trial saw is bright.
+  function drawStrips(r) {
+    var box = $('gStrips'), n = r.a.length, cls = n > 32 ? 'dense' : '';
+    box.innerHTML = '';
+    var order = r.iD.concat(r.iP), diff = order.filter(function (j) { return r.dr[j] !== r.pl[j]; }), foc = diff.length ? diff[Math.floor(rng() * diff.length)] : order[Math.floor(rng() * order.length)];
+    function cluster(title, ids, drugSeen) {
+      var c = el('div', 'cluster'), wrap = el('div', 'cwrap'), lab = el('div', 'rlab ' + cls), row = el('div', 'trow ' + cls);
+      c.appendChild(el('div', 'cl', title));
+      lab.appendChild(el('span', '', 'on drug')); lab.appendChild(el('span', '', 'on placebo'));
+      wrap.appendChild(lab);
+      ids.forEach(function (j) {
+        var col = el('div', 'pcol' + (j === foc ? ' focus' : '')), t1 = r.dr[j], t2 = r.pl[j];
+        [[t1, drugSeen], [t2, !drugSeen]].forEach(function (x) {
+          var t = el('span', 'pi' + (x[1] ? '' : ' fade')); t.innerHTML = ico(x[0], false); t.setAttribute('aria-hidden', 'true'); col.appendChild(t);
+        });
+        row.appendChild(col);
+      });
+      wrap.appendChild(row); c.appendChild(wrap); box.appendChild(c);
+    }
+    cluster('Coin sent to Drug (top icon recorded)', r.iD, true);
+    cluster('Coin sent to Placebo (bottom icon recorded)', r.iP, false);
+    var fn = order.indexOf(foc) + 1, onDrug = r.iD.indexOf(foc) >= 0, seenV = onDrug ? r.dr[foc] : r.pl[foc], otherV = onDrug ? r.pl[foc] : r.dr[foc];
+    if (diff.length) {
+      $('gStripHead').textContent = 'Patient ' + fn + ' (marked) got ' + (onDrug ? 'the drug' : 'placebo') + ' and ' + (seenV ? 'improved' : 'did not improve') + '; on ' + (onDrug ? 'placebo' : 'the drug') + ' they would ' + (otherV ? 'have.' : 'not have.');
+      $('gStripHead2').textContent = 'The trial never sees the pale icon.';
+    } else {
+      box.querySelectorAll('.pcol.focus').forEach(function (c) { c.classList.remove('focus'); });
+      $('gStripHead').textContent = r.q.same ? 'Here the drug does nothing: every patient would do the same on either treatment.' : 'Every patient would have had the same result on either treatment.';
+      $('gStripHead2').textContent = 'The trial never sees the pale icons.';
+    }
+    var td = sum(r.dr), tp = sum(r.pl), N = 2 * n;
+    box.setAttribute('aria-label', 'Ground truth for ' + N + ' patients, each with an outcome on the drug and on placebo. On the drug ' + td + ' of ' + N + ' improve, on placebo ' + tp + ' of ' + N + '.');
+    $('gStripNote').textContent = 'If all ' + N + ' got the drug, ' + td + ' would improve; on placebo, ' + tp + '.' + (r.q.same ? ' The drug changes nobody, so both icons always match.' : '');
+  }
+  function readout() {
+    var s = G.stats[G.n], tot = 0;
+    NS.forEach(function (n) { tot += G.stats[n].t; });
+    
+  }
+  function gGuess(sayDiff) {
+    if (G.done) return; G.done = true;
+    var r = G.round, q = r.q, ok = sayDiff === !q.same, s = G.stats[G.n], nm = gNames();
+    s.t++; if (ok) s.r++;
+    $('gSame').disabled = true; $('gDiff').disabled = true; $('gNext').disabled = false;
+    var ka = sum(r.a), kb = sum(r.b), n = r.a.length, gap = Math.abs(ka - kb) / n;
+    var seen = 'The groups showed ' + ka + ' of ' + n + ' and ' + kb + ' of ' + n + '.';
+    var truth = q.same ? 'The drug and the placebo had the same true response rate, ' + pct(q.pa) + '.' : 'True response rates: ' + nm[0] + ' ' + pct(q.pa) + ', ' + nm[1] + ' ' + pct(q.pb) + '.';
+    var fair = !ok && ((!q.same && gap < 0.15) || (q.same && gap >= 0.15));
+    var v = $('gVerdict'); v.className = 'verdict ' + (ok ? 'ok' : fair ? '' : 'no');
+    var msg;
+    if (ok) msg = 'Right. ' + truth;
+    else if (fair && !q.same) msg = 'Wrong, but understandable. ' + truth + ' ' + seen + ' With only ' + n + ' per group, a real difference can hide.';
+    else if (fair) msg = 'Wrong, but understandable. ' + truth + ' ' + seen + ' Luck alone made that gap.';
+    else msg = 'Not this time. ' + truth + ' ' + seen;
+    v.textContent = msg;
+    $('gOut').hidden = false;
+    drawStrips(r);
+    readout();
+    $('gNext').focus();
+  }
+  NS.forEach(function (n) {
+    var b = el('button', 'btn', String(n)); b.type = 'button'; b.setAttribute('aria-pressed', n === G.n ? 'true' : 'false');
+    b.addEventListener('click', function () {
+      G.n = n; document.querySelectorAll('#nBtns .btn').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      newRound();
+    });
+    $('nBtns').appendChild(b);
+  });
+  $('gSame').addEventListener('click', function () { gGuess(false); });
+  $('gDiff').addEventListener('click', function () { gGuess(true); });
+  $('gNext').addEventListener('click', newRound);
+
+  /* ---------- Permutation helpers ---------- */
+  // A preset: names, nA and nB (group sizes), m (bins for the gap), k = [successes A, successes B].
+  function mk(n, ka, kb) { return { nA: n, nB: n, m: n, k: [ka, kb] }; }
+  function P(o) { o.nA = o.nA || o.n; o.nB = o.nB || o.n; o.m = o.m || o.nA; return o; }
+  // Re-dealing fixed outcomes without replacement: of K events among N patients, how many land in the first nA (fast: one step per event).
+  function hyperA(r, N, K, nA) { var a = 0, i; for (i = 0; i < K; i++) if (r() < (nA - a) / (N - i)) a++; return a; }
+  // Optional preset fields: unit (gap scale, default 100 = points), bw (bin width in gap units), gunit (gap label), deathsOnly (re-randomize only the deaths).
+  function bwOf(pre) { return pre.bw || 100 / pre.m; }
+  function gapVal(pre, a, b) { return Math.abs(a / pre.nA - b / pre.nB) * (pre.unit || 100); }
+  function gunit(pre) { return pre.gunit || ' points'; }
+  function binBin(pre, a, b) { return pre.bw ? Math.min(pre.m, Math.round(gapVal(pre, a, b) / pre.bw)) : Math.round(Math.abs(a / pre.nA - b / pre.nB) * pre.m); }
+  function obsBin(pre) { return binBin(pre, pre.k[0], pre.k[1]); }
+  function gapPts(pre) { return gapVal(pre, pre.k[0], pre.k[1]); }
+  function makePool(pre) { if (pre.nA + pre.nB > 5000) return null; return arrOf(pre.nA, pre.k[0]).concat(arrOf(pre.nB, pre.k[1])); }
+  var LASTK = [0, 0], LASTTAIL = false;
+  // One re-dealing: shuffle the pool, or (large groups) draw both counts from the pooled rate.
+  function drawGap(pre, pool) {
+    var a = 0, b = 0, i;
+    if (pre.deathsOnly) { var tot = pre.k[0] + pre.k[1], pa = pre.nA / (pre.nA + pre.nB); for (i = 0; i < tot; i++) if (rng() < pa) a++; b = tot - a; }
+    else if (pre.binom) { var K = pre.k[0] + pre.k[1]; a = hyperA(rng, pre.nA + pre.nB, K, pre.nA); b = K - a; }
+    else { shuffle(pool); for (i = 0; i < pre.nA; i++) a += pool[i]; for (; i < pool.length; i++) b += pool[i]; }
+    LASTK = [a, b]; LASTTAIL = gapVal(pre, a, b) >= gapPts(pre) - 1e-9; return binBin(pre, a, b);
+  }
+  function permHist(pre, N) { var pool = (pre.binom || pre.deathsOnly) ? null : makePool(pre), h = new Array(pre.m + 1).fill(0), i; h.tail = 0; for (i = 0; i < N; i++) { h[drawGap(pre, pool)]++; if (LASTTAIL) h.tail++; } return h; }
+  function tailShare(h, N, d) { var c = 0, i; for (i = d; i < h.length; i++) c += h[i]; return N ? c / N : 0; }
+  function tailCount(h, d) { var c = 0, i; for (i = d; i < h.length; i++) c += h[i]; return c; }
+  function permXlim(m, d, pre) { var D = Math.min(m, Math.max(d + 2, pre && pre.hlen ? pre.hlen : Math.ceil(2.5 * Math.sqrt(m / 2)))), w = pre ? bwOf(pre) : 100 / m; return { D: D, lo: -0.5 * w, hi: (D + 0.5) * w }; }
+  // Draw the histogram of gaps, shading gaps at least as big as d (bins).
+  function drawPerm(Pl, hist, N, m, d, ms, vlabel, pre) {
+    var X = permXlim(m, d, pre), h = [], t = [], i, top = 1, v;
+    for (i = 0; i <= X.D; i++) { v = N ? 100 * hist[i] / N : 0; h.push(v); t.push(i >= d ? v : 0); if (v > top) top = v; }
+    Pl.setYlim(0, nice(top));
+    Pl.bars('all', h, X.lo, X.hi, { fill: TEAL, opacity: 0.8 }, ms);
+    Pl.bars('tail', t, X.lo, X.hi, { fill: OR, opacity: 0.95 }, ms);
+    Pl.vline('obs', pre && pre.deathsOnly ? gapPts(pre) : d * (pre ? bwOf(pre) : 100 / m), vlabel || '', { color: NAVY, dash: '5 4' }, 0);
+  }
+  function permMini(box, st, m, d, pre) {
+    var X = permXlim(m, d, pre), Pl = Lab.miniPlot(box, { xlim: [X.lo, X.hi], ylim: [0, 10], xlabel: pre && pre.xlabel ? pre.xlabel : 'gap (points)', ylabel: '% of re-randomizations', label: 'Histogram of gaps after re-randomizing; gaps at least as big as the real gap are orange' });
+    drawPerm(Pl, st.hist, st.N, m, d, 600, '', pre);
+  }
+  function permStat(pre, N) { var h = permHist(pre, N), d = obsBin(pre); return { hist: h, N: N, share: N ? h.tail / N : 0, tail: h.tail }; }
+  function nf(x) { return x.toLocaleString('en-US'); }
+  function rowsText(pre) { if (pre.deathsOnly) return pre.k[0] + ' vs ' + pre.k[1] + ' deaths'; return pre.k[0] + '/' + nf(pre.nA) + ' vs ' + pre.k[1] + '/' + nf(pre.nB); }
+
+  /* ---------- 3. Randomization test ---------- */
+  var SRC_ULCER = 'Ulcer surgery deaths, illustrative counts based on Novick and Grizzle (1965), as in Polson and Sokolov (2026), <a href="https://vsokolov.org/html/_book/06-hyp.html">chapter 6</a>. Best and worst of four treatments, picked after seeing results, so this overstates the evidence. More in <a href="05-ulcer-trial.html">module 5</a>.';
+  var SRC_ECMO = 'Newborn ECMO trial, Bartlett et al. (1985), as retold in <a href="https://arxiv.org/abs/2602.09208">Sokolova, Sokolov and Polson (2026)</a>. The coin favored whichever treatment was winning, so this is only an illustration.';
+  var SRC_PAN = 'Butler et al. (2023), Lancet.';
+  var SRC_REC = 'RECOVERY (2021), NEJM.';
+  var SRC_VIOXX = 'Bresalier et al. (2005), NEJM. Led to Vioxx\'s withdrawal in 2004.';
+  var SRC_VIAGRA = 'Polson and Sokolov, <a href="https://vsokolov.org/html/_book/05-ab.html">Bayes, AI and Deep Learning, chapter 5</a>. The 77 heart-related deaths were reported to FDA in 1998, among more than 6 million prescriptions (trade press report of FDA data; reports do not prove the drug caused them). Here each prescription counts as one man, which is a simplification (many men filled more than one). The comparison group of 1.5 million men is made up, as in the book. Nobody was randomized, so even a real gap could come from who chose to take Viagra.';
+  var PRE = [
+    P({ id: 'ulcer', label: 'Ulcer surgery (illustrative)', names: ['Treatment A', 'Treatment B'], n: 100, k: [7, 1], yes: '!', no: '·', what: 'died; fewer is better', illus: true, src: SRC_ULCER }),
+    P({ id: 'ecmo', label: 'ECMO newborns (real)', names: ['ECMO', 'Standard care'], nA: 11, nB: 1, m: 11, k: [11, 0], yes: '✓', no: '✕', what: 'survived', real: true, src: SRC_ECMO }),
+    P({ id: 'panoramic', label: 'PANORAMIC (real)', names: ['Molnupiravir', 'Usual care'], nA: 12529, nB: 12525, k: [105, 98], big: true, binom: true, yes: '!', no: '·', what: 'hospitalized or died; fewer is better', real: true, src: SRC_PAN }),
+    P({ id: 'recovery', label: 'RECOVERY dexamethasone (real)', names: ['Dexamethasone', 'Usual care'], nA: 2104, nB: 4321, k: [482, 1110], big: true, binom: true, yes: '!', no: '·', what: 'died; fewer is better', real: true, src: SRC_REC }),
+    P({ id: 'vioxx', label: 'Vioxx, APPROVe (real)', names: ['Vioxx (rofecoxib)', 'Placebo'], nA: 1287, nB: 1299, m: 1287, k: [46, 26], big: true, binom: true, yes: '!', no: '·', what: 'heart attack, stroke or other clot-related event; fewer is better', real: true, src: SRC_VIOXX }),
+    P({ id: 'viagra', label: 'Viagra (book example, comparison made up)', names: ['Viagra users', 'Comparison men'], nA: 6000000, nB: 1500000, m: 60, bw: 5 / 6, hlen: 18, unit: 1e6, gunit: ' deaths per million men', xlabel: 'gap (per million men)', xtitle: 'Gap in deaths per million men', k: [77, 11], deathsOnly: true, yes: '!', no: '·', what: 'coronary deaths; fewer is better', real: false, src: SRC_VIAGRA }),
+  ];
+  var S3 = { pre: PRE[0], hist: null, N: 0, last: null, pool: null, busy: false, P: null };
+  function loadS3(pre) {
+    S3.pre = pre; S3.hist = new Array(pre.m + 1).fill(0); S3.N = 0; S3.tail = 0; S3.last = null; S3.busy = false;
+    S3.pool = (pre.binom || pre.deathsOnly) ? null : makePool(pre);
+    $('s3title').textContent = 'Observed: ' + pre.names[0] + ' vs ' + pre.names[1] + (pre.real ? ' (real data)' : pre.illus ? ' (illustrative counts)' : pre.id === 'game' ? ' (your trial)' : ' (made-up numbers)');
+    $('srcLine').innerHTML = pre.src || '';
+    var ob = $('obsBox'); ob.innerHTML = '';
+    [0, 1].forEach(function (j) {
+      var n = j ? pre.nB : pre.nA, k = pre.k[j];
+      if (pre.deathsOnly) addRow(ob, pre.names[j], k + ' deaths of ' + nf(n) + ' men: ' + (k * 1e6 / n).toFixed(1) + ' per million', arrOf(15, Math.round(k * 1e6 / n)), pre.yes, pre.no);
+      else if (pre.big) addRow(ob, pre.names[j], nf(k) + ' of ' + nf(n), arrOf(100, Math.round(100 * k / n)), pre.yes, pre.no);
+      else addRow(ob, pre.names[j], k + ' of ' + n, arrOf(n, k), pre.yes, pre.no);
+    });
+    var lg = el('p', 'legend'); var dd = pre.yes === '!'; lg.innerHTML = ico(1, dd) + ' ' + (dd ? 'orange = ' + pre.what.replace('; fewer is better', '') + ', outline = did not' : 'filled = ' + pre.what + ', outline = did not') + '.' + (pre.deathsOnly ? ' Each row shows deaths per million men (15 icons); the test uses all the deaths.' : pre.big ? ' Each row shows 100 icons; the test uses everyone.' : ''); ob.appendChild(lg);
+    $('shufBox').innerHTML = '<p class="note">Press "Re-randomize once".</p>'; $('shufTitle').textContent = 'After re-randomizing';
+    var X = permXlim(pre.m, obsBin(pre), pre);
+    S3.P = Lab.Plot($('plot3'), { xlim: [X.lo, X.hi], ylim: [0, 20], h: 320, xlabel: pre.xtitle || 'Gap between the two rows (percentage points)', ylabel: 'Share of re-randomizations (%)', label: 'Histogram of gaps from re-randomized rows, with the observed gap marked' });
+    S3.P.legend([{ label: 'Gaps after re-randomizing', color: TEAL, kind: 'box' }, { label: 'At least as big as the real gap', color: OR, kind: 'box' }, { label: 'Real gap', color: NAVY, kind: 'dash' }]);
+    update3(0);
+  }
+  function update3(ms) {
+    var pre = S3.pre, m = pre.m, d = obsBin(pre), g = gapPts(pre);
+    drawPerm(S3.P, S3.hist, S3.N, m, d, ms, 'real', pre);
+    var tc = S3.tail;
+    $('chips3').innerHTML = chip('Real gap', fmtGap(+g.toFixed(2)) + gunit(pre) + ' (' + rowsText(pre) + ')', true) +
+      chip('Last gap', S3.last == null ? '–' : fmtGap(+(pre.deathsOnly ? gapVal(pre, LASTK[0], LASTK[1]) : S3.last * bwOf(pre)).toFixed(2)) + gunit(pre)) + chip('Re-randomizations', nf(S3.N)) +
+      chip('At least as big as the real gap', S3.N ? nf(tc) + ' of ' + nf(S3.N) + ' (' + pct(tc / S3.N, S3.N >= 1000 ? 1 : 0) + ')' : '–');
+    var note = '';
+    if (S3.N >= 200) {
+      var sh = tc / S3.N;
+      note += sh > 0.2 ? 'Luck alone makes a gap this big often. Your gap proves little.' : sh < 0.05 ? 'Luck alone rarely makes a gap this big (under 1 in 20).' : 'Luck makes a gap this big now and then. Not a clear call.';
+    } else note += 'Re-randomize many times to see the pattern.';
+    $('note3').innerHTML = note;
+  }
+  function setBusy(b) { S3.busy = b; ['b1', 'b1000', 'bReset', 'bGame'].forEach(function (id) { $(id).disabled = b; }); }
+  function showDealt(pre, kk) {
+    kk = kk || LASTK;
+    var box = $('shufBox'), ka = kk[0], kb = kk[1];
+    box.innerHTML = ''; $('shufTitle').textContent = 'After re-randomizing';
+    if (pre.deathsOnly) {
+      addRow(box, pre.names[0], ka + ' deaths: ' + (ka * 1e6 / pre.nA).toFixed(1) + ' per million', arrOf(15, Math.round(ka * 1e6 / pre.nA)), pre.yes, pre.no);
+      addRow(box, pre.names[1], kb + ' deaths: ' + (kb * 1e6 / pre.nB).toFixed(1) + ' per million', arrOf(15, Math.round(kb * 1e6 / pre.nB)), pre.yes, pre.no);
+    } else if (pre.big) {
+      addRow(box, pre.names[0], nf(ka) + ' of ' + nf(pre.nA), arrOf(100, Math.round(100 * ka / pre.nA)), pre.yes, pre.no);
+      addRow(box, pre.names[1], nf(kb) + ' of ' + nf(pre.nB), arrOf(100, Math.round(100 * kb / pre.nB)), pre.yes, pre.no);
+    } else {
+      addRow(box, pre.names[0], ka + ' of ' + pre.nA, S3.pool.slice(0, pre.nA), pre.yes, pre.no);
+      addRow(box, pre.names[1], kb + ' of ' + pre.nB, S3.pool.slice(pre.nA), pre.yes, pre.no);
+    }
+    var g = gapVal(pre, ka, kb);
+    box.appendChild(el('p', 'verdict', 'New gap: ' + fmtGap(+g.toFixed(2)) + gunit(pre) + (ka / pre.nA === kb / pre.nB ? '' : ka / pre.nA > kb / pre.nB ? ' (' + pre.names[0] + ' ahead)' : ' (' + pre.names[1] + ' ahead)') + '. Either direction counts. Real gap: ' + fmtGap(+gapPts(pre).toFixed(2)) + gunit(pre) + '.'));
+  }
+  function shuffleOnce() {
+    if (S3.busy) return; var pre = S3.pre, d;
+    if (pre.binom || pre.deathsOnly) { d = drawGap(pre, null); S3.hist[d]++; if (LASTTAIL) S3.tail++; S3.N++; S3.last = d; showDealt(pre); update3(0); return; }
+    setBusy(true);
+    var box = $('shufBox'); box.innerHTML = ''; $('shufTitle').textContent = 'Pooling everyone into one pile';
+    var tl = el('div'); box.appendChild(tl); tiles(tl, S3.pool.slice(), pre.yes, pre.no, 'Everyone pooled in one row');
+    d = drawGap(pre, S3.pool); var kk = LASTK.slice(), tl2 = LASTTAIL;
+    setTimeout(function () { S3.hist[d]++; if (tl2) S3.tail++; S3.N++; S3.last = d; showDealt(pre, kk); update3(0); setBusy(false); }, 800);
+  }
+  function shuffleMany() {
+    if (S3.busy) return; var pre = S3.pre, i, d;
+    for (i = 0; i < 1000; i++) { d = drawGap(pre, S3.pool); S3.hist[d]++; if (LASTTAIL) S3.tail++; S3.N++; S3.last = d; }
+    showDealt(pre); update3(500);
+  }
+  $('b1').addEventListener('click', shuffleOnce);
+  $('b1000').addEventListener('click', shuffleMany);
+  $('bReset').addEventListener('click', function () { loadS3(S3.pre); });
+  $('bGame').addEventListener('click', function () {
+    var r = G.round, nm = gNames(), n = r.a.length;
+    loadS3(P({ id: 'game', label: 'My trial', names: nm.slice(), n: n, k: [sum(r.a), sum(r.b)], yes: '✓', no: '✕', what: 'improved', src: 'Your trial.' }));
+    markOn('');
+  });
+
+  /* ---------- 4. Examples ---------- */
+  function markOn(id) { document.querySelectorAll('.exbtn').forEach(function (x) { x.classList.toggle('on', x.dataset.id === id); }); }
+  function goTo(pre) { loadS3(pre); markOn(pre.id); $('shuffle').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  PRE.forEach(function (pre) {
+    ['exbtns'].forEach(function (cid) {
+      var b = el('button', 'btn exbtn', pre.label); b.type = 'button'; b.dataset.id = pre.id; b.addEventListener('click', function () { goTo(pre); });
+      $(cid).appendChild(b);
+    });
+    if (['ulcer', 'ecmo', 'recovery', 'vioxx'].indexOf(pre.id) < 0) return;
+    var st = permStat(pre, 2000), d = obsBin(pre);
+    var c = el('div', 'excard');
+    c.innerHTML = '<h3></h3><span class="badge' + (pre.real ? ' real' : '') + '">' + (pre.real ? 'real data' : pre.illus ? 'illustrative' : 'made up') + '</span>';
+    c.querySelector('h3').textContent = pre.label.replace(/ \((real|made up|illustrative)\)/, '');
+    var p = pre.deathsOnly ? el('p', '', pre.names[0] + ' ' + pre.k[0] + ' deaths among ' + nf(pre.nA) + ' men vs ' + pre.names[1] + ' ' + pre.k[1] + ' among ' + nf(pre.nB) + '. Gap ' + fmtGap(+gapPts(pre).toFixed(2)) + gunit(pre) + '.') : el('p', '', pre.names[0] + ' ' + nf(pre.k[0]) + ' of ' + nf(pre.nA) + ' vs ' + pre.names[1] + ' ' + nf(pre.k[1]) + ' of ' + nf(pre.nB) + ' (' + pre.what + '). Gap ' + fmtGap(+gapPts(pre).toFixed(2)) + ' points.');
+    p.style.marginTop = '.5rem'; c.appendChild(p);
+    var mb = el('div', 'minibox'); c.appendChild(mb); permMini(mb, st, pre.m, d, pre);
+    var ch = el('div', 'chips'); ch.innerHTML = chip('Re-randomizations at least as big', fmtShare(st.share), true); c.appendChild(ch);
+    if (pre.src) { var src = el('p', 'note'); src.style.marginTop = '.5rem'; src.innerHTML = pre.src; c.appendChild(src); }
+    $('excards').appendChild(c);
+  });
+
+  /* ---------- 5. Question cards ---------- */
+  var score = Lab.Score($('score')), Q = $('qcards');
+  var cache = {};
+  function stat(key, n, ka, kb) { if (!cache[key]) cache[key] = permStat(mk(n, ka, kb), 4000); return cache[key]; }
+  function band(s) { return s < 0.05 ? 'rarely' : s <= 0.2 ? 'sometimes' : 'often'; }
+  var BANDS = [{ value: 'often', label: 'Often (more than 1 in 5)' }, { value: 'sometimes', label: 'Sometimes (1 in 20 to 1 in 5)' }, { value: 'rarely', label: 'Rarely (less than 1 in 20)' }];
+  function nearest(x, vals) { var best = 0; vals.forEach(function (v, i) { if (Math.abs(v - x) < Math.abs(vals[best] - x)) best = i; }); return best; }
+
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 1', score: score, type: 'choice',
+    q: 'Drug 7 of 10 vs placebo 4 of 10, a gap of 30 percentage points (70% vs 40%). If the drug did nothing, how often would re-randomizing give a gap this big?',
+    options: BANDS,
+    answer: function () { return band(stat('c1', 10, 7, 4).share); },
+    revealPlot: function (b) { permMini(b, stat('c1', 10, 7, 4), 10, 3); },
+    explain: function () { var s = stat('c1', 10, 7, 4); return 'About 37% of re-randomizations gave 30 points or more. Small groups wobble a lot.'; }
+  });
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 2', score: score, type: 'choice',
+    q: 'Same gap, but 100 per group: 70 of 100 vs 40 of 100. Often or rarely now?',
+    options: BANDS,
+    answer: function () { return band(stat('c2', 100, 70, 40).share); },
+    revealPlot: function (b) { permMini(b, stat('c2', 100, 70, 40), 100, 30); },
+    explain: function () { var s = stat('c2', 100, 70, 40); return s.tail + ' of 4,000 simulated re-randomizations reached a gap of 30 points. Same gap, far more evidence.'; }
+  });
+  function pmfDiff(n, d) { var s = 0, x; for (x = 0; x <= n; x++) s += Lab.binomPmf(x, n, 0.5) * Lab.binomPmf(x - d, n, 0.5); return s; }
+  function pmfPlot(b, n, dmax, isTail, lab) {
+    var P = Lab.miniPlot(b, { xlim: [-dmax - 0.5, dmax + 0.5], ylim: [0, 1], xlabel: lab, ylabel: '% of pairs', label: 'Chance of each difference between two drugs with the same true response rate; the highlighted bars answer the question' }), h = [], t = [], d, v, top = 1;
+    for (d = -dmax; d <= dmax; d++) { v = 100 * pmfDiff(n, d); h.push(isTail(d) ? 0 : v); t.push(isTail(d) ? v : 0); if (v > top) top = v; }
+    P.setYlim(0, nice(top)); P.bars('all', h, -dmax - 0.5, dmax + 0.5, { fill: TEAL, opacity: 0.8 }, 600); P.bars('tail', t, -dmax - 0.5, dmax + 0.5, { fill: OR, opacity: 0.95 }, 600);
+  }
+  function p5() { var s = 0, d; for (d = -20; d <= 20; d++) if (Math.abs(d) >= 5) s += pmfDiff(20, d); return s; }
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 3', score: score, type: 'choice',
+    q: 'Two drugs that each help 50% of patients, 20 patients each. How often do their responder counts differ by 5 or more?',
+    options: [{ value: 0, label: 'About 2% of the time' }, { value: 1, label: 'About 15% of the time' }, { value: 2, label: 'About 40% of the time' }, { value: 3, label: 'About 70% of the time' }],
+    answer: function () { return nearest(p5(), [0.02, 0.15, 0.4, 0.7]); },
+    revealPlot: function (b) { pmfPlot(b, 20, 12, function (d) { return Math.abs(d) >= 5; }, 'responders A minus responders B'); },
+    explain: function () { return 'Computed exactly: ' + pct(p5(), 1) + '. Identical drugs still differ by 5 or more about once in 6 or 7 pairs of trials.'; }
+  });
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 4', score: score, type: 'choice',
+    q: 'ECMO trial: 11 of 11 newborns on ECMO survived, 0 of 1 on standard care. Re-randomize the 12 babies into rows of 11 and 1, as if a fair coin had assigned them. How often is the gap that big (100 points)?',
+    options: [{ value: 0, label: 'About 1 time in 100' }, { value: 1, label: 'About 1 time in 10' }, { value: 2, label: 'About 1 time in 3' }, { value: 3, label: 'About 1 time in 2' }],
+    answer: function () { return nearest(1 / 12, [0.01, 0.1, 1 / 3, 0.5]); },
+    revealPlot: function (b) { permMini(b, permStat(PRE[1], 4000), PRE[1].m, obsBin(PRE[1])); },
+    explain: function () { var s = permStat(PRE[1], 4000); return 'With a fair coin, 1 time in 12, because the one baby who died must land in the row of 1. The real trial did not use a fair coin: it used play-the-winner, so later babies were more likely to get the treatment that was winning. So 1 in 12 is only a rough guide. A tiny trial can look dramatic and still be weak evidence.'; }
+  });
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 5', score: score, type: 'choice',
+    q: 'A drug that helps 50% of patients, two trials of 50. Do the two responder counts match exactly?',
+    options: [{ value: 0, label: 'Often (about 1 time in 3)' }, { value: 1, label: 'Sometimes (about 1 in 10)' }, { value: 2, label: 'Rarely (about 1 in 25)' }, { value: 3, label: 'Almost never' }],
+    answer: function () { return nearest(pmfDiff(50, 0), [1 / 3, 0.1, 0.04, 0.0001]); },
+    revealPlot: function (b) { pmfPlot(b, 50, 20, function (d) { return d === 0; }, 'responders A minus responders B'); },
+    explain: function () { return 'Computed exactly: ' + pct(pmfDiff(50, 0), 1) + ' match. With more patients the counts spread out, so an exact tie is not common and a gap of a few responders is normal.'; }
+  });
+
+
+  Lab.CodeBox($('code'), {
+    py: 'import numpy as np\n' +
+      'rng = np.random.default_rng(0)\n' +
+      'pool = np.array([1]*7 + [0]*3 + [1]*4 + [0]*6)   # drug 7/10, placebo 4/10\n' +
+      'gap = lambda x: abs(x[:10].sum() - x[10:].sum())\n' +
+      'seen = gap(pool)\n' +
+      'gaps = [gap(rng.permutation(pool)) for _ in range(10_000)]\n' +
+      'print(np.mean(np.array(gaps) >= seen))   # share of re-randomizations at least as big\n' +
+      '# Arnold gap score (15 points on a circle of length 100)\n' +
+      'def gap_score(x, L=100):\n' +
+      '    g = np.diff(np.append(np.sort(x % L), np.min(x % L) + L))\n' +
+      '    return len(x) * np.sum((g / L) ** 2)   # 1 = even, about 2 = random',
+    r: 'pool <- c(rep(1, 7), rep(0, 3), rep(1, 4), rep(0, 6))   # drug 7/10, placebo 4/10\n' +
+      'gap <- function(x) abs(sum(x[1:10]) - sum(x[11:20]))\n' +
+      'seen <- gap(pool)\n' +
+      'gaps <- replicate(10000, gap(sample(pool)))\n' +
+      'mean(gaps >= seen)                                      # share of re-randomizations at least as big\n' +
+      'gap_score <- function(x, L = 100) {\n' +
+      '  g <- diff(c(sort(x %% L), min(x %% L) + L)); length(x) * sum((g / L)^2)   # 1 even, about 2 random\n' +
+      '}'
+  });
+
+  /* ---------- Arnold's gap score ---------- */
+  var AL = 100, AT = 15;
+  function gapsOf(pts) {
+    var p = pts.map(function (x) { return ((x % AL) + AL) % AL; }).sort(function (a, b) { return a - b; }), g = [], i;
+    for (i = 0; i < p.length; i++) g.push((i + 1 < p.length ? p[i + 1] : p[0] + AL) - p[i]);
+    return { p: p, g: g };
+  }
+  function gscore(pts) { var s = 0; gapsOf(pts).g.forEach(function (g) { s += (g / AL) * (g / AL); }); return pts.length * s; }
+  function randSet() { var a = [], i; for (i = 0; i < AT; i++) a.push(rng() * AL); return a; }
+  function pw(base, mod) { var a = [], v = 1, i; for (i = 1; i <= AT; i++) { v = (v * base) % mod; a.push(v); } return a; }
+  function mult(k) { var a = [], i; for (i = 1; i <= AT; i++) a.push((k * i) % AL); return a; }
+  var ARHIST = (function () { var lo = 1, hi = 4, nb = 45, h = new Array(nb).fill(0), i, s, r = rng, sc = [];
+    for (i = 0; i < 10000; i++) { s = gscore((function () { var a = [], j; for (j = 0; j < AT; j++) a.push(r() * AL); return a; })()); sc.push(s); h[Math.min(nb - 1, Math.floor((s - lo) / (hi - lo) * nb))]++; }
+    return { lo: lo, hi: hi, nb: nb, h: h, sc: sc }; })();
+  function shareLE(s) { var c = 0; ARHIST.sc.forEach(function (x) { if (x <= s) c++; }); return c / ARHIST.sc.length; }
+  function fmtShare(f) { return f < 0.001 ? 'under 0.1%' : pct(f, 1); }
+  function arHeights(upto) { return ARHIST.h.map(function (c, i) { var m = ARHIST.lo + (i + 0.5) * (ARHIST.hi - ARHIST.lo) / ARHIST.nb; return { v: 100 * c / ARHIST.sc.length, on: m <= upto }; }); }
+  function drawHist(P, shadeTo, marks) {
+    var hs = arHeights(shadeTo), top = 0;
+    hs.forEach(function (x) { if (x.v > top) top = x.v; });
+    P.setYlim(0, nice(top));
+    P.bars('all', hs.map(function (x) { return x.v; }), ARHIST.lo, ARHIST.hi, { fill: TEAL, opacity: 0.8 }, 0);
+    P.bars('sh', hs.map(function (x) { return x.on ? x.v : 0; }), ARHIST.lo, ARHIST.hi, { fill: OR, opacity: 0.95 }, 0);
+    marks.forEach(function (m, i) { P.vline('m' + i, Math.min(m.x, ARHIST.hi - 0.01), m.l, { color: NAVY, dash: '5 4' }, 0); });
+  }
+  var NSVG = 'http://www.w3.org/2000/svg';
+  function sv(tag, attrs, parent) { var e = document.createElementNS(NSVG, tag); Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); }); if (parent) parent.appendChild(e); return e; }
+  var CX = 130, CY = 130, CR = 100;
+  function ang(p) { return 2 * Math.PI * p / AL - Math.PI / 2; }
+  function xy(p, r) { return [CX + r * Math.cos(ang(p)), CY + r * Math.sin(ang(p))]; }
+  function drawCircle(svg, pts, color) {
+    svg.setAttribute('viewBox', '0 0 260 260'); svg.innerHTML = '';
+    sv('circle', { cx: CX, cy: CY, r: CR, fill: 'none', stroke: '#c9d3d3', 'stroke-width': 2 }, svg);
+    var G = gapsOf(pts), i, a, b, big, c, t, poly = [];
+    if (color && G.p.length > 2) { G.p.forEach(function (p) { var q = xy(p, CR); poly.push(q[0] + ',' + q[1]); }); sv('polygon', { points: poly.join(' '), fill: 'rgba(45,139,139,0.07)', stroke: NAVY, 'stroke-width': 1.5, 'stroke-linejoin': 'round' }, svg); }
+    if (color === true && G.p.length > 1) {
+      for (i = 0; i < G.p.length; i++) {
+        a = xy(G.p[i], CR + 10); b = xy(G.p[i] + G.g[i], CR + 10); big = G.g[i] > AL / 2 ? 1 : 0;
+        t = Math.min(1, G.g[i] / (AL / AT * 2.5));
+        c = t < 0.5 ? TEAL : OR;
+        sv('path', { d: 'M' + a[0] + ' ' + a[1] + ' A' + (CR + 10) + ' ' + (CR + 10) + ' 0 ' + big + ' 1 ' + b[0] + ' ' + b[1], fill: 'none', stroke: c, 'stroke-width': 5, 'stroke-opacity': 0.35 + 0.65 * t, 'stroke-linecap': 'butt' }, svg);
+      }
+    }
+    G.p.forEach(function (p) { var q = xy(p, CR); sv('circle', { cx: q[0], cy: q[1], r: 5, fill: NAVY }, svg); });
+  }
+
+  var AR = { sets: [], pick: -1, shade: 0 };
+  function newArnold() {
+    var raw, tries = 0, rs; raw = [{ k: '3^i mod 100', pts: pw(3, AL), rnd: false }, { k: '37·i mod 100', pts: mult(37), rnd: false }, { k: 'simulated random', pts: randSet(), rnd: true }];
+    while (tries++ < 50) { rs = raw[2]; if (gscore(rs.pts) > 1.55 && gscore(rs.pts) < 2.3) break; rs.pts = randSet(); }
+    shuffle(raw); AR.sets = raw; AR.pick = -1; AR.shade = 0;
+    $('arOut').hidden = true;
+    var box = $('arSets'); box.innerHTML = '';
+    raw.forEach(function (s, i) {
+      s.score = gscore(s.pts);
+      var cell = el('div', 'cell'), svg = document.createElementNS(NSVG, 'svg'), b = el('button', 'btn', 'Set ' + (i + 1) + ' is random');
+      svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Set ' + (i + 1) + ': 15 points on a circle');
+      cell.appendChild(el('div', 'rl', 'Set ' + (i + 1))); cell.appendChild(svg); cell.appendChild(b); box.appendChild(cell);
+      s.svg = svg; drawCircle(svg, s.pts, false);
+      b.addEventListener('click', function () { arReveal(i); });
+    });
+  }
+  function arReveal(i) {
+    AR.pick = i; AR.shade = i;
+    var ok = AR.sets[i].rnd;
+    $('arOut').hidden = false;
+    $('arVerdict').className = 'verdict ' + (ok ? 'ok' : 'no');
+    $('arVerdict').textContent = ok ? 'Right. Set ' + (i + 1) + ' is the simulated random one.' : 'Not quite. Set ' + (i + 1) + ' was made by a fixed rule, not chance.';
+    AR.sets.forEach(function (s) { drawCircle(s.svg, s.pts, true); });
+  }
+  $('arNew').addEventListener('click', newArnold);
+
+  // your turn
+  var MINE = [];
+  function mineDraw() {
+    drawCircle($('arMine'), MINE, 'chords');
+    if (MINE.length >= AT) {
+      var s = gscore(MINE); drawCircle($('arMine'), MINE, true);
+      $('arMineOut').hidden = false;
+      $('arMineChip').innerHTML = chip('Your gap score', s.toFixed(2), true) + chip('Share of random sets this even', fmtShare(shareLE(s))) + '<p class="note">' + (shareLE(s) < 0.05 ? 'Too even to look random: real random points almost never spread out this neatly.' : shareLE(s) > 0.95 ? 'Very clumpy: real random points rarely bunch up this much.' : 'Looks random: plenty of random sets are spread like this.') + '</p>';
+      mineHist(s);
+    } else { $('arMineOut').hidden = true; mineHist(null); }
+  }
+  function mineHist(s) {
+    var P = Lab.Plot($('plotMine'), { xlim: [ARHIST.lo, ARHIST.hi], ylim: [0, 10], xlabel: 'gap score s', ylabel: '% of random sets', label: 'Histogram of gap scores of simulated random sets, with your score marked when complete' });
+    drawHist(P, s == null ? 0 : s, s == null ? [] : [{ x: s, l: 'you' }]);
+  }
+  function mineAdd(p) { if (MINE.length < AT) { MINE.push(p); mineDraw(); } }
+  $('arMine').addEventListener('click', function (e) {
+    var r = this.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * 260 - CX, y = (e.clientY - r.top) / r.height * 260 - CY;
+    mineAdd((((Math.atan2(y, x) + Math.PI / 2) / (2 * Math.PI)) % 1 + 1) % 1 * AL);
+  });
+  $('arRand').addEventListener('click', function () { mineAdd(rng() * AL); });
+  $('arReset').addEventListener('click', function () { MINE = []; mineDraw(); });
+
+  newArnold(); mineDraw();
+
+  /* ---------- Randomization (own scope) ---------- */
+  (function (score) {
+  var ORANGE = '#E07A3F', TEAL = '#2D8B8B', NAVY = '#0A1628', NS = 'http://www.w3.org/2000/svg';
+  function E(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function clamp(p) { return Math.min(0.98, Math.max(0.02, p)); }
+  function signed(v, d) { var s = v.toFixed(d == null ? 1 : d); return (v > 0 ? '+' : '') + s; }
+  var cardEl = {}, REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function chip(txt, val, warm) { return '<span class="chip' + (warm ? ' warm' : '') + '">' + txt + ' <b>' + val + '</b></span>'; }
+  function miniBox(card) { var old = card.querySelector('.mini'); if (old) old.remove(); var d = document.createElement('div'); d.className = 'mini'; card.appendChild(d); return d; }
+  // Overlaid histograms; series [{vals, color, label}]; mark = x of a reference line.
+  function miniHist(card, series, lo, hi, nb, mark, cap) {
+    var box = miniBox(card), svg = E('svg', { viewBox: '0 0 360 170', role: 'img', 'aria-label': cap }, box), ml = 10, iw = 340, top = 14, ih = 110, mx = 0;
+    var hs = series.map(function (s) { var h = Lab.histogram(s.vals, lo, hi, nb).counts.map(function (c) { return c / s.vals.length; }); mx = Math.max(mx, Math.max.apply(null, h)); return h; });
+    var sx = function (x) { return ml + (x - lo) / (hi - lo) * iw; };
+    hs.forEach(function (h, si) { h.forEach(function (v, i) { E('rect', { x: sx(lo + i * (hi - lo) / nb) + 0.5, y: top + ih - v / mx * ih, width: iw / nb - 1, height: v / mx * ih, fill: series[si].color, opacity: 0.6 }, svg); }); });
+    E('line', { x1: ml, x2: ml + iw, y1: top + ih, y2: top + ih, stroke: '#8a93a0' }, svg);
+    [lo, mark, hi].forEach(function (v) { E('text', { x: sx(v), y: top + ih + 14, 'text-anchor': 'middle' }, svg).textContent = signed(v, 0).replace('+', ''); });
+    E('line', { x1: sx(mark), x2: sx(mark), y1: top, y2: top + ih, stroke: NAVY, 'stroke-dasharray': '4 3', 'stroke-width': 1.5 }, svg);
+    series.forEach(function (s, i) { E('rect', { x: 10 + i * 150, y: 152, width: 12, height: 9, fill: s.color, opacity: 0.7 }, svg); E('text', { x: 26 + i * 150, y: 161 }, svg).textContent = s.label; });
+    var p = document.createElement('p'); p.className = 'cap'; p.textContent = cap; box.appendChild(p);
+  }
+  // Horizontal bars; items [{label, value, color}], ref = vertical line value.
+  function miniBars(card, items, max, ref, fmt, cap, simulated) {
+    var box = miniBox(card), h = 16 + items.length * 34, svg = E('svg', { viewBox: '0 0 360 ' + h, role: 'img', 'aria-label': cap }, box), lx = 150, iw = 150;
+    items.forEach(function (it, i) {
+      var y = 10 + i * 34, w = Math.max(1, it.value / max * iw);
+      E('text', { x: lx - 6, y: y + 16, 'text-anchor': 'end' }, svg).textContent = it.label;
+      E('rect', { x: lx, y: y, width: w, height: 24, fill: it.color, opacity: 0.85 }, svg);
+      E('text', { x: lx + w + 6, y: y + 16, 'class': 'big' }, svg).textContent = fmt(it.value);
+    });
+    if (ref != null) E('line', { x1: lx + ref / max * iw, x2: lx + ref / max * iw, y1: 4, y2: h - 4, stroke: NAVY, 'stroke-dasharray': '4 3' }, svg);
+    var p = document.createElement('p'); p.className = 'cap'; p.textContent = cap; box.appendChild(p);
+  }
+    var cfRng = Lab.rng(66), CF = { mode: 'choose', eff: 10, pts: null, t: null };
+  function cfCohort(r, n) {
+    var a = [], i, h, p0, u;
+    for (i = 0; i < n; i++) { h = Lab.normal(r); p0 = clamp(0.5 + 0.18 * h); u = r(); a.push({ h: h, p0: p0, u: u, age: 20 + 60 * r(), z: 0.7 * h + 0.714 * Lab.normal(r) }); }
+    return a;
+  }
+  function cfOut(pt, eff) { return { y0: pt.u < pt.p0, y1: pt.u < clamp(pt.p0 + eff / 100) }; }
+  function cfAssign(r, pts, mode) { return pts.map(function (p) { return mode === 'coin' ? r() < 0.5 : r() < Lab.normalCdf(1.5 * p.h, 0, 1); }); }
+  function cfTrue(pts, eff) { var s = 0; pts.forEach(function (p) { var o = cfOut(p, eff); s += (o.y1 ? 1 : 0) - (o.y0 ? 1 : 0); }); return 100 * s / pts.length; }
+  function cfEst(pts, t, eff) {
+    var nT = 0, nC = 0, yT = 0, yC = 0;
+    pts.forEach(function (p, i) { var o = cfOut(p, eff); if (t[i]) { nT++; if (o.y1) yT++; } else { nC++; if (o.y0) yC++; } });
+    return (nT && nC) ? 100 * (yT / nT - yC / nC) : 0;
+  }
+  // k trials; fixed cohort if given, else new patients each time. Returns estimates and the average true effect.
+  function cfMany(mode, eff, k, fixed) {
+    var est = [], tr = 0, i, pts;
+    for (i = 0; i < k; i++) { pts = fixed || cfCohort(cfRng, 40); est.push(cfEst(pts, cfAssign(cfRng, pts, mode), eff)); tr += cfTrue(pts, eff); }
+    return { est: est, truth: tr / k };
+  }
+  function cfDraw(anim) {
+    var svg = $('cfIcons'), pts = CF.pts, t = CF.t, eff = CF.eff, step = 18.5, x0 = 4, bandH = 82;
+    svg.innerHTML = ''; svg.setAttribute('viewBox', '0 0 380 ' + (2 * bandH));
+    function person(x, y, rec, seen) {
+      var g = E('g', { transform: 'translate(' + x + ',' + y + ') scale(1.125)', opacity: seen ? 1 : 0.25 }, svg), at = rec ? { fill: TEAL } : { fill: 'none', stroke: '#9AA3AE', 'stroke-width': 1.3 };
+      at.cx = 8; at.cy = 5; at.r = 4; E('circle', at, g);
+      var at2 = rec ? { fill: TEAL } : { fill: 'none', stroke: '#9AA3AE', 'stroke-width': 1.3 }; at2.d = 'M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z'; E('path', at2, g);
+    }
+    pts.forEach(function (p, i) {
+      var band = Math.floor(i / 20), x = x0 + (i % 20) * step, y = band * bandH + 4, o = cfOut(p, eff), q = Math.min(1, Math.max(0, (p.h + 2) / 4)), c1 = [224, 122, 63], c2 = [45, 139, 139];
+      var col = 'rgb(' + c1.map(function (v, j) { return Math.round(v + (c2[j] - v) * q); }).join(',') + ')';
+      person(x, y, o.y1, t[i]); person(x, y + 25, o.y0, !t[i]);
+      E('rect', { x: x + 1, y: y + 52, width: 16, height: 4, rx: 2, fill: col }, svg);
+      E('text', { x: x + 9, y: y + 70, 'text-anchor': 'middle' }, svg).textContent = t[i] ? 'D' : 'P';
+    });
+    var tru = cfTrue(pts, eff), est = cfEst(pts, t, eff), nD = t.filter(Boolean).length;
+    var hD = Lab.mean(pts.filter(function (p, i) { return t[i]; }).map(function (p) { return p.h; })), hC = Lab.mean(pts.filter(function (p, i) { return !t[i]; }).map(function (p) { return p.h; }));
+    $('cfChips').innerHTML = chip('Real effect in these 40', signed(tru, 1) + ' points') + chip("Trial's result", signed(est, 1) + ' points', true) + chip('Took the drug', nD + ' of 40');
+    $('cfNote').innerHTML = (CF.mode === 'choose' ? 'Patients chose, so the healthier ones took the drug.' : 'The coin ignores each patient\'s health. Luck can still leave the groups unequal.') + ' The trial compares bright top icons (D) with bright bottom icons (P).';
+    $('cfEffv').textContent = signed(eff, 0) + ' points' + (eff === 0 ? ' (changes no patient)' : '');
+    document.querySelectorAll('#cfMode .btn').forEach(function (b) { b.classList.toggle('on', b.dataset.m === CF.mode); });
+    dealStrip(anim); sbDraw(); balDraw();
+  }
+  function cfDeal() { CF.t = cfAssign(cfRng, CF.pts, CF.mode); cfDraw(true); }
+  function cfNewPts() { CF.pts = cfCohort(cfRng, 40); cfDeal(); }
+  var cfRan = false;
+  function cfRunMany() {
+    cfRan = true;
+    var a = cfMany('choose', CF.eff, 500, CF.pts), b = cfMany('coin', CF.eff, 500, CF.pts), tru = cfTrue(CF.pts, CF.eff);
+    miniHist($('cfHist'), [{ vals: a.est, color: ORANGE, label: 'Patients choose' }, { vals: b.est, color: TEAL, label: 'Coin decides' }], -60, 60, 48, tru, '500 repeats. Dashed = real effect ' + signed(tru, 1) + '. Average: ' + signed(Lab.mean(a.est), 1) + ' (choose), ' + signed(Lab.mean(b.est), 1) + ' (coin).');
+    $('cfHist').dataset.ran = '1';
+  }
+  document.querySelectorAll('#cfMode .btn').forEach(function (b) { b.addEventListener('click', function () { CF.mode = b.dataset.m; cfDeal(); }); });
+  $('cfEff').addEventListener('input', function () { CF.eff = parseFloat(this.value); cfDraw(); if (cfRan) cfRunMany(); });
+  $('cfAgain').addEventListener('click', cfDeal);
+  $('cfNew').addEventListener('click', function () { cfNewPts(); if (cfRan) cfRunMany(); });
+  $('cfRun').addEventListener('click', cfRunMany);
+
+  /* ---------- Deal animation: coin or walking, then two blocks ---------- */
+  function healthCol(h) { var q = Math.min(1, Math.max(0, (h + 2) / 4)), c1 = [224, 122, 63], c2 = [45, 139, 139]; return 'rgb(' + c1.map(function (v, j) { return Math.round(v + (c2[j] - v) * q); }).join(',') + ')'; }
+  function dealStrip(anim) {
+    var box = $('cfDeal'), pts = CF.pts, t = CF.t, W = box.clientWidth || 440, coin = CF.mode === 'coin', bw = Math.floor(W * 0.44), per = Math.max(3, Math.floor((bw - 12) / 14)), tok = (CF.tok = (CF.tok || 0) + 1);
+    var nD = t.filter(Boolean).length, rows = Math.ceil(Math.max(nD, pts.length - nD, 1) / per);
+    box.innerHTML = ''; box.style.height = Math.max(76, 30 + rows * 17 + 8) + 'px';
+    [[0, coin ? 'Heads → drug' : 'Chose the drug'], [W - bw, coin ? 'Tails → placebo' : 'Chose placebo']].forEach(function (b) {
+      var d = document.createElement('div'); d.className = 'blk'; d.style.left = b[0] + 'px'; d.style.width = bw + 'px'; var l = document.createElement('div'); l.className = 'bl'; l.textContent = b[1]; d.appendChild(l); box.appendChild(d);
+    });
+    var cn = null;
+    if (coin) { cn = document.createElement('div'); cn.className = 'dcoin'; cn.setAttribute('aria-hidden', 'true'); cn.textContent = cfRng() < 0.5 ? 'H' : 'T'; box.appendChild(cn); }
+    var kD = 0, kC = 0, els = [];
+    pts.forEach(function (p, i) {
+      var sp = document.createElement('span'); sp.className = 'dp'; sp.setAttribute('aria-hidden', 'true');
+      sp.innerHTML = '<svg viewBox="0 0 16 20" style="fill:' + healthCol(p.h) + '"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>';
+      var k = t[i] ? kD++ : kC++, tx = (t[i] ? 0 : W - bw) + 6 + (k % per) * 14, ty = 28 + Math.floor(k / per) * 17;
+      sp._to = 'translate(' + tx + 'px,' + ty + 'px)';
+      sp._from = 'translate(' + Math.round((W - 20 * 14) / 2 + (i % 20) * 14) + 'px,' + (36 + Math.floor(i / 20) * 20) + 'px)';
+      sp.style.transform = (anim && !REDUCED) ? sp._from : sp._to; els.push(sp); box.appendChild(sp);
+    });
+    if (anim && !REDUCED) {
+      void box.offsetWidth;
+      if (cn) cn.classList.add('spin');
+      setTimeout(function () { if (tok !== CF.tok) return; els.forEach(function (sp, i) { sp.style.transition = 'transform .55s ease ' + (i * 6) + 'ms'; sp.style.transform = sp._to; }); }, coin ? 450 : 30);
+    }
+    box.setAttribute('aria-label', (coin ? 'A coin sent ' : 'By choice, ') + nD + ' of ' + pts.length + ' patients to the drug block and ' + (pts.length - nD) + ' to the placebo block');
+  }
+  window.addEventListener('resize', function () { if (CF.pts) dealStrip(false); });
+
+  /* ---------- Selection-bias bars ---------- */
+  function r1(x) { return Math.round(x * 10) / 10; }
+  function sbStat(pts, t, eff) {
+    var nD = 0, nC = 0, a = 0, b = 0, c = 0;
+    pts.forEach(function (p, i) { var o = cfOut(p, eff); if (t[i]) { nD++; if (o.y1) a++; if (o.y0) b++; } else { nC++; if (o.y0) c++; } });
+    return (nD && nC) ? { a: 100 * a / nD, b: 100 * b / nD, c: 100 * c / nC } : null;
+  }
+  // st: rates in percent. Rounded to tenths first, so the three numbers add up exactly.
+  function sbNums(st) { var a = r1(st.a), b = r1(st.b), c = r1(st.c); return { a: a, b: b, c: c, eff: r1(a - b), bias: r1(b - c), gap: r1(a - c) }; }
+  function sbSvg(svg, st) {
+    var n = sbNums(st), y0 = 200, sc = 1.8, Y = function (v) { return y0 - v * sc; }, bx = [15, 125, 235], W = 80, TD = '#1F6B6B', OR = '#C8682B';
+    svg.innerHTML = '';
+    E('line', { x1: 8, x2: 320, y1: y0, y2: y0, stroke: '#8a93a0' }, svg);
+    E('rect', { x: bx[0], y: Y(n.a), width: W, height: n.a * sc, fill: TEAL, opacity: 0.9 }, svg);
+    E('rect', { x: bx[1] + 1, y: Y(n.b), width: W - 2, height: n.b * sc, fill: '#E8F4F4', stroke: TEAL, 'stroke-width': 2, 'stroke-dasharray': '5 3' }, svg);
+    E('rect', { x: bx[2], y: Y(n.c), width: W, height: n.c * sc, fill: ORANGE, opacity: 0.9 }, svg);
+    [n.a, n.b, n.c].forEach(function (v, i) { E('text', { x: bx[i] + W / 2, y: Y(v) - 5, 'text-anchor': 'middle', 'class': 'big' }, svg).textContent = v.toFixed(1) + '%'; });
+    [['drug group,', 'observed'], ['drug group, had it', 'skipped the drug'], ['placebo group,', 'observed']].forEach(function (L, i) { L.forEach(function (ln, j) { E('text', { x: bx[i] + W / 2, y: y0 + 16 + j * 14, 'text-anchor': 'middle' }, svg).textContent = ln; }); });
+    function bracket(x, va, vb, col) { var ya = Y(va), yb = Y(vb); E('path', { d: 'M' + (x - 5) + ' ' + ya + 'H' + x + 'V' + yb + 'H' + (x - 5), fill: 'none', stroke: col, 'stroke-width': 2 }, svg); return (ya + yb) / 2; }
+    [n.a, n.b, n.c].forEach(function (v) { E('line', { x1: 95 + 0, x2: 340, y1: Y(v), y2: Y(v), stroke: '#B8C4CC', 'stroke-dasharray': '2 3' }, svg); });
+    var mE = bracket(340, n.a, n.b, TD), mB = bracket(358, n.b, n.c, OR);
+    var lab = [{ m: mE, col: TD, l: ['effect of the drug', 'on people who took it', signed(n.eff, 1) + ' pts'] }, { m: mB, col: OR, l: ['selection bias: groups', 'differed before any drug', signed(n.bias, 1) + ' pts'] }];
+    lab.forEach(function (o) { o.y = o.m - 13; });
+    var o1 = lab[0].m <= lab[1].m ? lab[0] : lab[1], o2 = o1 === lab[0] ? lab[1] : lab[0];
+    if (o2.y < o1.y + 46) o2.y = o1.y + 46;
+    lab.forEach(function (o) { o.l.forEach(function (ln, j) { var tx = E('text', { x: 368, y: o.y + 12 + j * 14, 'class': j === 2 ? 'big' : '' }, svg); tx.textContent = ln; if (j === 2) tx.style.fill = o.col; }); });
+    return n;
+  }
+  function sbChipsHtml(n) { return ''; }
+  function sbDraw() {
+    var st = sbStat(CF.pts, CF.t, CF.eff);
+    if (!st) { $('sbChips').innerHTML = ''; $('sbNote').textContent = 'One group is empty. Press New assignment.'; return; }
+    var n = sbSvg($('sbBars'), st);
+    $('sbChips').innerHTML = sbChipsHtml(n);
+    $('sbNote').textContent = (CF.mode === 'choose' ? 'Patients chose: the drug group was healthier to begin with, so the bias bracket is tall.' : 'A coin decided, so any bias is luck and averages to zero over many trials.') + ' Dashed bar = the same drug group, had it skipped the drug.';
+  }
+
+  /* ---------- Balance table ---------- */
+  CF.rev = false;
+  function balDraw() {
+    var pts = CF.pts, t = CF.t, rows = [
+      { n: 'Average age (years)', f: function (p) { return p.age; }, sd: 17.3, fmt: function (v) { return v.toFixed(1); } },
+      { n: 'Average health score', f: function (p) { return 50 + 10 * p.h; }, sd: 10, fmt: function (v) { return v.toFixed(1); } },
+      { n: "Not measured (sleep quality, 0 to 10)", f: function (p) { return 5 + 1.5 * p.z; }, sd: 1.5, fmt: function (v) { return v.toFixed(1); }, hid: true }
+    ], html = '', hiddenSym = '';
+    rows.forEach(function (r) {
+      var a = [], b = [];
+      pts.forEach(function (p, i) { (t[i] ? a : b).push(r.f(p)); });
+      if (!a.length || !b.length) { html += '<tr><td>' + r.n + '</td><td>-</td><td>-</td><td class="sym">-</td></tr>'; return; }
+      var ma = Lab.mean(a), mb = Lab.mean(b), same = Math.abs(ma - mb) <= 0.6 * r.sd, sym = same ? '≈' : '≠', hide = r.hid && !CF.rev;
+      if (r.hid) hiddenSym = sym;
+      html += '<tr><td>' + r.n + '</td><td>' + (hide ? '?' : r.fmt(ma)) + '</td><td>' + (hide ? '?' : r.fmt(mb)) + '</td><td class="sym ' + (hide ? '' : same ? 'ok' : 'bad') + '"' + (hide ? '' : ' aria-label="' + (same ? 'about equal' : 'not equal') + '"') + '>' + (hide ? '?' : sym) + '</td></tr>';
+    });
+    $('balBody').innerHTML = html;
+    $('balRev').setAttribute('aria-pressed', CF.rev ? 'true' : 'false'); $('balRev').textContent = CF.rev ? 'Hide the hidden trait' : 'Reveal hidden trait';
+    $('balNote').textContent = !CF.rev ? 'A trial cannot see the last row. Reveal it to check.' : hiddenSym === '≠' ? 'Even the trait nobody measured differs. The drug gets the credit for it.' : 'Even the unmeasured trait matches: the coin balanced it.';
+  }
+  $('balRev').addEventListener('click', function () { CF.rev = !CF.rev; balDraw(); });
+  CF.pts = cfCohort(cfRng, 40); CF.t = cfAssign(cfRng, CF.pts, CF.mode); cfDraw(false);
+
+  function cfCard(key, o) { o.score = score; var c = Lab.QuestionCard($('cfCards'), o); cardEl[key] = c; return c; }
+  var qc = { tag: 'Predict: randomization 1', type: 'choice',
+    q: 'The drug does nothing: both outcomes match for every patient. Patients choose, and healthier people pick it. Does the trial show a benefit?',
+    options: [{ value: 'up', label: 'Yes, the drug group looks better' }, { value: 'zero', label: 'No, the groups look the same' }, { value: 'down', label: 'It looks like it hurts' }],
+    answer: function () {
+      var i, pts, st, k = 0, sa = 0, sb = 0, sc = 0;
+      for (i = 0; i < 500; i++) { pts = cfCohort(cfRng, 40); st = sbStat(pts, cfAssign(cfRng, pts, 'choose'), 0); if (st) { k++; sa += st.a; sb += st.b; sc += st.c; } }
+      qc.s = { a: sa / k, b: sb / k, c: sc / k }; return qc.s.a - qc.s.c > 2 ? 'up' : qc.s.a - qc.s.c < -2 ? 'down' : 'zero';
+    },
+    onReveal: function () {
+      var box = miniBox(cardEl.qc.el), svg = E('svg', { viewBox: '0 0 540 250', role: 'img', 'aria-label': 'Drug does nothing, patients choose: the drug group had already done better before any drug' }, box), n = sbSvg(svg, qc.s);
+      svg.style.maxWidth = '600px';
+      var p = document.createElement('p'); p.className = 'cap'; p.textContent = 'Average of 500 trials: all of the gap is bias.'; box.appendChild(p);
+    },
+    explain: function () { return 'The drug group looks better only because healthier people picked it. Its own "had it skipped the drug" bar is just as tall.'; } };
+  cfCard('qc', qc);
+  var q7 = { tag: 'Predict: randomization 2', type: 'choice',
+    q: 'Many studies saw women on hormone therapy having fewer heart problems. Then a large randomized trial (WHI) tested it. What happened to the risk of heart disease?',
+    options: [{ value: 'lower', label: 'Lower, as expected' }, { value: 'same', label: 'No change' }, { value: 'higher', label: 'Higher' }],
+    answer: 'higher',
+    onReveal: function () { miniBars(cardEl.q7.el, [{ label: 'Heart disease', value: 29, color: ORANGE }, { label: 'Stroke', value: 41, color: ORANGE }], 50, null, function (v) { return '+' + v + '%'; }, 'Change in risk on estrogen plus progestin vs placebo. Heart disease = heart attacks plus deaths from heart disease. Women\'s Health Initiative (Rossouw et al., JAMA 2002).', false); },
+    explain: function () { return 'Women who chose hormones may have been healthier already. The coin ignored health, and the harm showed.'; } };
+  cfCard('q7', q7);
+  })(score);
+
+
+  newRound(); loadS3(PRE[0]); markOn(PRE[0].id);
+})();
+</script>
+</body>
+</html>

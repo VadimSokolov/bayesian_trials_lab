@@ -1,0 +1,19 @@
+id: eq-bayes
+section: sec-bayes-rule
+title: "Bayes' rule for a parameter"
+tex: "\\htmlClass{term c1}{\\pi(\\theta \\mid y)} = \\frac{\\htmlClass{term c2}{p(y \\mid \\theta)}\\, \\htmlClass{term c3}{\\pi(\\theta)}}{\\htmlClass{term c4}{\\int p(y \\mid \\theta')\\, \\pi(\\theta')\\, d\\theta'}} \\;\\propto\\; \\htmlClass{term c2}{p(y \\mid \\theta)}\\, \\htmlClass{term c3}{\\pi(\\theta)},"
+parts:
+  - "The "
+  - {k: c1, words: "posterior"}
+  - " is "
+  - {k: c2, words: "the likelihood of the data"}
+  - " times "
+  - {k: c3, words: "the prior"}
+  - " divided by "
+  - {k: c4, words: "the probability of the data averaged over the prior"}
+  - ", so it is proportional to likelihood times prior."
+notes:
+  c1: "What we believe about the parameter after seeing the data."
+  c2: "The same likelihood a traditional analysis uses."
+  c3: "The choice a Bayesian adds; it must be made, defended and written into the protocol."
+  c4: "Does not depend on the parameter; it only rescales the product to integrate to one."

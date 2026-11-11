@@ -1,0 +1,35 @@
+id: eq-re-post
+section: sec-reanalyses-normal
+title: Normal-normal posterior
+tex: '\htmlClass{term c1}{\frac{1}{s_1^2}} = \htmlClass{term c2}{\frac{1}{s^2}} + \htmlClass{term c3}{\frac{1}{s_0^2}},
+
+  \qquad
+
+  \htmlClass{term c4}{m_1} = s_1^2\left(\htmlClass{term c5}{\frac{\hat\theta}{s^2}} + \htmlClass{term c6}{\frac{m_0}{s_0^2}}\right).'
+parts:
+- 'The '
+- k: c1
+  words: posterior precision
+- ' is the sum of '
+- k: c2
+  words: the precision of the data
+- ' and '
+- k: c3
+  words: the precision of the prior
+- '. The '
+- k: c4
+  words: posterior mean
+- ' is the posterior variance times the sum of '
+- k: c5
+  words: the estimate weighted by its precision
+- ' and '
+- k: c6
+  words: the prior mean weighted by its precision
+- .
+notes:
+  c1: Precision is one over the variance.
+  c2: From the trial estimate $\hat\theta$ with standard error $s$.
+  c3: From the normal prior $N(m_0, s_0^2)$.
+  c4: The precision-weighted average of the estimate and the prior mean.
+  c5: The trial estimate.
+  c6: The prior mean.

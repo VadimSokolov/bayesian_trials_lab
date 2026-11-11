@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peeking at the data: looks during a trial | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: why checking trial results again and again creates false alarms, and how regulators fix it.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<style>
+.tip { border-bottom: 1.5px dotted var(--teal-dark); cursor: help; position: relative; }
+.tip:hover::after, .tip:focus::after { content: attr(data-tip); position: absolute; left: 0; top: 125%; width: 15rem; background: var(--navy); color: #fff; padding: .4rem .6rem; border-radius: 6px; font-size: .8rem; font-style: normal; font-weight: 400; z-index: 30; white-space: normal; line-height: 1.35; }
+.fig { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: .75rem; margin: 1rem 0; }
+.fig svg { width: 100%; height: auto; display: block; }
+.fig svg text { font-family: var(--sans); font-size: 12px; fill: var(--text-secondary); }
+.fig .cap { font-size: .85rem; color: var(--text-tertiary); margin: .4rem 0 0; }
+.fig h3 { font-size: 1rem; margin-bottom: .4rem; }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 4px; }
+.keys { font-size: .85rem; margin: .4rem 0 0; display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
+.seg { display: flex; flex-wrap: wrap; gap: .4rem; }
+.icons { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; max-width: 520px; margin: .5rem 0; }
+.icons i { display: block; aspect-ratio: 1; border-radius: 50%; background: #DCE3EA; }
+.icons i.win { background: var(--orange-fill); }
+.pp { width: 12px; height: 15px; display: block; }
+.pp.yes { fill: #2D8B8B; stroke: none; }
+.pp.no { fill: none; stroke: #9AA3AE; stroke-width: 1.3; }
+.pp.unseen { fill: none; stroke: #9AA3AE; stroke-width: 1.3; opacity: .25; }
+.legend .pp, .legend svg.pp { display: inline-block; vertical-align: middle; width: 14px; height: 17px; max-width: none; }
+.trow { display: grid; grid-template-columns: repeat(20, 12px); gap: 3px; align-items: center; margin: .3rem 0 .5rem; }
+.tbar { display: flex; align-items: center; gap: .5rem; margin: .25rem 0; font-size: .85rem; }
+.tbar .b { height: 18px; border-radius: 4px; }
+.tvt { width: 100%; border-collapse: collapse; font-size: .85rem; margin-top: .5rem; }
+.tvt th, .tvt td { text-align: left; padding: .25rem .4rem; border-bottom: 1px solid var(--border); }
+.tvt tr.stop td { background: #FDF0E8; font-weight: 600; }
+.tvt tr.late td { color: var(--text-tertiary); }
+.mini { margin-top: .75rem; }
+.mini svg { width: 100%; height: auto; display: block; background: #FBFCFD; border-radius: 8px; border: 1px solid var(--border); }
+.mini text { font-family: var(--sans); font-size: 11px; fill: var(--text-secondary); }
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } .icons { grid-template-columns: repeat(10, 1fr); } }
+@media (max-width: 800px) { .tip:hover::after, .tip:focus::after { width: 12rem; } }
+</style>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">7. Peeking at the data: looks during a trial</span>
+  <span class="pn"><a href="06-fair-comparisons.html">&larr; Previous</a><a href="08-e-values.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 7</div>
+  <h1>Peeking at the data: looks during a trial</h1>
+  <p class="hook">A drug does nothing. If you check the results again and again, will you fool yourself?</p>
+  <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
+</section>
+
+<section class="fig" id="tvs" aria-label="True effect versus what the trial sees">
+  <h3>The truth, and what the trial sees</h3>
+  <p class="note">Nobody can see the true response rates. The trial sees only patients, a few more at each look.</p>
+  <div class="seg"><button class="btn on" type="button" id="tvW" data-v="1">The drug really works</button><button class="btn" type="button" id="tvN" data-v="0">The drug does nothing</button><button class="btn primary" type="button" id="tvDeal">Run a new trial</button></div>
+  <div class="twocol" style="margin-top:.6rem">
+    <div><h3>True (hidden)</h3><div id="tvTrue"></div></div>
+    <div><h3>Seen so far</h3><div class="note" style="margin:0">Placebo (a dummy pill)</div><div class="trow" id="tvP" role="img"></div><div class="note" style="margin:0">Drug</div><div class="trow" id="tvD" role="img"></div>
+      <p class="legend"><svg class="pp yes" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> filled = got better &nbsp; <svg class="pp no" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> outline = did not &nbsp; <svg class="pp unseen" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> faded = not yet enrolled</p></div>
+  </div>
+  <table class="tvt" id="tvTab" aria-live="polite"><thead><tr><th>Look</th><th>Patients per group</th><th>Got better: placebo</th><th>Got better: drug</th><th>Gap</th><th><span class="tip" tabindex="0" data-tip="p: how often luck alone gives a gap this big or bigger (module 2). One-sided: only gaps that favor the drug count.">p, one-sided</span></th></tr></thead><tbody></tbody></table>
+  <p class="note" id="tvVerdict" style="margin-top:.5rem"></p>
+  <p class="cap" id="tvCap"></p>
+</section>
+
+<section class="fig" aria-label="Timeline of a trial with four looks">
+  <h3>A trial with planned looks</h3>
+  <svg id="fig1" viewBox="0 0 760 250" role="img" aria-label="Timeline: patients join, four planned looks at 40, 60, 80 and 100 percent, each with the one-sided p-value needed to stop"></svg>
+  <p class="cap">The strict early bars come from a spending formula (Lan-DeMets), so they differ a little from the textbook O’Brien-Fleming bars. At each look an independent safety board (<span class="tip" tabindex="0" data-tip="Data safety monitoring board: independent experts who see the unblinded data and may recommend to stop.">DSMB</span>) checks the data.</p>
+</section>
+
+<section id="lab" class="labgrid" aria-label="Interim looks lab">
+  <div class="panel">
+    <h3>1. How many looks?</h3>
+    <div class="seg" id="kBtns"></div>
+    <h3>2. Which rule?</h3>
+    <div class="seg" id="ruleBtns"></div>
+    <h3>3. Does the drug work?</h3>
+    <div class="seg" id="effBtns"></div>
+    <h3>Run</h3>
+    <div class="row">
+      <button class="btn primary" id="run1" type="button">Run 1 trial</button>
+      <button class="btn primary" id="run100" type="button">Run 100 trials</button>
+    </div>
+    <p class="note">Each trial: 100 patients. Each simulated patient's result is a measurement on a bell curve. This approximates yes/no outcomes in big trials.</p>
+  </div>
+  <div>
+    <div class="plotbox"><svg id="plot"></svg>
+      <div class="keys" id="keys"></div>
+      <p class="note" style="margin:.4rem 0 0"><b>z</b>: how big the gap is compared with luck. Above 1.96 on the drug’s side is the usual bar, one-sided p below 0.025 (<a href="02-p-values.html">module 2</a>). Only the drug’s good side is drawn.</p>
+      <div class="chips" aria-live="polite" id="chips"></div>
+      <p class="note" id="plotNote" style="margin:.5rem 0 0"></p>
+    </div>
+    <div class="fig" style="margin-bottom:0">
+      <h3 id="iconTitle">100 simulated trials, one dot each</h3>
+      <div class="icons" id="icons" aria-label="Icon array of 100 simulated trials"></div>
+      <div class="keys"><span><span class="sw" style="background:#E07A3F"></span><span id="winKey">Stopped</span></span><span><span class="sw" style="background:#DCE3EA"></span>Never stopped</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="fig" aria-label="False alarm chance by number of looks">
+  <h3>Chance that a useless drug gives a false alarm</h3>
+  <svg id="fig2" viewBox="0 0 640 260" role="img" aria-label="Bars: false alarm chance grows with the number of looks if every look uses one-sided p below 0.025, and stays at 2.5 percent with Pocock or O'Brien-Fleming-type bars"></svg>
+  <div class="keys"><span><span class="sw" style="background:#E07A3F"></span>Every look at one-sided p &lt; 0.025 (usual bar)</span><span><span class="sw" style="background:#2D8B8B"></span>Stricter bars (Pocock or O’Brien-Fleming-type)</span></div>
+  <p class="cap">False alarm: the trial stops though the drug does nothing.</p>
+</section>
+
+<section class="fig" id="ppsec" aria-label="Will the trial win if it keeps going?">
+  <h2 style="font-size:1.25rem;margin:0 0 .4rem">Will the trial win if it keeps going?</h2>
+  <p style="margin:.2rem 0"><b>Posterior</b>: how sure we are today that the drug is better. <b>Predictive probability</b>: the chance the trial ends in a win if it runs to the end, given the data so far.</p>
+  <p class="note" style="margin:.2rem 0 .6rem">Plan: 100 patients per arm. Halfway, placebo has 15 of 50 better (30%). Pick the drug’s count.</p>
+  <div class="field"><label for="ppX" style="white-space:nowrap">Drug: better so far, of 50 <output id="ppXo"></output></label><input id="ppX" type="range" min="10" max="40" step="1" value="23"></div>
+  <svg id="ppPlot" viewBox="0 0 640 250" role="img" aria-label="Histogram of 2,000 simulated final posteriors"></svg>
+  <div class="keys"><span><span class="sw" style="background:#E07A3F"></span>Wins at the end (final posterior above 0.975)</span><span><span class="sw" style="background:#DCE3EA"></span>No win</span></div>
+  <div class="chips" aria-live="polite" id="ppChips"></div>
+  <p class="note" id="ppNote" style="margin:.5rem 0 0"></p>
+  <div class="qcards" id="ppQ" style="margin-top:.75rem"></div>
+  <p class="cap">Next, <a href="09-adaptive-bayesian.html">module 9</a> (CALGB 49907) uses this chance to stop a trial for futility.</p>
+</section>
+
+<section class="section">
+  <h2>Predict, then check</h2>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="example">
+  <h2>Real trials that stopped early</h2>
+  <div class="fig" style="margin-top:.5rem">
+    <svg id="fig3" viewBox="0 0 640 150" role="img" aria-label="Bars: CALGB 49907 stopped at 633 of 1800 patients, ASTIN at 966 of 1300"></svg>
+  </div>
+  <ul>
+    <li><b>CALGB 49907</b> (cancer trial): stopped early.</li>
+    <li><b>ASTIN</b> (stroke drug): stopped for <span class="tip" tabindex="0" data-tip="Futility: very little chance the trial will end with a win, so continuing is not worth it.">futility</span>. The trial had little chance of meeting its planned goal, so enrollment stopped.</li>
+    <li><b>DAWN</b> (clot removal after stroke): stopped enrollment at 206 patients because the predictive probability of a win (module 7, below) passed 95%. At the end, the chance clot removal was better was above 99.9%.</li>
+  </ul>
+  <p class="note">Sources: Sokolova and Sokolov (2026), <i>Clinical Trials in Practice</i>, <a href="https://vsokolov.org/clinical_trials_in_practice/11-statistical-methods.html">chapter 12</a>, which cites Krams et al. (2003, ASTIN) and <a href="https://doi.org/10.1056/NEJMoa1706442">Nogueira et al. (2018), NEJM, DAWN</a>.</p>
+</section>
+
+<div id="code"></div>
+
+<aside class="reg">
+  <h3>Regulator's corner</h3>
+  <p>Trial rules (<span class="tip" tabindex="0" data-tip="International Council for Harmonisation: regulators and industry who write shared trial rules.">ICH</span> E9): plan every look in advance and write it in the protocol (the trial plan).</p>
+  <blockquote>"any analysis intended to compare treatment arms with respect to efficacy or safety at any time prior to formal completion of a trial"</blockquote>
+  <p>In plain words: any look at whether the drug is working before the trial ends.</p>
+  <p class="note">ICH E9, section 4.5. <a href="https://database.ich.org/sites/default/files/E9_Guideline.pdf">Official PDF</a>.</p>
+</aside>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>Every extra look is another chance for a false alarm.</li>
+    <li>Plan the looks first, and use stricter bars so false alarms stay at 2.5%.</li>
+    <li>Stopping early saves patients, but the early estimate tends to be too big.</li>
+    <li>Predictive probability is the chance of a win at the end, not how sure we are today.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/interim-analysis">Interim analysis</a>, <a href="encyclopedia/#/e/information-fraction">Information fraction</a>, <a href="encyclopedia/#/e/group-sequential-design">Group sequential design</a>, <a href="encyclopedia/#/e/predictive-probability-of-success">Predictive probability of success</a>, <a href="encyclopedia/#/e/obrien-fleming-boundary">O'Brien-Fleming boundary</a>, <a href="encyclopedia/#/e/spending-function">Lan-DeMets spending function</a>, <a href="encyclopedia/#/e/conditional-power">Conditional power</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Sources</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/10-sequential.html">11</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/13-predictive.html">15</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570</li>
+    <li>ICH E9 (1998), Statistical Principles for Clinical Trials.</li>
+    <li>Marion, R. et al. (2025). Predictive probabilities made simple. Statistics in Medicine.</li>
+  </ul>
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning</a> (chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>). doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice</a> (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters online</a>). doi:10.5281/zenodo.23933570</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
+    <li>Sokolova, A. and Sokolov, V. (2026). E-values for adaptive clinical trials. <a href="https://arxiv.org/abs/2602.06379">arXiv:2602.06379</a></li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', TDARK = '#1F6B6B', ORANGE = '#E07A3F', ODARK = '#B8531A', NAVY = '#0A1628', GRAY = '#8795A8';
+  var NS = 'http://www.w3.org/2000/svg', NARROW = window.innerWidth < 800;
+  var $ = function (id) { return document.getElementById(id); };
+  var rng = Lab.rng(2026), rng2 = Lab.rng(77);
+  var BOOK = [0.4, 0.6, 0.8, 1], NPAT = 100, MU = 0.25;
+  function eq(K) { var o = []; for (var i = 1; i <= K; i++) o.push(i / K); return o; }
+  function fp(p) { if (p < 0.0001) return '<0.0001'; return p >= 0.01 ? p.toFixed(3) : p.toFixed(4); }
+  function pc(x, d) { return (100 * x).toFixed(d == null ? 1 : d) + '%'; }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  /* ---------- group-sequential boundaries (exact numerical integration) ---------- */
+  var cnd=function(x){var xa=Math.abs(x),c,b;if(xa>37)c=0;else{var e=Math.exp(-xa*xa/2);if(xa<7.07106781186547){b=3.52624965998911E-02*xa+0.700383064443688;b=b*xa+6.37396220353165;b=b*xa+33.912866078383;b=b*xa+112.079291497871;b=b*xa+221.213596169931;b=b*xa+220.206867912376;c=e*b;b=8.83883476483184E-02*xa+1.75566716318264;b=b*xa+16.064177579207;b=b*xa+86.7807322029461;b=b*xa+296.564248779674;b=b*xa+637.333633378831;b=b*xa+793.826512519948;b=b*xa+440.413735824752;c=c/b;}else{b=xa+0.65;b=xa+4/b;b=xa+3/b;b=xa+2/b;b=xa+1/b;c=e/b/2.506628274631;}}return x>0?1-c:c;};
+var H=0.01,GM=5,M=Math.round(2*GM/H)+1,G=new Float64Array(M),cache={},Z2=2.241402727604947;
+for(var gi=0;gi<M;gi++)G[gi]=-GM+gi*H;
+function crossP(f,B,sd){if(!f)return 1-cnd(B/sd);var s=0;for(var i=0;i<M;i++){var fi=f[i];if(fi>0)s+=fi*(1-cnd((B-G[i])/sd));}return s*H;}
+function wt(x,B){var w=(B-x)/H+0.5;return w<=0?0:w>=1?1:w;}
+function stepF(f,B,sd){var out=new Float64Array(M),c=1/(sd*Math.sqrt(2*Math.PI)),j,i;
+  if(!f){for(j=0;j<M;j++){var w0=wt(G[j],B);if(w0>0)out[j]=w0*c*Math.exp(-G[j]*G[j]/(2*sd*sd));}return out;}
+  var ilo=M,ihi=-1;for(i=0;i<M;i++)if(f[i]>0){if(i<ilo)ilo=i;ihi=i;}
+  var kern=new Float64Array(2*M-1);for(i=0;i<2*M-1;i++){var o=(i-(M-1))*H;kern[i]=c*Math.exp(-o*o/(2*sd*sd));}
+  for(j=0;j<M;j++){var w1=wt(G[j],B);if(w1<=0)continue;var s=0;for(i=ilo;i<=ihi;i++)s+=f[i]*kern[j-i+M-1];out[j]=s*H*w1;}
+  return out;}
+function design(fr,rule){var key=rule+'|'+fr.join(',');if(cache[key])return cache[key];
+  var K=fr.length,f=null,prev=0,spent=0,zs=[],ps=[];
+  for(var k=0;k<K;k++){var t=fr[k],d=t-prev,sd=Math.sqrt(d),st=Math.sqrt(t),b;
+    if(rule==='naive')b=1.96;else{var target=rule==='obf'?2*(1-cnd(Z2/st)):0.025*Math.log(1+(Math.E-1)*t),lo=0.5,hi=14;
+      for(var it=0;it<45;it++){var m=(lo+hi)/2;if(spent+crossP(f,m*st,sd)>target)lo=m;else hi=m;}b=(lo+hi)/2;}
+    var p=crossP(f,b*st,sd);spent+=p;zs.push(b);ps.push(p);f=stepF(f,b*st,sd);prev=t;}
+  return cache[key]={fr:fr,z:zs,total:spent,p1:zs.map(function(z){return 1-cnd(z);})};}
+
+
+  /* ---------- small SVG helpers ---------- */
+  function svgEl(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  var MW = 360, MH = 190, ML = 46, MR = 10, MT = 14, MB = 34;
+  function Mini(xlim, ylim) {
+    return {
+      sx: function (x) { return ML + (x - xlim[0]) / (xlim[1] - xlim[0]) * (MW - ML - MR); },
+      sy: function (y) { return MH - MB - (y - ylim[0]) / (ylim[1] - ylim[0]) * (MH - MT - MB); }
+    };
+  }
+  function frame(m, xt, yt, xl, yl) {
+    var s = '';
+    yt.forEach(function (t) { var y = m.sy(t[0]).toFixed(1); s += '<line x1="' + ML + '" x2="' + (MW - MR) + '" y1="' + y + '" y2="' + y + '" stroke="#E3E8EE"/><text x="' + (ML - 6) + '" y="' + (+y + 4) + '" text-anchor="end">' + t[1] + '</text>'; });
+    xt.forEach(function (t) { var x = m.sx(t[0]).toFixed(1); s += '<text x="' + x + '" y="' + (MH - MB + 15) + '" text-anchor="middle">' + t[1] + '</text>'; });
+    s += '<line x1="' + ML + '" x2="' + (MW - MR) + '" y1="' + (MH - MB) + '" y2="' + (MH - MB) + '" stroke="#9AA6B2"/>';
+    s += '<text x="' + (ML + (MW - ML - MR) / 2) + '" y="' + (MH - 4) + '" text-anchor="middle">' + xl + '</text>';
+    s += '<text transform="rotate(-90)" x="' + (-(MT + (MH - MT - MB) / 2)) + '" y="11" text-anchor="middle">' + yl + '</text>';
+    return s;
+  }
+  // Grouped bars. groups [{label, vals}], colors per series, ymax, fmt, opts {ref:{v,label}, yl, hl}
+  function miniBars(groups, colors, ymax, fmt, o) {
+    o = o || {};
+    var m = Mini([0, groups.length], [0, ymax]), yt = [], i, s;
+    Lab.ticks(0, ymax, 4).forEach(function (v) { yt.push([v, fmt(v)]); });
+    s = frame(m, [], yt, '', o.yl || '');
+    var gw = (MW - ML - MR) / groups.length, ns = groups[0].vals.length, bw = Math.min(30, gw * 0.8 / ns);
+    groups.forEach(function (g, gi) {
+      var cx = ML + gw * (gi + 0.5);
+      s += '<text x="' + cx.toFixed(1) + '" y="' + (MH - MB + 15) + '" text-anchor="middle">' + g.label + '</text>';
+      g.vals.forEach(function (v, si) {
+        var x = cx - bw * ns / 2 + si * bw, y = m.sy(v), hl = o.hl === gi;
+        s += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + (bw - 2) + '" height="' + (m.sy(0) - y).toFixed(1) + '" fill="' + colors[si] + '"' + (hl ? ' stroke="#0A1628" stroke-width="2"' : '') + '/>';
+        s += '<text x="' + (x + bw / 2 - 1).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle" style="font-weight:600">' + fmt(v) + '</text>';
+      });
+    });
+    if (o.ref) { var yr = m.sy(o.ref.v); s += '<line x1="' + ML + '" x2="' + (MW - MR) + '" y1="' + yr + '" y2="' + yr + '" stroke="#0A1628" stroke-dasharray="5 4"/><text x="' + (MW - MR - 2) + '" y="' + (yr - 4) + '" text-anchor="end" style="font-weight:600;fill:#0A1628">' + o.ref.label + '</text>'; }
+    return '<svg viewBox="0 0 ' + MW + ' ' + MH + '" role="img" aria-label="' + esc(o.aria || 'Bar chart') + '">' + s + '</svg>';
+  }
+  // Step lines of z boundaries. series [{d, color, dash, label}]
+  function miniBounds(series, aria) {
+    var m = Mini([0, 1], [1.5, 4.5]), s = frame(m, [[0, '0%'], [0.25, '25%'], [0.5, '50%'], [0.75, '75%'], [1, '100%']], [[2, '2'], [3, '3'], [4, '4']], 'Share of patients so far', 'z needed to stop');
+    series.forEach(function (se, si) {
+      var d = se.d, path = '', prev = 0;
+      d.fr.forEach(function (f, k) { var y = m.sy(Math.min(4.5, d.z[k])).toFixed(1); path += (k ? 'L' : 'M') + m.sx(prev).toFixed(1) + ',' + y + 'L' + m.sx(f).toFixed(1) + ',' + y; prev = f; });
+      s += '<path d="' + path + '" fill="none" stroke="' + se.color + '" stroke-width="2.5"' + (se.dash ? ' stroke-dasharray="5 4"' : '') + '/>';
+      s += '<text x="' + (ML + 8) + '" y="' + (MT + 8 + si * 14) + '" style="fill:' + se.color + ';font-weight:600">' + se.label + '</text>';
+    });
+    return '<svg viewBox="0 0 ' + MW + ' ' + MH + '" role="img" aria-label="' + esc(aria) + '">' + s + '</svg>';
+  }
+
+  /* ---------- Figure 1: timeline ---------- */
+  (function () {
+    var o = design(BOOK, 'obf'), p = design(BOOK, 'poc'), s = '', X = function (f) { return 60 + 640 * f; };
+    if (NARROW) {
+      $('fig1').setAttribute('viewBox', '0 0 360 380');
+      s += '<text x="10" y="18" style="font-weight:600;fill:#0A1628">Look, then one-sided p needed to stop</text>';
+      BOOK.forEach(function (f, k) {
+        var y = 50 + k * 82;
+        s += '<circle cx="24" cy="' + (y + 10) + '" r="12" fill="#fff" stroke="#0A1628" stroke-width="2"/><text x="24" y="' + (y + 14) + '" text-anchor="middle" style="font-weight:700;fill:#0A1628">' + (k + 1) + '</text>';
+        s += '<text x="46" y="' + (y + 14) + '" style="font-weight:600;fill:#0A1628">' + Math.round(f * 100) + '% of patients</text>';
+        [[o, 150, '#2D8B8B', 'Strict early'], [p, 255, '#1F6B6B', 'Even bar']].forEach(function (r) {
+          s += '<rect x="' + (r[1] - 104) + '" y="' + (y + 24) + '" width="100" height="34" rx="8" fill="#fff" stroke="' + r[2] + '" stroke-width="2"/><text x="' + (r[1] - 54) + '" y="' + (y + 38) + '" text-anchor="middle" style="font-size:10px">' + r[3] + '</text><text x="' + (r[1] - 54) + '" y="' + (y + 52) + '" text-anchor="middle" style="font-family:IBM Plex Mono,monospace;font-weight:600;fill:#0A1628">' + fp(r[0].p1[k]) + '</text>';
+        });
+      });
+      s += '<text x="46" y="' + 372 + '" style="font-size:10px">Strict early: O’Brien-Fleming-type. Even: Pocock-type.</text>';
+      $('fig1').innerHTML = s; return;
+    }
+    s += '<text x="60" y="22" style="font-weight:600;fill:#0A1628">Patients join the trial</text>';
+    s += '<rect x="' + X(0) + '" y="62" width="640" height="16" rx="8" fill="#E8F4F4" stroke="#1F6B6B"/>';
+    s += '<rect x="' + X(0) + '" y="62" width="' + (640 * 0.4) + '" height="16" rx="8" fill="#2D8B8B" opacity=".55"/>';
+    s += '<text x="60" y="100" text-anchor="middle">start</text>';
+    BOOK.forEach(function (f, k) {
+      var x = X(f);
+      s += '<line x1="' + x + '" x2="' + x + '" y1="46" y2="86" stroke="#0A1628" stroke-width="2"/>';
+      s += '<circle cx="' + x + '" cy="38" r="12" fill="#fff" stroke="#0A1628" stroke-width="2"/><text x="' + x + '" y="42" text-anchor="middle" style="font-weight:700;fill:#0A1628">' + (k + 1) + '</text>';
+      s += '<text x="' + x + '" y="100" text-anchor="middle">' + Math.round(f * 100) + '% of patients</text>';
+    });
+    [['Strict early bar (O’Brien-Fleming-type, Lan-DeMets spending): stop only if one-sided p is below', o, 150, '#2D8B8B'], ['Pocock-type spending, a stricter bar, similar at each look: stop only if one-sided p is below', p, 215, '#1F6B6B']].forEach(function (r) {
+      s += '<text x="10" y="' + (r[2] - 20) + '" style="font-weight:600;fill:#0A1628">' + r[0] + '</text>';
+      BOOK.forEach(function (f, k) {
+        var x = X(f);
+        s += '<rect x="' + (x - 52) + '" y="' + (r[2] - 10) + '" width="104" height="30" rx="8" fill="#fff" stroke="' + r[3] + '" stroke-width="2"/>';
+        s += '<text x="' + x + '" y="' + (r[2] + 10) + '" text-anchor="middle" style="font-family:IBM Plex Mono,monospace;font-weight:600;fill:#0A1628">' + fp(r[1].p1[k]) + '</text>';
+      });
+    });
+    $('fig1').innerHTML = s;
+  })();
+
+  /* ---------- Figure 2: false alarms by number of looks ---------- */
+  (function () {
+    var Ks = [1, 2, 3, 5, 10, 20], W = 640, x0 = 56, x1 = 626, y0 = 214, y1 = 20, ymax = 0.15, s = '', bw = 30, dg = 1;
+    if (NARROW) { W = 360; x0 = 40; x1 = 352; y0 = 214; bw = 20; dg = 0; $('fig2').setAttribute('viewBox', '0 0 360 260'); }
+    var sy = function (v) { return y0 - (v / ymax) * (y0 - y1); };
+    [0, 0.05, 0.1, 0.15].forEach(function (v) { s += '<line x1="' + x0 + '" x2="' + x1 + '" y1="' + sy(v) + '" y2="' + sy(v) + '" stroke="#E3E8EE"/><text x="' + (x0 - 8) + '" y="' + (sy(v) + 4) + '" text-anchor="end">' + Math.round(v * 100) + '%</text>'; });
+    var gw = (x1 - x0) / Ks.length;
+    Ks.forEach(function (K, i) {
+      var cx = x0 + gw * (i + 0.5), a = design(eq(K), 'naive').total, b = design(eq(K), 'obf').total;
+      [[a, ORANGE, -bw - 2], [b, TEAL, 2]].forEach(function (r) {
+        s += '<rect x="' + (cx + r[2]) + '" y="' + sy(r[0]) + '" width="' + bw + '" height="' + (y0 - sy(r[0])) + '" fill="' + r[1] + '"/><text x="' + (cx + r[2] + bw / 2) + '" y="' + (sy(r[0]) - 4) + '" text-anchor="middle" style="font-weight:600">' + pc(r[0], dg) + '</text>';
+      });
+      s += '<text x="' + cx + '" y="' + (y0 + 18) + '" text-anchor="middle">' + K + (NARROW ? '' : (K === 1 ? ' look' : ' looks')) + '</text>';
+    });
+    s += '<text transform="rotate(-90)" x="-117" y="14" text-anchor="middle">Chance of a false alarm' + (NARROW ? ' (looks below)' : '') + '</text>';
+    $('fig2').innerHTML = s;
+  })();
+
+  /* ---------- Figure 3: real trials ---------- */
+  (function () {
+    var rows = [['CALGB 49907', 633, 1800], ['ASTIN', 966, 1300]], s = '', X0 = NARROW ? 0 : 130, WB = NARROW ? 220 : 440;
+    if (NARROW) $('fig3').setAttribute('viewBox', '0 0 360 190');
+    rows.forEach(function (r, i) {
+      var y = (NARROW ? 24 : 20) + i * (NARROW ? 80 : 62), w = WB, sh = r[1] / r[2];
+      if (NARROW) y += 14; s += '<text x="0" y="' + (NARROW ? y - 6 : y + 16) + '" style="font-weight:600;fill:#0A1628">' + r[0] + '</text>';
+      s += '<rect x="' + X0 + '" y="' + y + '" width="' + w + '" height="26" rx="6" fill="#E3E8EE"/><rect x="' + X0 + '" y="' + y + '" width="' + (w * sh) + '" height="26" rx="6" fill="#E07A3F"/>';
+      s += '<text x="' + (X0 + w * sh - 8) + '" y="' + (y + 17) + '" text-anchor="end" style="fill:#fff;font-weight:700">' + r[1].toLocaleString('en-US') + '</text>';
+      s += '<text x="' + (X0 + w + 6) + '" y="' + (y + 17) + '">of ' + r[2].toLocaleString('en-US') + '</text>';
+      s += '<text x="' + X0 + '" y="' + (y + 42) + '">stopped at ' + Math.round(sh * 100) + '% of the plan</text>';
+    });
+    $('fig3').innerHTML = s;
+  })();
+
+  /* ---------- Truth vs what the trial sees ---------- */
+  (function () {
+    var N = 100, LK = [40, 60, 80, 100], RP = 0.40, RD = { 1: 0.60, 0: 0.40 }, mode = 1, timers = [], r3 = Lab.rng(515);
+    function pval(a, b, n) { var pp = (a + b) / (2 * n), se = Math.sqrt(pp * (1 - pp) * 2 / n); if (!se) return 1; return 1 - cnd((b - a) / n / se); }
+    function draw(eff, rg) { var a = [], b = [], i; for (i = 0; i < N; i++) { a.push(rg() < RP ? 1 : 0); b.push(rg() < RD[eff] ? 1 : 0); } return { a: a, b: b }; }
+    function sumTo(x, n) { var s = 0, i; for (i = 0; i < n; i++) s += x[i]; return s; }
+    function looks(t) { return LK.map(function (n) { var a = sumTo(t.a, n), b = sumTo(t.b, n); return { n: n, a: a, b: b, p: pval(a, b, n) }; }); }
+    function firstStop(ls) { for (var k = 0; k < ls.length; k++) if (ls[k].p < 0.025) return k; return -1; }
+    var rate = {}; [0, 1].forEach(function (e) { var w = 0, i; for (i = 0; i < 1000; i++) if (firstStop(looks(draw(e, r3))) >= 0) w++; rate[e] = w / 1000; });
+    function rows(box, arr, n) { box.innerHTML = arr.map(function (v, i) { return '<svg class="pp ' + (i < n ? (v ? 'yes' : 'no') : 'unseen') + '" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>'; }).join(''); }
+    function el0(tag, cls) { var e = document.createElement(tag); e.className = cls; return e; }
+    function bar(lbl, r, col) { return '<div class="tbar"><span style="width:5.5rem">' + lbl + '</span><span class="b" style="width:' + Math.round(r * 200) + 'px;background:' + col + '"></span><b>' + Math.round(r * 100) + '%</b></div>'; }
+    function deal() {
+      timers.forEach(clearTimeout); timers = [];
+      var t = draw(mode, rng2), ls = looks(t), st = firstStop(ls), tb = document.querySelector('#tvTab tbody');
+      $('tvTrue').innerHTML = bar('Placebo', RP, '#8795A8') + bar('Drug', RD[mode], TEAL) + '<p class="note" style="margin:.3rem 0 0">True response rates: ' + Math.round((RD[mode] - RP) * 100) + ' more per 100 improve on the drug.</p>';
+      tb.innerHTML = ''; $('tvVerdict').textContent = ''; rows($('tvP'), t.a, 0); rows($('tvD'), t.b, 0);
+      $('tvP').setAttribute('aria-label', 'Placebo group: ' + sumTo(t.a, N) + ' of ' + N + ' got better'); $('tvD').setAttribute('aria-label', 'Drug group: ' + sumTo(t.b, N) + ' of ' + N + ' got better');
+      ls.forEach(function (l, k) {
+        timers.push(setTimeout(function () {
+          rows($('tvP'), t.a, l.n); rows($('tvD'), t.b, l.n);
+          var tr = document.createElement('tr'), gap = l.b - l.a, late = st >= 0 && k > st;
+          tr.className = k === st ? 'stop' : late ? 'late' : '';
+          tr.innerHTML = '<td>' + (k + 1) + '</td><td>' + l.n + '</td><td>' + l.a + ' of ' + l.n + '</td><td>' + l.b + ' of ' + l.n + '</td><td>' + (gap > 0 ? '+' : '') + gap + ' patients</td><td>' + fp(l.p) + (k === st ? ' stop' : late ? ' (already stopped)' : '') + '</td>';
+          tb.appendChild(tr);
+          if (k === ls.length - 1) {
+            var v = st < 0 ? 'The naive rule (stop if one-sided p is below 0.025) never stops here.' : 'The naive rule stops at look ' + (st + 1) + ' with ' + (ls[st].b - ls[st].a) + ' more drug patients improved.';
+            v += mode ? (st < 0 ? ' The drug works, but this trial missed it.' : ' A correct stop.') : (st < 0 ? ' Correct: nothing is there.' : ' But the drug does nothing, so this is a false alarm: the trial stops anyway.');
+            $('tvVerdict').textContent = v;
+            $('tvCap').textContent = 'In 1,000 such trials the naive rule ' + (mode ? 'stops in ' + pc(rate[mode], 0) + ' (it found the real effect).' : 'wrongly stops ' + pc(rate[mode], 0) + ' of the time (goal: 2.5%).');
+          }
+        }, 500 * (k + 1)));
+      });
+    }
+    $('tvW').addEventListener('click', function () { mode = 1; $('tvW').classList.add('on'); $('tvN').classList.remove('on'); deal(); });
+    $('tvN').addEventListener('click', function () { mode = 0; $('tvN').classList.add('on'); $('tvW').classList.remove('on'); deal(); });
+    $('tvDeal').addEventListener('click', deal);
+    deal();
+  })();
+
+  /* ---------- Main lab ---------- */
+  var PRESETS = [
+    { id: 'ft', label: 'Drug vs placebo, 5 looks', K: 5, rule: 'naive', eff: 0, x: 'Share of patients so far', y: 'Evidence the drug is better (z)', what: 'patients', note: 'The drug does nothing, so any stop is a false alarm.' },
+    { id: 'obf', label: 'Trial: strict early bar', K: 'book', rule: 'obf', eff: 0, x: 'Share of patients so far', y: 'Evidence the drug works (z)', what: 'patients', note: 'A useless drug, 4 looks, a very strict bar early on (O’Brien-Fleming-type).' },
+    { id: 'poc', label: 'Trial: similar bar each look', K: 'book', rule: 'poc', eff: 0, x: 'Share of patients so far', y: 'Evidence the drug works (z)', what: 'patients', note: 'A useless drug, 4 looks, about the same stricter bar at every look (Pocock).' },
+    { id: 'work', label: 'Drug that works', K: 'book', rule: 'obf', eff: 1, x: 'Share of patients so far', y: 'Evidence the drug works (z)', what: 'patients', note: 'A real effect: how often, and how early, does the trial stop?' }
+  ];
+  var KS = [[1, '1 (no peeking)'], [2, '2'], [5, '5'], [10, '10'], ['book', '4 (design above)']];
+  var RULES = [['naive', 'Usual bar (one-sided p < 0.025) each look'], ['poc', 'Pocock-type spending: similar bars each look'], ['obf', 'O’Brien-Fleming-type: strict early bar']];
+  var S = { K: 5, rule: 'naive', eff: 0, pre: PRESETS[0], runs: 0, wins: 0, pat: 0 };
+  var plot = Lab.Plot($('plot'), { xlim: [0, 1], ylim: [-5, 5], xlabel: 'Share of patients so far', ylabel: 'Evidence (z)', label: 'Random-walk paths of the z statistic with the stopping boundary', xfmt: function (v) { return Math.round(v * 100) + '%'; } });
+  var svg = $('plot'), defs = svgEl('defs', {}, svg), ov = svgEl('g', {}, svg), pg = svgEl('g', {}, svg), clipN = 0;
+  function frs() { return S.K === 'book' ? BOOK : eq(S.K); }
+  function dsg() { return design(frs(), S.rule); }
+  function cy(z) { return Math.max(-5, Math.min(5, z)); }
+
+  function drawBounds() {
+    var d = dsg(), up = '', prev = 0, P = plot, zoneU = '';
+    d.fr.forEach(function (f, k) {
+      var b = Math.min(5, d.z[k]), x0 = P.sx(prev).toFixed(1), x1 = P.sx(f).toFixed(1);
+      up += (k ? 'L' : 'M') + x0 + ',' + P.sy(b).toFixed(1) + 'L' + x1 + ',' + P.sy(b).toFixed(1);
+      prev = f;
+    });
+    var xr = P.sx(1).toFixed(1), xl = P.sx(0).toFixed(1);
+    ov.innerHTML = '';
+    svgEl('path', { d: up + 'L' + xr + ',' + P.sy(5) + 'L' + xl + ',' + P.sy(5) + 'Z', fill: '#FDF0E8' }, ov);
+    svgEl('line', { x1: xl, x2: xr, y1: P.sy(0), y2: P.sy(0), stroke: '#9AA6B2', 'stroke-dasharray': '3 3' }, ov);
+    svgEl('path', { d: up, fill: 'none', stroke: ORANGE, 'stroke-width': 3 }, ov);
+    svgEl('text', { x: P.sx(0) + 6, y: P.sy(5) + 14, style: 'fill:#B8531A;font-weight:600' }, ov).textContent = 'Stop: drug looks helpful';
+    svgEl('text', { x: P.sx(1) - 6, y: P.sy(0) - 6, 'text-anchor': 'end', style: 'fill:#5A6B7B' }, ov).textContent = 'No difference';
+  }
+
+  function trial() {
+    var d = dsg(), nk = d.fr.map(function (f) { return Math.round(f * NPAT); }), s = 0, zs = [], stopAt = -1, k = 0, n;
+    for (n = 1; n <= NPAT; n++) {
+      s += Lab.normal(rng) + (S.eff ? MU : 0); zs.push(s / Math.sqrt(n));
+      if (k < nk.length && n === nk[k]) { if (stopAt < 0 && zs[n - 1] > d.z[k]) stopAt = k; k++; }
+    }
+    return { zs: zs, stopAt: stopAt, nk: nk, n: stopAt < 0 ? NPAT : nk[stopAt], win: stopAt >= 0 };
+  }
+
+  function drawTrial(tr) {
+    var P = plot, kids = pg.childNodes, i;
+    for (i = 0; i < kids.length; i++) kids[i].setAttribute('opacity', '0.28');
+    while (kids.length > 6) pg.removeChild(kids[0]);
+    var g = svgEl('g', {}, pg), id = 'clip' + (++clipN), cp = svgEl('clipPath', { id: id }, defs), rect = svgEl('rect', { x: P.sx(0), y: 0, width: 0, height: 360 }, cp);
+    g.setAttribute('clip-path', 'url(#' + id + ')');
+    var pt = function (n) { return P.sx(n / NPAT).toFixed(1) + ',' + P.sy(cy(tr.zs[n - 1])).toFixed(1); };
+    var a = '', b = '';
+    for (i = 2; i <= tr.n; i++) a += (i === 2 ? 'M' : 'L') + pt(i);
+    if (tr.n < NPAT) for (i = tr.n; i <= NPAT; i++) b += (i === tr.n ? 'M' : 'L') + pt(i);
+    if (b) svgEl('path', { d: b, fill: 'none', stroke: GRAY, 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }, g);
+    svgEl('path', { d: a, fill: 'none', stroke: TDARK, 'stroke-width': 2.2 }, g);
+    tr.nk.forEach(function (nn, k) {
+      if (nn > tr.n) return;
+      svgEl('circle', { cx: P.sx(nn / NPAT), cy: P.sy(cy(tr.zs[nn - 1])), r: tr.win && nn === tr.n ? 8 : 4.5, fill: tr.win && nn === tr.n ? ORANGE : '#fff', stroke: tr.win && nn === tr.n ? '#fff' : TDARK, 'stroke-width': 2 }, g);
+    });
+    var w = P.sx(1) - P.sx(0) + 4;
+    Lab.tween(900, function (t) { rect.setAttribute('width', (w * t).toFixed(1)); });
+  }
+
+  function chip(txt, val, warm) { return '<span class="chip' + (warm ? ' warm' : '') + '">' + txt + ' <b>' + val + '</b></span>'; }
+  function renderChips() {
+    var d = dsg(), h = chip('Looks', d.fr.length) + chip('Bar at look 1: one-sided p below', fp(d.p1[0])) +
+      chip('False alarm chance if the drug did nothing', pc(d.total), S.rule === 'naive' && d.fr.length > 1);
+    if (S.runs) h += chip('Your trials that stopped', S.wins + ' of ' + S.runs, true) + chip('Average ' + S.pre.what, (S.pat / S.runs).toFixed(0) + ' of ' + NPAT);
+    $('chips').innerHTML = h;
+    $('winKey').textContent = S.eff ? 'Stopped (correct)' : 'Stopped (false alarm)';
+  }
+  function setIcons(res) {
+    var ic = $('icons').childNodes, i;
+    for (i = 0; i < 100; i++) ic[i].className = res && res[i] ? 'win' : '';
+  }
+  function record(tr) { S.runs++; if (tr.win) S.wins++; S.pat += tr.n; }
+  function reset() {
+    S.runs = 0; S.wins = 0; S.pat = 0; pg.innerHTML = ''; setIcons(null); drawBounds(); renderChips();
+    $('plotNote').innerHTML = esc(S.pre.note);
+    plot.setLabels(S.pre.x, S.pre.y);
+    $('iconTitle').textContent = '100 simulated trials, one dot each' + (S.eff ? ' (a real effect)' : ' (no real effect)');
+    mark();
+  }
+  function mark() {
+    document.querySelectorAll('#kBtns .btn').forEach(function (b) { b.classList.toggle('on', String(S.K) === b.dataset.v); });
+    document.querySelectorAll('#ruleBtns .btn').forEach(function (b) { b.classList.toggle('on', S.rule === b.dataset.v); });
+    document.querySelectorAll('#effBtns .btn').forEach(function (b) { b.classList.toggle('on', String(S.eff) === b.dataset.v); });
+  }
+  function mkBtn(parent, label, v, cls, fn) { var b = document.createElement('button'); b.type = 'button'; b.className = 'btn' + (cls ? ' ' + cls : ''); b.textContent = label; b.dataset.v = String(v); b.addEventListener('click', fn); parent.appendChild(b); return b; }
+  KS.forEach(function (k) { mkBtn($('kBtns'), k[1], k[0], '', function () { S.K = k[0]; reset(); }); });
+  RULES.forEach(function (r) { mkBtn($('ruleBtns'), r[1], r[0], '', function () { S.rule = r[0]; reset(); }); });
+  [[0, 'Does nothing'], [1, 'Works']].forEach(function (e) { mkBtn($('effBtns'), e[1], e[0], '', function () { S.eff = e[0]; reset(); }); });
+  PRESETS.forEach(function (p) {
+    var b = mkBtn($('examples'), p.label, p.id, '', function () {
+      S.K = p.K; S.rule = p.rule; S.eff = p.eff; S.pre = p; reset();
+      document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.toggle('on', x === b); });
+      var tr = trial(); record(tr); drawTrial(tr); renderChips();
+    });
+  });
+  for (var ii = 0; ii < 100; ii++) $('icons').appendChild(document.createElement('i'));
+  $('run1').addEventListener('click', function () { var tr = trial(); record(tr); drawTrial(tr); renderChips(); });
+  $('run100').addEventListener('click', function () {
+    var res = [], i, tr; for (i = 0; i < 100; i++) { tr = trial(); record(tr); res.push(tr.win); }
+    setIcons(res); renderChips();
+  });
+  $('keys').innerHTML = '<span><span class="sw" style="background:#E07A3F"></span>Bar to stop: drug works</span><span><span class="sw" style="background:#1F6B6B"></span>One trial: <span class="tip" tabindex="0" data-tip="z: how big the gap between drug and placebo is compared with luck. Bigger means stronger evidence.">z</span> so far (dots are looks)</span><span><span class="sw" style="background:#8795A8"></span>What would have happened if it kept going</span>';
+
+  /* ---------- Question cards ---------- */
+  var score = Lab.Score($('score')), Q = $('qcards');
+  function host(c) { var h = document.createElement('div'); h.className = 'mini'; c.el.appendChild(h); return h; }
+  function nearest(vals, x) { var best = 0; vals.forEach(function (v, i) { if (Math.abs(v - x) < Math.abs(vals[best] - x)) best = i; }); return best; }
+  var h1, h2, h3, h4, h5, h6, h7, c;
+
+  // 1: five peeks
+  var r5 = design(eq(5), 'naive').total, opts1 = [0.025, 0.05, 0.07, 0.12];
+  c = Lab.QuestionCard(Q, {
+    tag: 'Predict 1', score: score, type: 'choice',
+    q: 'A useless drug. You look 5 times and stop if one-sided p is below 0.025. How often do you wrongly stop?',
+    options: [{ value: 0, label: '2.5%' }, { value: 1, label: 'About 5%' }, { value: 2, label: 'About 7%' }, { value: 3, label: 'About 12%' }],
+    answer: function () { return nearest(opts1, r5); },
+    onReveal: function () {
+      var g = [1, 2, 3, 5, 10, 20].map(function (K) { return { label: K + '', vals: [design(eq(K), 'naive').total] }; });
+      h1.innerHTML = miniBars(g, [ORANGE], 0.15, function (v) { return v < 1 && v > 0 ? (v * 100).toFixed(v < 0.2 ? 1 : 0) + '%' : '0'; }, { ref: { v: 0.025, label: '2.5%' }, hl: 3, yl: 'False alarm chance', aria: 'False alarm chance by number of looks' });
+    },
+    explain: function () { return 'Five looks give ' + pc(r5) + ', nearly three times the 2.5% you wanted.'; }
+  }); h1 = host(c);
+
+  // 2: OBF first look
+  var o2 = design(eq(2), 'obf'), opts2 = [0.025, 0.005, 0.0015];
+  c = Lab.QuestionCard(Q, {
+    tag: 'Predict 2', score: score, type: 'choice',
+    q: 'Two looks: halfway and at the end, with the O’Brien-Fleming-type bar. About what one-sided p must you see at the halfway look to stop?',
+    options: [{ value: 0, label: 'p below 0.025' }, { value: 1, label: 'p below 0.005' }, { value: 2, label: 'p below 0.0015' }],
+    answer: function () { return nearest(opts2, o2.p1[0]); },
+    onReveal: function () { h2.innerHTML = miniBounds([{ d: design(eq(2), 'naive'), color: GRAY, dash: 1, label: 'p < 0.025 each look' }, { d: o2, color: TEAL, label: 'O’Brien-Fleming-type' }], 'Boundaries for two looks'); },
+    explain: function () { return 'Halfway needs one-sided p below ' + o2.p1[0].toFixed(4) + '. The last look needs p below ' + o2.p1[1].toFixed(4) + ', almost the usual 0.025.'; }
+  }); h2 = host(c);
+
+  // 3: last look
+  var o3 = design(eq(4), 'obf'), p3 = design(eq(4), 'poc');
+  c = Lab.QuestionCard(Q, {
+    tag: 'Predict 3', score: score, type: 'choice',
+    q: 'Four equal looks. Which design asks for MORE evidence at the very last look?',
+    options: [{ value: 'obf', label: 'O’Brien-Fleming-type' }, { value: 'poc', label: 'Pocock' }, { value: 'same', label: 'The same' }],
+    answer: function () { return p3.z[3] > o3.z[3] ? 'poc' : 'obf'; },
+    onReveal: function () { h3.innerHTML = miniBounds([{ d: p3, color: TDARK, label: 'Pocock' }, { d: o3, color: TEAL, label: 'O’Brien-Fleming-type' }], 'Boundaries for four looks'); },
+    explain: function () { return 'Last look: Pocock needs one-sided p below ' + p3.p1[3].toFixed(4) + ', the O’Brien-Fleming-type bar (Lan-DeMets spending) below ' + o3.p1[3].toFixed(4) + '. Pocock’s easier early bars cost it at the end.'; }
+  }); h3 = host(c);
+
+  // 4: p = 0.01 at look 1
+  var ob = design(BOOK, 'obf'), pk = design(BOOK, 'poc');
+  c = Lab.QuestionCard(Q, {
+    tag: 'Predict 4', score: score, type: 'choice',
+    q: 'Four looks. At the first look (40% of patients) you see one-sided p = 0.01. Which design stops?',
+    options: [{ value: 'both', label: 'Both' }, { value: 'poc', label: 'Only Pocock' }, { value: 'obf', label: 'Only O’Brien-Fleming-type' }, { value: 'none', label: 'Neither' }],
+    answer: function () { var a = ob.p1[0] > 0.01, b = pk.p1[0] > 0.01; return a && b ? 'both' : b ? 'poc' : a ? 'obf' : 'none'; },
+    onReveal: function () {
+      var g = BOOK.map(function (f, k) { return { label: 'Look ' + (k + 1), vals: [ob.p1[k], pk.p1[k]] }; });
+      h4.innerHTML = miniBars(g, [TEAL, TDARK], 0.02, function (v) { return v === 0 ? '0' : v.toFixed(4).replace(/0+$/, '').replace(/\.$/, ''); }, { ref: { v: 0.01, label: 'your p = 0.01' }, yl: 'p needed to stop', aria: 'One-sided p thresholds for O’Brien-Fleming-type and Pocock at four looks' });
+    },
+    explain: function () { return 'At look 1, the O’Brien-Fleming-type bar needs one-sided p below ' + fp(ob.p1[0]) + ' and Pocock below ' + fp(pk.p1[0]) + '. Only Pocock stops.'; }
+  }); h4 = host(c);
+
+  // 5: early stop overestimates
+  var sim5 = (function () {
+    var n = 40, zc = ob.z[0], all = [], st = [], i, S40, est;
+    for (i = 0; i < 40000; i++) { S40 = MU * n + Math.sqrt(n) * Lab.normal(rng2); est = S40 / n; all.push(est); if (S40 / Math.sqrt(n) > zc) st.push(est); }
+    return { all: all, st: st, meanSt: Lab.mean(st), meanAll: Lab.mean(all), share: st.length / all.length };
+  })();
+  c = Lab.QuestionCard(Q, {
+    tag: 'Predict 5', score: score, type: 'choice',
+    q: 'The drug truly helps a little. A trial stops at look 1 because it crossed the bar. Is its estimate of the effect (the size of the gap) too big, too small, or right?',
+    options: [{ value: 'big', label: 'Too big' }, { value: 'small', label: 'Too small' }, { value: 'right', label: 'About right' }],
+    answer: function () { return sim5.meanSt > MU * 1.1 ? 'big' : sim5.meanSt < MU * 0.9 ? 'small' : 'right'; },
+    onReveal: function () {
+      var lo = -0.4, hi = 1.4, nb = 36, ha = Lab.histogram(sim5.all, lo, hi, nb).density, hs = Lab.histogram(sim5.st, lo, hi, nb).density;
+      var ymax = Math.ceil(Math.max.apply(null, ha.concat(hs)) * 1.1 * 2) / 2, m = Mini([lo, hi], [0, ymax]), s = frame(m, [[0, '0'], [0.5, '0.5'], [1, '1']], [], 'Estimated effect', 'Share of trials');
+      var bw = (m.sx(hi) - m.sx(lo)) / nb;
+      ha.forEach(function (v, i) { s += '<rect x="' + (m.sx(lo) + i * bw + 0.5).toFixed(1) + '" y="' + m.sy(v).toFixed(1) + '" width="' + (bw - 1).toFixed(1) + '" height="' + (m.sy(0) - m.sy(v)).toFixed(1) + '" fill="#2D8B8B" opacity=".55"/>'; });
+      hs.forEach(function (v, i) { s += '<rect x="' + (m.sx(lo) + i * bw + 0.5).toFixed(1) + '" y="' + m.sy(v).toFixed(1) + '" width="' + (bw - 1).toFixed(1) + '" height="' + (m.sy(0) - m.sy(v)).toFixed(1) + '" fill="#E07A3F" opacity=".8"/>'; });
+      s += '<line x1="' + m.sx(MU) + '" x2="' + m.sx(MU) + '" y1="' + MT + '" y2="' + (MH - MB) + '" stroke="#0A1628" stroke-width="2" stroke-dasharray="4 3"/><text x="' + (m.sx(MU) + 4) + '" y="' + (MT + 10) + '" style="font-weight:600;fill:#0A1628">truth</text>';
+      s += '<text x="' + (ML + 6) + '" y="' + (MT + 28) + '" style="fill:#2D8B8B;font-weight:600">all trials</text><text x="' + (ML + 6) + '" y="' + (MT + 42) + '" style="fill:#B8531A;font-weight:600">stopped at look 1</text>';
+      h5.innerHTML = '<svg viewBox="0 0 ' + MW + ' ' + MH + '" role="img" aria-label="Histograms of estimated effect, all trials and trials stopped at look 1">' + s + '</svg>';
+    },
+    explain: function () { return 'Trials that stop at look 1 guess an effect ' + (sim5.meanSt / MU).toFixed(1) + ' times the truth on average. Only lucky trials cross the early bar.'; }
+  }); h5 = host(c);
+
+  // 6: Bayesian rare-disease trial (Polson and Sokolov, Bayes, AI and Deep Learning, chapter 6, tbl-operating-chars)
+  function flatStop(K, z) { var fr = eq(K), f = null, prev = 0, sp = 0; fr.forEach(function (t) { var d = t - prev, sd = Math.sqrt(d), st = Math.sqrt(t); sp += crossP(f, z * st, sd); f = stepF(f, z * st, sd); prev = t; }); return sp; }
+  var flat3 = flatStop(3, 1.645);
+  var BT = [['No effect', 0.095], ['Small', 0.281], ['Moderate', 0.543], ['Large', 0.807]];
+  c = Lab.QuestionCard(Q, {
+    tag: 'Predict 6', score: score, type: 'choice',
+    q: 'A small trial stops if the chance the drug is better passes 95% (one-sided: only the drug’s good side). It looks 3 times. The drug does nothing. How often does it wrongly stop?',
+    options: [{ value: 0, label: 'Under 1%' }, { value: 1, label: 'About 5%' }, { value: 2, label: 'About 10%' }, { value: 3, label: 'About 25%' }],
+    answer: function () { return nearest([0.005, 0.05, 0.1, 0.25], BT[0][1]); },
+    onReveal: function () { h6.innerHTML = miniBars(BT.map(function (r) { return { label: r[0], vals: [r[1]] }; }), [TEAL], 1, function (v) { return (v * 100).toFixed(v < 0.1 ? 1 : 0) + '%'; }, { hl: 0, ref: { v: 0.025, label: '2.5%' }, yl: 'Stopped: drug works', aria: 'Table from Bayes, AI and Deep Learning, chapter 6: probability of stopping for efficacy by true effect' }); },
+    explain: function () { return '95% sure is a fair reading of this one trial. But 9.5% is how often a useless drug trips this rule across many looks, and regulators ask about that second number, so the bar is raised. (9.5% is from the table in <a href="https://vsokolov.org/html/_book/06-hyp.html#tbl-operating-chars">chapter 6 of <i>Bayes, AI and Deep Learning</i></a>. This page’s own code, with no prior opinion and 3 equal looks, gives ' + pc(flat3) + '. Both are about four times the 2.5% a regulator allows.)'; }
+  }); h6 = host(c);
+
+  // 7: sample size
+  var FIX = 467, OBFN = 478, POCN = Math.round(FIX * 1.18);
+  c = Lab.QuestionCard(Q, {
+    tag: 'Predict 7', score: score, type: 'choice',
+    q: 'One final look needs 467 patients. With 4 Pocock looks, at the same false alarm chance and the same chance of finding a real effect, how many extra patients might it need?',
+    options: [{ value: 0, label: 'About 11' }, { value: 1, label: 'About 40' }, { value: 2, label: 'About 84' }, { value: 3, label: 'About 150' }],
+    answer: function () { return nearest([11, 40, 84, 150], POCN - FIX); },
+    onReveal: function () { h7.innerHTML = miniBars([{ label: 'One look', vals: [FIX] }, { label: 'O’Brien-Fleming-type', vals: [OBFN] }, { label: 'Pocock', vals: [POCN] }], [TEAL], 600, function (v) { return String(Math.round(v)); }, { yl: 'Most patients needed', hl: 2, aria: 'Maximum sample size by design' }); },
+    explain: function () { return 'Pocock: up to ' + POCN + ' (' + (POCN - FIX) + ' more). O’Brien-Fleming: ' + OBFN + ' (' + (OBFN - FIX) + ' more).'; }
+  }); h7 = host(c);
+
+  Lab.CodeBox($('code'), {
+    py: 'import numpy as np\n' +
+      'rng = np.random.default_rng(1)\n' +
+      'n, looks, sims = 100, 5, 20000\n' +
+      'x = rng.standard_normal((sims, n))      # useless drug: no effect\n' +
+      'k = np.arange(1, looks + 1) * n // looks  # patients at each look\n' +
+      'z = np.cumsum(x, axis=1)[:, k - 1] / np.sqrt(k)\n' +
+      'wins = (z > 1.96).any(axis=1)           # any look "significant", drug side\n' +
+      'print(wins.mean())                      # about 0.07, not 0.025',
+    r: 'set.seed(1)\n' +
+      'n <- 100; looks <- 5; sims <- 20000\n' +
+      'k <- (1:looks) * n / looks            # patients at each look\n' +
+      'win <- replicate(sims, {\n' +
+      '  z <- cumsum(rnorm(n))[k] / sqrt(k)  # useless drug: no effect\n' +
+      '  any(z > 1.96)                       # any look "significant", drug side\n' +
+      '})\n' +
+      'mean(win)                             # about 0.07, not 0.025'
+  });
+
+
+  /* ---------- Predictive probability ---------- */
+  (function () {
+    var NH = 50, NF = 100, ETA = 0.975, FUT = 0.10, PLC = 15, DRAWS = 2000, NB = 40;
+    function pBetter(a1, b1, a2, b2) { // Pr(drug > placebo), normal approximation to the gap of two Betas
+      var m = Lab.betaMean(a1, b1) - Lab.betaMean(a2, b2), v = Math.pow(Lab.betaSd(a1, b1), 2) + Math.pow(Lab.betaSd(a2, b2), 2);
+      return Lab.normalCdf(m / Math.sqrt(v));
+    }
+    function ppFormula(pi, r) { return Lab.normalCdf((Lab.normalQuantile(pi) - Lab.normalQuantile(ETA) * Math.sqrt(r)) / Math.sqrt(1 - r)); }
+    function sim(x) {
+      var r = Lab.rng(11), fin = [], win = 0, i, pd, pp, yd, yp, f;
+      for (i = 0; i < DRAWS; i++) {
+        pd = Lab.beta(r, 1 + x, 1 + NH - x); pp = Lab.beta(r, 1 + PLC, 1 + NH - PLC);
+        yd = Lab.binomial(r, NF - NH, pd); yp = Lab.binomial(r, NF - NH, pp);
+        f = pBetter(1 + x + yd, 1 + NF - x - yd, 1 + PLC + yp, 1 + NF - PLC - yp);
+        fin.push(f); if (f > ETA) win++;
+      }
+      return { fin: fin, pp: win / DRAWS };
+    }
+    var inp = $('ppX');
+    function draw() {
+      var x = parseInt(inp.value, 10), today = pBetter(1 + x, 1 + NH - x, 1 + PLC, 1 + NH - PLC), R = sim(x), cnt = new Array(NB).fill(0), i;
+      $('ppXo').textContent = x + ' (' + Math.round(100 * x / NH) + '%)';
+      R.fin.forEach(function (f) { cnt[Math.min(NB - 1, Math.floor(f * NB))]++; });
+      var W = 640, H = 250, ML = 44, MR = 12, MT = 14, MB = 40, mx = Math.max.apply(null, cnt), bw = (W - ML - MR) / NB, s = '';
+      for (i = 0; i <= 4; i++) { var yy = MT + (H - MT - MB) * (1 - i / 4); s += '<line x1="' + ML + '" x2="' + (W - MR) + '" y1="' + yy + '" y2="' + yy + '" stroke="#E3E8EE"/><text x="' + (ML - 6) + '" y="' + (yy + 4) + '" text-anchor="end">' + Math.round(mx * i / 4) + '</text>'; }
+      cnt.forEach(function (c, k) { var h = (H - MT - MB) * c / mx; s += '<rect x="' + (ML + k * bw + 0.5).toFixed(1) + '" y="' + (H - MB - h).toFixed(1) + '" width="' + (bw - 1).toFixed(1) + '" height="' + h.toFixed(1) + '" fill="' + (k === NB - 1 ? '#E07A3F' : '#DCE3EA') + '"/>'; });
+      var xl = ML + ETA * (W - ML - MR);
+      s += '<line x1="' + xl + '" x2="' + xl + '" y1="' + MT + '" y2="' + (H - MB) + '" stroke="#0A1628" stroke-width="2" stroke-dasharray="4 3"/><text x="' + (xl - 4) + '" y="' + (MT + 10) + '" text-anchor="end" style="font-weight:600;fill:#0A1628">final bar 0.975</text>';
+      [0, 0.25, 0.5, 0.75, 1].forEach(function (v) { s += '<text x="' + (ML + v * (W - ML - MR)) + '" y="' + (H - MB + 16) + '" text-anchor="middle">' + v + '</text>'; });
+      s += '<text x="' + (ML + (W - ML - MR) / 2) + '" y="' + (H - 6) + '" text-anchor="middle">Chance the drug is better at the end (final posterior)</text><text x="12" y="' + (MT + (H - MT - MB) / 2) + '" transform="rotate(-90 12 ' + (MT + (H - MT - MB) / 2) + ')" text-anchor="middle">Simulated endings</text>';
+      $('ppPlot').innerHTML = s;
+      var stop = R.pp < FUT;
+      $('ppChips').innerHTML = '<span class="chip">Posterior today <b>' + today.toFixed(2) + '</b></span><span class="chip warm">Chance to win at the end <b>' + pc(R.pp, 0) + '</b></span><span class="chip' + (stop ? ' warm' : '') + '"><b>' + (stop ? 'Below 10%: futility, stop' : 'Above 10%: keep going') + '</b></span>';
+      $('ppNote').textContent = 'Each of the ' + DRAWS + ' endings simulates the second half of both arms from today’s posterior (flat Beta priors; the chance the drug is better uses a normal approximation, close at these sizes). Formula check from today’s posterior: ' + pc(ppFormula(today, 0.5), 0) + '. The futility line is a guide: the trial may go on anyway (non-binding).';
+    }
+    inp.addEventListener('input', draw); draw();
+
+    // predict-then-check card
+    var PI = 0.90, FORM = ppFormula(PI, 0.5), sim2 = (function () {
+      var r = Lab.rng(21), n = 20000, w = 0, m = Lab.normalQuantile(PI), i, dnew, dh, fp2;
+      for (i = 0; i < n; i++) { dnew = m + Math.SQRT2 * Lab.normal(r); dh = 0.5 * m + 0.5 * dnew; fp2 = Lab.normalCdf(dh / Math.sqrt(0.5)); if (fp2 > ETA) w++; }
+      return w / n;
+    })(), vals = [0.9, 0.7, 0.45, 0.2], hq;
+    var cc = Lab.QuestionCard($('ppQ'), {
+      tag: 'Predict, halfway', score: score, type: 'choice',
+      q: 'Halfway, the posterior is 0.90. What is the chance of a win at the end (final bar 0.975)?',
+      options: [{ value: 0, label: 'About 90%' }, { value: 1, label: 'About 70%' }, { value: 2, label: 'About 45%' }, { value: 3, label: 'About 20%' }],
+      answer: function () { return nearest(vals, FORM); },
+      onReveal: function () { hq.innerHTML = '<div class="chips"><span class="chip warm">Formula <b>' + pc(FORM, 0) + '</b></span><span class="chip">Simulated check <b>' + pc(sim2, 0) + '</b></span></div>'; },
+      explain: function () { return 'Formula (Marion et al., 2025): Φ((Φ⁻¹(0.90) − Φ⁻¹(0.975)·√0.5) / √0.5) = ' + FORM.toFixed(2) + '. A simulation of 20,000 endings gives ' + sim2.toFixed(2) + '. Today’s 0.90 is already short of 0.975, and half the evidence is still to come.'; }
+    }); hq = host(cc);
+  })();
+
+  S.pre = PRESETS[0]; reset();
+  document.querySelector('#examples .btn').classList.add('on');
+  var t0 = trial(); record(t0); drawTrial(t0); renderChips();
+})();
+
+</script>
+</body>
+</html>

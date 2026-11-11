@@ -1,0 +1,10089 @@
+{
+ "nodes": [
+  {
+   "id": "acceleration-bound",
+   "name": "Acceleration bound",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "21"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "ace-reporting-guideline",
+   "name": "ACE reporting guideline",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "adaptive-enrichment",
+   "name": "Adaptive enrichment",
+   "type": "design",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "adaptr",
+   "name": "adaptr",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "adequate-and-well-controlled-investigation",
+   "name": "Adequate and well-controlled investigation",
+   "type": "regulation",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "3"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "adverse-event-hierarchy",
+   "name": "Adverse event hierarchy",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "aggregate-safety-assessment",
+   "name": "Aggregate safety assessment",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "allocation-concealment",
+   "name": "Allocation concealment",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "ancova",
+   "name": "ANCOVA",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "andromeda-shock-trial",
+   "name": "ANDROMEDA-SHOCK",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22",
+    "4",
+    "7"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "anytime-valid-inference",
+   "name": "Anytime-valid inference",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "armitage-recursion",
+   "name": "Armitage recursion",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "11"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "arnold-randomness-measure",
+   "name": "Arnold's measure of randomness",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "asa-statement",
+   "name": "ASA statement on p-values",
+   "type": "principle",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "7"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "assurance",
+   "name": "Assurance",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "9"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "astin-trial",
+   "name": "ASTIN",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "award-5-trial",
+   "name": "AWARD-5",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "backward-induction",
+   "name": "Backward induction",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "15",
+    "16"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "barg",
+   "name": "Bayesian Analysis Reporting Guidelines",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "basket-trial",
+   "name": "Basket trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "20"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "battle-trial",
+   "name": "BATTLE",
+   "type": "trial",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "bayes-factor",
+   "name": "Bayes factor",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "7",
+    "12",
+    "13"
+   ],
+   "degree": 19
+  },
+  {
+   "id": "bayes-risk",
+   "name": "Bayes risk",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "7",
+    "12"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "bayes-rule",
+   "name": "Bayes' rule",
+   "type": "principle",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "6"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "bayes-sequential-decision-problem",
+   "name": "Bayes sequential decision problem",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "11",
+    "15"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "bayesian-adaptive-design",
+   "name": "Bayesian adaptive design",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "1",
+    "14",
+    "15",
+    "23"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "bayesian-borrowing",
+   "name": "Bayesian borrowing",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "8"
+   ],
+   "degree": 22
+  },
+  {
+   "id": "bayesian-logistic-regression-model",
+   "name": "Bayesian logistic regression model",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "bayesian-monitoring-history",
+   "name": "History of Bayesian monitoring",
+   "type": "history",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "11"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "bayesian-protocol",
+   "name": "Bayesian protocol",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23"
+   ],
+   "degree": 18
+  },
+  {
+   "id": "bayesian-reading-of-phases",
+   "name": "Bayesian reading of the phases",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "2"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "bayesian-reanalysis",
+   "name": "Bayesian reanalysis",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "bayesian-sample-size-criteria",
+   "name": "Bayesian sample size criteria",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "9"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "bayesian-time-machine",
+   "name": "Bayesian time machine",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "bcrm",
+   "name": "bcrm",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "belimumab-pediatric-lupus",
+   "name": "Pediatric belimumab in lupus",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "3",
+    "8",
+    "23"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "beta-prior",
+   "name": "Beta prior",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "6",
+    "8"
+   ],
+   "degree": 15
+  },
+  {
+   "id": "bioequivalence",
+   "name": "Bioequivalence",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "2"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "blinded-pooled-review",
+   "name": "Blinded pooled review",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "blinding",
+   "name": "Blinding",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "bnt162b2-trial",
+   "name": "BNT162b2 trial",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "6",
+    "3",
+    "8",
+    "12",
+    "14",
+    "15",
+    "21",
+    "23"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "boin-design",
+   "name": "Bayesian optimal interval design",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "boin-r-package",
+   "name": "BOIN R package",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "bonferroni-correction",
+   "name": "Bonferroni correction",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "borrowing-under-drift",
+   "name": "Borrowing under drift",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "brms",
+   "name": "brms",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "calgb-49907",
+   "name": "CALGB 49907",
+   "type": "trial",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "15"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "calibration",
+   "name": "Calibration of the success threshold",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14",
+    "7"
+   ],
+   "degree": 14
+  },
+  {
+   "id": "cardiovascular-outcomes-trial",
+   "name": "Cardiovascular outcomes trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21",
+    "9"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "cid-program",
+   "name": "Complex innovative trial design program",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "17",
+    "23",
+    "B"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "clinical-trial-simulation",
+   "name": "Clinical trial simulation",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14",
+    "23"
+   ],
+   "degree": 15
+  },
+  {
+   "id": "clinical-trial",
+   "name": "Clinical trial",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "1",
+    "2",
+    "4"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "closed-testing",
+   "name": "Closed testing",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "commensurate-prior",
+   "name": "Commensurate prior",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "concurrent-control",
+   "name": "Concurrent control",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "conditional-means-prior",
+   "name": "Conditional means prior",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "8"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "conditional-power",
+   "name": "Conditional power",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "15"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "confidence-interval",
+   "name": "Confidence interval",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4",
+    "6"
+   ],
+   "degree": 13
+  },
+  {
+   "id": "confidence-sequence",
+   "name": "Confidence sequence",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "confounding-by-indication",
+   "name": "Confounding by indication",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "conjugate-prior",
+   "name": "Conjugate prior",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "6"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "consort-2025",
+   "name": "CONSORT 2025",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "continual-reassessment-method",
+   "name": "Continual reassessment method",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "cornfield-betting-odds",
+   "name": "Cornfield and the betting odds of 1966",
+   "type": "history",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "counterfactual",
+   "name": "Counterfactual",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "covariate-adjustment",
+   "name": "Covariate adjustment",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "5",
+    "23"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "covid-anticoagulation-multiplatform",
+   "name": "COVID anticoagulation multiplatform trials",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "8",
+    "11"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "cox-model",
+   "name": "Cox model",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "cpim",
+   "name": "Critical Path Innovation Meetings",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "B"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "credible-interval",
+   "name": "Credible interval",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "6"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "cumulative-meta-analysis",
+   "name": "Cumulative meta-analysis",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "cure-fraction",
+   "name": "Cure fraction",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "data-monitoring-committee",
+   "name": "Data monitoring committee",
+   "type": "organization",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "20",
+    "21",
+    "23"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "dawn-trial",
+   "name": "DAWN",
+   "type": "trial",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "15",
+    "14",
+    "23"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "ddt-qualification",
+   "name": "Drug development tool qualification",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "B"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "de-finetti-representation",
+   "name": "de Finetti representation",
+   "type": "principle",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "6"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "decision-theory",
+   "name": "Decision theory",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "1",
+    "11",
+    "15"
+   ],
+   "degree": 13
+  },
+  {
+   "id": "delayed-treatment-effect",
+   "name": "Delayed treatment effect",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "design-alternative",
+   "name": "Design alternative",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "9"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "deviation-scale",
+   "name": "Deviation scale",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "11",
+    "1",
+    "7",
+    "9"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "disproportionality-analysis",
+   "name": "Disproportionality analysis",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "dose-finding",
+   "name": "Dose finding",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "17",
+    "2"
+   ],
+   "degree": 15
+  },
+  {
+   "id": "drug-development",
+   "name": "Drug development",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "2",
+    "1"
+   ],
+   "degree": 15
+  },
+  {
+   "id": "e-process",
+   "name": "E-process",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "e-value-growth-rate",
+   "name": "Growth rate of an e-value",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "e-value-safety-monitoring",
+   "name": "E-value safety monitoring",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "13",
+    "12"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "e-value",
+   "name": "E-value",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 14
+  },
+  {
+   "id": "east-horizon",
+   "name": "East Horizon",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "ecmo-trial",
+   "name": "ECMO trial",
+   "type": "trial",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "economic-futility-threshold",
+   "name": "Economic futility threshold",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "15"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "effective-sample-size",
+   "name": "Effective sample size",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "8",
+    "6",
+    "19",
+    "A"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "efftox",
+   "name": "EffTox",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "ema-platform-reflection-paper",
+   "name": "EMA reflection paper on platform trials",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "23",
+    "B"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "ema",
+   "name": "EMA",
+   "type": "organization",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "20",
+    "23",
+    "B"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "empirical-bayes",
+   "name": "Empirical Bayes",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10",
+    "13"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "enthusiastic-prior",
+   "name": "Enthusiastic prior",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "8",
+    "22"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "eolia-trial",
+   "name": "EOLIA",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22",
+    "7",
+    "8",
+    "11"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "epad-trial",
+   "name": "EPAD",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "equivalence-trial",
+   "name": "Equivalence trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "4"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "estimand",
+   "name": "Estimand",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "5",
+    "4",
+    "23"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "event-driven-trial",
+   "name": "Event-driven trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "evidence-toll",
+   "name": "Evidence toll",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "11",
+    "7",
+    "12"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "exchangeability",
+   "name": "Exchangeability",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "6",
+    "19"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "expected-sample-size",
+   "name": "Expected sample size",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "facts",
+   "name": "FACTS",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "faers",
+   "name": "FAERS",
+   "type": "regulation",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "false-discovery-rate",
+   "name": "False discovery rate",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "false-positive-risk",
+   "name": "False positive risk",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "7"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "familywise-error-rate",
+   "name": "Familywise error rate",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "fda-adaptive-design-guidance-2019",
+   "name": "FDA adaptive design guidance 2019",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "B"
+   ],
+   "degree": 18
+  },
+  {
+   "id": "fda-bayesian-draft-guidance-2026",
+   "name": "FDA Bayesian draft guidance 2026",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "8",
+    "23",
+    "B"
+   ],
+   "degree": 32
+  },
+  {
+   "id": "fda-fit-for-purpose-determination",
+   "name": "FDA fit-for-purpose determination",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "fda-master-protocols-guidance-2026",
+   "name": "FDA master protocols guidance 2026",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "10",
+    "20"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "fda-meetings",
+   "name": "FDA meetings",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "3",
+    "23"
+   ],
+   "degree": 13
+  },
+  {
+   "id": "fda-multiple-endpoints-guidance-2022",
+   "name": "FDA multiple endpoints guidance 2022",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "10"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "fda-substantial-evidence-draft-2026",
+   "name": "FDA substantial-evidence draft guidance 2026",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "23"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "fda",
+   "name": "FDA",
+   "type": "organization",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "3",
+    "1",
+    "4",
+    "8",
+    "23",
+    "B"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "fixed-allocation",
+   "name": "Fixed allocation",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "fixed-sequence-testing",
+   "name": "Fixed-sequence testing",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "forking-paths",
+   "name": "Forking paths",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "four-operation-ulcer-trial",
+   "name": "Four-operation ulcer trial",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "futility-boundary",
+   "name": "Futility boundary",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "15"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "gamma-poisson-shrinker",
+   "name": "Gamma-Poisson shrinker",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "gamma-posterior-hazard",
+   "name": "Gamma posterior for a hazard",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "gbm-agile-trial",
+   "name": "GBM AGILE",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "15"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "gittins-index",
+   "name": "Gittins index",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "goldilocks-design",
+   "name": "Goldilocks design",
+   "type": "design",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "14",
+    "15"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "governance-firewall",
+   "name": "Governance and firewalls",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23",
+    "20"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "graphical-procedure",
+   "name": "Graphical procedure",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "group-sequential-design",
+   "name": "Group sequential design",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "14"
+   ],
+   "degree": 40
+  },
+  {
+   "id": "gsdesign",
+   "name": "gsDesign",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "gusto-trial",
+   "name": "GUSTO",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "hazard-ratio",
+   "name": "Hazard ratio",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "18",
+    "6"
+   ],
+   "degree": 14
+  },
+  {
+   "id": "healey-als-platform",
+   "name": "HEALEY ALS platform trial",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "hierarchical-model",
+   "name": "Hierarchical model",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "10"
+   ],
+   "degree": 21
+  },
+  {
+   "id": "historical-control",
+   "name": "Historical control",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "history-of-bayesian-trials",
+   "name": "History of Bayesian trials",
+   "type": "history",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "1",
+    "11"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "hochberg-procedure",
+   "name": "Hochberg procedure",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "holm-procedure",
+   "name": "Holm procedure",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "i-spy-2-trial",
+   "name": "I-SPY 2",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "10",
+    "15",
+    "16"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "ich-e11a",
+   "name": "ICH E11A",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "3"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "ich-e9-r1",
+   "name": "ICH E9(R1)",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "5",
+    "23"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "ich-e9",
+   "name": "ICH E9",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "B"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "ich-m11",
+   "name": "ICH M11",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23",
+    "3"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "ich",
+   "name": "ICH",
+   "type": "organization",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "3",
+    "B"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "ignorability",
+   "name": "Ignorability of assignment",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "implied-loss",
+   "name": "Implied loss",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "7"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "ind-safety-report",
+   "name": "IND safety report",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "indirect-comparison",
+   "name": "Indirect comparison",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "information-fraction",
+   "name": "Information fraction",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "11",
+    "A"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "intention-to-treat",
+   "name": "Intention to treat",
+   "type": "principle",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "intercurrent-event",
+   "name": "Intercurrent event",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "interim-analysis",
+   "name": "Interim analysis",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "11",
+    "15"
+   ],
+   "degree": 15
+  },
+  {
+   "id": "jeffreys-scale",
+   "name": "Jeffreys scale",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "7"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "kaplan-meier-estimator",
+   "name": "Kaplan-Meier estimator",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "keyboard-design",
+   "name": "Keyboard design",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "kolmogorov-complexity",
+   "name": "Kolmogorov complexity",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "label-revenue-brought-forward",
+   "name": "Label revenue brought forward",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "21"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "large-deviation",
+   "name": "Large deviation scale",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "11",
+    "1",
+    "9"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "lecanemab-phase-2b",
+   "name": "Lecanemab phase 2b dose finding",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "likelihood-ratio",
+   "name": "Likelihood ratio",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "likelihood",
+   "name": "Likelihood",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "6"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "lindleys-paradox",
+   "name": "Lindley's paradox",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "7"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "log-hazard-ratio",
+   "name": "Log hazard ratio",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "6",
+    "18"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "log-rank-test",
+   "name": "Log-rank test",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "margin-synthesis",
+   "name": "Margin synthesis",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "master-protocol",
+   "name": "Master protocol",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "3",
+    "10"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "maximum-tolerated-dose",
+   "name": "Maximum tolerated dose",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "maxsprt",
+   "name": "MaxSPRT",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "mcp-mod",
+   "name": "MCP-Mod",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "meta-analytic-predictive-prior",
+   "name": "Meta-analytic-predictive prior",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "mhra",
+   "name": "MHRA",
+   "type": "organization",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "B"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "midd-program",
+   "name": "MIDD paired meeting program",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "B"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "minimization",
+   "name": "Minimization",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "minimum-bayes-factor",
+   "name": "Minimum Bayes factor",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "7"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "mixture-method",
+   "name": "Mixture method",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "moderate-deviation-sample-size",
+   "name": "Moderate deviation sample size",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "9",
+    "11"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "monte-carlo-error",
+   "name": "Monte Carlo error in calibration",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "mrc-streptomycin-trial",
+   "name": "MRC streptomycin trial",
+   "type": "trial",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "mtpi-design",
+   "name": "mTPI design",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "multi-arm-multi-stage-design",
+   "name": "Multi-arm multi-stage design",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "multi-armed-bandit",
+   "name": "Multi-armed bandit",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "multiplicity-across-arms",
+   "name": "Multiplicity across arms",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "10"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "multiplicity",
+   "name": "Multiplicity",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 13
+  },
+  {
+   "id": "non-proportional-hazards",
+   "name": "Non-proportional hazards",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "noninferiority-margin",
+   "name": "Noninferiority margin",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "4",
+    "19",
+    "21"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "noninferiority-trial",
+   "name": "Noninferiority trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "4",
+    "19",
+    "21"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "noninformative-prior",
+   "name": "Noninformative prior",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "8"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "normal-approximation-posterior",
+   "name": "Normal approximation to the posterior",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "normal-normal-model",
+   "name": "Normal-normal model",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "6",
+    "22"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "nsclc-borrowing-case",
+   "name": "NSCLC borrowing failure",
+   "type": "history",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "obrien-fleming-boundary",
+   "name": "O'Brien-Fleming boundary",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "14",
+    "21"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "ocean-a-outcomes-trial",
+   "name": "OCEAN(a)-Outcomes",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "ockham-penalty",
+   "name": "Ockham penalty",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "7"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "one-sided-test",
+   "name": "One-sided test",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4",
+    "A"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "one-trial-with-confirmatory-evidence",
+   "name": "One trial with confirmatory evidence",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3",
+    "23"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "operating-characteristics",
+   "name": "Operating characteristics",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14",
+    "23"
+   ],
+   "degree": 16
+  },
+  {
+   "id": "optimizer-smart-trial",
+   "name": "OPTIMIZER Smart",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "3"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "overdose-control",
+   "name": "Escalation with overdose control",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "p-value",
+   "name": "P-value",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4",
+    "7",
+    "A"
+   ],
+   "degree": 19
+  },
+  {
+   "id": "panoramic-trial",
+   "name": "PANORAMIC",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 1
+  },
+  {
+   "id": "pdufa",
+   "name": "PDUFA",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "3"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "pediatric-extrapolation",
+   "name": "Pediatric extrapolation",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "permuted-block-randomization",
+   "name": "Permuted block randomization",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "phase-1-trial",
+   "name": "Phase I trial",
+   "type": "design",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "2",
+    "17"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "phase-2-to-phase-3-optimism",
+   "name": "Phase 2 to phase 3 optimism",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "9",
+    "8"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "phase-2-trial",
+   "name": "Phase II trial",
+   "type": "design",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "2",
+    "15"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "phase-3-trial",
+   "name": "Phase III trial",
+   "type": "design",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "2",
+    "3"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "phase-4-trial",
+   "name": "Phase IV study",
+   "type": "design",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "2",
+    "13"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "phase-transition-probability",
+   "name": "Phase transition probability",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "2"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "platform-trial",
+   "name": "Platform trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "19"
+   ],
+   "degree": 20
+  },
+  {
+   "id": "play-the-winner",
+   "name": "Play the winner",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "pocock-boundary",
+   "name": "Pocock boundary",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "posterior-distribution",
+   "name": "Posterior distribution",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "6",
+    "A"
+   ],
+   "degree": 36
+  },
+  {
+   "id": "posterior-predictive-distribution",
+   "name": "Posterior predictive distribution",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "6",
+    "15"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "posterior-probability-of-benefit",
+   "name": "Posterior probability of benefit",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "7",
+    "22"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "posterior-probability-success-criterion",
+   "name": "Posterior probability success criterion",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14",
+    "6",
+    "7",
+    "23"
+   ],
+   "degree": 15
+  },
+  {
+   "id": "power-curve",
+   "name": "Power curve",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "9"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "power-prior",
+   "name": "Power prior",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 16
+  },
+  {
+   "id": "power",
+   "name": "Statistical power",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "9",
+    "1",
+    "4",
+    "A"
+   ],
+   "degree": 17
+  },
+  {
+   "id": "predictive-probability-monitoring",
+   "name": "Predictive probability monitoring",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "15"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "predictive-probability-of-success",
+   "name": "Predictive probability of success",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "15",
+    "18"
+   ],
+   "degree": 13
+  },
+  {
+   "id": "prespecification",
+   "name": "Prespecification",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22",
+    "23"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "prior-data-conflict",
+   "name": "Prior-data conflict",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "8",
+    "19"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "prior-distribution",
+   "name": "Prior distribution",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "8",
+    "6",
+    "19"
+   ],
+   "degree": 31
+  },
+  {
+   "id": "prior-elicitation",
+   "name": "Prior elicitation",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "8"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "prior-odds-constant",
+   "name": "Prior odds in the sample size constant",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "9"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "prior-specification",
+   "name": "Prior specification in the protocol",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "8",
+    "23"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "prognostic-covariate-adjustment",
+   "name": "Prognostic covariate adjustment",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "project-optimus",
+   "name": "Project Optimus",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "proportional-hazards",
+   "name": "Proportional hazards",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "proportional-reporting-ratio",
+   "name": "Proportional reporting ratio",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "randomization-test",
+   "name": "Randomization test",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "5",
+    "4"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "randomization",
+   "name": "Randomization",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 22
+  },
+  {
+   "id": "rar-critique",
+   "name": "Critiques of response-adaptive randomization",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "rbest",
+   "name": "RBesT",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "real-options",
+   "name": "Phases as a sequence of options",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "2"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "reanalysis-critics",
+   "name": "Critiques of Bayesian reanalysis",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "rebyota-trial",
+   "name": "REBYOTA",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "3",
+    "14",
+    "23"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "recovery-trial",
+   "name": "RECOVERY",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "22",
+    "4",
+    "5",
+    "10",
+    "20"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "recruitment-speed",
+   "name": "Recruitment and the value of speed",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "2",
+    "21"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "regret",
+   "name": "Regret",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "remap-cap-trial",
+   "name": "REMAP-CAP",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "6",
+    "8",
+    "10",
+    "16"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "reproducibility",
+   "name": "Reproducibility",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "C",
+    "14"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "requires-recommends-permits",
+   "name": "Requires, recommends, permits",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "3"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "response-adaptive-randomization",
+   "name": "Response-adaptive randomization",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "16",
+    "23"
+   ],
+   "degree": 21
+  },
+  {
+   "id": "restricted-mean-survival-time",
+   "name": "Restricted mean survival time",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "retatrutide-triumph-3",
+   "name": "TRIUMPH-3",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "rewind-trial",
+   "name": "REWIND",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "robust-mixture-prior",
+   "name": "Robust mixture prior",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "19",
+    "8"
+   ],
+   "degree": 13
+  },
+  {
+   "id": "robust-reporting-guideline",
+   "name": "ROBUST reporting guideline",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "rofecoxib-case",
+   "name": "Rofecoxib safety signal",
+   "type": "history",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13",
+    "2"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "rpact",
+   "name": "rpact",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "safety-signal",
+   "name": "Safety signal",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "13"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "sample-size-re-estimation",
+   "name": "Sample size re-estimation",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "15"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "sample-size",
+   "name": "Sample size",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "9"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "samplesizeproportions",
+   "name": "SampleSizeProportions",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "sampling-distribution",
+   "name": "Sampling distribution of a trial result",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "scenario-grid",
+   "name": "Scenario grid",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "seamless-phase-2-3-design",
+   "name": "Seamless phase 2/3 design",
+   "type": "design",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "select-reconstruction",
+   "name": "SELECT reconstruction",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "21",
+    "12",
+    "9"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "select-trial",
+   "name": "SELECT",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21",
+    "1",
+    "9",
+    "12"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "sensitivity-analysis",
+   "name": "Sensitivity analysis over the prior",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "8"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "sequential-updating",
+   "name": "Sequential updating",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "6"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "shared-control-arithmetic",
+   "name": "Shared-control arithmetic",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20",
+    "9"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "shine-trial",
+   "name": "SHINE",
+   "type": "trial",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "shrinkage",
+   "name": "Shrinkage",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10",
+    "22"
+   ],
+   "degree": 22
+  },
+  {
+   "id": "simon-two-stage-design",
+   "name": "Simon two-stage design",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "15"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "simple-randomization",
+   "name": "Simple randomization",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "simulation-report",
+   "name": "Simulation report",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "14",
+    "23"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "skeptical-prior",
+   "name": "Skeptical prior",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "8",
+    "22"
+   ],
+   "degree": 17
+  },
+  {
+   "id": "sotorasib-dose-case",
+   "name": "Sotorasib dose optimization case",
+   "type": "history",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 1
+  },
+  {
+   "id": "special-protocol-assessment",
+   "name": "Special Protocol Assessment",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23",
+    "3",
+    "B"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "spending-function",
+   "name": "Lan-DeMets spending function",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "1",
+    "A"
+   ],
+   "degree": 10
+  },
+  {
+   "id": "spirit-2025",
+   "name": "SPIRIT 2025",
+   "type": "regulation",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "stampede-trial",
+   "name": "STAMPEDE",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "stan",
+   "name": "Stan",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "statistical-analysis-plan",
+   "name": "Statistical analysis plan",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "23",
+    "14"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "stein-estimator",
+   "name": "Stein estimator",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "stopping-rule-principle",
+   "name": "Stopping rule principle",
+   "type": "principle",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "6"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "stratified-randomization",
+   "name": "Stratified randomization",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "5"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "subgroup-analysis",
+   "name": "Subgroup analysis",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10",
+    "22"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "substantial-evidence",
+   "name": "Substantial evidence",
+   "type": "regulation",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "3",
+    "1",
+    "23"
+   ],
+   "degree": 11
+  },
+  {
+   "id": "superion-trial",
+   "name": "Superion",
+   "type": "trial",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "14",
+    "3"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "surcharge",
+   "name": "Surcharge for anytime validity",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "12",
+    "11"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "surpass-cvot",
+   "name": "SURPASS-CVOT",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21",
+    "4"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "test-martingale",
+   "name": "Test martingale",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 12
+  },
+  {
+   "id": "thompson-sampling",
+   "name": "Thompson sampling",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "16"
+   ],
+   "degree": 8
+  },
+  {
+   "id": "three-plus-three-design",
+   "name": "3+3 design",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "time-to-event-endpoint",
+   "name": "Time-to-event endpoint",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "time-trend-bias",
+   "name": "Time trend bias",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "16",
+    "20"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "tipping-point-analysis",
+   "name": "Tipping-point analysis",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "8",
+    "19"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "tite-boin",
+   "name": "TITE-BOIN",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "17"
+   ],
+   "degree": 1
+  },
+  {
+   "id": "toxicity-monitoring",
+   "name": "Toxicity monitoring",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "13",
+    "17"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "trailblazer-alz-2",
+   "name": "TRAILBLAZER-ALZ 2",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "trial-cost",
+   "name": "Trial cost",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21",
+    "1",
+    "9"
+   ],
+   "degree": 4
+  },
+  {
+   "id": "trialr",
+   "name": "trialr",
+   "type": "software",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "C"
+   ],
+   "degree": 2
+  },
+  {
+   "id": "truncated-trial-bias",
+   "name": "Truncated trial bias",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "14"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "two-bars",
+   "name": "The two bars",
+   "type": "concept",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "7",
+    "11"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "two-group-comparison",
+   "name": "Two-group comparison",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4",
+    "6"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "two-one-sided-tests",
+   "name": "Two one-sided tests",
+   "type": "method",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "2",
+    "4"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "type-i-error",
+   "name": "Type I error",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4",
+    "1",
+    "7",
+    "14",
+    "A"
+   ],
+   "degree": 29
+  },
+  {
+   "id": "type-ii-error",
+   "name": "Type II error",
+   "type": "concept",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "umbrella-trial",
+   "name": "Umbrella trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "20"
+   ],
+   "degree": 5
+  },
+  {
+   "id": "utility-function",
+   "name": "Utility function",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "17",
+    "15"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "vaccine-efficacy-trial",
+   "name": "Vaccine efficacy trial",
+   "type": "design",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "21",
+    "15"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "villes-inequality",
+   "name": "Ville's inequality",
+   "type": "principle",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "12"
+   ],
+   "degree": 9
+  },
+  {
+   "id": "wald-sprt",
+   "name": "Wald's sequential test",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "11",
+    "13"
+   ],
+   "degree": 14
+  },
+  {
+   "id": "weighted-log-rank-test",
+   "name": "Weighted log-rank test",
+   "type": "method",
+   "level": 3,
+   "stub": false,
+   "chapters": [
+    "18"
+   ],
+   "degree": 7
+  },
+  {
+   "id": "winners-curse",
+   "name": "Winner's curse",
+   "type": "concept",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "10"
+   ],
+   "degree": 6
+  },
+  {
+   "id": "womens-health-initiative",
+   "name": "Women's Health Initiative",
+   "type": "trial",
+   "level": 2,
+   "stub": false,
+   "chapters": [
+    "11",
+    "5"
+   ],
+   "degree": 3
+  },
+  {
+   "id": "z-test",
+   "name": "z test",
+   "type": "method",
+   "level": 1,
+   "stub": false,
+   "chapters": [
+    "4"
+   ],
+   "degree": 9
+  }
+ ],
+ "edges": [
+  {
+   "source": "select-reconstruction",
+   "target": "acceleration-bound",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "acceleration-bound",
+   "target": "trial-cost",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "ace-reporting-guideline",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ace-reporting-guideline",
+   "target": "consort-2025",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "ace-reporting-guideline",
+   "target": "barg",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "subgroup-analysis",
+   "target": "adaptive-enrichment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-of-benefit",
+   "target": "adaptive-enrichment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "adaptive-enrichment",
+   "target": "multiplicity",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "adaptive-enrichment",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "adaptr",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "adaptr",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "adaptr",
+   "target": "clinical-trial-simulation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "substantial-evidence",
+   "target": "adequate-and-well-controlled-investigation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "adequate-and-well-controlled-investigation",
+   "target": "blinding",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "adequate-and-well-controlled-investigation",
+   "target": "randomization",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "adequate-and-well-controlled-investigation",
+   "target": "prespecification",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "adverse-event-hierarchy",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "shrinkage",
+   "target": "adverse-event-hierarchy",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "adverse-event-hierarchy",
+   "target": "aggregate-safety-assessment",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "adverse-event-hierarchy",
+   "target": "gamma-poisson-shrinker",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "adverse-event-hierarchy",
+   "target": "false-discovery-rate",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "safety-signal",
+   "target": "aggregate-safety-assessment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "aggregate-safety-assessment",
+   "target": "blinded-pooled-review",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "aggregate-safety-assessment",
+   "target": "adverse-event-hierarchy",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "aggregate-safety-assessment",
+   "target": "maxsprt",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "aggregate-safety-assessment",
+   "target": "ind-safety-report",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "randomization",
+   "target": "allocation-concealment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "allocation-concealment",
+   "target": "blinding",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "allocation-concealment",
+   "target": "mrc-streptomycin-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "covariate-adjustment",
+   "target": "ancova",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "andromeda-shock-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "andromeda-shock-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "andromeda-shock-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "andromeda-shock-trial",
+   "target": "bayesian-reanalysis",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "andromeda-shock-trial",
+   "target": "sensitivity-analysis",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "andromeda-shock-trial",
+   "target": "utility-function",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "type-i-error",
+   "target": "anytime-valid-inference",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "anytime-valid-inference",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "anytime-valid-inference",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "anytime-valid-inference",
+   "target": "e-value",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "anytime-valid-inference",
+   "target": "villes-inequality",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "anytime-valid-inference",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "armitage-recursion",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "information-fraction",
+   "target": "armitage-recursion",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "armitage-recursion",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "randomization",
+   "target": "arnold-randomness-measure",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "arnold-randomness-measure",
+   "target": "kolmogorov-complexity",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "p-value",
+   "target": "asa-statement",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power",
+   "target": "assurance",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "assurance",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "design-alternative",
+   "target": "assurance",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "dose-finding",
+   "target": "astin-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "astin-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "astin-trial",
+   "target": "phase-2-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "seamless-phase-2-3-design",
+   "target": "award-5-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "award-5-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "award-5-trial",
+   "target": "utility-function",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "award-5-trial",
+   "target": "data-monitoring-committee",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "backward-induction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-sequential-decision-problem",
+   "target": "backward-induction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "decision-theory",
+   "target": "backward-induction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "backward-induction",
+   "target": "predictive-probability-monitoring",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "backward-induction",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "backward-induction",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "barg",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "barg",
+   "target": "robust-reporting-guideline",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "barg",
+   "target": "consort-2025",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "basket-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "multiplicity",
+   "target": "basket-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "basket-trial",
+   "target": "master-protocol",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "basket-trial",
+   "target": "umbrella-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "battle-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "battle-trial",
+   "target": "time-trend-bias",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "bayes-factor",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood",
+   "target": "bayes-factor",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "p-value",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "posterior-probability-of-benefit",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "likelihood-ratio",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "bayes-risk",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "bayes-risk",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-ii-error",
+   "target": "bayes-risk",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-risk",
+   "target": "implied-loss",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "bayes-rule",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "decision-theory",
+   "target": "bayes-sequential-decision-problem",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "bayes-sequential-decision-problem",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "stopping-rule-principle",
+   "target": "bayes-sequential-decision-problem",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-sequential-decision-problem",
+   "target": "wald-sprt",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "bayes-sequential-decision-problem",
+   "target": "backward-induction",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayes-sequential-decision-problem",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "decision-theory",
+   "target": "bayesian-adaptive-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "bayesian-adaptive-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "deviation-scale",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "prior-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "remap-cap-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "i-spy-2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "bayesian-borrowing",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "effective-sample-size",
+   "target": "bayesian-borrowing",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "power-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "commensurate-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "meta-analytic-predictive-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "historical-control",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "hierarchical-model",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "overdose-control",
+   "target": "bayesian-logistic-regression-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "bayesian-logistic-regression-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-logistic-regression-model",
+   "target": "continual-reassessment-method",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "stopping-rule-principle",
+   "target": "bayesian-monitoring-history",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "bayesian-monitoring-history",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-monitoring-history",
+   "target": "bayes-sequential-decision-problem",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "bayesian-monitoring-history",
+   "target": "enthusiastic-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "bayesian-protocol",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-specification",
+   "target": "bayesian-protocol",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "estimand",
+   "target": "bayesian-protocol",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "bayesian-protocol",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "statistical-analysis-plan",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "governance-firewall",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "prespecification",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "bayesian-reading-of-phases",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "bayesian-reading-of-phases",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-reading-of-phases",
+   "target": "predictive-probability-of-success",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "bayesian-reanalysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "bayesian-reanalysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-reanalysis",
+   "target": "skeptical-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-reanalysis",
+   "target": "enthusiastic-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-reanalysis",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayesian-reanalysis",
+   "target": "prespecification",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "assurance",
+   "target": "bayesian-sample-size-criteria",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-of-benefit",
+   "target": "bayesian-sample-size-criteria",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-sample-size-criteria",
+   "target": "prior-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "concurrent-control",
+   "target": "bayesian-time-machine",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "bayesian-time-machine",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-time-machine",
+   "target": "i-spy-2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "bayesian-time-machine",
+   "target": "gbm-agile-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "bayesian-time-machine",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "continual-reassessment-method",
+   "target": "bcrm",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bcrm",
+   "target": "dose-finding",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bcrm",
+   "target": "boin-r-package",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "robust-mixture-prior",
+   "target": "belimumab-pediatric-lupus",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "pediatric-extrapolation",
+   "target": "belimumab-pediatric-lupus",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "belimumab-pediatric-lupus",
+   "target": "tipping-point-analysis",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "beta-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "conjugate-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "beta-prior",
+   "target": "bnt162b2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "beta-prior",
+   "target": "effective-sample-size",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "bioequivalence",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "bioequivalence",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bioequivalence",
+   "target": "two-one-sided-tests",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bioequivalence",
+   "target": "equivalence-trial",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "bioequivalence",
+   "target": "posterior-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "safety-signal",
+   "target": "blinded-pooled-review",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "blinded-pooled-review",
+   "target": "aggregate-safety-assessment",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "allocation-concealment",
+   "target": "blinding",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "blinding",
+   "target": "ich-e9",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "beta-prior",
+   "target": "bnt162b2-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "conjugate-prior",
+   "target": "bnt162b2-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bnt162b2-trial",
+   "target": "posterior-probability-success-criterion",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "bnt162b2-trial",
+   "target": "effective-sample-size",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bnt162b2-trial",
+   "target": "vaccine-efficacy-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "bnt162b2-trial",
+   "target": "anytime-valid-inference",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "three-plus-three-design",
+   "target": "boin-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "maximum-tolerated-dose",
+   "target": "boin-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "boin-design",
+   "target": "continual-reassessment-method",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "boin-design",
+   "target": "fda-fit-for-purpose-determination",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "boin-design",
+   "target": "boin-r-package",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "boin-r-package",
+   "target": "bcrm",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "bonferroni-correction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bonferroni-correction",
+   "target": "holm-procedure",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "bonferroni-correction",
+   "target": "closed-testing",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "bonferroni-correction",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "borrowing-under-drift",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "borrowing-under-drift",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power",
+   "target": "borrowing-under-drift",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "borrowing-under-drift",
+   "target": "power-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "borrowing-under-drift",
+   "target": "robust-mixture-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "borrowing-under-drift",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "stan",
+   "target": "brms",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "brms",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "calgb-49907",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "calgb-49907",
+   "target": "futility-boundary",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "calgb-49907",
+   "target": "noninferiority-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "calibration",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "calibration",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "calibration",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "calibration",
+   "target": "scenario-grid",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "calibration",
+   "target": "bnt162b2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "event-driven-trial",
+   "target": "cardiovascular-outcomes-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "cardiovascular-outcomes-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cardiovascular-outcomes-trial",
+   "target": "select-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "cardiovascular-outcomes-trial",
+   "target": "rewind-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "cardiovascular-outcomes-trial",
+   "target": "surpass-cvot",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "cardiovascular-outcomes-trial",
+   "target": "fda-substantial-evidence-draft-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "cardiovascular-outcomes-trial",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "cid-program",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "cid-program",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cid-program",
+   "target": "midd-program",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "cid-program",
+   "target": "operating-characteristics",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "cid-program",
+   "target": "fda-meetings",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "clinical-trial-simulation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "scenario-grid",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "drug-development",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "decision-theory",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "closed-testing",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bonferroni-correction",
+   "target": "closed-testing",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "closed-testing",
+   "target": "holm-procedure",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "closed-testing",
+   "target": "fixed-sequence-testing",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "closed-testing",
+   "target": "graphical-procedure",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "commensurate-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "commensurate-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "commensurate-prior",
+   "target": "power-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "commensurate-prior",
+   "target": "robust-mixture-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "commensurate-prior",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "concurrent-control",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "concurrent-control",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "concurrent-control",
+   "target": "historical-control",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "concurrent-control",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "concurrent-control",
+   "target": "ema-platform-reflection-paper",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "concurrent-control",
+   "target": "bayesian-time-machine",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "beta-prior",
+   "target": "conditional-means-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "conditional-means-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "conditional-means-prior",
+   "target": "noninformative-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "conditional-means-prior",
+   "target": "prior-elicitation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "power",
+   "target": "conditional-power",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "information-fraction",
+   "target": "conditional-power",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "data-monitoring-committee",
+   "target": "conditional-power",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "conditional-power",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "conditional-power",
+   "target": "predictive-probability-of-success",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "conditional-power",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "sampling-distribution",
+   "target": "confidence-interval",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "credible-interval",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "p-value",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "e-process",
+   "target": "confidence-sequence",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "confidence-sequence",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confidence-sequence",
+   "target": "anytime-valid-inference",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "counterfactual",
+   "target": "confounding-by-indication",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confounding-by-indication",
+   "target": "randomization",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "confounding-by-indication",
+   "target": "ignorability",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "beta-prior",
+   "target": "conjugate-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood",
+   "target": "conjugate-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "consort-2025",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "consort-2025",
+   "target": "ace-reporting-guideline",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "consort-2025",
+   "target": "barg",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "consort-2025",
+   "target": "robust-reporting-guideline",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "three-plus-three-design",
+   "target": "continual-reassessment-method",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "continual-reassessment-method",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "continual-reassessment-method",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "continual-reassessment-method",
+   "target": "boin-design",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "continual-reassessment-method",
+   "target": "operating-characteristics",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "likelihood-ratio",
+   "target": "cornfield-betting-odds",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cornfield-betting-odds",
+   "target": "mixture-method",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "cornfield-betting-odds",
+   "target": "spending-function",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "cornfield-betting-odds",
+   "target": "test-martingale",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "counterfactual",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "counterfactual",
+   "target": "confounding-by-indication",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "randomization",
+   "target": "covariate-adjustment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "estimand",
+   "target": "covariate-adjustment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "covariate-adjustment",
+   "target": "ancova",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "covid-anticoagulation-multiplatform",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "remap-cap-trial",
+   "target": "covid-anticoagulation-multiplatform",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "covid-anticoagulation-multiplatform",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "cox-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "time-to-event-endpoint",
+   "target": "cox-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cox-model",
+   "target": "proportional-hazards",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "cox-model",
+   "target": "log-hazard-ratio",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda",
+   "target": "cpim",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cpim",
+   "target": "fda-meetings",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "cpim",
+   "target": "cid-program",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "credible-interval",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "credible-interval",
+   "target": "confidence-interval",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "cumulative-meta-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "p-value",
+   "target": "cumulative-meta-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cumulative-meta-analysis",
+   "target": "e-value-safety-monitoring",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "non-proportional-hazards",
+   "target": "cure-fraction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cure-fraction",
+   "target": "restricted-mean-survival-time",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "data-monitoring-committee",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "data-monitoring-committee",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "data-monitoring-committee",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "predictive-probability-of-success",
+   "target": "dawn-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "dawn-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "dawn-trial",
+   "target": "goldilocks-design",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "dawn-trial",
+   "target": "calibration",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "fda",
+   "target": "ddt-qualification",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ddt-qualification",
+   "target": "fda-meetings",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "exchangeability",
+   "target": "de-finetti-representation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "de-finetti-representation",
+   "target": "prior-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "decision-theory",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "decision-theory",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "decision-theory",
+   "target": "prior-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "decision-theory",
+   "target": "utility-function",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "decision-theory",
+   "target": "p-value",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "decision-theory",
+   "target": "one-sided-test",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "non-proportional-hazards",
+   "target": "delayed-treatment-effect",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "log-rank-test",
+   "target": "delayed-treatment-effect",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "delayed-treatment-effect",
+   "target": "weighted-log-rank-test",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "power",
+   "target": "design-alternative",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "design-alternative",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "deviation-scale",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ockham-penalty",
+   "target": "deviation-scale",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "wald-sprt",
+   "target": "deviation-scale",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "information-fraction",
+   "target": "deviation-scale",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "deviation-scale",
+   "target": "evidence-toll",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "deviation-scale",
+   "target": "large-deviation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "deviation-scale",
+   "target": "villes-inequality",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "faers",
+   "target": "disproportionality-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "disproportionality-analysis",
+   "target": "proportional-reporting-ratio",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "disproportionality-analysis",
+   "target": "gamma-poisson-shrinker",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "dose-finding",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "dose-finding",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "dose-finding",
+   "target": "drug-development",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "dose-finding",
+   "target": "operating-characteristics",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "phase-1-trial",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "phase-2-trial",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "phase-3-trial",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "phase-4-trial",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "real-options",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "test-martingale",
+   "target": "e-process",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "e-process",
+   "target": "anytime-valid-inference",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "e-value",
+   "target": "e-value-growth-rate",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "test-martingale",
+   "target": "e-value-growth-rate",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "e-value-growth-rate",
+   "target": "wald-sprt",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "e-value-growth-rate",
+   "target": "power",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "e-value",
+   "target": "e-value-safety-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "villes-inequality",
+   "target": "e-value-safety-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "e-value-safety-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "e-value-safety-monitoring",
+   "target": "toxicity-monitoring",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "e-value-safety-monitoring",
+   "target": "mixture-method",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "e-value-safety-monitoring",
+   "target": "posterior-probability-of-benefit",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "type-i-error",
+   "target": "e-value",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "e-value",
+   "target": "test-martingale",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "e-value",
+   "target": "anytime-valid-inference",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "e-value",
+   "target": "bayes-factor",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "e-value",
+   "target": "likelihood-ratio",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "east-horizon",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "east-horizon",
+   "target": "facts",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "play-the-winner",
+   "target": "ecmo-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "ecmo-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ecmo-trial",
+   "target": "response-adaptive-randomization",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "ecmo-trial",
+   "target": "sensitivity-analysis",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "predictive-probability-monitoring",
+   "target": "economic-futility-threshold",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "economic-futility-threshold",
+   "target": "real-options",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "effective-sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "effective-sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "effective-sample-size",
+   "target": "bnt162b2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "utility-function",
+   "target": "efftox",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "maximum-tolerated-dose",
+   "target": "efftox",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "efftox",
+   "target": "continual-reassessment-method",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "platform-trial",
+   "target": "ema-platform-reflection-paper",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ema-platform-reflection-paper",
+   "target": "ema",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "fda",
+   "target": "ema",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ema",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "ema",
+   "target": "ich",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "ema",
+   "target": "mhra",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "shrinkage",
+   "target": "empirical-bayes",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "normal-normal-model",
+   "target": "empirical-bayes",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "empirical-bayes",
+   "target": "hierarchical-model",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "empirical-bayes",
+   "target": "stein-estimator",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "enthusiastic-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "enthusiastic-prior",
+   "target": "skeptical-prior",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "enthusiastic-prior",
+   "target": "remap-cap-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "enthusiastic-prior",
+   "target": "eolia-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "eolia-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "eolia-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "enthusiastic-prior",
+   "target": "eolia-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "eolia-trial",
+   "target": "futility-boundary",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "eolia-trial",
+   "target": "bayesian-reanalysis",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "eolia-trial",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "eolia-trial",
+   "target": "asa-statement",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "epad-trial",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "epad-trial",
+   "target": "healey-als-platform",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "noninferiority-trial",
+   "target": "equivalence-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "noninferiority-margin",
+   "target": "equivalence-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "equivalence-trial",
+   "target": "two-one-sided-tests",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "equivalence-trial",
+   "target": "bioequivalence",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "intention-to-treat",
+   "target": "estimand",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "intercurrent-event",
+   "target": "estimand",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "estimand",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "time-to-event-endpoint",
+   "target": "event-driven-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cox-model",
+   "target": "event-driven-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sample-size",
+   "target": "event-driven-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "event-driven-trial",
+   "target": "posterior-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "deviation-scale",
+   "target": "evidence-toll",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "evidence-toll",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "villes-inequality",
+   "target": "evidence-toll",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "evidence-toll",
+   "target": "ockham-penalty",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "evidence-toll",
+   "target": "large-deviation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "expected-sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "expected-sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "expected-sample-size",
+   "target": "simulation-report",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "expected-sample-size",
+   "target": "clinical-trial-simulation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "facts",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "facts",
+   "target": "cid-program",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "facts",
+   "target": "east-horizon",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "safety-signal",
+   "target": "faers",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "faers",
+   "target": "disproportionality-analysis",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "faers",
+   "target": "gamma-poisson-shrinker",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "false-discovery-rate",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "false-discovery-rate",
+   "target": "bonferroni-correction",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "false-discovery-rate",
+   "target": "empirical-bayes",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "p-value",
+   "target": "false-positive-risk",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "false-positive-risk",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power",
+   "target": "false-positive-risk",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-rule",
+   "target": "false-positive-risk",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "false-positive-risk",
+   "target": "asa-statement",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "false-positive-risk",
+   "target": "phase-2-to-phase-3-optimism",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multiplicity",
+   "target": "familywise-error-rate",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "familywise-error-rate",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "false-discovery-rate",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "fda-multiple-endpoints-guidance-2022",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda-adaptive-design-guidance-2019",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "fda-adaptive-design-guidance-2019",
+   "target": "clinical-trial-simulation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda-bayesian-draft-guidance-2026",
+   "target": "clinical-trial-simulation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-bayesian-draft-guidance-2026",
+   "target": "prespecification",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-bayesian-draft-guidance-2026",
+   "target": "rebyota-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "dose-finding",
+   "target": "fda-fit-for-purpose-determination",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda-fit-for-purpose-determination",
+   "target": "boin-design",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-fit-for-purpose-determination",
+   "target": "mcp-mod",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "master-protocol",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "concurrent-control",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda-master-protocols-guidance-2026",
+   "target": "ema",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "fda-master-protocols-guidance-2026",
+   "target": "multiplicity",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda",
+   "target": "fda-meetings",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda-meetings",
+   "target": "pdufa",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-meetings",
+   "target": "cid-program",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-meetings",
+   "target": "midd-program",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-meetings",
+   "target": "cpim",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-meetings",
+   "target": "ddt-qualification",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multiplicity",
+   "target": "fda-multiple-endpoints-guidance-2022",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "fda-multiple-endpoints-guidance-2022",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda-multiple-endpoints-guidance-2022",
+   "target": "bonferroni-correction",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-multiple-endpoints-guidance-2022",
+   "target": "holm-procedure",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda-multiple-endpoints-guidance-2022",
+   "target": "graphical-procedure",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "one-trial-with-confirmatory-evidence",
+   "target": "fda-substantial-evidence-draft-2026",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda-substantial-evidence-draft-2026",
+   "target": "substantial-evidence",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "fda-substantial-evidence-draft-2026",
+   "target": "requires-recommends-permits",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "substantial-evidence",
+   "target": "fda",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda",
+   "target": "fda-meetings",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda",
+   "target": "ema",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "randomization",
+   "target": "fixed-allocation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "permuted-block-randomization",
+   "target": "fixed-allocation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fixed-allocation",
+   "target": "response-adaptive-randomization",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "fixed-allocation",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "fixed-sequence-testing",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fixed-sequence-testing",
+   "target": "closed-testing",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "fixed-sequence-testing",
+   "target": "graphical-procedure",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "multiplicity",
+   "target": "forking-paths",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "subgroup-analysis",
+   "target": "forking-paths",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "forking-paths",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "forking-paths",
+   "target": "prespecification",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "forking-paths",
+   "target": "winners-curse",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multiplicity",
+   "target": "four-operation-ulcer-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bonferroni-correction",
+   "target": "four-operation-ulcer-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "shrinkage",
+   "target": "four-operation-ulcer-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "futility-boundary",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "spending-function",
+   "target": "futility-boundary",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "futility-boundary",
+   "target": "conditional-power",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "disproportionality-analysis",
+   "target": "gamma-poisson-shrinker",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "empirical-bayes",
+   "target": "gamma-poisson-shrinker",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "shrinkage",
+   "target": "gamma-poisson-shrinker",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "gamma-poisson-shrinker",
+   "target": "proportional-reporting-ratio",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "gamma-poisson-shrinker",
+   "target": "faers",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "gamma-poisson-shrinker",
+   "target": "adverse-event-hierarchy",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "conjugate-prior",
+   "target": "gamma-posterior-hazard",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "time-to-event-endpoint",
+   "target": "gamma-posterior-hazard",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "gbm-agile-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-of-benefit",
+   "target": "gbm-agile-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "gbm-agile-trial",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "gbm-agile-trial",
+   "target": "bayesian-time-machine",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "gbm-agile-trial",
+   "target": "i-spy-2-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "multi-armed-bandit",
+   "target": "gittins-index",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "gittins-index",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "gittins-index",
+   "target": "response-adaptive-randomization",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "gittins-index",
+   "target": "thompson-sampling",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "predictive-probability-of-success",
+   "target": "goldilocks-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "calibration",
+   "target": "goldilocks-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "goldilocks-design",
+   "target": "dawn-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "goldilocks-design",
+   "target": "bayesian-adaptive-design",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "data-monitoring-committee",
+   "target": "governance-firewall",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "governance-firewall",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "governance-firewall",
+   "target": "bayesian-protocol",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "governance-firewall",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "closed-testing",
+   "target": "graphical-procedure",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fixed-sequence-testing",
+   "target": "graphical-procedure",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "holm-procedure",
+   "target": "graphical-procedure",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "graphical-procedure",
+   "target": "spending-function",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "group-sequential-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "group-sequential-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "information-fraction",
+   "target": "group-sequential-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "armitage-recursion",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "obrien-fleming-boundary",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "pocock-boundary",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "spending-function",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "futility-boundary",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "wald-sprt",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "gsdesign",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "spending-function",
+   "target": "gsdesign",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "gsdesign",
+   "target": "rpact",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "gsdesign",
+   "target": "obrien-fleming-boundary",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-reanalysis",
+   "target": "gusto-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "gusto-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "gusto-trial",
+   "target": "prior-data-conflict",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "gusto-trial",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "gusto-trial",
+   "target": "confounding-by-indication",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "time-to-event-endpoint",
+   "target": "hazard-ratio",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "restricted-mean-survival-time",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "platform-trial",
+   "target": "healey-als-platform",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "healey-als-platform",
+   "target": "epad-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "exchangeability",
+   "target": "hierarchical-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "hierarchical-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "meta-analytic-predictive-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "basket-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "power-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "historical-control",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confounding-by-indication",
+   "target": "historical-control",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "historical-control",
+   "target": "concurrent-control",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayesian-adaptive-design",
+   "target": "history-of-bayesian-trials",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "history-of-bayesian-trials",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "history-of-bayesian-trials",
+   "target": "decision-theory",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "holm-procedure",
+   "target": "hochberg-procedure",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hochberg-procedure",
+   "target": "false-discovery-rate",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bonferroni-correction",
+   "target": "holm-procedure",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "holm-procedure",
+   "target": "closed-testing",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "holm-procedure",
+   "target": "hochberg-procedure",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "predictive-probability-of-success",
+   "target": "i-spy-2-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "i-spy-2-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "i-spy-2-trial",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "i-spy-2-trial",
+   "target": "bayesian-time-machine",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "i-spy-2-trial",
+   "target": "gbm-agile-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "pediatric-extrapolation",
+   "target": "ich-e11a",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ich-e11a",
+   "target": "ich",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "estimand",
+   "target": "ich-e9-r1",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "intercurrent-event",
+   "target": "ich-e9-r1",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ich-e9-r1",
+   "target": "ich",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "randomization",
+   "target": "ich-e9",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ich-e9",
+   "target": "ich",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "ich-e9",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "ich-m11",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ich-m11",
+   "target": "spirit-2025",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "ich-m11",
+   "target": "ich",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "ich-m11",
+   "target": "statistical-analysis-plan",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "fda",
+   "target": "ich",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ich",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "ich",
+   "target": "ich-e11a",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "ich",
+   "target": "ema",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "randomization",
+   "target": "ignorability",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "ignorability",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-risk",
+   "target": "implied-loss",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "implied-loss",
+   "target": "decision-theory",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "safety-signal",
+   "target": "ind-safety-report",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ind-safety-report",
+   "target": "aggregate-safety-assessment",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "indirect-comparison",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power-prior",
+   "target": "indirect-comparison",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "indirect-comparison",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "information-fraction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "randomization",
+   "target": "intention-to-treat",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "intention-to-treat",
+   "target": "estimand",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "intention-to-treat",
+   "target": "intercurrent-event",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "intention-to-treat",
+   "target": "ich-e9",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "intention-to-treat",
+   "target": "intercurrent-event",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "intercurrent-event",
+   "target": "estimand",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "intercurrent-event",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "type-i-error",
+   "target": "interim-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "z-test",
+   "target": "interim-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "sequential-updating",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "jeffreys-scale",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ockham-penalty",
+   "target": "jeffreys-scale",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "jeffreys-scale",
+   "target": "two-bars",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "time-to-event-endpoint",
+   "target": "kaplan-meier-estimator",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "boin-design",
+   "target": "keyboard-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "keyboard-design",
+   "target": "mtpi-design",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "randomization",
+   "target": "kolmogorov-complexity",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "kolmogorov-complexity",
+   "target": "arnold-randomness-measure",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "select-reconstruction",
+   "target": "label-revenue-brought-forward",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "acceleration-bound",
+   "target": "label-revenue-brought-forward",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "label-revenue-brought-forward",
+   "target": "trial-cost",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "wald-sprt",
+   "target": "large-deviation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "large-deviation",
+   "target": "deviation-scale",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "large-deviation",
+   "target": "villes-inequality",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "dose-finding",
+   "target": "lecanemab-phase-2b",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "lecanemab-phase-2b",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood",
+   "target": "likelihood-ratio",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood-ratio",
+   "target": "test-martingale",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "likelihood-ratio",
+   "target": "wald-sprt",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayes-rule",
+   "target": "likelihood",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "lindleys-paradox",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "p-value",
+   "target": "lindleys-paradox",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "ockham-penalty",
+   "target": "lindleys-paradox",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "lindleys-paradox",
+   "target": "two-bars",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "log-hazard-ratio",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "log-hazard-ratio",
+   "target": "cox-model",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "kaplan-meier-estimator",
+   "target": "log-rank-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "log-rank-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "log-rank-test",
+   "target": "weighted-log-rank-test",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "log-rank-test",
+   "target": "restricted-mean-survival-time",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "noninferiority-margin",
+   "target": "margin-synthesis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "margin-synthesis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "margin-synthesis",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "master-protocol",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "master-protocol",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "master-protocol",
+   "target": "basket-trial",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "master-protocol",
+   "target": "umbrella-trial",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "master-protocol",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "maximum-tolerated-dose",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "maximum-tolerated-dose",
+   "target": "project-optimus",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "wald-sprt",
+   "target": "maxsprt",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood-ratio",
+   "target": "maxsprt",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "maxsprt",
+   "target": "aggregate-safety-assessment",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "maxsprt",
+   "target": "e-value",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "dose-finding",
+   "target": "mcp-mod",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "mcp-mod",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "mcp-mod",
+   "target": "fda-fit-for-purpose-determination",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "meta-analytic-predictive-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-predictive-distribution",
+   "target": "meta-analytic-predictive-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "meta-analytic-predictive-prior",
+   "target": "power-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "meta-analytic-predictive-prior",
+   "target": "robust-mixture-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "meta-analytic-predictive-prior",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "mhra",
+   "target": "fda",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "midd-program",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "midd-program",
+   "target": "cid-program",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "midd-program",
+   "target": "fda-meetings",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "stratified-randomization",
+   "target": "minimization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "minimization",
+   "target": "covariate-adjustment",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "minimization",
+   "target": "simple-randomization",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "minimum-bayes-factor",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "p-value",
+   "target": "minimum-bayes-factor",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "minimum-bayes-factor",
+   "target": "false-positive-risk",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "likelihood-ratio",
+   "target": "mixture-method",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "test-martingale",
+   "target": "mixture-method",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "mixture-method",
+   "target": "e-value",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "mixture-method",
+   "target": "bayes-factor",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "mixture-method",
+   "target": "prior-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "sample-size",
+   "target": "moderate-deviation-sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "moderate-deviation-sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "lindleys-paradox",
+   "target": "moderate-deviation-sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "moderate-deviation-sample-size",
+   "target": "deviation-scale",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "moderate-deviation-sample-size",
+   "target": "large-deviation",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "moderate-deviation-sample-size",
+   "target": "prior-odds-constant",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "calibration",
+   "target": "monte-carlo-error",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "monte-carlo-error",
+   "target": "simulation-report",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "mrc-streptomycin-trial",
+   "target": "randomization",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "mrc-streptomycin-trial",
+   "target": "adequate-and-well-controlled-investigation",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "boin-design",
+   "target": "mtpi-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "mtpi-design",
+   "target": "keyboard-design",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "multi-arm-multi-stage-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "multi-arm-multi-stage-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "multi-arm-multi-stage-design",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "multi-arm-multi-stage-design",
+   "target": "stampede-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "multi-arm-multi-stage-design",
+   "target": "i-spy-2-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "multi-armed-bandit",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "multi-armed-bandit",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "multi-armed-bandit",
+   "target": "backward-induction",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "familywise-error-rate",
+   "target": "multiplicity-across-arms",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "multiplicity",
+   "target": "multiplicity-across-arms",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "multiplicity-across-arms",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "multiplicity-across-arms",
+   "target": "ema-platform-reflection-paper",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "multiplicity-across-arms",
+   "target": "shared-control-arithmetic",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multiplicity-across-arms",
+   "target": "hierarchical-model",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multiplicity",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "multiplicity",
+   "target": "fda-multiple-endpoints-guidance-2022",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "proportional-hazards",
+   "target": "non-proportional-hazards",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "non-proportional-hazards",
+   "target": "restricted-mean-survival-time",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "non-proportional-hazards",
+   "target": "weighted-log-rank-test",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "noninferiority-trial",
+   "target": "noninferiority-margin",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "noninferiority-margin",
+   "target": "historical-control",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "noninferiority-margin",
+   "target": "margin-synthesis",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "one-sided-test",
+   "target": "noninferiority-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "noninferiority-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "noninferiority-trial",
+   "target": "noninferiority-margin",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "noninferiority-trial",
+   "target": "equivalence-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "noninferiority-trial",
+   "target": "two-group-comparison",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "noninformative-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "noninformative-prior",
+   "target": "conditional-means-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "noninformative-prior",
+   "target": "skeptical-prior",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "normal-normal-model",
+   "target": "normal-approximation-posterior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "normal-approximation-posterior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "skeptical-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "enthusiastic-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "effective-sample-size",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "conjugate-prior",
+   "target": "normal-normal-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "log-hazard-ratio",
+   "target": "normal-normal-model",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "normal-normal-model",
+   "target": "effective-sample-size",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "normal-normal-model",
+   "target": "z-test",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "power-prior",
+   "target": "nsclc-borrowing-case",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "historical-control",
+   "target": "nsclc-borrowing-case",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "obrien-fleming-boundary",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "armitage-recursion",
+   "target": "obrien-fleming-boundary",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "obrien-fleming-boundary",
+   "target": "pocock-boundary",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "ocean-a-outcomes-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "ocean-a-outcomes-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "ockham-penalty",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "p-value",
+   "target": "one-sided-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "one-sided-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "one-sided-test",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "one-sided-test",
+   "target": "type-i-error",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "one-sided-test",
+   "target": "ich-e9",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "substantial-evidence",
+   "target": "one-trial-with-confirmatory-evidence",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "adequate-and-well-controlled-investigation",
+   "target": "one-trial-with-confirmatory-evidence",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "one-trial-with-confirmatory-evidence",
+   "target": "fda-substantial-evidence-draft-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "type-i-error",
+   "target": "operating-characteristics",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power",
+   "target": "operating-characteristics",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "clinical-trial-simulation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "simulation-report",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "power-prior",
+   "target": "optimizer-smart-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "optimizer-smart-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "optimizer-smart-trial",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "optimizer-smart-trial",
+   "target": "borrowing-under-drift",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "continual-reassessment-method",
+   "target": "overdose-control",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "overdose-control",
+   "target": "bayesian-logistic-regression-model",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "sampling-distribution",
+   "target": "p-value",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "p-value",
+   "target": "posterior-probability-of-benefit",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "p-value",
+   "target": "confidence-interval",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "p-value",
+   "target": "one-sided-test",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "platform-trial",
+   "target": "panoramic-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fda",
+   "target": "pdufa",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "pdufa",
+   "target": "fda-meetings",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "bayesian-borrowing",
+   "target": "pediatric-extrapolation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "pediatric-extrapolation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "pediatric-extrapolation",
+   "target": "ich-e11a",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "pediatric-extrapolation",
+   "target": "robust-mixture-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "simple-randomization",
+   "target": "permuted-block-randomization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "permuted-block-randomization",
+   "target": "stratified-randomization",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "permuted-block-randomization",
+   "target": "minimization",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "permuted-block-randomization",
+   "target": "time-trend-bias",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "phase-1-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "bayesian-logistic-regression-model",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "continual-reassessment-method",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "overdose-control",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "three-plus-three-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "maximum-tolerated-dose",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "phase-2-trial",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "phase-1-trial",
+   "target": "dose-finding",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "design-alternative",
+   "target": "phase-2-to-phase-3-optimism",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "assurance",
+   "target": "phase-2-to-phase-3-optimism",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-2-to-phase-3-optimism",
+   "target": "power",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "drug-development",
+   "target": "phase-2-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-2-trial",
+   "target": "phase-3-trial",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "phase-2-trial",
+   "target": "predictive-probability-of-success",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-2-trial",
+   "target": "dose-finding",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-2-trial",
+   "target": "phase-3-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "phase-3-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-3-trial",
+   "target": "phase-4-trial",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "phase-3-trial",
+   "target": "data-monitoring-committee",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-3-trial",
+   "target": "substantial-evidence",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "phase-3-trial",
+   "target": "phase-4-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-4-trial",
+   "target": "gamma-poisson-shrinker",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-4-trial",
+   "target": "empirical-bayes",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-4-trial",
+   "target": "safety-signal",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "phase-transition-probability",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-transition-probability",
+   "target": "predictive-probability-of-success",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "master-protocol",
+   "target": "platform-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "platform-trial",
+   "target": "multi-arm-multi-stage-design",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "platform-trial",
+   "target": "shared-control-arithmetic",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "platform-trial",
+   "target": "concurrent-control",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "platform-trial",
+   "target": "i-spy-2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "randomization",
+   "target": "play-the-winner",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "play-the-winner",
+   "target": "ecmo-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "play-the-winner",
+   "target": "response-adaptive-randomization",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "pocock-boundary",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "armitage-recursion",
+   "target": "pocock-boundary",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "pocock-boundary",
+   "target": "obrien-fleming-boundary",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "bayes-rule",
+   "target": "posterior-distribution",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood",
+   "target": "posterior-distribution",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "sequential-updating",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "p-value",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "posterior-predictive-distribution",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "posterior-probability-of-benefit",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "p-value",
+   "target": "posterior-probability-of-benefit",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-of-benefit",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "posterior-probability-of-benefit",
+   "target": "bayes-factor",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "posterior-probability-of-benefit",
+   "target": "eolia-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "posterior-probability-success-criterion",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "posterior-probability-success-criterion",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "p-value",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "superion-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "power",
+   "target": "power-curve",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power-curve",
+   "target": "sample-size",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "power-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood",
+   "target": "power-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "power-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power-prior",
+   "target": "commensurate-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "power-prior",
+   "target": "robust-mixture-prior",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "power-prior",
+   "target": "optimizer-smart-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "power-prior",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "z-test",
+   "target": "power",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "one-sided-test",
+   "target": "power",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power",
+   "target": "assurance",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "power",
+   "target": "design-alternative",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "predictive-probability-of-success",
+   "target": "predictive-probability-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-2-trial",
+   "target": "predictive-probability-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "predictive-probability-monitoring",
+   "target": "simon-two-stage-design",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "predictive-probability-monitoring",
+   "target": "bnt162b2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "predictive-probability-of-success",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "conditional-power",
+   "target": "predictive-probability-of-success",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "predictive-probability-of-success",
+   "target": "calgb-49907",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "predictive-probability-of-success",
+   "target": "dawn-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "predictive-probability-of-success",
+   "target": "posterior-predictive-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "prespecification",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prespecification",
+   "target": "bayesian-reanalysis",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "prespecification",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "prior-data-conflict",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "prior-data-conflict",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-data-conflict",
+   "target": "robust-mixture-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "prior-data-conflict",
+   "target": "belimumab-pediatric-lupus",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "bayes-rule",
+   "target": "prior-distribution",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood",
+   "target": "prior-distribution",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "skeptical-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "enthusiastic-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "noninformative-prior",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "prior-elicitation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-elicitation",
+   "target": "prior-specification",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "moderate-deviation-sample-size",
+   "target": "prior-odds-constant",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "prior-specification",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "effective-sample-size",
+   "target": "prior-specification",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sensitivity-analysis",
+   "target": "prior-specification",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prior-specification",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "prior-specification",
+   "target": "tipping-point-analysis",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "covariate-adjustment",
+   "target": "prognostic-covariate-adjustment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "randomization",
+   "target": "prognostic-covariate-adjustment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "prognostic-covariate-adjustment",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "maximum-tolerated-dose",
+   "target": "project-optimus",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "dose-finding",
+   "target": "project-optimus",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "project-optimus",
+   "target": "three-plus-three-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "project-optimus",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "proportional-hazards",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "cox-model",
+   "target": "proportional-hazards",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "proportional-hazards",
+   "target": "non-proportional-hazards",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "disproportionality-analysis",
+   "target": "proportional-reporting-ratio",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "proportional-reporting-ratio",
+   "target": "gamma-poisson-shrinker",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "randomization",
+   "target": "randomization-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "p-value",
+   "target": "randomization-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "counterfactual",
+   "target": "randomization-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "randomization-test",
+   "target": "z-test",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "randomization-test",
+   "target": "type-i-error",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "randomization-test",
+   "target": "permuted-block-randomization",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "counterfactual",
+   "target": "randomization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "randomization",
+   "target": "confounding-by-indication",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "randomization",
+   "target": "allocation-concealment",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "randomization",
+   "target": "mrc-streptomycin-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "randomization",
+   "target": "ich-e9",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "rar-critique",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power",
+   "target": "rar-critique",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "rar-critique",
+   "target": "fixed-allocation",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "meta-analytic-predictive-prior",
+   "target": "rbest",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "rbest",
+   "target": "robust-mixture-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "rbest",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "drug-development",
+   "target": "real-options",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "phase-transition-probability",
+   "target": "real-options",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-reanalysis",
+   "target": "reanalysis-critics",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "reanalysis-critics",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "reanalysis-critics",
+   "target": "prespecification",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "rebyota-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "rebyota-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "rebyota-trial",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "rebyota-trial",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "rebyota-trial",
+   "target": "one-trial-with-confirmatory-evidence",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "recovery-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "shrinkage",
+   "target": "recovery-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "subgroup-analysis",
+   "target": "recovery-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "recovery-trial",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "recovery-trial",
+   "target": "two-group-comparison",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "recovery-trial",
+   "target": "blinding",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "drug-development",
+   "target": "recruitment-speed",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "recruitment-speed",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "recruitment-speed",
+   "target": "conjugate-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "recruitment-speed",
+   "target": "likelihood-ratio",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multi-armed-bandit",
+   "target": "regret",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "regret",
+   "target": "response-adaptive-randomization",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "regret",
+   "target": "thompson-sampling",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "remap-cap-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-of-benefit",
+   "target": "remap-cap-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "remap-cap-trial",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "remap-cap-trial",
+   "target": "covid-anticoagulation-multiplatform",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "reproducibility",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "reproducibility",
+   "target": "simulation-report",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "reproducibility",
+   "target": "bayesian-protocol",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "requires-recommends-permits",
+   "target": "substantial-evidence",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "randomization",
+   "target": "response-adaptive-randomization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "multi-armed-bandit",
+   "target": "response-adaptive-randomization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "fixed-allocation",
+   "target": "response-adaptive-randomization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "thompson-sampling",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "kaplan-meier-estimator",
+   "target": "restricted-mean-survival-time",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "non-proportional-hazards",
+   "target": "restricted-mean-survival-time",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "restricted-mean-survival-time",
+   "target": "hazard-ratio",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "restricted-mean-survival-time",
+   "target": "weighted-log-rank-test",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "restricted-mean-survival-time",
+   "target": "estimand",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "normal-approximation-posterior",
+   "target": "retatrutide-triumph-3",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "retatrutide-triumph-3",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "retatrutide-triumph-3",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "retatrutide-triumph-3",
+   "target": "power-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "retatrutide-triumph-3",
+   "target": "prior-data-conflict",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "select-trial",
+   "target": "rewind-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "rewind-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "rewind-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "rewind-trial",
+   "target": "select-reconstruction",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "rewind-trial",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "meta-analytic-predictive-prior",
+   "target": "robust-mixture-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "conjugate-prior",
+   "target": "robust-mixture-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "robust-mixture-prior",
+   "target": "commensurate-prior",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "robust-mixture-prior",
+   "target": "belimumab-pediatric-lupus",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "robust-mixture-prior",
+   "target": "bayesian-borrowing",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "robust-reporting-guideline",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "robust-reporting-guideline",
+   "target": "barg",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "robust-reporting-guideline",
+   "target": "consort-2025",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "cumulative-meta-analysis",
+   "target": "rofecoxib-case",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "rofecoxib-case",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "rofecoxib-case",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "rofecoxib-case",
+   "target": "safety-signal",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "rofecoxib-case",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "rofecoxib-case",
+   "target": "e-value-safety-monitoring",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "rofecoxib-case",
+   "target": "phase-4-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "rpact",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "rpact",
+   "target": "gsdesign",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "rpact",
+   "target": "sample-size-re-estimation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "safety-signal",
+   "target": "e-value-safety-monitoring",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "safety-signal",
+   "target": "toxicity-monitoring",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "safety-signal",
+   "target": "disproportionality-analysis",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "safety-signal",
+   "target": "ind-safety-report",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "conditional-power",
+   "target": "sample-size-re-estimation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "sample-size-re-estimation",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sample-size-re-estimation",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "sample-size-re-estimation",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "sample-size-re-estimation",
+   "target": "goldilocks-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "power",
+   "target": "sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "design-alternative",
+   "target": "sample-size",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sample-size",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "bayesian-sample-size-criteria",
+   "target": "samplesizeproportions",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "samplesizeproportions",
+   "target": "sample-size",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "two-group-comparison",
+   "target": "sampling-distribution",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sampling-distribution",
+   "target": "p-value",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "sampling-distribution",
+   "target": "confidence-interval",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "sampling-distribution",
+   "target": "z-test",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "scenario-grid",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "scenario-grid",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "scenario-grid",
+   "target": "simulation-report",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "scenario-grid",
+   "target": "calibration",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "scenario-grid",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "dose-finding",
+   "target": "seamless-phase-2-3-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "seamless-phase-2-3-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "seamless-phase-2-3-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "seamless-phase-2-3-design",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "select-trial",
+   "target": "select-reconstruction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "obrien-fleming-boundary",
+   "target": "select-reconstruction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "calibration",
+   "target": "select-reconstruction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "e-value",
+   "target": "select-reconstruction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "select-reconstruction",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "select-reconstruction",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "select-reconstruction",
+   "target": "posterior-probability-success-criterion",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "select-reconstruction",
+   "target": "rewind-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "event-driven-trial",
+   "target": "select-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "select-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "select-trial",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "select-trial",
+   "target": "e-value",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "select-trial",
+   "target": "data-monitoring-committee",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "select-trial",
+   "target": "clinical-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "sensitivity-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "effective-sample-size",
+   "target": "sensitivity-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sensitivity-analysis",
+   "target": "tipping-point-analysis",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "sensitivity-analysis",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "sequential-updating",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "exchangeability",
+   "target": "sequential-updating",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sequential-updating",
+   "target": "conjugate-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "type-i-error",
+   "target": "shared-control-arithmetic",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "sample-size",
+   "target": "shared-control-arithmetic",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "shared-control-arithmetic",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "shared-control-arithmetic",
+   "target": "fda-master-protocols-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "shared-control-arithmetic",
+   "target": "multiplicity-across-arms",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "shine-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "shine-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "shine-trial",
+   "target": "bayesian-reanalysis",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "multiplicity",
+   "target": "shrinkage",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "normal-normal-model",
+   "target": "shrinkage",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "exchangeability",
+   "target": "shrinkage",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "shrinkage",
+   "target": "hierarchical-model",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "shrinkage",
+   "target": "bonferroni-correction",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "shrinkage",
+   "target": "stein-estimator",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "shrinkage",
+   "target": "empirical-bayes",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "phase-2-trial",
+   "target": "simon-two-stage-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "simon-two-stage-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "power",
+   "target": "simon-two-stage-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "simon-two-stage-design",
+   "target": "predictive-probability-monitoring",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "simon-two-stage-design",
+   "target": "predictive-probability-monitoring",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "randomization",
+   "target": "simple-randomization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "simple-randomization",
+   "target": "permuted-block-randomization",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "simple-randomization",
+   "target": "minimization",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "simulation-report",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "clinical-trial-simulation",
+   "target": "simulation-report",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "simulation-report",
+   "target": "fda-adaptive-design-guidance-2019",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "simulation-report",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "simulation-report",
+   "target": "cid-program",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "prior-distribution",
+   "target": "skeptical-prior",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "enthusiastic-prior",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "skeptical-prior",
+   "target": "eolia-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "project-optimus",
+   "target": "sotorasib-dose-case",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "special-protocol-assessment",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "special-protocol-assessment",
+   "target": "fda-meetings",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "special-protocol-assessment",
+   "target": "statistical-analysis-plan",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "information-fraction",
+   "target": "spending-function",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "spending-function",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "spending-function",
+   "target": "obrien-fleming-boundary",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "spending-function",
+   "target": "pocock-boundary",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "spending-function",
+   "target": "armitage-recursion",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "bayesian-protocol",
+   "target": "spirit-2025",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "spirit-2025",
+   "target": "ich-m11",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "spirit-2025",
+   "target": "consort-2025",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "multi-arm-multi-stage-design",
+   "target": "stampede-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "stampede-trial",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "stan",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "stan",
+   "target": "conjugate-prior",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "prespecification",
+   "target": "statistical-analysis-plan",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "operating-characteristics",
+   "target": "statistical-analysis-plan",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "statistical-analysis-plan",
+   "target": "bayesian-protocol",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "statistical-analysis-plan",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "statistical-analysis-plan",
+   "target": "simulation-report",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "shrinkage",
+   "target": "stein-estimator",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "stein-estimator",
+   "target": "empirical-bayes",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "stopping-rule-principle",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "likelihood",
+   "target": "stopping-rule-principle",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "stopping-rule-principle",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "stopping-rule-principle",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "stopping-rule-principle",
+   "target": "calibration",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "stopping-rule-principle",
+   "target": "forking-paths",
+   "kind": "related",
+   "rel": "critiques"
+  },
+  {
+   "source": "permuted-block-randomization",
+   "target": "stratified-randomization",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "stratified-randomization",
+   "target": "minimization",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "stratified-randomization",
+   "target": "covariate-adjustment",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multiplicity",
+   "target": "subgroup-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "subgroup-analysis",
+   "target": "forking-paths",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "subgroup-analysis",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "substantial-evidence",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "substantial-evidence",
+   "target": "adequate-and-well-controlled-investigation",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "substantial-evidence",
+   "target": "one-trial-with-confirmatory-evidence",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "substantial-evidence",
+   "target": "one-sided-test",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "substantial-evidence",
+   "target": "requires-recommends-permits",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "superion-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "superion-trial",
+   "target": "calibration",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "superion-trial",
+   "target": "fda-bayesian-draft-guidance-2026",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "anytime-valid-inference",
+   "target": "surcharge",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "mixture-method",
+   "target": "surcharge",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "bayes-factor",
+   "target": "surcharge",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "surcharge",
+   "target": "evidence-toll",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "surcharge",
+   "target": "calibration",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "noninferiority-trial",
+   "target": "surpass-cvot",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "noninferiority-margin",
+   "target": "surpass-cvot",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hazard-ratio",
+   "target": "surpass-cvot",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "surpass-cvot",
+   "target": "normal-approximation-posterior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "surpass-cvot",
+   "target": "indirect-comparison",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "e-value",
+   "target": "test-martingale",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "test-martingale",
+   "target": "likelihood-ratio",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "test-martingale",
+   "target": "mixture-method",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "test-martingale",
+   "target": "e-process",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "test-martingale",
+   "target": "villes-inequality",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "multi-armed-bandit",
+   "target": "thompson-sampling",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "thompson-sampling",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "thompson-sampling",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "thompson-sampling",
+   "target": "response-adaptive-randomization",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "thompson-sampling",
+   "target": "regret",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "maximum-tolerated-dose",
+   "target": "three-plus-three-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "dose-finding",
+   "target": "three-plus-three-design",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "three-plus-three-design",
+   "target": "continual-reassessment-method",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "three-plus-three-design",
+   "target": "boin-design",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "three-plus-three-design",
+   "target": "operating-characteristics",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "time-to-event-endpoint",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "estimand",
+   "target": "time-to-event-endpoint",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "time-to-event-endpoint",
+   "target": "event-driven-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "time-to-event-endpoint",
+   "target": "ich-e9-r1",
+   "kind": "related",
+   "rel": "governed-by"
+  },
+  {
+   "source": "response-adaptive-randomization",
+   "target": "time-trend-bias",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "time-trend-bias",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "time-trend-bias",
+   "target": "rar-critique",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "time-trend-bias",
+   "target": "concurrent-control",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "time-trend-bias",
+   "target": "fixed-allocation",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "sensitivity-analysis",
+   "target": "tipping-point-analysis",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "tipping-point-analysis",
+   "target": "belimumab-pediatric-lupus",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "boin-design",
+   "target": "tite-boin",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "beta-prior",
+   "target": "toxicity-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "toxicity-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "pocock-boundary",
+   "target": "toxicity-monitoring",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "toxicity-monitoring",
+   "target": "e-value-safety-monitoring",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "toxicity-monitoring",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "subgroup-analysis",
+   "target": "trailblazer-alz-2",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "estimand",
+   "target": "trailblazer-alz-2",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "hierarchical-model",
+   "target": "trailblazer-alz-2",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "trailblazer-alz-2",
+   "target": "prespecification",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "trailblazer-alz-2",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "trailblazer-alz-2",
+   "target": "adaptive-enrichment",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "select-reconstruction",
+   "target": "trial-cost",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "trial-cost",
+   "target": "real-options",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "dose-finding",
+   "target": "trialr",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "trialr",
+   "target": "stan",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "group-sequential-design",
+   "target": "truncated-trial-bias",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "truncated-trial-bias",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "truncated-trial-bias",
+   "target": "winners-curse",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "truncated-trial-bias",
+   "target": "shrinkage",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "ockham-penalty",
+   "target": "two-bars",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "z-test",
+   "target": "two-bars",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "two-bars",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "two-bars",
+   "target": "evidence-toll",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "two-bars",
+   "target": "surcharge",
+   "kind": "related",
+   "rel": "precedes"
+  },
+  {
+   "source": "clinical-trial",
+   "target": "two-group-comparison",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "two-group-comparison",
+   "target": "randomization",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "two-group-comparison",
+   "target": "sampling-distribution",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "confidence-interval",
+   "target": "two-one-sided-tests",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "one-sided-test",
+   "target": "two-one-sided-tests",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "two-one-sided-tests",
+   "target": "posterior-distribution",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "two-one-sided-tests",
+   "target": "equivalence-trial",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "p-value",
+   "target": "type-i-error",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "type-ii-error",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "type-i-error",
+   "target": "one-sided-test",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "type-i-error",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "type-i-error",
+   "target": "type-ii-error",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-ii-error",
+   "target": "power",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "master-protocol",
+   "target": "umbrella-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "umbrella-trial",
+   "target": "basket-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "umbrella-trial",
+   "target": "platform-trial",
+   "kind": "related",
+   "rel": "contrasts-with"
+  },
+  {
+   "source": "posterior-distribution",
+   "target": "utility-function",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "decision-theory",
+   "target": "utility-function",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "utility-function",
+   "target": "prior-elicitation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "beta-prior",
+   "target": "vaccine-efficacy-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "posterior-probability-success-criterion",
+   "target": "vaccine-efficacy-trial",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "vaccine-efficacy-trial",
+   "target": "bnt162b2-trial",
+   "kind": "related",
+   "rel": "used-in"
+  },
+  {
+   "source": "vaccine-efficacy-trial",
+   "target": "conjugate-prior",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "vaccine-efficacy-trial",
+   "target": "calibration",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "test-martingale",
+   "target": "villes-inequality",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "villes-inequality",
+   "target": "wald-sprt",
+   "kind": "related",
+   "rel": "generalizes"
+  },
+  {
+   "source": "villes-inequality",
+   "target": "e-value",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "likelihood-ratio",
+   "target": "wald-sprt",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-i-error",
+   "target": "wald-sprt",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "type-ii-error",
+   "target": "wald-sprt",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "wald-sprt",
+   "target": "bayes-sequential-decision-problem",
+   "kind": "related",
+   "rel": "special-case-of"
+  },
+  {
+   "source": "wald-sprt",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "wald-sprt",
+   "target": "large-deviation",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "log-rank-test",
+   "target": "weighted-log-rank-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "delayed-treatment-effect",
+   "target": "weighted-log-rank-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "weighted-log-rank-test",
+   "target": "restricted-mean-survival-time",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "shrinkage",
+   "target": "winners-curse",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "forking-paths",
+   "target": "winners-curse",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "winners-curse",
+   "target": "multiplicity",
+   "kind": "related",
+   "rel": "part-of"
+  },
+  {
+   "source": "winners-curse",
+   "target": "truncated-trial-bias",
+   "kind": "related",
+   "rel": "uses"
+  },
+  {
+   "source": "data-monitoring-committee",
+   "target": "womens-health-initiative",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "interim-analysis",
+   "target": "womens-health-initiative",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "womens-health-initiative",
+   "target": "group-sequential-design",
+   "kind": "related",
+   "rel": "illustrates"
+  },
+  {
+   "source": "sampling-distribution",
+   "target": "z-test",
+   "kind": "prerequisite"
+  },
+  {
+   "source": "z-test",
+   "target": "randomization-test",
+   "kind": "related",
+   "rel": "alternative-to"
+  },
+  {
+   "source": "z-test",
+   "target": "confidence-interval",
+   "kind": "related",
+   "rel": "precedes"
+  }
+ ]
+}

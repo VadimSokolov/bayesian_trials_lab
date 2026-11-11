@@ -1,0 +1,19 @@
+id: eq-hier
+section: sec-borrowing-hier
+title: Hierarchical model for group response rates
+tex: \htmlClass{term c1}{y_k \mid p_k \sim \mathrm{Binomial}(n_k,p_k)},\qquad \htmlClass{term c2}{\mathrm{logit}\,p_k \mid \mu,\tau_b \sim N(\mu,\tau_b^2)},\qquad \htmlClass{term c3}{(\mu,\tau_b)\sim \pi(\mu,\tau_b)}.
+parts:
+- 'Each group''s '
+- k: c1
+  words: responders follow a binomial distribution given its own rate
+- '; the '
+- k: c2
+  words: log odds of the rates are draws from a common normal distribution
+- '; and '
+- k: c3
+  words: the common mean and the between-group spread get their own prior
+- .
+notes:
+  c1: The data model for group $k$ with $n_k$ patients.
+  c2: 'Exchangeability: the group rates are conditionally independent draws from a common distribution.'
+  c3: 'The between-group standard deviation $\tau_b$ controls borrowing and is estimated from the data: small means close to identical, large means nearly independent.'

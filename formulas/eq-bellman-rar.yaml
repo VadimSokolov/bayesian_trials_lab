@@ -1,0 +1,19 @@
+id: eq-bellman-rar
+section: 16/the-bellman-equation
+title: Bellman equation for response-adaptive randomization
+tex: \htmlClass{term c1}{V(\pi_t, m)} = \max\Bigl\{ \htmlClass{term c2}{\underbrace{m \max_k \mathrm{E}_{\pi_t}[p_k]}_{\text{stop and treat}}},\; \htmlClass{term c3}{\max_k \Bigl( \mathrm{E}_{\pi_t}[p_k] + \mathrm{E}\bigl[ V(\pi_{t+1}, m-1) \mid \pi_t, \text{arm } k \bigr] \Bigr)} \Bigr\},
+parts:
+- 'The '
+- k: c1
+  words: value of the current posterior with $m$ patients left
+- ' is the better of '
+- k: c2
+  words: stopping and giving every remaining patient the arm that looks best now
+- ' and '
+- k: c3
+  words: giving the next patient the best arm $k$, collecting its expected response, and moving to the updated posterior
+- .
+notes:
+  c1: The state of the trial is the posterior $\pi_t$ over the arms' success probabilities; a belief-state Markov decision process.
+  c2: 'First term: stop the trial.'
+  c3: 'Second term: assign the next patient to arm $k$ and update by Bayes'' theorem. Exactly solvable only for small problems.'

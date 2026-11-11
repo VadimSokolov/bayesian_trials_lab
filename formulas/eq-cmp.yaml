@@ -1,0 +1,20 @@
+id: eq-cmp
+section: sec-priors-cmp
+title: Conditional means prior
+tex: |-
+  \htmlClass{term c1}{\pi(\beta)} \propto \prod_{i=1}^{p} \htmlClass{term c2}{F(\tilde x_i' \beta)^{a_{1i} - 1}}\,\htmlClass{term c3}{\bigl[1 - F(\tilde x_i' \beta)\bigr]^{a_{2i} - 1}}\, \htmlClass{term c4}{f(\tilde x_i' \beta)},
+parts:
+  - "The "
+  - {k: c1, words: "prior on the model coefficients"}
+  - " is proportional, over the $p$ chosen covariate points, to "
+  - {k: c2, words: "the chance of success at the point, raised to a power set by its Beta prior"}
+  - " times "
+  - {k: c3, words: "the chance of failure, raised to its own Beta power"}
+  - " times "
+  - {k: c4, words: "the link density that converts a prior on probabilities into one on coefficients"}
+  - "."
+notes:
+  c1: "The induced prior on the coefficients $\\beta$."
+  c2: "Success probability at design point $i$ under inverse link $F$; $a_{1i}-1$ acts like prior successes."
+  c3: "Failure probability at the same point; $a_{2i}-1$ acts like prior failures."
+  c4: "$f = F'$, the density associated with the link; it carries the change of variables from probabilities to coefficients."

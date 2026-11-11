@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trial simulator studio | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="A free, open, browser-based clinical trial simulator: Bayesian adaptive designs, dose finding, interim rules, group sequential benchmark, operating characteristics with Monte Carlo errors. MIT license.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<link rel="stylesheet" href="sim/studio.css">
+</head>
+<body class="lab">
+<a class="skip" href="#studio">Skip to the studio</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">Trial simulator studio</span>
+  <span class="pn"><a href="14-simulator.html">&larr; Module 14</a><a href="./">Index</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Free and open</div>
+  <h1>Trial simulator studio</h1>
+  <p class="hook">Design, simulate and compare Bayesian adaptive trials in your browser. Nothing is uploaded, and every number comes from the open engine.</p>
+  <p class="intro">New to this? <a href="14-simulator.html">Start with module 14</a>.</p>
+  <div class="presets" id="examples"><span class="lbl">Load an example:</span></div>
+  <p class="lic">Free and open: <a href="sim/LICENSE">MIT license</a>. Engine <span id="engver"></span>.</p>
+</section>
+
+<section id="studio" class="studio" aria-label="Trial simulator studio">
+  <div class="tabs" role="tablist" aria-label="Steps" id="tabs">
+    <button class="tab" role="tab" id="tab-study" aria-controls="panel-study" aria-selected="true"><span class="n">1</span>Study</button>
+    <button class="tab" role="tab" id="tab-scn" aria-controls="panel-scn" aria-selected="false" tabindex="-1"><span class="n">2</span>Scenarios</button>
+    <button class="tab" role="tab" id="tab-design" aria-controls="panel-design" aria-selected="false" tabindex="-1"><span class="n">3</span>Design</button>
+    <button class="tab" role="tab" id="tab-sim" aria-controls="panel-sim" aria-selected="false" tabindex="-1"><span class="n">4</span>Simulate</button>
+    <button class="tab" role="tab" id="tab-res" aria-controls="panel-res" aria-selected="false" tabindex="-1"><span class="n">5</span>Results</button>
+    <button class="tab" role="tab" id="tab-save" aria-controls="panel-save" aria-selected="false" tabindex="-1"><span class="n">6</span>Save and share</button>
+  </div>
+  <div class="tp" role="tabpanel" id="panel-study" aria-labelledby="tab-study" tabindex="0"></div>
+  <div class="tp" role="tabpanel" id="panel-scn" aria-labelledby="tab-scn" tabindex="0" hidden></div>
+  <div class="tp" role="tabpanel" id="panel-design" aria-labelledby="tab-design" tabindex="0" hidden></div>
+  <div class="tp" role="tabpanel" id="panel-sim" aria-labelledby="tab-sim" tabindex="0" hidden></div>
+  <div class="tp" role="tabpanel" id="panel-res" aria-labelledby="tab-res" tabindex="0" hidden></div>
+  <div class="tp" role="tabpanel" id="panel-save" aria-labelledby="tab-save" tabindex="0" hidden></div>
+</section>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/dose-finding">Dose finding</a>, <a href="encyclopedia/#/e/maximum-tolerated-dose">Maximum tolerated dose</a>, <a href="encyclopedia/#/e/three-plus-three-design">3+3 design</a>, <a href="encyclopedia/#/e/response-adaptive-randomization">Response-adaptive randomization</a>, <a href="encyclopedia/#/e/clinical-trial-simulation">Clinical trial simulation</a>, <a href="encyclopedia/#/e/bayesian-protocol">Bayesian protocol</a>, <a href="encyclopedia/#/e/boin-design">Bayesian optimal interval design</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Further reading</strong>
+  <ul>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/12-simulation.html">14</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/14-rar.html">16</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/15-dose.html">17</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/16-borrowing.html">19</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/19-protocol.html">23</a>.</li>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters</a>)</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
+    <li>Sokolova, A. O. and Sokolov, V. (2026). E-values for adaptive clinical trials: anytime-valid monitoring in practice. <a href="https://arxiv.org/abs/2602.06379">arXiv:2602.06379</a></li>
+    <li>Polack, F. P. et al. (2020). Safety and efficacy of the BNT162b2 mRNA Covid-19 vaccine. N Engl J Med 383:2603-2615. <a href="https://doi.org/10.1056/NEJMoa2034577">doi:10.1056/NEJMoa2034577</a></li>
+    <li>Lan, K. K. G. and DeMets, D. L. (1983). Discrete sequential boundaries for clinical trials. Biometrika 70(3):659-663. O&rsquo;Brien, P. C. and Fleming, T. R. (1979). A multiple testing procedure for clinical trials. Biometrics 35(3):549-556.</li>
+  </ul>
+
+  <p>Free and open: <a href="sim/LICENSE">MIT license</a>. The engine is plain JavaScript in <code>sim/</code>, with a test suite in the <a href="https://github.com/VadimSokolov/bayesian_trials_lab">repository</a>.</p>
+</div></footer>
+</main>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="person" viewBox="0 0 16 20"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></symbol></svg>
+<script src="sim/core-math.js"></script>
+<script src="sim/models.js"></script>
+<script src="sim/core-engine.js"></script>
+<script src="sim/worker.js"></script>
+<script src="sim/studio.js"></script>
+</body>
+</html>

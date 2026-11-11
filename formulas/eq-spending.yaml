@@ -1,0 +1,21 @@
+id: eq-spending
+section: 11/spending-functions-and-the-information-fraction
+title: Spending functions
+tex: |-
+  \htmlClass{term c1}{\alpha^*_{\text{OBF}}(t)} = \htmlClass{term c2}{2\{1 - \Phi(z_{\alpha/2}/\sqrt{t})\}}, \qquad
+  \htmlClass{term c3}{\alpha^*_{\text{Pocock}}(t)} = \htmlClass{term c4}{\alpha \log\{1 + (e - 1)\,t\}}.
+parts:
+  - "The "
+  - {k: c1, words: "O'Brien-Fleming-type spending"}
+  - " is "
+  - {k: c2, words: "twice the upper tail beyond the critical value scaled by the inverse square root of the information fraction"}
+  - ". The "
+  - {k: c3, words: "Pocock-type spending"}
+  - " is "
+  - {k: c4, words: "the total error times a logarithmic function of the information fraction"}
+  - "."
+notes:
+  c1: "How much type I error may have been used by information fraction $t$."
+  c2: "Spends almost nothing until $t$ is large (about 0.0015 of 0.025 at $t=0.5$)."
+  c3: "The second classical design mimicked."
+  c4: "Spends steadily; the function, not the number of looks, goes in the protocol."

@@ -1,0 +1,31 @@
+# Bayesian Clinical Trials and Personalized Medicine: Volume I: Bayesian Clinical Trials: encyclopedia and knowledge graph
+
+This site is a study aid on top of the book "Bayesian Clinical Trials and Personalized Medicine: Volume I: Bayesian Clinical Trials" (Sokolova, Sokolov and Polson, 2026).
+It has one short page per concept, method, design, trial, regulation and principle in the book,
+with prerequisite links, section-level pointers into the book, equations, R functions of the
+bayestrials package and links to the companion lab. Every statement on an entity page cites a
+section of the book. The book is the source of truth; these pages are a navigation layer.
+
+## Cite the book
+
+Sokolova, Sokolov and Polson (2026). Bayesian Clinical Trials and Personalized Medicine: Volume I: Bayesian Clinical Trials. Version 1.1.0.
+DOI: https://doi.org/10.5281/zenodo.24138413
+HTML edition: https://vsokolov.org/bayesian_clinical_trials_v1/
+Companion lab: https://vsokolov.org/bayesian_trials_lab/
+
+## Machine-readable data
+
+- data/kg.json: book metadata, chapters, section map, results, lab modules and all entities
+  (frontmatter fields, Markdown body, resolved section links, reverse edges, equations, functions).
+- data/graph.json: plain node and edge lists. Edge kinds: "prerequisite" (source is needed before target)
+  and "related" (typed by "rel").
+- Entity ids are lowercase with hyphens. Section keys such as sec-pp or 15/the-normal-case are in
+  data/kg.json under "sections", each with number, title and URL in the HTML edition.
+
+## Size
+
+312 written pages, 0 planned pages (stubs), 1163 edges. Built 2026-11-11.
+
+## Tutor method
+
+Adapted from Jane Street's socratic-tutor skill (MIT): https://github.com/janestreet/agent_skills

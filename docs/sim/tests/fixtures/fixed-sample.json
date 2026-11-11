@@ -1,0 +1,284 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "t-test-d0.5",
+      "description": "Two-sample t-test, delta/sigma 0.5, two-sided alpha 0.05, power 0.8 (n per group, exact noncentral t)",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "power.t.test(delta=0.5, sd=1, sig.level=0.05, power=0.8)",
+      "inputs": {
+        "delta": 0.5,
+        "sd": 1,
+        "alpha_two_sided": 0.05,
+        "power": 0.8
+      },
+      "outputs": {
+        "n_per_group_unrounded": 63.765763714277,
+        "n_per_group_ceiling": 64,
+        "total_N": 128
+      }
+    },
+    {
+      "id": "nNormal-d0.5",
+      "description": "Normal-approx two-sample size via gsDesign::nNormal (one-sided 0.025 equals two-sided 0.05); nNormal returns TOTAL N for both arms with equal allocation (verify: = 4*(z_a+z_b)^2*sd^2/delta^2)",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nNormal(delta1=0.5, sd=1, alpha=0.025, beta=0.2, sided=1)",
+      "inputs": {
+        "delta": 0.5,
+        "sd": 1,
+        "alpha_one_sided": 0.025,
+        "power": 0.8
+      },
+      "outputs": {
+        "total_N_unrounded": 125.582075749585,
+        "per_group_unrounded": 62.791037874793,
+        "closed_form_total": 125.582075749585
+      }
+    },
+    {
+      "id": "nBinomial-0.3-0.45-pow0.8",
+      "description": "Two proportions 0.3 vs 0.45, two-sided 0.05 (one-sided 0.025), power 0.8, equal allocation; nBinomial returns TOTAL N. Outputs include default and Difference scale and closed forms",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nBinomial(p1=0.3, p2=0.45, alpha=0.025, beta=0.2, sided=1)",
+      "inputs": {
+        "p1": 0.3,
+        "p2": 0.45,
+        "alpha_one_sided": 0.025,
+        "power": 0.8,
+        "ratio": 1
+      },
+      "outputs": {
+        "total_N_default": 324.668764127416,
+        "total_N_difference_scale": 324.668764127416,
+        "per_group_default": 162.334382063708,
+        "total_N_ceiling_even": 326,
+        "closed_form_null_pooled_alt_unpooled_total": 324.668764127416,
+        "closed_form_all_unpooled_variance_total": 319.187775863529
+      }
+    },
+    {
+      "id": "power.prop.test-0.3-0.45-pow0.8",
+      "description": "Base R power.prop.test, two-sided 0.05 (pooled-null variance formula)",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "power.prop.test(p1=0.3, p2=0.45, sig.level=0.05, power=0.8)",
+      "inputs": {
+        "p1": 0.3,
+        "p2": 0.45,
+        "alpha_two_sided": 0.05,
+        "power": 0.8
+      },
+      "outputs": {
+        "n_per_group_unrounded": 162.334383006655,
+        "total_N_unrounded": 324.668766013311
+      }
+    },
+    {
+      "id": "nBinomial-0.3-0.45-pow0.9",
+      "description": "Two proportions 0.3 vs 0.45, two-sided 0.05 (one-sided 0.025), power 0.9, equal allocation; nBinomial returns TOTAL N. Outputs include default and Difference scale and closed forms",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nBinomial(p1=0.3, p2=0.45, alpha=0.025, beta=0.1, sided=1)",
+      "inputs": {
+        "p1": 0.3,
+        "p2": 0.45,
+        "alpha_one_sided": 0.025,
+        "power": 0.9,
+        "ratio": 1
+      },
+      "outputs": {
+        "total_N_default": 433.639870520885,
+        "total_N_difference_scale": 433.639870520885,
+        "per_group_default": 216.819935260442,
+        "total_N_ceiling_even": 434,
+        "closed_form_null_pooled_alt_unpooled_total": 433.639870520885,
+        "closed_form_all_unpooled_variance_total": 427.301871165252
+      }
+    },
+    {
+      "id": "power.prop.test-0.3-0.45-pow0.9",
+      "description": "Base R power.prop.test, two-sided 0.05 (pooled-null variance formula)",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "power.prop.test(p1=0.3, p2=0.45, sig.level=0.05, power=0.9)",
+      "inputs": {
+        "p1": 0.3,
+        "p2": 0.45,
+        "alpha_two_sided": 0.05,
+        "power": 0.9
+      },
+      "outputs": {
+        "n_per_group_unrounded": 216.819937737289,
+        "total_N_unrounded": 433.639875474578
+      }
+    },
+    {
+      "id": "nBinomial-0.2-0.4-pow0.8",
+      "description": "Two proportions 0.2 vs 0.4, two-sided 0.05 (one-sided 0.025), power 0.8, equal allocation; nBinomial returns TOTAL N. Outputs include default and Difference scale and closed forms",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nBinomial(p1=0.2, p2=0.4, alpha=0.025, beta=0.2, sided=1)",
+      "inputs": {
+        "p1": 0.2,
+        "p2": 0.4,
+        "alpha_one_sided": 0.025,
+        "power": 0.8,
+        "ratio": 1
+      },
+      "outputs": {
+        "total_N_default": 162.448481390911,
+        "total_N_difference_scale": 162.448481390911,
+        "per_group_default": 81.224240695455,
+        "total_N_ceiling_even": 164,
+        "closed_form_null_pooled_alt_unpooled_total": 162.448481390911,
+        "closed_form_all_unpooled_variance_total": 156.977594686982
+      }
+    },
+    {
+      "id": "power.prop.test-0.2-0.4-pow0.8",
+      "description": "Base R power.prop.test, two-sided 0.05 (pooled-null variance formula)",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "power.prop.test(p1=0.2, p2=0.4, sig.level=0.05, power=0.8)",
+      "inputs": {
+        "p1": 0.2,
+        "p2": 0.4,
+        "alpha_two_sided": 0.05,
+        "power": 0.8
+      },
+      "outputs": {
+        "n_per_group_unrounded": 81.224241151774,
+        "total_N_unrounded": 162.448482303547
+      }
+    },
+    {
+      "id": "nBinomial-0.2-0.4-pow0.9",
+      "description": "Two proportions 0.2 vs 0.4, two-sided 0.05 (one-sided 0.025), power 0.9, equal allocation; nBinomial returns TOTAL N. Outputs include default and Difference scale and closed forms",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nBinomial(p1=0.2, p2=0.4, alpha=0.025, beta=0.1, sided=1)",
+      "inputs": {
+        "p1": 0.2,
+        "p2": 0.4,
+        "alpha_one_sided": 0.025,
+        "power": 0.9,
+        "ratio": 1
+      },
+      "outputs": {
+        "total_N_default": 216.471078760102,
+        "total_N_difference_scale": 216.471078760102,
+        "per_group_default": 108.235539380051,
+        "total_N_ceiling_even": 218,
+        "closed_form_null_pooled_alt_unpooled_total": 216.471078760102,
+        "closed_form_all_unpooled_variance_total": 210.148461228812
+      }
+    },
+    {
+      "id": "power.prop.test-0.2-0.4-pow0.9",
+      "description": "Base R power.prop.test, two-sided 0.05 (pooled-null variance formula)",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "power.prop.test(p1=0.2, p2=0.4, sig.level=0.05, power=0.9)",
+      "inputs": {
+        "p1": 0.2,
+        "p2": 0.4,
+        "alpha_two_sided": 0.05,
+        "power": 0.9
+      },
+      "outputs": {
+        "n_per_group_unrounded": 108.23554064106,
+        "total_N_unrounded": 216.471081282119
+      }
+    },
+    {
+      "id": "schoenfeld-hr0.7-pow0.8",
+      "description": "Schoenfeld required events, HR 0.7, 1:1, two-sided 0.05, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nEvents(hr=0.7, alpha=0.025, beta=0.2, ratio=1, sided=1)",
+      "inputs": {
+        "hr": 0.7,
+        "alpha_one_sided": 0.025,
+        "power": 0.8,
+        "ratio": 1
+      },
+      "outputs": {
+        "events_unrounded": 246.787104547358,
+        "events_ceiling": 247,
+        "closed_form": 246.787104547358
+      }
+    },
+    {
+      "id": "schoenfeld-hr0.7-pow0.9",
+      "description": "Schoenfeld required events, HR 0.7, 1:1, two-sided 0.05, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nEvents(hr=0.7, alpha=0.025, beta=0.1, ratio=1, sided=1)",
+      "inputs": {
+        "hr": 0.7,
+        "alpha_one_sided": 0.025,
+        "power": 0.9,
+        "ratio": 1
+      },
+      "outputs": {
+        "events_unrounded": 330.37791396381,
+        "events_ceiling": 331,
+        "closed_form": 330.37791396381
+      }
+    },
+    {
+      "id": "schoenfeld-hr0.5-pow0.8",
+      "description": "Schoenfeld required events, HR 0.5, 1:1, two-sided 0.05, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nEvents(hr=0.5, alpha=0.025, beta=0.2, ratio=1, sided=1)",
+      "inputs": {
+        "hr": 0.5,
+        "alpha_one_sided": 0.025,
+        "power": 0.8,
+        "ratio": 1
+      },
+      "outputs": {
+        "events_unrounded": 65.345659258871,
+        "events_ceiling": 66,
+        "closed_form": 65.345659258871
+      }
+    },
+    {
+      "id": "schoenfeld-hr0.5-pow0.9",
+      "description": "Schoenfeld required events, HR 0.5, 1:1, two-sided 0.05, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nEvents(hr=0.5, alpha=0.025, beta=0.1, ratio=1, sided=1)",
+      "inputs": {
+        "hr": 0.5,
+        "alpha_one_sided": 0.025,
+        "power": 0.9,
+        "ratio": 1
+      },
+      "outputs": {
+        "events_unrounded": 87.479297721542,
+        "events_ceiling": 88,
+        "closed_form": 87.479297721542
+      }
+    }
+  ]
+}

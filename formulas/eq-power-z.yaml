@@ -1,0 +1,17 @@
+id: eq-power-z
+section: 9/two-errors-and-one-guess
+title: Power of the z test
+tex: |-
+  \htmlClass{term c1}{\text{Power}(\theta)} = \Phi\!\left(\htmlClass{term c2}{\theta\sqrt{nI}} - \htmlClass{term c3}{z_\alpha}\right).
+parts:
+  - "The "
+  - {k: c1, words: "power at a true effect $\\theta$"}
+  - " is the standard normal distribution function evaluated at "
+  - {k: c2, words: "the effect measured in standard errors"}
+  - " less "
+  - {k: c3, words: "the critical value of the test"}
+  - "."
+notes:
+  c1: "The chance the test rejects when the true effect is $\\theta$."
+  c2: "The mean of the standardized statistic $Z$; it grows with sample size $n$ and information $I$."
+  c3: "The bar $Z$ must clear to reject at level $\\alpha$."

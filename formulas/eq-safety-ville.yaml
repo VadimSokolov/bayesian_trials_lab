@@ -1,0 +1,15 @@
+id: eq-safety-ville
+section: sec-safety-monitor
+title: Ville bound on a Bayes factor under the null
+tex: \htmlClass{term c1}{\Pr\left(\sup_t \mathrm{BF}_t \geq 1/\alpha \mid RR = 1\right)} \leq \htmlClass{term c2}{\alpha}.
+parts:
+- 'If the drug leaves the risk unchanged ($RR = 1$), '
+- k: c1
+  words: the chance that the Bayes factor ever reaches $1/\alpha$ at any look
+- ' is at most '
+- k: c2
+  words: the chosen false alarm level
+- .
+notes:
+  c1: The Bayes factor with a fixed prior under the alternative is a nonnegative martingale under the null, so its running maximum rarely gets large.
+  c2: Acting when the Bayes factor first reaches $1/\alpha$ keeps the false alarm rate at or below $\alpha$ however often one looks.

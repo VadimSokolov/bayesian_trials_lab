@@ -1,0 +1,16 @@
+id: eq-loghr-lik
+section: sec-normal-normal
+title: "Normal likelihood for the log hazard ratio"
+tex: "\\htmlClass{term c1}{\\hat\\theta \\mid \\theta} \\;\\sim\\; N\\!\\left(\\htmlClass{term c2}{\\theta},\\; \\htmlClass{term c3}{\\frac{4}{d}}\\right)."
+parts:
+  - "Given the true effect, "
+  - {k: c1, words: "the estimated effect (minus the log hazard ratio, so positive means benefit)"}
+  - " is approximately normal, centered at "
+  - {k: c2, words: "the true effect"}
+  - " with variance "
+  - {k: c3, words: "four divided by the total number of events"}
+  - "."
+notes:
+  c1: "The data summary; the effect is minus the log hazard ratio, so positive means benefit."
+  c2: "The parameter we want to learn about."
+  c3: "The standard error is $2/\\sqrt{d}$; events, not patients, are the sample size."

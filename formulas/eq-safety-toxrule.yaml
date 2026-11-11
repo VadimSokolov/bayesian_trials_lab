@@ -1,0 +1,19 @@
+id: eq-safety-toxrule
+section: 13/the-bayesian-rule
+title: Bayesian toxicity pausing rule
+tex: \htmlClass{term c1}{\Pr(q > \bar q \mid x, n)} > \htmlClass{term c2}{\kappa}, \qquad \htmlClass{term c3}{\kappa = 0.75}.
+parts:
+- 'Pause when '
+- k: c1
+  words: the posterior probability that the toxicity rate exceeds the acceptable rate, given $x$ toxicities in $n$ patients
+- ' is above '
+- k: c2
+  words: the cutoff
+- ', which is '
+- k: c3
+  words: set at 0.75
+- .
+notes:
+  c1: Computed from the Beta posterior after $x$ toxicities in $n$ patients; it increases in $x$ at fixed $n$, so the rule is a table of stopping counts.
+  c2: The probability threshold $\kappa$, checked after every five patients.
+  c3: The value used in the book's example.

@@ -1,0 +1,26 @@
+id: eq-cp
+section: 15/conditional-power
+title: Conditional power
+tex: >-
+  \htmlClass{term c1}{\mathrm{CP}(\xi)} = \htmlClass{term c2}{\Pr(Z_1 > z_\alpha \mid Z_t)} = 1 - \Phi\!\left(\frac{\htmlClass{term c3}{z_\alpha} - \htmlClass{term c4}{Z_t\sqrt{t}} - \htmlClass{term c5}{\xi(1-t)}}{\htmlClass{term c6}{\sqrt{1-t}}}\right).
+parts:
+  - "The "
+  - {k: c1, words: "conditional power"}
+  - " is "
+  - {k: c2, words: "the chance the final statistic exceeds the critical value, given the interim data"}
+  - ". It is one minus the normal distribution function at "
+  - {k: c3, words: "the critical value"}
+  - " minus "
+  - {k: c4, words: "the B-value already observed"}
+  - " minus "
+  - {k: c5, words: "the drift times the information still to come"}
+  - ", all divided by "
+  - {k: c6, words: "the spread of the future increment"}
+  - "."
+notes:
+  c1: "It depends on the assumed drift $\\xi$; the book uses the design alternative, the current trend, or the null."
+  c2: "The probability that the final statistic $Z_1$ exceeds $z_\\alpha$, given the interim statistic $Z_t$."
+  c3: "The final critical value the trial must beat."
+  c4: "The B-value $B_t = Z_t\\sqrt{t}$: the evidence collected so far."
+  c5: "What the assumed effect is expected to add over the remaining information $1-t$."
+  c6: "The future increment is normal whatever the past was, with this standard deviation."

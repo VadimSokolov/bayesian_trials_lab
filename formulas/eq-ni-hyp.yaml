@@ -1,0 +1,13 @@
+id: eq-ni-hyp
+section: sec-testing-ni
+title: "Noninferiority hypotheses"
+tex: "H_0:\\ \\htmlClass{term c1}{\\gamma \\ge \\log M} \\qquad\\text{against}\\qquad H_1:\\ \\htmlClass{term c2}{\\gamma < \\log M}."
+parts:
+  - "The null says "
+  - {k: c1, words: "the new drug's log hazard ratio is at or above the log of the margin, so it is worse than allowed"}
+  - ", against the alternative that "
+  - {k: c2, words: "the log hazard ratio is below the log of the margin, so the new drug is no worse than the margin allows"}
+  - "."
+notes:
+  c1: "The burden of proof is on similarity: this is what must be rejected."
+  c2: "Rejecting the null shows noninferiority; the answer depends entirely on the margin $M$, which the data do not supply."

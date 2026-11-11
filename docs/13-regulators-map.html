@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The regulator's map | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: who decides what in a drug trial, the road from lab to pharmacy, and the FDA meetings and documents along the way.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<style>
+.tip { border-bottom: 1.5px dotted var(--teal-dark); cursor: help; position: relative; }
+.tip:hover::after, .tip:focus::after { content: attr(data-tip); position: absolute; left: 0; top: 1.5em; z-index: 30; background: var(--navy); color: #fff; font-size: .8rem; font-style: normal; font-weight: 400; line-height: 1.35; padding: .4rem .6rem; border-radius: 6px; width: 15rem; max-width: 70vw; }
+.phasebtns { display: flex; flex-direction: column; gap: .3rem; }
+.phasebtns .btn { text-align: left; padding: .35rem .7rem; min-height: 34px; }
+.detail { margin-top: .6rem; padding: .7rem .9rem; background: var(--teal-light); border-radius: 10px; font-size: .95rem; }
+.detail b { color: var(--navy); }
+.detail div { margin: .15rem 0; }
+.gbox { cursor: pointer; }
+.gbox:focus-visible { outline: 3px solid var(--navy); }
+.rowhit { cursor: pointer; }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; margin: .8rem 0; }
+.tile { font: inherit; text-align: left; background: var(--white); border: 1.5px solid var(--border-strong); border-radius: 10px; padding: .6rem .7rem; cursor: pointer; min-height: 72px; }
+.tile:hover { border-color: var(--teal-dark); }
+.tile b { display: block; color: var(--navy); }
+.tile span { font-size: .8rem; color: var(--text-secondary); }
+.tile.on { border-color: var(--teal-dark); background: var(--teal-light); }
+.tile.right { border-color: var(--good); background: var(--teal-light); box-shadow: inset 0 0 0 2px var(--good); }
+.tile.wrong { border-color: var(--bad); background: #FBEAE6; }
+.game .tile span.topic { display: none; }
+.gamebar { display: none; align-items: center; gap: .8rem; flex-wrap: wrap; background: var(--orange-light); border: 1px solid rgba(184,83,26,.3); border-radius: 10px; padding: .6rem .9rem; font-weight: 600; }
+.game .gamebar { display: flex; }
+.twocol { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: flex-start; }
+.tgl { display: inline-flex; gap: .3rem; margin: .2rem .5rem .4rem 0; }
+.tgl .btn { padding: .25rem .7rem; min-height: 32px; font-size: .85rem; }
+svg text { font-family: var(--sans); }
+.hl { fill: var(--navy); }
+@media (max-width: 800px) { .phasebtns { flex-direction: row; flex-wrap: wrap; } }
+</style>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">13. The regulator's map</span>
+  <span class="pn"><a href="12-decisions.html">&larr; Prev</a><a href="index.html">Index</a><a href="14-simulator.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 13</div>
+  <h1>The regulator's map</h1>
+  <p class="hook">A new medicine takes years to reach a pharmacy. Who checks it, and when?</p>
+  <p class="note">IND: the request to start testing in people. NDA (drugs) or BLA (biologics, made from living cells): the request to sell.</p>
+  <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
+</section>
+
+<section id="lab" class="labgrid" aria-label="Drug development roadmap lab">
+  <div class="panel">
+    <h3>1. Pick a stage</h3>
+    <div class="phasebtns" id="phasebtns"></div>
+    <div class="row" style="margin-top:.5rem"><button class="btn primary" id="walk" type="button">Show each stage</button></div>
+    <h3>2. How fast does it go?</h3>
+    <div class="field"><input id="luck" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Speed of the program from fast to slow"></div>
+    <div class="row" style="justify-content:space-between;font-size:.85rem"><span>Fast</span><span>Slow</span></div>
+    <p class="note" style="margin-top:.6rem">Slide from a fast to a slow program.</p>
+  </div>
+  <div>
+    <div class="plotbox"><svg id="road" viewBox="0 0 920 312" role="img" aria-label="Timeline of drug development with FDA touch points" style="width:100%;height:auto;display:block"></svg>
+      <div class="chips" aria-live="polite" id="chips"></div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Meeting clocks</h2>
+  <p class="note">Click a row.</p>
+  <figure class="figure"><svg id="clocks" viewBox="0 0 920 270" role="img" aria-label="Bars of FDA reply days and meeting scheduling days for each meeting type"></svg>
+    <figcaption><b>Source:</b> FDA formal meetings guidance (August 2026), Tables 1 and 2.</figcaption></figure>
+</section>
+
+<section class="section">
+  <h2>Talking to FDA about a new design</h2>
+  <p>FDA's <b>Complex Innovative Trial Design (CID) paired meeting program</b> is where sponsors discuss designs such as Bayesian ones with FDA staff.</p>
+  <p class="note">Designs are usually agreed at an end-of-phase-2 meeting (Type B) or a Type C meeting. The clocks above apply.</p>
+</section>
+
+<section class="section">
+  <h2>Who answers for the trial?</h2>
+  <p>Click CRO. A dashed arrow shows who still oversees the trial.</p>
+  <figure class="figure"><svg id="roles" viewBox="0 0 920 330" role="img" aria-label="Sponsor, CRO, investigator, IRB and FDA with their roles, and three FDA centers"></svg>
+    <div class="detail" id="roledetail" aria-live="polite">Click any box.</div></figure>
+</section>
+
+<section class="section">
+  <h2>Why the rules exist</h2>
+  <p>Click a dot, or press Play.</p>
+  <figure class="figure"><svg id="hist" viewBox="0 0 920 170" role="img" aria-label="Timeline of regulation milestones from 1937 to 2025"></svg>
+    <div class="detail" id="histdetail" aria-live="polite">Click a dot.</div>
+    <div class="row" style="margin-top:.5rem"><button class="btn" id="histplay" type="button">Play</button></div>
+    <figcaption><b>Source:</b> Sokolova and Sokolov (2026), Clinical Trials in Practice, history of trial regulation.</figcaption></figure>
+</section>
+
+<section class="section" id="shelfsec">
+  <h2>The document shelf</h2>
+  <p>Twelve public documents regulators use. Click one, or quiz yourself.</p>
+  <div class="row"><button class="btn primary" id="gamebtn" type="button">Quiz yourself</button></div>
+  <div class="gamebar" id="gamebar"><span id="prompt"></span><span class="scorebar" id="gscore" style="position:static;margin:0"></span><button class="btn" id="gnext" type="button" disabled>Next</button></div>
+  <div class="shelf" id="shelf"></div>
+  <div class="detail" id="docdetail" aria-live="polite">Click a document.</div>
+  <p class="note" style="margin-top:.6rem">Drafts can still change. "Revised draft" means FDA reissued an earlier draft.</p>
+</section>
+
+<section class="section">
+  <h2>AI model risk</h2>
+  <p>FDA's draft for AI tools used in drug decisions rates model risk from two factors. Try the toggles.</p>
+  <figure class="figure">
+    <div class="twocol">
+      <svg id="riskgrid" viewBox="0 0 250 210" style="width:250px;max-width:100%" role="img" aria-label="Two by two grid of model influence and decision consequence"></svg>
+      <div>
+        <div><b>Model influence</b> <span class="tip" tabindex="0" data-tip="How much the decision leans on the model, compared with other evidence.">(what is this?)</span></div>
+        <div class="tgl" id="tInf"></div>
+        <div><b>Decision consequence</b> <span class="tip" tabindex="0" data-tip="How bad it is if the model leads to a wrong decision.">(what is this?)</span></div>
+        <div class="tgl" id="tCon"></div>
+        <div class="chips" id="riskchip"></div>
+        <p class="note" style="margin-top:.5rem">Our simple picture. The guidance names the two factors, not this grid.</p>
+      </div>
+    </div>
+    <figcaption><b>Source:</b> FDA draft guidance, Considerations for the Use of Artificial Intelligence to Support Regulatory Decision-Making (January 2025), Section IV.A.</figcaption></figure>
+</section>
+
+<section class="section">
+  <h2>Predict, then check</h2>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="reg">
+  <h3>Regulator's corner</h3>
+  <p>FDA says a Type A meeting is for a program that is stuck:</p>
+  <blockquote>"necessary for an otherwise stalled drug or biological product development program to proceed or to address an important safety issue."</blockquote>
+  <p class="note">Section III. <a href="https://www.fda.gov/media/172311/download">FDA, Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products</a> (August 2026).</p>
+</section>
+
+<div id="code"></div>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>The road has stages, and FDA checks in at each big step.</li>
+    <li>Pick the meeting that fits the question: stuck, early, or small.</li>
+    <li>The sponsor oversees the trial, even when a CRO does the work. The CRO answers for the duties it took over in writing.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/fda-meetings">FDA meetings</a>, <a href="encyclopedia/#/e/requires-recommends-permits">Requires, recommends, permits</a>, <a href="encyclopedia/#/e/fda">FDA</a>, <a href="encyclopedia/#/e/cid-program">Complex innovative trial design program</a>, <a href="encyclopedia/#/e/ema">EMA</a>, <a href="encyclopedia/#/e/midd-program">MIDD paired meeting program</a>, <a href="encyclopedia/#/e/cpim">Critical Path Innovation Meetings</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Further reading</strong>
+  <ul>
+    <li>FDA: <a href="https://www.fda.gov/media/172311/download">Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products</a> (August 2026); <a href="https://www.fda.gov/media/190505/download">Use of Bayesian Methodology in Clinical Trials</a> (draft). Chapter on the drug development process: <a href="https://vsokolov.org/clinical_trials_in_practice/">Clinical Trials in Practice</a>.</li>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/02-regulatory.html">3</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/19-protocol.html">23</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570</li>
+    <li>21 CFR 312.52, Transfer of obligations to a contract research organization. <a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-312/subpart-D/section-312.52">eCFR</a></li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', TD = '#1F6B6B', ORANGE = '#E07A3F', ODARK = '#B8531A', NAVY = '#0A1628', GRAY = '#C9D1D9';
+  var $ = function (id) { return document.getElementById(id); };
+  function tip(t, d) { return '<span class="tip" tabindex="0" data-tip="' + d + '">' + t + '</span>'; }
+  function fmt1(x) { return x.toFixed(1); }
+  function onAct(svg, sel, fn) {
+    svg.addEventListener('click', function (e) { var g = e.target.closest(sel); if (g) fn(g.getAttribute('data-id')); });
+    svg.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { var g = e.target.closest(sel); if (g) { e.preventDefault(); fn(g.getAttribute('data-id')); } } });
+  }
+
+  /* ---------- Data ---------- */
+  var PH = [
+    { id: 'disc', name: 'Discovery', min: 2, max: 4, q: 'Which molecule might work?', who: 'Lab work only', reg: 'No FDA touch point yet.' },
+    { id: 'pre', name: 'Preclinical', min: 1, max: 3, q: 'Is it safe enough to try in people?', who: 'Cells and animals', reg: 'Often a first meeting with FDA (pre-IND).' },
+    { id: 'p1', name: 'Phase I', min: 1, max: 2, q: 'Is it tolerated? What does the body do to it?', who: 'A small group, often healthy volunteers (patients for cancer drugs)', reg: 'IND filed. If FDA does not object within 30 days, the trial may start.' },
+    { id: 'p2', name: 'Phase II', min: 1, max: 3, q: 'Does it seem to work? Which dose?', who: '20 to 300 people is typical', reg: 'Type B: end of Phase 2. Show FDA the Phase III plan.' },
+    { id: 'p3', name: 'Phase III', min: 2, max: 4, q: 'Does it beat placebo or the usual drug?', who: 'Hundreds to thousands, many sites', reg: 'Pre-NDA/BLA meeting: is the file complete?' },
+    { id: 'rev', name: 'Review', min: 0.5, max: 1, q: 'Should FDA approve it?', who: 'FDA reviewers', reg: 'NDA or BLA filed. FDA checks completeness for 60 days first.' },
+    { id: 'p4', name: 'Phase IV', q: 'Any rare or long-term harm?', who: 'Everyone who takes it', reg: 'Safety monitoring goes on after approval.' }
+  ];
+  var COL = ['#CFE3E3', '#A9D0D0', '#6FB6B6', TEAL, TD, NAVY];
+  var MEET = [
+    { id: 'A', name: 'Type A: stalled program or safety issue', reply: 14, sched: 30 },
+    { id: 'B', name: 'Type B: pre-IND, pre-NDA/BLA', reply: 21, sched: 60 },
+    { id: 'BEOP', name: 'Type B: end of Phase 2', sh: 'Type B (end of Phase 2)', reply: 14, sched: 70 },
+    { id: 'C', name: 'Type C: any other topic', reply: 21, sched: 75 },
+    { id: 'D', name: 'Type D: one or two small questions', reply: 14, sched: 50 },
+    { id: 'INT', name: 'INTERACT: very early talk on a new kind of product', reply: 21, sched: 75 }
+  ];
+  var SC = [
+    { label: 'New pill', phase: 'p2', center: 'CDER', meeting: 'BEOP', app: 'NDA', doc: 'meet' },
+    { label: 'Gene therapy', phase: 'pre', center: 'CBER', meeting: 'INT', app: 'BLA', doc: 'meet' },
+    { label: 'Stalled program', phase: 'p2', center: 'CDER', meeting: 'A', app: 'NDA', doc: 'meet' },
+    { label: 'New kind of trial design', phase: 'p3', center: 'CDER', meeting: 'C', app: 'NDA', doc: 'bayes', prog: 'Extra meetings for new trial designs' },
+    { label: 'Dose picked by a computer model', phase: 'p1', center: 'CDER', meeting: null, app: 'NDA', doc: 'm15', prog: 'Paired FDA meetings about computer models' }
+  ];
+  function meet(id) { return MEET.filter(function (m) { return m.id === id; })[0]; }
+  function phase(id) { return PH.filter(function (p) { return p.id === id; })[0]; }
+  var S = { ph: 'p2', t: 0.5, meeting: null, sc: null, center: null, role: null };
+
+  /* ---------- Road (main plot) ---------- */
+  var KX = 880 / 19.5;
+  function xs(y) { return 20 + y * KX; }
+  function layout() {
+    var cur = 0, out = {};
+    PH.slice(0, 6).forEach(function (p) { var d = p.min + (p.max - p.min) * S.t; out[p.id] = { s: cur, d: d, e: cur + d }; cur += d; });
+    out.total = cur; return out;
+  }
+  function renderRoad() {
+    var L = layout(), h = '';
+    var flags = [
+      { x: L.p1.s - 0.3, t: 'Pre-IND meeting', lv: 0, an: 'end' }, { x: L.p1.s, t: 'IND filed', lv: 2, an: 'start' },
+      { x: L.p2.e, t: 'Type B: end of Phase 2', lv: 1, an: 'end' }, { x: L.p3.e - 0.3, t: 'Pre-NDA/BLA meeting', lv: 0, an: 'end' },
+      { x: L.rev.s, t: 'NDA/BLA filed', lv: 1, an: 'start' }, { x: L.rev.e, t: 'Approval', lv: 2, an: 'start' }
+    ];
+    flags.forEach(function (f) {
+      var x = xs(f.x), y = 28 + f.lv * 18, tx = f.an === 'end' ? x - 5 : x + 5;
+      h += '<line x1="' + x + '" x2="' + x + '" y1="' + (y + 3) + '" y2="110" stroke="' + ORANGE + '" stroke-width="1.5"/><circle cx="' + x + '" cy="110" r="4.5" fill="' + ORANGE + '"/>' +
+        '<text x="' + tx + '" y="' + (y + 3) + '" text-anchor="' + f.an + '" font-size="12" font-weight="600" fill="' + ODARK + '">' + f.t + '</text>';
+    });
+    PH.slice(0, 6).forEach(function (p, i) {
+      var a = L[p.id], x = xs(a.s), w = a.d * KX - 1.5, sel = S.ph === p.id, ly = 192 + (i % 2) * 32;
+      h += '<g class="gbox" data-id="' + p.id + '" tabindex="0" role="button" aria-label="' + p.name + ', ' + fmt1(a.d) + ' years"><rect x="' + x + '" y="110" width="' + w + '" height="60" rx="4" fill="' + COL[i] + '" stroke="' + (sel ? ODARK : 'none') + '" stroke-width="4"/>' +
+        '<line x1="' + (x + w / 2) + '" x2="' + (x + w / 2) + '" y1="170" y2="' + (ly - 13) + '" stroke="' + GRAY + '"/>' +
+        '<text x="' + (x + w / 2) + '" y="' + ly + '" text-anchor="middle" font-size="13" font-weight="600" fill="' + NAVY + '">' + p.name + '</text>' +
+        '<text x="' + (x + w / 2) + '" y="' + (ly + 14) + '" text-anchor="middle" font-size="12" fill="#4a5565">' + fmt1(a.d) + ' y</text></g>';
+    });
+    var x4 = xs(L.total), sel4 = S.ph === 'p4';
+    h += '<g class="gbox" data-id="p4" tabindex="0" role="button" aria-label="Phase IV, goes on"><rect x="' + x4 + '" y="110" width="' + (1.6 * KX) + '" height="60" rx="4" fill="#FDF0E8" stroke="' + (sel4 ? ODARK : ORANGE) + '" stroke-width="' + (sel4 ? 4 : 1.5) + '" stroke-dasharray="6 4"/>' +
+      '<text x="' + (x4 + 0.8 * KX) + '" y="145" text-anchor="middle" font-size="13" font-weight="600" fill="' + ODARK + '">Phase IV &rarr;</text></g>';
+    h += '<line x1="' + xs(0) + '" x2="' + xs(19) + '" y1="268" y2="268" stroke="#9aa5b1"/>';
+    for (var y = 0; y <= 18; y += 2) h += '<line x1="' + xs(y) + '" x2="' + xs(y) + '" y1="268" y2="273" stroke="#9aa5b1"/><text x="' + xs(y) + '" y="287" text-anchor="middle" font-size="12" fill="#4a5565">' + y + '</text>';
+    h += '<text x="' + xs(9.5) + '" y="306" text-anchor="middle" font-size="12" fill="#4a5565">years</text>';
+    $('road').innerHTML = h;
+    var p = phase(S.ph), chips = '';
+    chips += '<span class="chip warm">Road to approval <b>' + fmt1(L.total) + ' years</b></span>';
+    if (S.sc) {
+      chips += '<span class="chip">FDA center <b>' + S.sc.center + '</b></span><span class="chip">Application <b>' + S.sc.app + '</b></span>';
+      if (S.sc.prog) chips += '<span class="chip warm">Program <b>' + S.sc.prog + '</b></span>';
+    }
+    if (S.meeting) {
+      var m = meet(S.meeting);
+      chips += '<span class="chip warm">Meeting <b>' + (m.sh || m.name.split(':')[0]) + '</b></span><span class="chip">FDA replies in <b>' + m.reply + ' days</b></span><span class="chip">Meeting within <b>' + (m.sched + " days") + '</b></span>';
+    }
+    $('chips').innerHTML = chips;
+    $('detail').innerHTML = '<div><b>' + p.name + '</b>' + (p.min != null ? ' (typical ' + p.min + ' to ' + p.max + ' years)' : '') + '</div><div><b>Question:</b> ' + p.q + '</div><div><b>Who:</b> ' + p.who + '</div><div><b>FDA:</b> ' + p.reg + '</div>';
+    document.querySelectorAll('#phasebtns .btn').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-id') === S.ph); });
+  }
+  function selectPhase(id) { S.sc = null; document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.remove('on'); }); S.ph = id; renderRoad(); }
+  PH.forEach(function (p) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = p.name; b.setAttribute('data-id', p.id);
+    b.addEventListener('click', function () { selectPhase(p.id); }); $('phasebtns').appendChild(b);
+  });
+  onAct($('road'), '.gbox', selectPhase);
+  $('luck').addEventListener('input', function () { S.t = +this.value; renderRoad(); });
+  var walkTimer = null;
+  $('walk').addEventListener('click', function () {
+    var i = 0, ids = PH.map(function (p) { return p.id; });
+    if (walkTimer) clearInterval(walkTimer);
+    selectPhase(ids[0]);
+    walkTimer = setInterval(function () { i++; if (i >= ids.length) { clearInterval(walkTimer); walkTimer = null; return; } selectPhase(ids[i]); }, 1100);
+  });
+
+  /* ---------- Meeting clocks ---------- */
+  var CX0 = 330, KD = 6;
+  function renderClocks() {
+    var h = '<rect x="' + CX0 + '" y="8" width="12" height="10" fill="' + ORANGE + '"/><text x="' + (CX0 + 18) + '" y="17" font-size="12" fill="#4a5565">FDA replies (days)</text><rect x="' + (CX0 + 170) + '" y="8" width="12" height="10" fill="' + TEAL + '"/><text x="' + (CX0 + 188) + '" y="17" font-size="12" fill="#4a5565">Days from request to meeting</text>';
+    MEET.forEach(function (m, i) {
+      var y = 34 + i * 38, sel = S.meeting === m.id;
+      h += '<g class="rowhit" data-id="' + m.id + '" tabindex="0" role="button" aria-label="' + m.name + '">' +
+        '<rect x="4" y="' + (y - 4) + '" width="900" height="36" rx="6" fill="' + (sel ? '#E8F4F4' : 'transparent') + '" stroke="' + (sel ? TD : 'none') + '"/>' +
+        '<text x="12" y="' + (y + 18) + '" font-size="13" font-weight="' + (sel ? 700 : 400) + '" fill="' + NAVY + '">' + m.name + '</text>' +
+        '<rect x="' + CX0 + '" y="' + y + '" width="' + (m.reply * KD) + '" height="13" fill="' + ORANGE + '"/><text x="' + (CX0 + m.reply * KD + 6) + '" y="' + (y + 11) + '" font-size="12" fill="#4a5565">' + m.reply + '</text>';
+      if (m.sched != null) h += '<rect x="' + CX0 + '" y="' + (y + 16) + '" width="' + (m.sched * KD) + '" height="13" fill="' + TEAL + '"/><text x="' + (CX0 + m.sched * KD + 6) + '" y="' + (y + 27) + '" font-size="12" fill="#4a5565">' + m.sched + '</text>';
+      else h += '<rect x="' + CX0 + '" y="' + (y + 16) + '" width="90" height="13" fill="none" stroke="' + TEAL + '" stroke-dasharray="4 3"/><text x="' + (CX0 + 96) + '" y="' + (y + 27) + '" font-size="12" fill="#4a5565">see the guidance</text>';
+      h += '</g>';
+    });
+    $('clocks').innerHTML = h;
+  }
+  function selectMeeting(id) { S.sc = null; document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.remove('on'); }); S.meeting = id; renderClocks(); renderRoad(); }
+  onAct($('clocks'), '.rowhit', selectMeeting);
+
+  /* ---------- Roles ---------- */
+  var ROLES = [
+    { id: 'sponsor', t: 'Sponsor', l: ['Owns the trial,', 'answers for it'], d: 'The sponsor is ultimately responsible for the trial.' },
+    { id: 'cro', t: 'CRO', l: ['Hired company that', 'does tasks for sponsor'], d: 'A CRO (contract research organization) does tasks the sponsor hands over. The sponsor stays responsible for overseeing the work. The CRO answers for duties it took over in writing.' },
+    { id: 'pi', t: 'Investigator', l: ['Runs the trial at a', 'site, gets consent'], d: 'The principal investigator runs the study at one site and makes sure patients give consent. Consent means patients agree in writing after hearing the risks.' },
+    { id: 'irb', t: 'IRB', l: ['Ethics committee:', 'approves the plan'], d: 'The IRB (institutional review board) approves the trial plan and the consent form.' },
+    { id: 'fda', t: 'FDA', l: ['Inspects and', 'can halt a trial'], d: 'The regulator can inspect a trial and halt it.' },
+    { id: 'CDER', t: 'CDER', l: ['Most drugs'], d: 'CDER handles most drugs.', c: 1 },
+    { id: 'CBER', t: 'CBER', l: ['Vaccines, blood,', 'gene and cell therapy'], d: 'CBER handles vaccines, blood, gene therapy and cell therapy.', c: 1 },
+    { id: 'CDRH', t: 'CDRH', l: ['Medical devices'], d: 'CDRH handles medical devices.', c: 1 }
+  ];
+  function renderRoles() {
+    var h = '<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="' + ODARK + '"/></marker></defs>';
+    var accountable = S.role === 'cro' || S.role === 'sponsor';
+    ROLES.forEach(function (r, i) {
+      var x, y, w, hh;
+      if (!r.c) { x = 20 + i * 180; y = 30; w = 160; hh = 110; } else { x = 20 + (i - 5) * 300; y = 215; w = 280; hh = 80; }
+      var sel = S.role === r.id || (r.id === 'sponsor' && S.role === 'cro');
+      h += '<g class="gbox" data-id="' + r.id + '" tabindex="0" role="button" aria-label="' + r.t + '"><rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + hh + '" rx="10" fill="' + (sel ? '#E8F4F4' : '#fff') + '" stroke="' + (sel ? TD : '#9aa5b1') + '" stroke-width="' + (sel ? 3 : 1.5) + '"/>' +
+        '<text x="' + (x + w / 2) + '" y="' + (y + 30) + '" text-anchor="middle" font-size="17" font-weight="700" fill="' + NAVY + '">' + r.t + '</text>';
+      r.l.forEach(function (s, k) { h += '<text x="' + (x + w / 2) + '" y="' + (y + 54 + k * 17) + '" text-anchor="middle" font-size="12.5" fill="#4a5565">' + s + '</text>'; });
+      h += '</g>';
+    });
+    h += '<text x="20" y="200" font-size="13" font-weight="600" fill="#4a5565">FDA centers</text>';
+    h += '<line x1="180" x2="200" y1="85" y2="85" stroke="' + TD + '" stroke-width="2" marker-end="url(#ar)"/>';
+    if (accountable) h += '<path d="M 280 145 Q 190 185 100 145" fill="none" stroke="' + ODARK + '" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar)"/><text x="190" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="' + ODARK + '">oversight stays here</text>';
+    $('roles').innerHTML = h;
+    var r = ROLES.filter(function (x) { return x.id === S.role; })[0];
+    if (r) $('roledetail').innerHTML = '<b>' + r.t + ':</b> ' + r.d;
+  }
+  function selectRole(id) { S.role = id; renderRoles(); }
+  onAct($('roles'), '.gbox', selectRole);
+
+  /* ---------- History strip ---------- */
+  var HIST = [
+    { y: 1937, t: 'Elixir Sulfanilamide', d: 'A sweet medicine with no safety test. More than 100 people died. The 1938 FD&C Act (the federal food and drug law) followed.' },
+    { y: 1947, t: 'Nuremberg Code', d: 'After the trials of Nazi doctors: people must agree to take part in research.' },
+    { y: 1962, t: 'Thalidomide, Kefauver-Harris', d: 'A sleeping pill, thalidomide, caused birth defects. A 1962 law then required proof a drug works.' },
+    { y: 1964, t: 'Declaration of Helsinki', d: 'Doctors set their own ethics rules for research on people.' },
+    { y: 1974, t: 'National Research Act', d: 'US ethics review boards (IRBs) became required.' },
+    { y: 1979, t: 'Belmont Report', d: 'Three ideas: respect people, do good, be fair.' },
+    { y: 1991, t: 'Common Rule', d: 'One set of US rules for federally funded research on people.' },
+    { y: 1996, t: 'ICH E6 (GCP)', d: 'US, European and Japanese regulators agreed one standard for running trials well (GCP, good clinical practice).' },
+    { y: 2025, t: 'ICH E6(R3)', d: 'The newest version of that standard (GCP).' }
+  ];
+  var hsel = -1, hx = function (y) { return 30 + (y - 1930) / 100 * 860; };
+  function renderHist() {
+    var h = '<line x1="30" x2="890" y1="90" y2="90" stroke="#9aa5b1" stroke-width="2"/>';
+    for (var y = 1930; y <= 2030; y += 10) h += '<line x1="' + hx(y) + '" x2="' + hx(y) + '" y1="90" y2="96" stroke="#9aa5b1"/><text x="' + hx(y) + '" y="112" text-anchor="middle" font-size="12" fill="#4a5565">' + y + '</text>';
+    HIST.forEach(function (e, i) {
+      var up = i % 2 === 0, sel = hsel === i, x = hx(e.y);
+      h += '<g class="gbox" data-id="' + i + '" tabindex="0" role="button" aria-label="' + e.y + ' ' + e.t + '"><line x1="' + x + '" x2="' + x + '" y1="90" y2="' + (up ? 52 : 128) + '" stroke="' + (sel ? ODARK : '#9aa5b1') + '"/>' +
+        '<circle cx="' + x + '" cy="90" r="' + (sel ? 9 : 6) + '" fill="' + (sel ? ODARK : ORANGE) + '"/>' +
+        '<text x="' + x + '" y="' + (up ? 44 : 146) + '" text-anchor="middle" font-size="13" font-weight="700" fill="' + (sel ? ODARK : NAVY) + '">' + e.y + '</text>' +
+        '<text x="' + x + '" y="' + (up ? 28 : 162) + '" text-anchor="middle" font-size="11" fill="#4a5565">' + (sel ? e.t : '') + '</text></g>';
+    });
+    $('hist').innerHTML = h;
+    if (hsel >= 0) $('histdetail').innerHTML = '<b>' + HIST[hsel].y + ', ' + HIST[hsel].t + ':</b> ' + HIST[hsel].d;
+  }
+  var hTimer = null;
+  function selectHist(id) { hsel = +id; renderHist(); }
+  onAct($('hist'), '.gbox', selectHist);
+  $('histplay').addEventListener('click', function () {
+    if (hTimer) clearInterval(hTimer);
+    hsel = -1; var i = 0; selectHist(0);
+    hTimer = setInterval(function () { i++; if (i >= HIST.length) { clearInterval(hTimer); hTimer = null; return; } selectHist(i); }, 1500);
+  });
+
+  /* ---------- Document shelf ---------- */
+  var DOCS = [
+    { id: 'e8', s: 'ICH E8(R1)', topic: 'Study design', title: 'General Considerations for Clinical Studies', date: 'Adopted 6 October 2021', say: 'Plan quality into a study from the start, and use tools that limit bias.', quote: 'Interventional studies, and in particular randomised studies, play a central role in drug development, as they can better control biases.', url: 'https://database.ich.org/sites/default/files/E8-R1_Guideline_Step4_2021_1006.pdf', rel: 'Fair comparisons' },
+    { id: 'e9', s: 'ICH E9', topic: 'Statistics', title: 'Statistical Principles for Clinical Trials', date: 'Final (Step 4), 5 February 1998', say: 'The basic statistics rules: randomize, plan the analysis, look at data on a schedule.', quote: 'Randomisation introduces a deliberate element of chance into the assignment of treatments to subjects in a clinical trial.', url: 'https://database.ich.org/sites/default/files/E9_Guideline.pdf', rel: 'P-values, multiplicity, interim looks' },
+    { id: 'e9r1', s: 'ICH E9(R1)', topic: 'Estimands', title: 'Addendum on Estimands and Sensitivity Analysis', date: 'Adopted 20 November 2019', say: 'Say exactly which treatment effect you want to measure before you start.', quote: 'An estimand is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective.', url: 'https://database.ich.org/sites/default/files/E9-R1_Step4_Guideline_2019_1203.pdf', rel: 'Fair comparisons' },
+    { id: 'se', s: 'Substantial evidence', topic: 'Proof of benefit', title: 'Demonstrating Substantial Evidence of Effectiveness', date: 'Revised draft, June 2026', say: 'What FDA needs to see before it says a drug works.', quote: 'evidence consisting of adequate and well-controlled investigations', url: 'https://www.fda.gov/media/133660/download', rel: 'Substantial evidence' },
+    { id: 'mp', s: 'Master protocols', topic: 'Platform trials', title: 'Master Protocols for Drug and Biological Product Development', date: 'Revised draft, June 2026', say: 'One trial shell can test many drugs and share a control group.', quote: 'improve efficiency by using a shared control arm in evaluating multiple drugs', url: 'https://www.fda.gov/media/174976/download', rel: 'Platform trials' },
+    { id: 'ad', s: 'Adaptive designs', topic: 'Changing a trial', title: 'Adaptive Designs for Clinical Trials of Drugs and Biologics', date: 'Final, November 2019', say: 'You may change a trial as data arrive if the changes were planned and false approvals stay controlled.', quote: 'the chance of erroneous conclusions should be adequately controlled', url: 'https://www.fda.gov/media/78495/download', rel: 'Adaptive designs' },
+    { id: 'e20', s: 'ICH E20', topic: 'Adaptive (global)', title: 'Adaptive Designs for Clinical Trials', date: 'Draft, June 2025', say: 'The world-wide draft rulebook for adaptive trials.', quote: 'A proposed adaptive design requires a clear and compelling justification.', url: 'https://www.fda.gov/media/188961/download', rel: 'Adaptive designs' },
+    { id: 'bayes', s: 'Bayesian draft', topic: 'Using past knowledge', title: 'Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products', date: 'Draft, January 2026', say: 'How to use a prior in a trial, and how to show the design is safe from false wins.', quote: 'It is always critical for Bayesian analyses to have a prespecified prior', url: 'https://www.fda.gov/media/190505/download', rel: 'Prior and posterior' },
+    { id: 'm15', s: 'ICH M15', topic: 'Models', title: 'General Principles for Model-Informed Drug Development', date: 'Final, January 2026', say: 'Computer models can help pick doses and designs.', quote: 'the use of computational modeling and simulation (M&S) methods', url: 'https://www.fda.gov/media/184747/download', rel: 'Decisions' },
+    { id: 'ai', s: 'AI credibility', topic: 'AI tools', title: 'Considerations for the Use of Artificial Intelligence to Support Regulatory Decision-Making', date: 'Draft, January 2025', say: 'Seven steps to show an AI model can be trusted for one specific job.', quote: 'Model risk is a combination of two factors: (a) model influence ... and (b) decision consequence', url: 'https://www.fda.gov/media/184830/download', rel: 'Decisions' },
+    { id: 'nam', s: 'NAMs', topic: 'Beyond animals', title: 'General Considerations for the Use of New Approach Methodologies in Drug Development', date: 'Draft, March 2026', say: 'Lab-dish and computer tests can count as evidence, even if not fully validated.', quote: 'A fit-for-purpose NAM, even if not validated, may adequately address specific toxicological concerns.', url: 'https://www.fda.gov/media/191589/download', rel: 'Safety evidence' },
+    { id: 'meet', s: 'Formal meetings', topic: 'Talking to FDA', title: 'Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products', date: 'August 2026', say: 'The meeting types, who can ask, and how fast FDA answers.', quote: 'necessary for an otherwise stalled drug or biological product development program to proceed or to address an important safety issue.', url: 'https://www.fda.gov/media/172311/download', rel: 'This page' }
+  ];
+  var GAME = [
+    ['Which paper says what proof FDA needs that a drug works?', 'se'], ['Many drugs share one control group. Which?', 'mp'],
+    ['Which FDA paper on changing a trial as data arrive is final, not a draft?', 'ad'], ['Can I count what was known before the trial?', 'bayes'],
+    ['A computer model picks the dose. Which?', 'm15'], ['Lab-dish tests instead of animal tests. Which?', 'nam'],
+    ['Which one defines "estimand"?', 'e9r1'], ['How do I check an AI model is trustworthy?', 'ai'], ['My program is stuck. Whom do I call, and how?', 'meet']
+  ];
+  var G = { on: false, i: 0, done: false }, gscore = Lab.Score($('gscore'));
+  function showDoc(d) {
+    $('docdetail').innerHTML = '<div><b>' + d.title + '</b> <span class="chip" style="padding:.05rem .6rem">' + d.date + '</span></div><div>' + d.say + '</div><div><i>"' + d.quote + '"</i></div><div class="note"><a href="' + d.url + '">Official link</a></div>';
+  }
+  DOCS.forEach(function (d) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'tile'; b.setAttribute('data-id', d.id);
+    b.innerHTML = '<b>' + d.s + '</b><span class="topic">' + d.topic + '</span>';
+    b.addEventListener('click', function () {
+      if (G.on && !G.done) {
+        var ok = GAME[G.i][1] === d.id; G.done = true; gscore.add(ok);
+        b.classList.add(ok ? 'right' : 'wrong');
+        if (!ok) document.querySelector('.tile[data-id="' + GAME[G.i][1] + '"]').classList.add('right');
+        $('gnext').disabled = false; $('prompt').textContent = (ok ? 'Right. ' : 'Not quite. ') + GAME[G.i][0];
+        showDoc(DOCS.filter(function (x) { return x.id === GAME[G.i][1]; })[0]);
+      } else if (!G.on) {
+        document.querySelectorAll('.tile').forEach(function (t) { t.classList.remove('on'); }); b.classList.add('on'); showDoc(d);
+      }
+    });
+    $('shelf').appendChild(b);
+  });
+  function gameStep() {
+    document.querySelectorAll('.tile').forEach(function (t) { t.classList.remove('right', 'wrong', 'on'); });
+    G.done = false; $('gnext').disabled = true; $('prompt').textContent = GAME[G.i][0];
+    $('docdetail').textContent = 'Click the document you think answers it.';
+  }
+  $('gamebtn').addEventListener('click', function () {
+    G.on = !G.on; document.getElementById('shelfsec').classList.toggle('game', G.on);
+    this.textContent = G.on ? 'Stop quiz' : 'Quiz yourself';
+    if (G.on) { G.i = 0; gameStep(); } else { document.querySelectorAll('.tile').forEach(function (t) { t.classList.remove('right', 'wrong'); }); $('docdetail').textContent = 'Click a document.'; }
+  });
+  $('gnext').addEventListener('click', function () { G.i = (G.i + 1) % GAME.length; gameStep(); });
+
+  /* ---------- AI risk grid ---------- */
+  var R = { inf: 0, con: 0 }, RL = ['light', 'some', 'most'];
+  function renderRisk() {
+    var h = '', fills = ['#E8F4F4', '#FDF0E8', '#F6C9AC'];
+    for (var c = 0; c < 2; c++) for (var i = 0; i < 2; i++) {
+      var lv = i + c, x = 60 + i * 90, y = 100 - c * 90, on = (R.inf === i && R.con === c);
+      h += '<rect x="' + x + '" y="' + y + '" width="86" height="86" rx="6" fill="' + fills[lv] + '" stroke="' + (on ? NAVY : '#cdd5dd') + '" stroke-width="' + (on ? 4 : 1) + '"/><text x="' + (x + 43) + '" y="' + (y + 48) + '" text-anchor="middle" font-size="12" fill="' + NAVY + '">' + ['low', 'medium', 'high'][lv] + '</text>';
+    }
+    h += '<text x="148" y="206" text-anchor="middle" font-size="12" fill="#4a5565">model influence: low to high</text><text transform="rotate(-90)" x="-100" y="40" text-anchor="middle" font-size="12" fill="#4a5565">consequence</text>';
+    $('riskgrid').innerHTML = h;
+    var lv = R.inf + R.con;
+    $('riskchip').innerHTML = '<span class="chip warm">Model risk <b>' + ['low', 'medium', 'high'][lv] + '</b></span><span class="chip">Checking needed <b>' + RL[lv] + '</b></span>';
+  }
+  [['tInf', 'inf', 'Low', 'High'], ['tCon', 'con', 'Low', 'High']].forEach(function (g) {
+    ['0', '1'].forEach(function (v, k) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn' + (k === 0 ? ' on' : ''); b.textContent = g[2 + k];
+      b.addEventListener('click', function () { R[g[1]] = k; $(g[0]).querySelectorAll('.btn').forEach(function (x) { x.classList.remove('on'); }); b.classList.add('on'); renderRisk(); });
+      $(g[0]).appendChild(b);
+    });
+  });
+
+  /* ---------- Hero presets ---------- */
+  SC.forEach(function (sc, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = sc.label;
+    b.addEventListener('click', function () {
+      S.sc = sc; S.ph = sc.phase; S.meeting = sc.meeting; S.role = sc.center;
+      document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.toggle('on', x === b); });
+      renderRoad(); renderClocks(); renderRoles();
+      var d = DOCS.filter(function (x) { return x.id === sc.doc; })[0]; showDoc(d);
+    });
+    $('examples').appendChild(b);
+  });
+
+  /* ---------- Mini figures for cards ---------- */
+  function miniBars(box, labels, vals, ylab, color, ymax) {
+    var P = Lab.miniPlot(box, { xlim: [0, vals.length], ylim: [0, ymax], xlabel: '', ylabel: ylab, label: 'Bar chart',
+      xticks: labels.map(function (l, i) { return { x: i + 0.5, label: l }; }) });
+    P.bars('b', vals, 0, vals.length, { fill: color || TEAL, opacity: 0.9 }, 800);
+    return P;
+  }
+  function miniBoxes(box, labels, hi) {
+    var h = '<svg viewBox="0 0 280 70" style="width:100%" role="img" aria-label="Boxes with one highlighted">', w = 280 / labels.length;
+    labels.forEach(function (l, i) { h += '<rect x="' + (i * w + 4) + '" y="12" width="' + (w - 8) + '" height="46" rx="6" fill="' + (i === hi ? '#E8F4F4' : '#fff') + '" stroke="' + (i === hi ? TD : '#9aa5b1') + '" stroke-width="' + (i === hi ? 3 : 1.2) + '"/><text x="' + (i * w + w / 2) + '" y="40" text-anchor="middle" font-size="11" font-weight="600" fill="' + NAVY + '">' + l + '</text>'; });
+    box.innerHTML = h + '</svg>';
+  }
+
+  /* ---------- Question cards ---------- */
+  var score = Lab.Score($('score')), Q = $('qcards'), mids = PH.slice(0, 6).map(function (p) { return (p.min + p.max) / 2; });
+  var lo = PH.slice(0, 6).reduce(function (a, p) { return a + p.min; }, 0), hi = PH.slice(0, 6).reduce(function (a, p) { return a + p.max; }, 0);
+  var CARDS = [
+    { tag: 'Predict 1', q: 'About how long from first lab work to a pharmacy shelf?', type: 'choice',
+      options: [{ value: 'y3', label: '2 to 3 years' }, { value: 'y5', label: 'About 5 years' }, { value: 'y12', label: '10 to 15 years' }, { value: 'y30', label: '30 years' }], answer: 'y12',
+      onReveal: function () { S.t = 0.5; $('luck').value = 0.5; selectPhase('disc'); },
+      revealPlot: function (b) { miniBars(b, ['Disc', 'Pre', 'I', 'II', 'III', 'Rev'], mids, 'years (midpoint)', TEAL, 4); },
+      explain: function () { return 'Stages add up to ' + lo + ' to ' + hi + ' years, about ' + Math.round(mids.reduce(function (a, b) { return a + b; }, 0)) + ' in the middle.'; } },
+    { tag: 'Predict 2', q: 'You file an IND. How many days does FDA have before the trial may start?', type: 'choice',
+      options: [{ value: 10, label: '10 days' }, { value: 30, label: '30 days' }, { value: 60, label: '60 days' }, { value: 90, label: '90 days' }], answer: 30,
+      onReveal: function () { selectPhase('p1'); },
+      revealPlot: function (b) { miniBars(b, ['IND review', 'Filing check'], [30, 60], 'days', ORANGE, 80); },
+      explain: function () { return 'FDA has 30 days for an IND. A later NDA or BLA gets a 60-day completeness check first.'; } },
+    { tag: 'Predict 3', q: 'Your drug program is stalled. Which meeting do you ask for?', type: 'choice',
+      options: [{ value: 'A', label: 'Type A' }, { value: 'B', label: 'Type B' }, { value: 'C', label: 'Type C' }, { value: 'D', label: 'Type D' }], answer: 'A',
+      onReveal: function () { selectMeeting('A'); },
+      revealPlot: function (b) { miniBars(b, ['A', 'B', 'B (end P2)', 'C', 'D'], [14, 21, 14, 21, 14], 'reply days', ORANGE, 30); },
+      explain: function () { return 'Type A is for a stalled program or a safety issue. FDA replies to a request in 14 days.'; } },
+    { tag: 'Predict 4', q: 'You ask for a Type C meeting. Drag to how many days until it happens.', type: 'slider', min: 0, max: 100, step: 5, start: 50, tol: 10, fmt: function (v) { return v + ' days'; }, answer: 75,
+      onReveal: function () { selectMeeting('C'); },
+      revealPlot: function (b) { miniBars(b, ['A', 'B', 'B (end P2)', 'C', 'D'], [30, 60, 70, 75, 50], 'meeting days', TEAL, 80); },
+      explain: function () { return 'Type C: up to 75 days. Type A, for urgent problems: 30.'; } },
+    { tag: 'Predict 5', q: 'A company makes a gene therapy. Which FDA center reviews it?', type: 'choice',
+      options: [{ value: 'CDER', label: 'CDER' }, { value: 'CBER', label: 'CBER' }, { value: 'CDRH', label: 'CDRH' }], answer: 'CBER',
+      onReveal: function () { selectRole('CBER'); },
+      revealPlot: function (b) { miniBoxes(b, ['CDER', 'CBER', 'CDRH'], 1); },
+      explain: function () { return 'CBER handles vaccines, blood, and gene and cell therapy.'; } },
+    { tag: 'Predict 6', q: 'A CRO mishandles trial data. Who is accountable?', type: 'choice',
+      options: [{ value: 'cro', label: 'Only the CRO' }, { value: 'sponsor', label: 'Only the sponsor' }, { value: 'both', label: 'Both: the CRO for duties handed to it in writing, the sponsor for overseeing them' }, { value: 'pi', label: 'The investigator' }], answer: 'both',
+      onReveal: function () { selectRole('cro'); },
+      revealPlot: function (b) { miniBoxes(b, ['Sponsor', 'CRO', 'Investigator', 'IRB', 'FDA'], 0); },
+      explain: function () { return 'Both. The CRO answers for the duties transferred to it in writing. The sponsor still oversees them (21 CFR 312.52).'; } },
+    { tag: 'Predict 7', q: 'In the AI draft, which two things make up "model risk"?', type: 'choice',
+      options: [{ value: 'size', label: 'Model size and speed' }, { value: 'inf', label: 'Model influence and decision consequence' }, { value: 'cost', label: 'Cost and age' }], answer: 'inf',
+      onReveal: function () { R.inf = 1; R.con = 1; document.querySelectorAll('#tInf .btn, #tCon .btn').forEach(function (b, i) { b.classList.toggle('on', i % 2 === 1); }); renderRisk(); },
+      revealPlot: function (b) { miniBoxes(b, ['Influence', '+', 'Consequence'], 1); },
+      explain: function () { return 'Model risk combines how much the decision leans on the model and how bad a wrong decision would be. More risk, more checking.'; } }
+  ];
+  CARDS.forEach(function (c) { c.score = score; Lab.QuestionCard(Q, c); });
+
+  Lab.CodeBox($('code'), {
+    py: '' +
+      'stages = {"discovery": (2, 4), "preclinical": (1, 3), "phase 1": (1, 2),\n' +
+      '          "phase 2": (1, 3), "phase 3": (2, 4), "review": (0.5, 1)}\n' +
+      'fast = sum(lo for lo, hi in stages.values())\n' +
+      'slow = sum(hi for lo, hi in stages.values())\n' +
+      'print(fast, slow, (fast + slow) / 2)   # 7.5 17.0 12.25 years\n' +
+      'meet_days = {"A": 30, "B": 60, "B-EOP": 70, "C": 75, "D": 50}\n' +
+      'print(sorted(meet_days, key=meet_days.get))   # fastest first',
+    r: 'stages <- list(c(2,4), c(1,3), c(1,2), c(1,3), c(2,4), c(0.5,1))\n' +
+      'fast <- sum(sapply(stages, `[`, 1))\n' +
+      'slow <- sum(sapply(stages, `[`, 2))\n' +
+      'c(fast, slow, (fast + slow) / 2)       # 7.5 17.0 12.25 years\n' +
+      'meet_days <- c(A = 30, B = 60, "B-EOP" = 70, C = 75, D = 50)\n' +
+      'names(sort(meet_days))                 # fastest first'
+  });
+
+  renderRoad(); renderClocks(); renderRoles(); renderHist(); renderRisk();
+  $('detail').setAttribute('aria-live', 'polite');
+})();
+</script>
+</body>
+</html>

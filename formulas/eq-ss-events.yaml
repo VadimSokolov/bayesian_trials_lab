@@ -1,0 +1,17 @@
+id: eq-ss-events
+section: 9/the-same-formula-for-three-kinds-of-endpoint
+title: Events needed for a logrank test
+tex: |-
+  \htmlClass{term c1}{d} = \frac{\htmlClass{term c2}{4\,(z_\alpha+z_\beta)^2}}{\htmlClass{term c3}{\log(\mathrm{HR})^2}}.
+parts:
+  - "The "
+  - {k: c1, words: "number of events"}
+  - " is "
+  - {k: c2, words: "four times the square of the sum of the two error-rate quantiles"}
+  - ", divided by "
+  - {k: c3, words: "the squared log hazard ratio"}
+  - "."
+notes:
+  c1: "Total events with 1:1 allocation; information is carried by events, not patients."
+  c2: "The factor 4 comes from information of one quarter per event; the quantiles are the error specification."
+  c3: "The effect the trial is built to detect, on the log hazard ratio scale."

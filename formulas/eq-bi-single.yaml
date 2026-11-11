@@ -1,0 +1,23 @@
+id: eq-bi-single
+section: 15/a-single-arm-example
+title: Bellman equation for a single-arm trial
+tex: \htmlClass{term c1}{V_n(x)} = \max\Bigl\{\htmlClass{term c2}{\max\bigl(M(\hat p_n - p_0),\, 0\bigr)},\ \htmlClass{term c3}{-c} + \htmlClass{term c4}{\hat p_n V_{n+1}(x+1) + (1-\hat p_n) V_{n+1}(x)}\Bigr\},
+parts:
+- 'The '
+- k: c1
+  words: value of having $x$ responders in $n$ patients
+- ' is the larger of '
+- k: c2
+  words: "the payoff from stopping: adopt if the posterior mean response rate beats the standard rate, otherwise abandon for zero"
+- ' and '
+- k: c3
+  words: paying the cost of one more patient
+- ' plus '
+- k: c4
+  words: the expected value after that patient responds or not
+- .
+notes:
+  c1: The value of state $(n, x)$, solved backward from $V_{60}$.
+  c2: Adopt if the posterior mean $\hat p_n$ exceeds $p_0$, earning $M(\hat p_n - p_0)$; otherwise abandon and earn zero.
+  c3: Each patient costs $c$ in utility units.
+  c4: The next patient responds with probability $\hat p_n$, the posterior mean.

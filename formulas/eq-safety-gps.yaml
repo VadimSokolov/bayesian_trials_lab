@@ -1,0 +1,19 @@
+id: eq-safety-gps
+section: 13/the-gamma-poisson-shrinker
+title: Gamma-Poisson shrinker prior
+tex: \htmlClass{term c1}{\lambda} \sim \htmlClass{term c2}{P\, \mathrm{Gamma}(\alpha_1, \beta_1)} + \htmlClass{term c3}{(1 - P)\, \mathrm{Gamma}(\alpha_2, \beta_2)},
+parts:
+- 'The '
+- k: c1
+  words: true reporting ratio
+- ' is drawn from a mixture: with probability $P$ from '
+- k: c2
+  words: the first gamma distribution
+- ', otherwise from '
+- k: c3
+  words: the second gamma distribution
+- .
+notes:
+  c1: The true reporting ratio of a drug-event pair; the observed count is Poisson with mean $\lambda$ times the expected count.
+  c2: First component, with weight $P$.
+  c3: Second component, with weight $1-P$. The five parameters are estimated from the whole table by maximum marginal likelihood.

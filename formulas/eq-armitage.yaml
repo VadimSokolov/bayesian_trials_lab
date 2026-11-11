@@ -1,0 +1,29 @@
+id: eq-armitage
+section: 11/the-armitage-recursion
+title: Armitage recursion for the density of continuing trials
+tex: |-
+  \begin{aligned}
+  \htmlClass{term c1}{f_1(s)} &= \htmlClass{term c2}{\phi_{t_1}(s - \xi t_1)}\,\htmlClass{term c3}{\mathbf 1\{s < b_1\sqrt{t_1}\}}, \\
+  \htmlClass{term c4}{f_{k+1}(s)} &= \htmlClass{term c5}{\int_{-\infty}^{b_k\sqrt{t_k}} f_k(u)}\,\htmlClass{term c6}{\phi_{\Delta_{k+1}}\bigl(s - u - \xi \Delta_{k+1}\bigr)}\,du, \qquad s < b_{k+1}\sqrt{t_{k+1}},
+  \end{aligned}
+parts:
+  - "At the first look, "
+  - {k: c1, words: "the density of the score"}
+  - " is "
+  - {k: c2, words: "the normal density of the first increment"}
+  - " kept only where "
+  - {k: c3, words: "the trial has not crossed the boundary"}
+  - ". At the next look, "
+  - {k: c4, words: "the density"}
+  - " sums "
+  - {k: c5, words: "the density at the previous look over scores that did not stop"}
+  - ", each moved forward by "
+  - {k: c6, words: "the normal density of the new increment"}
+  - "."
+notes:
+  c1: "Density of $S(t_1)$ on the event that the trial has not stopped."
+  c2: "Brownian motion with drift $\\xi$ and variance $t_1$."
+  c3: "The indicator that the score is below the first boundary."
+  c4: "Density of $S(t_{k+1})$ on the event of no stop at looks $1,\\dots,k+1$."
+  c5: "Only paths that stayed below the earlier boundary continue."
+  c6: "$\\Delta_{k+1}=t_{k+1}-t_k$ is the information added between looks."

@@ -1,0 +1,26 @@
+id: eq-armitage-p
+section: 11/the-armitage-recursion
+title: Probability of stopping for efficacy at each look
+tex: |-
+  \begin{aligned}
+  \htmlClass{term c1}{p_1} &= \htmlClass{term c2}{1 - \Phi\bigl(b_1 - \xi\sqrt{t_1}\bigr)}, \\
+  \htmlClass{term c3}{p_k} &= \htmlClass{term c4}{\int_{-\infty}^{b_{k-1}\sqrt{t_{k-1}}} f_{k-1}(u)}\,\htmlClass{term c5}{\Pr\!\bigl(u + \sqrt{\Delta_k}\,\varepsilon + \xi \Delta_k \ge b_k\sqrt{t_k}\bigr)}\,du \quad (k \ge 2).
+  \end{aligned}
+parts:
+  - "At the first look, "
+  - {k: c1, words: "the chance of stopping"}
+  - " is "
+  - {k: c2, words: "the chance the first statistic exceeds its boundary"}
+  - ". At a later look, "
+  - {k: c3, words: "the chance of stopping"}
+  - " averages over "
+  - {k: c4, words: "the scores of trials that kept going"}
+  - " "
+  - {k: c5, words: "the chance the next increment carries the score over the new boundary"}
+  - "."
+notes:
+  c1: "Probability of stopping for efficacy at look 1."
+  c2: "$\\xi=0$ gives the type I error contribution; $\\xi$ at the alternative gives power."
+  c3: "Probability of stopping for efficacy at look $k\\ge 2$."
+  c4: "Density of not having stopped earlier, from the recursion."
+  c5: "$\\varepsilon\\sim N(0,1)$; summing the $p_k$ gives the type I error or power of the design."

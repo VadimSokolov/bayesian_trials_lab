@@ -1,0 +1,19 @@
+id: eq-classloss
+section: 15/the-decision-problem
+title: Classification stopping loss and action
+tex: \htmlClass{term c1}{h_k} = \htmlClass{term c2}{\min\{\gamma(1-q_k),\ (1-\gamma) q_k\}}, \qquad \htmlClass{term c3}{\text{declare superiority if } q_k > \gamma}.
+parts:
+- 'The '
+- k: c1
+  words: Bayes stopping loss at stage $k$
+- ' is '
+- k: c2
+  words: the smaller of the expected loss from declaring superiority and from not declaring it
+- '; '
+- k: c3
+  words: declare superiority when the posterior probability of superiority exceeds $\gamma$
+- .
+notes:
+  c1: The loss if the trial stops and decides now.
+  c2: $q_k$ is the posterior probability that $p_1 > p_0$; $\gamma = L_{FP}/(L_{FP}+L_{FN})$ weights the loss of a false positive.
+  c3: A loss ratio of 39 to 1 gives $\gamma = 0.975$, the Bayesian reading of one-sided 0.025.

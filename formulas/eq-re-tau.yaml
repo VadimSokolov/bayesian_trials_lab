@@ -1,0 +1,27 @@
+id: eq-re-tau
+section: sec-reanalyses-recovery
+title: Marginal posterior of the between-stratum spread
+tex: \htmlClass{term c1}{p(\tau_b \mid \hat\theta)} \propto \htmlClass{term c2}{p(\tau_b)}\, \htmlClass{term c3}{V_\mu(\tau_b)^{1/2}} \htmlClass{term c4}{\prod_j (s_j^2 + \tau_b^2)^{-1/2}} \htmlClass{term c5}{\exp\left\{-\frac{(\hat\theta_j - \hat\mu(\tau_b))^2}{2(s_j^2+\tau_b^2)}\right\}},
+parts:
+- 'The '
+- k: c1
+  words: posterior of the between-stratum standard deviation
+- ' is proportional to '
+- k: c2
+  words: its prior
+- ' times '
+- k: c3
+  words: a factor from the uncertainty of the common mean
+- ' times, for each stratum, '
+- k: c4
+  words: a normalizing factor from its total variance
+- ' and '
+- k: c5
+  words: a penalty that grows as the stratum estimate departs from the common mean
+- .
+notes:
+  c1: Marginal likelihood of $\tau_b$ with a flat prior on $\mu$; with few strata it is sensitive to the prior on $\tau_b$.
+  c2: Prior on $\tau_b$.
+  c3: $V_\mu(\tau_b)$ is the variance of the precision-weighted mean $\hat\mu(\tau_b)$.
+  c4: Total variance of stratum $j$ is $s_j^2 + \tau_b^2$.
+  c5: Compares $\hat\theta_j$ with $\hat\mu(\tau_b)$ on the scale of that total variance.

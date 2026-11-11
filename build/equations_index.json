@@ -1,0 +1,446 @@
+{
+ "by_chapter": {
+  "1": [
+   "eq-ch01-rule"
+  ],
+  "2": [
+   "eq-lifecycle-cost",
+   "eq-lifecycle-be"
+  ],
+  "4": [
+   "eq-testing-se",
+   "eq-testing-z",
+   "eq-testing-pvalue",
+   "eq-testing-ci",
+   "eq-ni-hyp"
+  ],
+  "5": [
+   "eq-selection",
+   "eq-arnold",
+   "eq-ignorable"
+  ],
+  "6": [
+   "eq-bayes",
+   "eq-definetti",
+   "eq-conjugate",
+   "eq-weighted",
+   "eq-predictive",
+   "eq-loghr-lik",
+   "eq-normal-normal",
+   "eq-sequential"
+  ],
+  "7": [
+   "eq-fpr",
+   "eq-bf-odds",
+   "eq-bf-gauss",
+   "eq-ockham",
+   "eq-sbb",
+   "eq-bayes-toll",
+   "eq-crossing",
+   "eq-bayes-risk",
+   "eq-bayes-rule",
+   "eq-implied-c",
+   "eq-fda",
+   "eq-alpha-ac"
+  ],
+  "8": [
+   "eq-events",
+   "eq-cmp",
+   "eq-ess-beta",
+   "eq-ess-normal"
+  ],
+  "9": [
+   "eq-power-z",
+   "eq-ss-standard",
+   "eq-ss-cont",
+   "eq-ss-bin",
+   "eq-ss-events",
+   "eq-assurance",
+   "eq-assurance-normal",
+   "eq-md-boundary",
+   "eq-md-power",
+   "eq-md-ss",
+   "eq-sqrt-loss",
+   "eq-sqrt-rule"
+  ],
+  "10": [
+   "eq-fwer",
+   "eq-selected-lik",
+   "eq-mult-hier",
+   "eq-mult-shrink"
+  ],
+  "11": [
+   "eq-armitage",
+   "eq-armitage-p",
+   "eq-spending",
+   "eq-sequential-bellman",
+   "eq-wald",
+   "eq-bf",
+   "eq-ockham-ch10",
+   "eq-tolls",
+   "eq-md",
+   "eq-excess",
+   "eq-seventy",
+   "eq-seqss"
+  ],
+  "12": [
+   "eq-evalues-mix"
+  ],
+  "13": [
+   "eq-safety-benefitrisk",
+   "eq-safety-ville",
+   "eq-safety-gps",
+   "eq-safety-toxrule"
+  ],
+  "15": [
+   "eq-cp",
+   "eq-pp",
+   "eq-betabinom",
+   "eq-pp-binary",
+   "eq-marion",
+   "eq-ppstar",
+   "eq-classloss",
+   "eq-predict",
+   "eq-predictive-bellman",
+   "eq-bi-single"
+  ],
+  "16": [
+   "eq-bellman-rar",
+   "eq-gittins",
+   "eq-lairobbins"
+  ],
+  "18": [
+   "eq-sv-var",
+   "eq-sv-schoenfeld",
+   "eq-sv-rmst"
+  ],
+  "19": [
+   "eq-hier",
+   "eq-shrink",
+   "eq-power",
+   "eq-npp",
+   "eq-borrow-marg",
+   "eq-commensurate",
+   "eq-robust",
+   "eq-ped-mix",
+   "eq-ni-synth",
+   "eq-chain"
+  ],
+  "20": [
+   "eq-shared-saving",
+   "eq-contrast-variance"
+  ],
+  "22": [
+   "eq-re-se",
+   "eq-re-post",
+   "eq-re-tau"
+  ]
+ },
+ "used_on": {
+  "eq-sv-var": [
+   "cox-model",
+   "event-driven-trial"
+  ],
+  "eq-bayes-risk": [
+   "bayes-risk"
+  ],
+  "eq-bayes-rule": [
+   "bayes-risk",
+   "implied-loss"
+  ],
+  "eq-ppstar": [
+   "economic-futility-threshold",
+   "predictive-probability-monitoring"
+  ],
+  "eq-shared-saving": [
+   "shared-control-arithmetic"
+  ],
+  "eq-contrast-variance": [
+   "shared-control-arithmetic"
+  ],
+  "eq-ped-mix": [
+   "pediatric-extrapolation"
+  ],
+  "eq-hier": [
+   "meta-analytic-predictive-prior",
+   "hierarchical-model",
+   "basket-trial"
+  ],
+  "eq-sv-rmst": [
+   "non-proportional-hazards",
+   "restricted-mean-survival-time"
+  ],
+  "eq-arnold": [
+   "arnold-randomness-measure"
+  ],
+  "eq-power": [
+   "power-prior"
+  ],
+  "eq-npp": [
+   "power-prior"
+  ],
+  "eq-borrow-marg": [
+   "power-prior"
+  ],
+  "eq-bf": [
+   "deviation-scale"
+  ],
+  "eq-ockham-ch10": [
+   "deviation-scale"
+  ],
+  "eq-md": [
+   "deviation-scale"
+  ],
+  "eq-seqss": [
+   "deviation-scale"
+  ],
+  "eq-safety-ville": [
+   "e-value-safety-monitoring"
+  ],
+  "eq-bayes-toll": [
+   "two-bars"
+  ],
+  "eq-crossing": [
+   "two-bars"
+  ],
+  "eq-lifecycle-cost": [
+   "real-options"
+  ],
+  "eq-fda": [
+   "posterior-probability-of-benefit"
+  ],
+  "eq-alpha-ac": [
+   "posterior-probability-of-benefit"
+  ],
+  "eq-bayes": [
+   "bayes-rule",
+   "likelihood",
+   "posterior-distribution"
+  ],
+  "eq-assurance": [
+   "assurance"
+  ],
+  "eq-assurance-normal": [
+   "assurance"
+  ],
+  "eq-sbb": [
+   "minimum-bayes-factor"
+  ],
+  "eq-fwer": [
+   "familywise-error-rate"
+  ],
+  "eq-testing-z": [
+   "z-test"
+  ],
+  "eq-loghr-lik": [
+   "log-hazard-ratio",
+   "normal-normal-model"
+  ],
+  "eq-re-se": [
+   "normal-approximation-posterior"
+  ],
+  "eq-re-post": [
+   "normal-approximation-posterior"
+  ],
+  "eq-ni-hyp": [
+   "noninferiority-trial"
+  ],
+  "eq-lairobbins": [
+   "regret"
+  ],
+  "eq-mult-hier": [
+   "shrinkage"
+  ],
+  "eq-mult-shrink": [
+   "shrinkage"
+  ],
+  "eq-power-z": [
+   "power",
+   "power-curve"
+  ],
+  "eq-armitage": [
+   "armitage-recursion"
+  ],
+  "eq-armitage-p": [
+   "armitage-recursion"
+  ],
+  "eq-md-boundary": [
+   "moderate-deviation-sample-size",
+   "prior-odds-constant"
+  ],
+  "eq-md-power": [
+   "moderate-deviation-sample-size"
+  ],
+  "eq-md-ss": [
+   "moderate-deviation-sample-size"
+  ],
+  "eq-wald": [
+   "large-deviation",
+   "wald-sprt"
+  ],
+  "eq-implied-c": [
+   "implied-loss"
+  ],
+  "eq-selected-lik": [
+   "forking-paths"
+  ],
+  "eq-commensurate": [
+   "commensurate-prior"
+  ],
+  "eq-spending": [
+   "obrien-fleming-boundary",
+   "spending-function",
+   "pocock-boundary"
+  ],
+  "eq-predictive": [
+   "posterior-predictive-distribution"
+  ],
+  "eq-definetti": [
+   "de-finetti-representation"
+  ],
+  "eq-safety-gps": [
+   "gamma-poisson-shrinker"
+  ],
+  "eq-events": [
+   "prior-distribution"
+  ],
+  "eq-shrink": [
+   "hierarchical-model"
+  ],
+  "eq-safety-toxrule": [
+   "toxicity-monitoring"
+  ],
+  "eq-conjugate": [
+   "beta-prior",
+   "conjugate-prior"
+  ],
+  "eq-fpr": [
+   "false-positive-risk"
+  ],
+  "eq-sv-schoenfeld": [
+   "event-driven-trial"
+  ],
+  "eq-ess-beta": [
+   "effective-sample-size"
+  ],
+  "eq-ess-normal": [
+   "effective-sample-size"
+  ],
+  "eq-cmp": [
+   "conditional-means-prior"
+  ],
+  "eq-ockham": [
+   "ockham-penalty"
+  ],
+  "eq-classloss": [
+   "backward-induction"
+  ],
+  "eq-predict": [
+   "backward-induction"
+  ],
+  "eq-predictive-bellman": [
+   "backward-induction"
+  ],
+  "eq-bi-single": [
+   "backward-induction"
+  ],
+  "eq-bellman-rar": [
+   "backward-induction",
+   "multi-armed-bandit"
+  ],
+  "eq-lifecycle-be": [
+   "bioequivalence"
+  ],
+  "eq-sequential-bellman": [
+   "bayes-sequential-decision-problem"
+  ],
+  "eq-marion": [
+   "predictive-probability-monitoring",
+   "predictive-probability-of-success"
+  ],
+  "eq-gittins": [
+   "gittins-index"
+  ],
+  "eq-bf-odds": [
+   "bayes-factor"
+  ],
+  "eq-bf-gauss": [
+   "bayes-factor"
+  ],
+  "eq-testing-se": [
+   "sampling-distribution"
+  ],
+  "eq-testing-ci": [
+   "confidence-interval"
+  ],
+  "eq-selection": [
+   "counterfactual"
+  ],
+  "eq-ignorable": [
+   "ignorability"
+  ],
+  "eq-pp": [
+   "predictive-probability-of-success"
+  ],
+  "eq-betabinom": [
+   "predictive-probability-of-success"
+  ],
+  "eq-pp-binary": [
+   "predictive-probability-of-success"
+  ],
+  "eq-safety-benefitrisk": [
+   "rofecoxib-case"
+  ],
+  "eq-chain": [
+   "indirect-comparison"
+  ],
+  "eq-ni-synth": [
+   "margin-synthesis"
+  ],
+  "eq-cp": [
+   "conditional-power"
+  ],
+  "eq-sequential": [
+   "sequential-updating"
+  ],
+  "eq-tolls": [
+   "evidence-toll"
+  ],
+  "eq-excess": [
+   "evidence-toll"
+  ],
+  "eq-seventy": [
+   "evidence-toll"
+  ],
+  "eq-ss-standard": [
+   "sample-size"
+  ],
+  "eq-ss-cont": [
+   "sample-size"
+  ],
+  "eq-ss-bin": [
+   "sample-size"
+  ],
+  "eq-ss-events": [
+   "sample-size"
+  ],
+  "eq-robust": [
+   "robust-mixture-prior"
+  ],
+  "eq-testing-pvalue": [
+   "p-value"
+  ],
+  "eq-normal-normal": [
+   "normal-normal-model"
+  ],
+  "eq-ch01-rule": [
+   "decision-theory"
+  ],
+  "eq-evalues-mix": [
+   "mixture-method"
+  ],
+  "eq-re-tau": [
+   "recovery-trial"
+  ]
+ }
+}

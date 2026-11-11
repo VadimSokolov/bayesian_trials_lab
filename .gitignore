@@ -1,0 +1,10 @@
+.DS_Store
+build/html/
+build/skeleton.json
+build/skeleton.json.tmp
+build/fixtures/
+build/validate_full.txt
+build/site_warnings.txt
+__pycache__/
+proxy/.wrangler/
+node_modules/

@@ -1,0 +1,222 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "dosefinding-emax-fit",
+      "description": "fitMod Emax, individual-observation data (3 per dose, 5 doses), default bounds defBnds(4)$emax, least squares",
+      "package": "DoseFinding",
+      "version": "1.4.2",
+      "r_version": "4.5.2",
+      "call": "fitMod(dose, resp, data=dd, model=\"emax\", bnds=defBnds(4)$emax)",
+      "inputs": {
+        "data": [
+          {
+            "dose": 0,
+            "resp": 0.05
+          },
+          {
+            "dose": 0,
+            "resp": 0.15
+          },
+          {
+            "dose": 0,
+            "resp": 0.16
+          },
+          {
+            "dose": 0.5,
+            "resp": 0.3
+          },
+          {
+            "dose": 0.5,
+            "resp": 0.41
+          },
+          {
+            "dose": 0.5,
+            "resp": 0.34
+          },
+          {
+            "dose": 1,
+            "resp": 0.55
+          },
+          {
+            "dose": 1,
+            "resp": 0.7
+          },
+          {
+            "dose": 1,
+            "resp": 0.61
+          },
+          {
+            "dose": 2,
+            "resp": 0.9
+          },
+          {
+            "dose": 2,
+            "resp": 0.82
+          },
+          {
+            "dose": 2,
+            "resp": 0.92
+          },
+          {
+            "dose": 4,
+            "resp": 0.99
+          },
+          {
+            "dose": 4,
+            "resp": 0.93
+          },
+          {
+            "dose": 4,
+            "resp": 1
+          }
+        ],
+        "bnds": [0.004, 6]
+      },
+      "outputs": {
+        "coef": {
+          "e0": 0.09853376722625,
+          "eMax": 1.246226935032,
+          "ed50": 1.469710464118
+        },
+        "rss": 0,
+        "AIC": -31.216813350525,
+        "pred_at_doses": [0.09853376722625, 0.4148815142008, 0.6031382352957, 0.8168801237419, 1.009899692869]
+      }
+    },
+    {
+      "id": "dosefinding-sigemax-fit",
+      "description": "fitMod sigEmax on same data, bnds defBnds(4)$sigEmax",
+      "package": "DoseFinding",
+      "version": "1.4.2",
+      "r_version": "4.5.2",
+      "call": "fitMod(dose, resp, data=dd, model=\"sigEmax\", bnds=defBnds(4)$sigEmax)",
+      "inputs": {
+        "data": [
+          {
+            "dose": 0,
+            "resp": 0.05
+          },
+          {
+            "dose": 0,
+            "resp": 0.15
+          },
+          {
+            "dose": 0,
+            "resp": 0.16
+          },
+          {
+            "dose": 0.5,
+            "resp": 0.3
+          },
+          {
+            "dose": 0.5,
+            "resp": 0.41
+          },
+          {
+            "dose": 0.5,
+            "resp": 0.34
+          },
+          {
+            "dose": 1,
+            "resp": 0.55
+          },
+          {
+            "dose": 1,
+            "resp": 0.7
+          },
+          {
+            "dose": 1,
+            "resp": 0.61
+          },
+          {
+            "dose": 2,
+            "resp": 0.9
+          },
+          {
+            "dose": 2,
+            "resp": 0.82
+          },
+          {
+            "dose": 2,
+            "resp": 0.92
+          },
+          {
+            "dose": 4,
+            "resp": 0.99
+          },
+          {
+            "dose": 4,
+            "resp": 0.93
+          },
+          {
+            "dose": 4,
+            "resp": 1
+          }
+        ],
+        "bnds": [
+          [0.004, 6],
+          [0.5, 10]
+        ]
+      },
+      "outputs": {
+        "coef": {
+          "e0": 0.1212612240761,
+          "eMax": 0.9012768759959,
+          "ed50": 0.88064475499,
+          "h": 1.950703828925
+        },
+        "rss": 0,
+        "AIC": -38.77731386717,
+        "pred_at_doses": [0.1212612240761, 0.3456394328219, 0.6274800532578, 0.8711478634015, 0.9778047597761]
+      }
+    },
+    {
+      "id": "dosefinding-mcpmod-power",
+      "description": "MCP-Mod, 5 doses 0,.05,.2,.6,1, 50 per dose, sigma 1, candidate set linear, emax(ED50=.2), exponential(delta=1), sigEmax(.5,3), maxEff 0.4, one-sided alpha 0.025, df=Inf (normal). Optimal contrasts, multiplicity-adjusted critical value, power under each candidate shape",
+      "package": "DoseFinding",
+      "version": "1.4.2",
+      "r_version": "4.5.2",
+      "call": "mods <- Mods(linear=NULL, emax=0.2, exponential=1, sigEmax=c(0.5,3), doses=dos, placEff=0, maxEff=0.4); cm <- optContr(mods, w=rep(50,5)); critVal(cm$corMat, alpha=0.025, df=Inf, alternative=\"one.sided\"); powMCT(cm, altModels=mods, n=rep(50,5), sigma=1, alpha=0.025, df=Inf)",
+      "inputs": {
+        "doses": [0, 0.05, 0.2, 0.6, 1],
+        "n_per_dose": [50, 50, 50, 50, 50],
+        "sigma": 1,
+        "alpha_one_sided": 0.025,
+        "placEff": 0,
+        "maxEff": 0.4,
+        "models": {
+          "linear": null,
+          "emax": 0.2,
+          "exponential": 1,
+          "sigEmax": [0.5, 3]
+        }
+      },
+      "outputs": {
+        "critical_value": 2.162590232295,
+        "contrast_matrix": [
+          [-0.4366560702394, -0.6431145294025, -0.3884870924195, -0.3802906654089],
+          [-0.37764849318, -0.361458531124, -0.353084263106, -0.3790910502902],
+          [-0.2006257620019, 0.06102546629367, -0.2356078951581, -0.3080612077368],
+          [0.2714348544731, 0.4130954641418, 0.1791881402724, 0.3803427143577],
+          [0.7434954709481, 0.5304521300911, 0.7979911104112, 0.6871002090783]
+        ],
+        "contrast_names": ["linear", "emax", "exponential", "sigEmax"],
+        "power_by_model": {
+          "linear": 0.6488683128861,
+          "emax": 0.6350481699727,
+          "exponential": 0.631318177792,
+          "sigEmax": 0.7276187798647
+        },
+        "mean_matrix": [
+          [0, 0, 0, 0],
+          [0.02, 0.096, 0.0119354335306, 0.0004495504495504],
+          [0.08, 0.24, 0.05154049923434, 0.02706766917293],
+          [0.24, 0.36, 0.1913815968427, 0.2850439882698],
+          [0.4, 0.4, 0.4, 0.4]
+        ]
+      }
+    }
+  ]
+}

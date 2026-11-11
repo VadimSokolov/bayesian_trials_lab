@@ -1,0 +1,105 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "simon-p0_0.05-p1_0.25",
+      "description": "Simon two-stage, p0=0.05 p1=0.25, alpha 0.05 beta 0.2; optimal minimizes EN0, minimax minimizes max n (ties broken by min EN0). Responses > r1 needed to continue, > r to declare active",
+      "package": "clinfun",
+      "version": "1.1.6",
+      "r_version": "4.5.2",
+      "call": "ph2simon(0.05, 0.25, 0.05, 0.2)",
+      "inputs": {
+        "p0": 0.05,
+        "p1": 0.25,
+        "alpha": 0.05,
+        "beta": 0.2
+      },
+      "outputs": {
+        "optimal": {
+          "r1": 0,
+          "n1": 9,
+          "r": 2,
+          "n": 17,
+          "EN0": 11.958004722203,
+          "PET0": 0.6302494097246
+        },
+        "minimax": {
+          "r1": 0,
+          "n1": 12,
+          "r": 2,
+          "n": 16,
+          "EN0": 13.838559649349,
+          "PET0": 0.5403600876626
+        },
+        "n_candidate_designs": 85
+      }
+    },
+    {
+      "id": "simon-p0_0.1-p1_0.3",
+      "description": "Simon two-stage, p0=0.1 p1=0.3, alpha 0.05 beta 0.2; optimal minimizes EN0, minimax minimizes max n (ties broken by min EN0). Responses > r1 needed to continue, > r to declare active",
+      "package": "clinfun",
+      "version": "1.1.6",
+      "r_version": "4.5.2",
+      "call": "ph2simon(0.1, 0.3, 0.05, 0.2)",
+      "inputs": {
+        "p0": 0.1,
+        "p1": 0.3,
+        "alpha": 0.05,
+        "beta": 0.2
+      },
+      "outputs": {
+        "optimal": {
+          "r1": 1,
+          "n1": 10,
+          "r": 5,
+          "n": 29,
+          "EN0": 15.0141203471,
+          "PET0": 0.7360989291
+        },
+        "minimax": {
+          "r1": 1,
+          "n1": 15,
+          "r": 5,
+          "n": 25,
+          "EN0": 19.509569810809,
+          "PET0": 0.5490430189191
+        },
+        "n_candidate_designs": 76
+      }
+    },
+    {
+      "id": "simon-p0_0.2-p1_0.4",
+      "description": "Simon two-stage, p0=0.2 p1=0.4, alpha 0.05 beta 0.2; optimal minimizes EN0, minimax minimizes max n (ties broken by min EN0). Responses > r1 needed to continue, > r to declare active",
+      "package": "clinfun",
+      "version": "1.1.6",
+      "r_version": "4.5.2",
+      "call": "ph2simon(0.2, 0.4, 0.05, 0.2)",
+      "inputs": {
+        "p0": 0.2,
+        "p1": 0.4,
+        "alpha": 0.05,
+        "beta": 0.2
+      },
+      "outputs": {
+        "optimal": {
+          "r1": 3,
+          "n1": 13,
+          "r": 12,
+          "n": 43,
+          "EN0": 20.58027071488,
+          "PET0": 0.747324309504
+        },
+        "minimax": {
+          "r1": 4,
+          "n1": 18,
+          "r": 10,
+          "n": 33,
+          "EN0": 22.254692764071,
+          "PET0": 0.7163538157286
+        },
+        "n_candidate_designs": 68
+      }
+    }
+  ]
+}

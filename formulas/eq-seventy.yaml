@@ -1,0 +1,20 @@
+id: eq-seventy
+section: 11/the-seventy-percent-result
+title: The seventy percent result
+tex: |-
+  \htmlClass{term c1}{\frac{n_{\mathrm{LD}} - n_{\mathrm{MD}}}{n_{\mathrm{fix}}}} \approx \frac{\htmlClass{term c2}{2\log(1/\alpha)}}{\htmlClass{term c3}{(z_\alpha + z_\beta)^2}} = \htmlClass{term c4}{\frac{7.38}{10.51} \approx 0.70}
+parts:
+  - "The "
+  - {k: c1, words: "excess relative to the fixed-sample requirement"}
+  - " is about "
+  - {k: c2, words: "the surcharge"}
+  - " over "
+  - {k: c3, words: "the fixed design's squared quantiles"}
+  - ", which at $\\alpha=0.025$ and 90 percent power is "
+  - {k: c4, words: "about 70 percent"}
+  - "."
+notes:
+  c1: "Extra information as a share of the fixed-sample size $n_{\\mathrm{fix}}$."
+  c2: "$2\\log(1/\\alpha)=7.38$ at $\\alpha=0.025$."
+  c3: "10.51 at 90 percent power."
+  c4: "A large-information approximation of the boundary terms, not an exact sample-size identity."

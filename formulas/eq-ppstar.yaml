@@ -1,0 +1,19 @@
+id: eq-ppstar
+section: 15/the-economic-threshold-pp
+title: Economic futility threshold for predictive probability
+tex: \htmlClass{term c1}{\mathrm{PP}^*} = \frac{\htmlClass{term c2}{m c_2}}{\htmlClass{term c3}{\rho V - (1-\rho) c_3}},
+parts:
+- 'Continue only if the predictive probability exceeds '
+- k: c1
+  words: the continuation threshold
+- ', which is '
+- k: c2
+  words: the cost of the remaining patients
+- ' divided by '
+- k: c3
+  words: 'the expected value of a phase 2 success: the chance phase 3 succeeds times the value, less the chance it fails times the cost of a failed phase 3'
+- .
+notes:
+  c1: Small when the drug is valuable and the remaining phase 2 is cheap.
+  c2: $m$ remaining patients at cost $c_2$ each.
+  c3: $\rho$ is the probability phase 3 succeeds given a phase 2 success, $V$ the missed value, $c_3$ the cost of a false go; if this is negative the trial should not be running.

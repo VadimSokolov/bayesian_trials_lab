@@ -1,0 +1,16 @@
+id: eq-sequential
+section: sec-updating
+title: "Sequential updating"
+tex: "\\htmlClass{term c1}{\\pi(\\theta \\mid y_1, y_2)} \\;\\propto\\; \\htmlClass{term c2}{p(y_2 \\mid \\theta)\\, \\pi(\\theta \\mid y_1)} \\;\\propto\\; \\htmlClass{term c3}{p(y_2 \\mid \\theta)\\, p(y_1 \\mid \\theta)\\, \\pi(\\theta)},"
+parts:
+  - "The "
+  - {k: c1, words: "posterior after both batches"}
+  - " is proportional to "
+  - {k: c2, words: "the likelihood of the second batch times the posterior after the first, used as the new prior"}
+  - " and so to "
+  - {k: c3, words: "both likelihoods times the original prior"}
+  - "."
+notes:
+  c1: "What we believe after all the data."
+  c2: "Update in two steps: the posterior today is the prior tomorrow."
+  c3: "All data at once; same result, so the path by which the data arrived does not matter (given conditional independence given $\\theta$)."

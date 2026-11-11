@@ -1,0 +1,45 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "3plus3-escalation-closed-form",
+      "description": "Exact probability the traditional 3+3 design escalates from a dose with true DLT rate p: P(0/3) + P(1/3)*P(0/3 in next 3) = (1-p)^3 + 3p(1-p)^5",
+      "package": "base",
+      "version": "4.5.2",
+      "r_version": "4.5.2",
+      "call": "(1-p)^3 + 3*p*(1-p)^5",
+      "inputs": {
+        "p": [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
+      },
+      "outputs": {
+        "p_escalate": [0.973442140625, 0.906147, 0.813792390625, 0.708608, 0.599853515625, 0.494263, 0.396455515625, 0.309312, 0.234318390625, 0.171875, 0.121572140625, 0.082432],
+        "p_stay_or_stop": [0.026557859375, 0.093853, 0.186207609375, 0.291392, 0.400146484375, 0.505737, 0.603544484375, 0.690688, 0.765681609375, 0.828125, 0.878427859375, 0.917568],
+        "p_escalate_via_get_dose_paths": [0.973442140625, 0.906147, 0.813792390625, 0.708608, 0.599853515625, 0.494263, 0.396455515625, 0.309312, 0.234318390625, 0.171875, 0.121572140625, 0.082432]
+      },
+      "package_check": "escalation::get_dose_paths enumeration matches closed form to 1e-12"
+    },
+    {
+      "id": "3plus3-oc-scenario1",
+      "description": "escalation::get_three_plus_three simulate_trials, true DLT 0.05,0.15,0.3,0.45,0.6, 2000 sims, seed 2025. prob_recommend is over doses 1..5 (check names). n_at_dose is the mean patients per dose over sims. Monte Carlo tolerance.",
+      "package": "escalation",
+      "version": "0.2.3",
+      "r_version": "4.5.2",
+      "call": "set.seed(2025); simulate_trials(get_three_plus_three(num_doses=5), num_sims=2000, true_prob_tox=c(0.05,0.15,0.3,0.45,0.6))",
+      "inputs": {
+        "true_prob_tox": [0.05, 0.15, 0.3, 0.45, 0.6],
+        "num_sims": 2000,
+        "seed": 2025
+      },
+      "outputs": {
+        "prob_recommend": [0.031, 0.1695, 0.409, 0.304, 0.0775, 0.009],
+        "prob_recommend_names": ["NoDose", "1", "2", "3", "4", "5"],
+        "n_at_dose_mean_per_trial": [3.414, 3.849, 3.453, 1.6425, 0.315],
+        "tox_at_dose_mean_per_trial": [0.1775, 0.5595, 1.032, 0.756, 0.1935],
+        "mean_n": 12.6735,
+        "mean_tox": 2.7185,
+        "prob_overdose_recommended": 0.0865
+      }
+    }
+  ]
+}

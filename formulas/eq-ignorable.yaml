@@ -1,0 +1,16 @@
+id: eq-ignorable
+section: 5/ignorability-of-the-assignment-mechanism
+title: "Factorization when assignment is ignorable"
+tex: "\\htmlClass{term c1}{p(d, y \\mid x, \\theta, \\phi)} \\;=\\; \\htmlClass{term c2}{\\underbrace{p(d \\mid x, \\phi)}_{\\text{assignment}}} \\;\\times\\; \\htmlClass{term c3}{p(y \\mid d, x, \\theta)},"
+parts:
+  - "The "
+  - {k: c1, words: "joint probability of the assignments and outcomes"}
+  - " is "
+  - {k: c2, words: "the probability of the assignment given the recorded covariates"}
+  - " times "
+  - {k: c3, words: "the probability of the outcomes given the arms and covariates"}
+  - "."
+notes:
+  c1: "The likelihood of everything observed."
+  c2: "Depends only on recorded data and not on the parameter of interest; it drops out of the posterior. Randomization makes it a known constant."
+  c3: "The outcome model, governed by the parameter of interest."

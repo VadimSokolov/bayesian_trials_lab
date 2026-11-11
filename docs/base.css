@@ -1,0 +1,48 @@
+/* ============================================================
+   Shared chrome for the lab: tokens, header, footer, focus ring
+   Design tokens, skip link, header/nav, button, footer, focus ring
+   and 44px tap targets. Layout and section styles are in style.css.
+   No global reset here. Also loaded by the static whitepaper.html.
+   ============================================================ */
+
+:root {
+  --navy: #0A1628;
+  --teal: #2D8B8B;
+  --teal-dark: #1F6B6B;
+  --muted: rgba(10, 22, 40, 0.72);
+  --rule: #E3E7EC;   /* the one hairline colour for every divider on both pages (about navy at 11%) */
+  /* --sans and --mono are defined in fonts.css (loaded before this file; do not redefine here) */
+}
+
+/* Visible keyboard focus indicator */
+:focus-visible { outline: 2px solid var(--teal-dark); outline-offset: 3px; }
+
+/* Skip link: hidden until focused */
+.skip { position: absolute; left: 1rem; top: auto; transform: translateY(-200%); background: var(--navy); color: #fff; padding: .75rem 1rem; z-index: 10; }
+.skip:focus { transform: none; top: .5rem; }
+
+/* Header and nav */
+header { border-bottom: 1px solid var(--rule); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; gap: 1rem; }
+.logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--navy); font-weight: 600; font-size: 1.25rem; letter-spacing: -.01em; min-height: 44px; }
+.logo img { width: 28px; height: 28px; border-radius: 5px; }
+nav { display: flex; gap: .25rem; }
+nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .625rem; color: var(--navy); text-decoration: none; font-size: .9375rem; white-space: nowrap; }
+nav a:hover { text-decoration: underline; }
+nav a[aria-current=page] { color: var(--teal-dark); font-weight: 600; }
+@media (max-width: 480px) {
+  nav a { padding: 0 .4rem; font-size: .875rem; }
+  .logo { font-size: 1.0625rem; }
+  .logo img { width: 24px; height: 24px; }
+  header .wrap { padding: 0 1rem; gap: .25rem; }
+}
+
+/* The one button style: dark-teal fill */
+
+/* Footer */
+footer { border-top: 1px solid var(--rule); padding: 2rem 0; font-size: .875rem; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center; }
+
+/* 44px tap targets for text links */
+footer a, .more a, .partners h3 a, .close p a { display: inline-flex; align-items: center; min-height: 44px; }
+footer a { color: var(--navy); }

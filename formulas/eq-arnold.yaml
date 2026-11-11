@@ -1,0 +1,16 @@
+id: eq-arnold
+section: 5/arnolds-measure-of-randomness
+title: "Arnold's stochasticity parameter"
+tex: "\\htmlClass{term c1}{s} \\;=\\; \\htmlClass{term c2}{T \\sum_{i=1}^{T} \\left(\\frac{x_i}{L}\\right)^{2}}, \\qquad \\htmlClass{term c3}{1 \\le s \\le T} ."
+parts:
+  - "The "
+  - {k: c1, words: "stochasticity parameter"}
+  - " is "
+  - {k: c2, words: "the number of points times the sum of the squared gaps between neighbors, each gap as a fraction of the circle length"}
+  - ", and it always lies "
+  - {k: c3, words: "between 1 and the number of points"}
+  - "."
+notes:
+  c1: "Where it falls relative to its random value, about 2 for many points, tells whether the points look random."
+  c2: "The normalized sum of squared gaps."
+  c3: "1 for evenly spaced points (strong repulsion); the number of points when all are clustered in one place (strong attraction)."

@@ -1,0 +1,17 @@
+id: eq-ess-normal
+section: sec-priors-ess
+title: Effective sample size of a normal prior
+tex: |-
+  \htmlClass{term c1}{\mathrm{ESS}} = \frac{\htmlClass{term c2}{\sigma^2}}{\htmlClass{term c3}{s_0^2}}.
+parts:
+  - "The "
+  - {k: c1, words: "effective sample size of the prior"}
+  - " is "
+  - {k: c2, words: "the variance of one observation"}
+  - " divided by "
+  - {k: c3, words: "the prior variance"}
+  - "."
+notes:
+  c1: "How many observations the prior is worth."
+  c2: "Noise carried by each observation (for a log hazard ratio with 1:1 allocation, each event carries 4)."
+  c3: "The tighter the prior, the smaller this is and the more it is worth."

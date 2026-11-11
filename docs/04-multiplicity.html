@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Many tests, false alarms | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: run many tests where nothing works and watch false alarms pile up, then see how fixes keep them under control.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<style>
+.tip { border-bottom: 1px dotted var(--teal-dark); cursor: help; position: relative; }
+.tip:hover::after, .tip:focus::after { content: attr(data-tip); position: absolute; left: 0; top: 1.6em; width: 17rem; max-width: 80vw; background: var(--navy); color: #fff; font-size: .85rem; font-weight: 400; font-style: normal; line-height: 1.4; padding: .5rem .7rem; border-radius: 8px; z-index: 30; }
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 0 0 2rem; }
+.figbox { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: .75rem; }
+.figbox h3 { font-size: 1rem; margin-bottom: .25rem; }
+.figbox svg { width: 100%; height: auto; display: block; }
+.legendline { display: flex; flex-wrap: wrap; gap: .8rem; font-size: .85rem; color: var(--text-secondary); margin-top: .4rem; }
+.legendline i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: .3rem; vertical-align: -1px; }
+.mlabel { font-size: .85rem; color: var(--text-secondary); margin: .5rem 0 0; min-height: 2.6em; }
+.rev { margin-top: .8rem; border-top: 1px dashed var(--border-strong); padding-top: .6rem; }
+.rev[hidden] { display: none; }
+.rev svg { width: 100%; height: auto; display: block; }
+.rev .cap { font-size: .8rem; color: var(--text-tertiary); margin: .2rem 0 0; }
+.wide { margin: 0 0 2rem; }
+.tinybtn { margin-top: .5rem; }
+svg text { font-family: var(--sans); }
+.ladder text { font-size: 12px; fill: var(--navy); }
+.sec h2 { font-size: 1.4rem; margin: 1.5rem 0 .4rem; }
+@media (max-width: 800px) { .twocol { grid-template-columns: 1fr; } body.lab svg.plot text { font-size: 20px; } body.lab svg.plot .axis-label { font-size: 22px; } .ladder text { font-size: 17px; } }
+#fixPanel[hidden] { display: none; }
+.truthsec { margin: 0 0 2rem; }
+.truthsec h2 { font-size: 1.4rem; margin: 0 0 .4rem; }
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .6rem; margin: .8rem 0; }
+.dcell { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: .45rem .6rem; }
+.dcell.lit { border-color: #A8341F; background: #FBEAE6; }
+.dcell .dh { display: flex; justify-content: space-between; font-size: .85rem; margin-bottom: .25rem; }
+.dcell .dh b { color: var(--navy); }
+.dcell .dh span { color: var(--text-secondary); }
+.dcell.lit .dh span { color: #A8341F; font-weight: 600; }
+.trw { display: grid; grid-template-columns: 5.6rem 1fr; gap: .4rem; align-items: center; margin: 2px 0; font-size: .75rem; color: var(--text-secondary); }
+.trow { display: flex; flex-wrap: wrap; gap: 2px; align-items: center; }
+.pp { width: 12px; height: 15px; display: block; }
+.pp.yes { fill: #2D8B8B; stroke: none; }
+.pp.no { fill: none; stroke: #9AA3AE; stroke-width: 1.3; }
+.tlegend .pp { display: inline-block; width: 14px; height: 17px; vertical-align: middle; margin-right: .3rem; }
+.tlegend { font-size: .85rem; color: var(--text-secondary); display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.truthsec svg.tb { width: 100%; max-width: 640px; height: auto; display: block; }
+</style>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">4. Many tests, false alarms</span>
+  <span class="pn"><a href="03-errors-power.html">&larr; Prev</a><a href="05-ulcer-trial.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 4</div>
+  <h1>Many tests, false alarms</h1>
+  <p class="hook">None of 20 drugs works. Will one still look like it does?</p>
+  <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
+  <p class="note" id="presetNote" style="margin-top:.6rem"></p>
+</section>
+
+<section class="truthsec" id="truth" aria-label="Truth versus what the trials see">
+  <h2>The truth, then what the trials see</h2>
+  <p>Twenty drugs, each with a true response rate of <b id="tTrue"></b>%, the same as placebo (a dummy pill). None works.</p>
+  <svg id="trueBars" class="tb" role="img" aria-label="Twenty equal bars: every drug has the same true response rate as placebo"></svg>
+  <p style="margin-top:.8rem">Each drug gets a trial: <b id="tN"></b> patients on drug, <b id="tN2"></b> on placebo. Results differ by luck.</p>
+  <div class="tlegend"><span><svg class="pp yes" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>filled = improved</span><span><svg class="pp no" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>outline = did not improve</span></div>
+  <div class="row tinybtn" id="truthBtns"></div>
+  <p class="note" id="truthRule" style="margin:.5rem 0 0"></p>
+  <div class="tgrid" id="tgrid"></div>
+  <div class="chips" id="truthChips" aria-live="polite"></div>
+  <p class="note" style="margin:.5rem 0 0">The <span class="tip" tabindex="0" data-tip="How often a drug that does nothing would look at least this good, by luck alone. Small means surprising. Explained in module 2.">p-value</span> asks how often a useless drug would look this good. A useless drug that passes is a false alarm.</p>
+</section>
+
+<section id="lab" class="labgrid" aria-label="False alarm lab">
+  <div class="panel">
+    <h3>1. How many tests?</h3>
+    <label class="field" for="kIn"><span>Tests: <b id="kOut"></b></span></label>
+    <div class="field"><input id="kIn" type="range" min="1" max="100" step="1" value="20"></div>
+    <h3>2. Cutoff per test</h3>
+    <div class="row" id="alphas"></div>
+    <p class="note">A test whose <span class="tip" tabindex="0" data-tip="A p-value is small when the data would be surprising if nothing were going on. Below the cutoff, the test gives a false alarm. See module 2.">p-value</span> is under the cutoff gives a false alarm. (One-sided: only results that favor the drug count.)</p>
+    <div id="fixPanel" hidden>
+    <h3>3. Pick a fix</h3>
+    <div class="row" id="methods"></div>
+    <p class="mlabel" id="mlabel"></p>
+    </div>
+    <h3 id="runH">3. Run</h3>
+    <div class="row">
+      <button class="btn primary" id="runOne" type="button">New trial</button>
+      <button class="btn primary" id="runMany" type="button">Run 1,000 trials</button>
+    </div>
+    <p class="note">One trial tests a useless drug this many times. Every <span class="tip" tabindex="0" data-tip="A test passes the cutoff even though nothing real is going on.">false alarm</span> is luck.</p>
+  </div>
+  <div>
+    <div class="plotbox">
+      <div class="chips" aria-live="polite" id="chips"></div>
+      <p class="note" id="plotNote" style="margin:.5rem 0 0"></p>
+    </div>
+  </div>
+</section>
+
+<section class="twocol" aria-label="One trial in detail">
+  <div class="figbox">
+    <h3>One trial, test by test</h3>
+    <svg id="dots" role="img" aria-label="Grid of dots, one per test. Red dots are false alarms."></svg>
+    <div class="legendline"><span><i style="background:#A8341F"></i>false alarm</span><span><i style="background:#E8F4F4;border:1.5px solid #1F6B6B"></i>no false alarm</span><span><i style="background:#D5D9E0"></i>never tested</span></div>
+    <p class="note" id="dotNote" style="margin:.4rem 0 0"></p>
+  </div>
+  <div class="figbox">
+    <h3>Same trial, p-values against the cutoff</h3>
+    <svg id="rank" class="plotsvg"></svg>
+    <p class="note" id="rankNote" style="margin:.4rem 0 0"></p>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>Predict, then check</h2>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="wide figbox" style="margin-top:2rem">
+  <h3>The climb: more tests, more false alarms</h3>
+  <svg id="curve"></svg>
+  <p class="note" style="margin:.4rem 0 0">Dotted line: your number of tests.</p>
+</section>
+
+<section class="wide figbox">
+  <h3>Fixed order</h3>
+  <p>Most important test first. Go on only while each test is under the cutoff.</p>
+  <svg id="ladder" class="ladder" viewBox="0 0 680 150" role="img" aria-label="Ladder of five tests in a fixed order"></svg>
+  <div class="row tinybtn">
+    <button class="btn primary" id="lad0" type="button">Run it: drug is useless</button>
+    <button class="btn" id="lad1" type="button">Run it: drug really works</button>
+  </div>
+  <p class="note" id="ladNote" style="margin:.4rem 0 0"></p>
+</section>
+
+<section class="example">
+  <h2>A real case: star signs and aspirin</h2>
+  <p>In 1988, the ISIS-2 trial gave aspirin or placebo to 17,187 patients with a suspected heart attack. Aspirin clearly helped overall. To warn about slicing the data, its authors split patients by star sign. Aspirin seemed to fail for two signs, Gemini and Libra.</p>
+  <p>Twelve signs, twelve chances for luck. Below: a drug that really helps every sign equally, split by sign. Some bars still fall short.</p>
+  <svg id="signs" viewBox="0 0 640 220" role="img" aria-label="Twelve bars, one per star sign, showing the benefit of an effective drug with random luck in each sign" style="width:100%;height:auto;display:block"></svg>
+  <div class="row tinybtn"><button class="btn primary" id="reslice" type="button">Slice again</button></div>
+  <div class="chips" id="signChips"></div>
+  <p class="note">Bars are simulated, not ISIS-2 data. The drug works equally in all 12 signs.</p>
+</section>
+
+<section class="example">
+  <h2>Another one: a site that looks bad</h2>
+  <p>A drug helps 30% of patients at every site. One site enrolls 19 patients and only 1 improves. Look at card 5 above for how often luck alone does that when the drug is tested at many sites.</p>
+  <p class="note">The page's own binomial formula gives the 1-in-100 number. We treat each site as separate luck.</p>
+</section>
+
+<div id="code"></div>
+
+<section class="reg">
+  <h3>Regulator's corner</h3>
+  <p>The trial rulebook ICH E9 (section 5.6) lists where many tests come from: several main outcomes, several treatments, and repeated looks at the data before the trial ends.</p>
+  <p>Write the fix into the trial plan before any results come in. <a href="https://database.ich.org/sites/default/files/E9_Guideline.pdf">ICH E9, Statistical Principles for Clinical Trials (PDF)</a></p>
+</section>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>Every extra test is another ticket in the false alarm lottery.</li>
+    <li>A fix (Bonferroni or a fixed order) pays for the extra tickets so the chance of any false alarm stays near 2.5%.</li>
+    <li>The percentages here assume independent tests. Bonferroni keeps the chance of any false alarm at or below 2.5% even when tests are related.</li>
+    <li>Decide the tests and their order before you see the data.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/multiplicity">Multiplicity</a>, <a href="encyclopedia/#/e/familywise-error-rate">Familywise error rate</a>, <a href="encyclopedia/#/e/bonferroni-correction">Bonferroni correction</a>, <a href="encyclopedia/#/e/fixed-sequence-testing">Fixed-sequence testing</a>, <a href="encyclopedia/#/e/holm-procedure">Holm procedure</a>, <a href="encyclopedia/#/e/closed-testing">Closed testing</a>, <a href="encyclopedia/#/e/subgroup-analysis">Subgroup analysis</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Sources</strong>
+  <ul>
+    <li>ISIS-2 Collaborative Group (1988). <em>The Lancet</em> 332(8607):349-360. <a href="https://doi.org/10.1016/S0140-6736(88)92833-4">doi:10.1016/S0140-6736(88)92833-4</a></li>
+    <li>ICH E9, <a href="https://database.ich.org/sites/default/files/E9_Guideline.pdf">Statistical Principles for Clinical Trials</a>, section 5.6</li>
+  </ul>
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805 (chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>)</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/09-multiplicity.html">10</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters online</a>)</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', ORANGE = '#E07A3F', NAVY = '#0A1628', BAD = '#A8341F', GOODC = '#1F6B6B', GREY = '#D5D9E0', TL = '#E8F4F4';
+  var NS = 'http://www.w3.org/2000/svg';
+  var rng = Lab.rng(404), rng2 = Lab.rng(77);
+  var $ = function (id) { return document.getElementById(id); };
+  function se(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function pct(x, d) { return Lab.pct(x, d == null ? 1 : d); }
+  function num(x, d) { return Number(x).toFixed(d == null ? 2 : d); }
+  function fa(a) { return pct(a, a === 0.025 ? 1 : 0); }
+  function fmtInt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+
+  var METHODS = [
+    { id: 'none', label: 'No fix', cap: 'No fix: every test uses the full cutoff.' },
+    { id: 'bonf', label: 'Bonferroni', cap: 'Bonferroni: divide the cutoff by the number of tests.' },
+    { id: 'fixed', label: 'Fixed order', cap: 'Fixed order: test one at a time and stop at the first test not under the cutoff.' }
+  ];
+  var PRESETS = [
+    { label: '5 outcomes', k: 5, a: 0.025, note: 'A trial tests 5 outcomes.' },
+    { label: '12 star signs', k: 12, a: 0.025, note: 'A heart attack trial split patients by 12 star signs.' },
+    { label: '20 subgroups', k: 20, a: 0.025, note: 'Slice patients 20 ways: age, sex, region, and so on.' },
+    { label: '100 lab tests', k: 100, a: 0.025, note: 'A trial checks 100 lab measurements.' },
+    { label: '17 sites', k: 17, a: 0.01, note: 'A drug is tested at 17 sites, each judged at a 1% cutoff.' }
+  ];
+  var S = { k: 20, a: 0.025, m: 'none', ps: null, counts: null, n: 1000, any: 0, mean: 0 };
+
+  function newPs(k) { return Lab.draws(k, rng, function (r) { return r(); }); }
+
+  // Apply a method to one trial's p-values: returns {rej[], tested[]}.
+  function evalRun(ps, method, a) {
+    var k = ps.length, rej = [], tested = [], i;
+    for (i = 0; i < k; i++) { rej.push(false); tested.push(true); }
+    if (method === 'none') { for (i = 0; i < k; i++) rej[i] = ps[i] < a; }
+    else if (method === 'bonf') { for (i = 0; i < k; i++) rej[i] = ps[i] < a / k; }
+    else {
+      var halt = false;
+      for (i = 0; i < k; i++) { if (halt) { tested[i] = false; continue; } if (ps[i] < a) rej[i] = true; else halt = true; }
+    }
+    return { rej: rej, tested: tested };
+  }
+  function countOf(r) { var c = 0; r.rej.forEach(function (x) { if (x) c++; }); return c; }
+  function exactAny(m, k, a) { return m === 'none' ? 1 - Math.pow(1 - a, k) : m === 'fixed' ? a : 1 - Math.pow(1 - a / k, k); }
+  function exactPmf(m, k, a, j) {
+    if (m === 'none') return Lab.binomPmf(j, k, a);
+    if (m === 'bonf') return Lab.binomPmf(j, k, a / k);
+    if (m === 'fixed') return j < k ? Math.pow(a, j) * (1 - a) : Math.pow(a, k);
+    return null;
+  }
+  function runMany(n, method, k, a, gen) {
+    var c = [], any = 0, tot = 0, i;
+    for (i = 0; i <= k; i++) c.push(0);
+    for (i = 0; i < n; i++) { var m = countOf(evalRun(Lab.draws(k, gen, function (r) { return r(); }), method, a)); c[m]++; if (m > 0) any++; tot += m; }
+    return { counts: c, any: any / n, mean: tot / n };
+  }
+
+  /* ---------- Main chips ---------- */
+  function renderMain() {
+    var k = S.k, any = METHODS.filter(function (x) { return x.id === S.m; })[0];
+    $('chips').innerHTML =
+      '<span class="chip warm">At least 1 false alarm: <b>' + pct(exactAny(S.m, k, S.a)) + '</b> by formula, <b>' + pct(S.any) + '</b> in 1,000 trials</span>' +
+      '<span class="chip">Average false alarms per trial: <b>' + num(S.mean, 2) + '</b></span>';
+    $('mlabel').textContent = any.cap;
+  }
+
+  /* ---------- Dot grid for one trial ---------- */
+  function renderDots() {
+    var k = S.k, r = evalRun(S.ps, S.m, S.a), svg = $('dots'), cols = Math.ceil(Math.sqrt(k * 1.8)), rows = Math.ceil(k / cols);
+    var cell = Math.min(34, 340 / cols), W = cols * cell, H = rows * cell;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.innerHTML = '';
+    for (var i = 0; i < k; i++) {
+      var cx = (i % cols + 0.5) * cell, cy = (Math.floor(i / cols) + 0.5) * cell, c = se('circle', { cx: cx, cy: cy, r: cell * 0.36 }, svg);
+      if (r.rej[i]) { c.setAttribute('fill', BAD); c.setAttribute('stroke', BAD); }
+      else if (!r.tested[i]) { c.setAttribute('fill', GREY); c.setAttribute('stroke', GREY); }
+      else { c.setAttribute('fill', TL); c.setAttribute('stroke', GOODC); c.setAttribute('stroke-width', 1.5); }
+      se('title', {}, c).textContent = 'Test ' + (i + 1) + ': p = ' + num(S.ps[i], 3);
+    }
+    var n = countOf(r);
+    $('dotNote').innerHTML = 'This trial: ' + n + (n === 1 ? ' false alarm' : ' false alarms') + '.';
+  }
+
+  /* ---------- Sorted p-values against the bar ---------- */
+  function renderRank() {
+    var k = S.k, a = S.a, m = S.m, r = evalRun(S.ps, m, a), items = S.ps.map(function (p, i) { return { p: p, rej: r.rej[i], t: r.tested[i] }; });
+    var sorted = m !== 'fixed';
+    if (sorted) items.sort(function (x, y) { return x.p - y.p; });
+    var svg = $('rank');
+    var P = Lab.Plot(svg, { xlim: [0, k + 1], ylim: [0, m === 'bonf' ? 0.2 : 1], xlabel: sorted ? 'Tests, from smallest p-value to largest' : 'Tests, in the order they were run', ylabel: 'p-value', label: 'p-values of one trial against the cutoff', yfmt: function (v) { return num(v, m === 'bonf' ? 2 : 1); }, xfmt: function (v) { return String(Math.round(v)); } });
+    var bar = [], xs = [], i;
+    if (m === 'none' || m === 'fixed') { xs = [0, k + 1]; bar = [a, a]; }
+    else { xs = [0, k + 1]; bar = [a / k, a / k]; }
+    P.line('bar', xs, bar, { stroke: ORANGE, width: 2.5 }, 0);
+    var g = se('g', {}, svg);
+    items.forEach(function (it, j) { se('circle', { cx: P.sx(j + 1), cy: P.sy(it.p), r: k > 50 ? 3 : 4.5, fill: it.rej ? BAD : it.t ? TEAL : GREY, opacity: 0.9 }, g); });
+    P.legend([{ label: 'Cutoff', color: ORANGE, kind: 'line' }]);
+    $('rankNote').textContent = m === 'fixed' ? 'Fixed order: grey dots were never tested because an earlier test missed.' : 'A dot below the orange line is a false alarm.';
+  }
+
+  /* ---------- Curve ---------- */
+  function renderCurve() {
+    var xs = Lab.linspace(1, 100, 100), a = S.a;
+    var P = Lab.Plot($('curve'), { w: 900, h: 340, xlim: [1, 100], ylim: [0, 1], xlabel: 'Number of tests of a useless drug', ylabel: 'Chance of at least 1 false alarm', label: 'Chance of at least one false alarm against the number of tests, with and without fixes', yfmt: function (v) { return pct(v, 0); }, xfmt: function (v) { return String(Math.round(v)); } });
+    P.line('none', xs, xs.map(function (k) { return exactAny('none', k, a); }), { stroke: ORANGE, width: 3, fill: ORANGE, opacity: 0.12 }, 900);
+    P.line('bonf', xs, xs.map(function (k) { return exactAny('bonf', k, a); }), { stroke: TEAL, width: 3 }, 900);
+    P.line('fix', xs, xs.map(function () { return a; }), { stroke: NAVY, width: 2, dash: '6 4' }, 900);
+    P.vline('k', S.k, S.k + ' tests', { color: NAVY, dash: '3 3' }, 0);
+    P.legend([{ label: 'No fix', color: ORANGE, kind: 'line' }, { label: 'Bonferroni', color: TEAL, kind: 'line' }, { label: 'Fixed order', color: NAVY, kind: 'dash' }]);
+  }
+
+  function refresh(many) {
+    S.ps = newPs(S.k);
+    if (many) { var r = runMany(1000, S.m, S.k, S.a, rng); S.counts = r.counts; S.any = r.any; S.mean = r.mean; S.n = 1000; }
+    $('kOut').textContent = S.k; $('kIn').value = S.k;
+    document.querySelectorAll('#alphas .btn').forEach(function (b) { b.classList.toggle('on', +b.dataset.a === S.a); });
+    document.querySelectorAll('#methods .btn').forEach(function (b) { b.classList.toggle('on', b.dataset.m === S.m); });
+    renderMain(); renderDots(); renderRank(); renderCurve();
+  }
+
+  /* ---------- Controls and presets ---------- */
+  [0.025, 0.01].forEach(function (a) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = fa(a); b.dataset.a = a;
+    b.addEventListener('click', function () { S.a = a; refresh(true); }); $('alphas').appendChild(b);
+  });
+  METHODS.forEach(function (m) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = m.label; b.dataset.m = m.id;
+    b.addEventListener('click', function () { S.m = m.id; refresh(true); }); $('methods').appendChild(b);
+  });
+  PRESETS.forEach(function (p, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = p.label;
+    b.addEventListener('click', function () {
+      S.k = p.k; S.a = p.a; S.m = 'none'; $('presetNote').textContent = p.note;
+      document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.toggle('on', x === b); }); refresh(true);
+    });
+    $('examples').appendChild(b);
+  });
+  $('kIn').addEventListener('input', function () { S.k = +$('kIn').value; refresh(true); });
+  $('runOne').addEventListener('click', function () { S.ps = newPs(S.k); renderDots(); renderRank(); renderMain(); });
+  $('runMany').addEventListener('click', function () { refresh(true); });
+
+  /* ---------- Local mini figures ---------- */
+  function miniBars(host, items, o) {
+    o = o || {};
+    var mx = o.max || Math.max.apply(null, items.map(function (x) { return x.value; })) * 1.15, rowH = 34, W = 420, lw = 150, svg = se('svg', { viewBox: '0 0 ' + W + ' ' + (items.length * rowH + 6), role: 'img', 'aria-label': o.label || 'Bar chart' });
+    items.forEach(function (it, i) {
+      var y = i * rowH + 4, bw = (W - lw - 60) * it.value / mx;
+      se('text', { x: lw - 8, y: y + 17, 'text-anchor': 'end', 'font-size': 12, fill: NAVY }, svg).textContent = it.label;
+      se('rect', { x: lw, y: y + 3, width: bw, height: 20, rx: 3, fill: it.color || TEAL }, svg);
+      se('text', { x: lw + bw + 6, y: y + 18, 'font-size': 12, 'font-weight': 600, fill: NAVY }, svg).textContent = o.fmt ? o.fmt(it.value) : String(it.value);
+    });
+    host.appendChild(svg); return svg;
+  }
+  function iconArray(host, flags, cols, label) {
+    var n = flags.length, rows = Math.ceil(n / cols), cell = 22, svg = se('svg', { viewBox: '0 0 ' + (cols * cell) + ' ' + (rows * cell), role: 'img', 'aria-label': label });
+    svg.style.maxWidth = '300px';
+    flags.forEach(function (f, i) { se('circle', { cx: (i % cols + 0.5) * cell, cy: (Math.floor(i / cols) + 0.5) * cell, r: 8, fill: f ? BAD : TL, stroke: f ? BAD : GOODC, 'stroke-width': 1.5 }, svg); });
+    host.appendChild(svg);
+  }
+  function miniCurve(host, guess, ans) {
+    var W = 420, H = 200, l = 40, b = 28, t = 10, kmax = 40, svg = se('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Chance of a false alarm against number of tests' });
+    var sx = function (k) { return l + (k - 1) / (kmax - 1) * (W - l - 10); }, sy = function (p) { return H - b - p * (H - b - t); };
+    [0, 0.5, 1].forEach(function (p) { se('line', { x1: l, x2: W - 10, y1: sy(p), y2: sy(p), stroke: p === 0.5 ? ORANGE : '#E3E6EB', 'stroke-dasharray': p === 0.5 ? '4 3' : '' }, svg); se('text', { x: l - 6, y: sy(p) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#555' }, svg).textContent = pct(p, 0); });
+    [1, 10, 20, 30, 40].forEach(function (k) { se('text', { x: sx(k), y: H - 10, 'text-anchor': 'middle', 'font-size': 11, fill: '#555' }, svg).textContent = k; });
+    var d = ''; for (var k = 1; k <= kmax; k++) d += (k > 1 ? 'L' : 'M') + sx(k).toFixed(1) + ',' + sy(1 - Math.pow(0.975, k)).toFixed(1);
+    se('path', { d: d, fill: 'none', stroke: TEAL, 'stroke-width': 3 }, svg);
+    se('line', { x1: sx(guess), x2: sx(guess), y1: t, y2: H - b, stroke: ORANGE, 'stroke-width': 2, 'stroke-dasharray': '4 3' }, svg);
+    se('text', { x: sx(guess), y: t + 10, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 600, fill: '#B8531A' }, svg).textContent = 'you ' + guess;
+    se('line', { x1: sx(ans), x2: sx(ans), y1: t, y2: H - b, stroke: NAVY, 'stroke-width': 2 }, svg);
+    se('text', { x: sx(ans) + 4, y: sy(0.5) - 6, 'font-size': 11, 'font-weight': 600, fill: NAVY }, svg).textContent = 'answer ' + ans;
+    host.appendChild(svg);
+  }
+
+  /* ---------- Question cards ---------- */
+  var score = Lab.Score($('score')), _add = score.add; score.add = function (ok) { _add(ok); try { localStorage.setItem('bct-lab-4', '1'); } catch (e) {} };
+  var QC = $('qcards'), CARDS = [];
+  function card(opts, draw) {
+    var host = document.createElement('div'); host.className = 'rev'; host.hidden = true;
+    opts.score = score; opts.onReveal = function (res) { if (opts.tag === 'Predict 4') { $('fixPanel').hidden = false; $('runH').textContent = '4. Run'; } host.hidden = false; host.innerHTML = ''; draw(host, res); };
+    var c = Lab.QuestionCard(QC, opts); c.el.appendChild(host); CARDS.push(c); return c;
+  }
+  function cap(host, t) { var p = document.createElement('p'); p.className = 'cap'; p.textContent = t; host.appendChild(p); }
+  var PM = [0, 1].reduce(function (s, j) { return s + Lab.binomPmf(j, 19, 0.3); }, 0), ANY17 = 1 - Math.pow(1 - PM, 17);
+  var K50 = (function () { for (var k = 1; k < 200; k++) if (1 - Math.pow(0.975, k) > 0.5) return k; })();
+
+  card({
+    tag: 'Predict 1', type: 'choice',
+    q: 'Five useless drugs, each tested at the usual cutoff (one-sided 2.5%). Chance of at least one false alarm?',
+    options: [{ value: 'a', label: '2.5%' }, { value: 'b', label: 'About 12%' }, { value: 'c', label: 'About 23%' }, { value: 'd', label: 'About 50%' }],
+    answer: function () { var p = exactAny('none', 5, 0.025); return p > 0.1 && p < 0.14 ? 'b' : 'a'; },
+    explain: function () { return 'Chance of no alarm in 5 tests is 0.975 x 0.975 x 0.975 x 0.975 x 0.975. So the chance of at least one is ' + pct(exactAny('none', 5, 0.025)) + '.'; }
+  }, function (h) {
+    miniBars(h, [1, 2, 5, 10].map(function (k) { return { label: k + (k === 1 ? ' test' : ' tests'), value: exactAny('none', k, 0.025), color: k === 5 ? ORANGE : TEAL }; }), { max: 1, fmt: function (v) { return pct(v); }, label: 'Chance of a false alarm for 1, 2, 5 and 10 tests' });
+  });
+
+  card({
+    tag: 'Predict 2', type: 'slider', min: 1, max: 40, step: 1, start: 5, tol: 2, fmt: function (v) { return v + ' tests'; },
+    q: 'How many useless tests until a false alarm is more likely than not (over 50%)? Drag to your guess.',
+    answer: function () { return K50; },
+    explain: function () { return 'At ' + (K50 - 1) + ' tests the chance is ' + pct(exactAny('none', K50 - 1, 0.025)) + '. At ' + K50 + ' tests it is ' + pct(exactAny('none', K50, 0.025)) + '.'; }
+  }, function (h, r) { miniCurve(h, Math.round(r.guess), r.answer); cap(h, 'Teal curve: chance of at least one false alarm. Dashed orange line: 50%.'); });
+
+  card({
+    tag: 'Predict 3', type: 'choice',
+    q: 'A trial splits patients into 20 separate subgroups and tests each one, so the 20 tests are independent. The drug is useless. In 100 such trials, how many show at least one "significant" subgroup (a one-sided p-value under 2.5%)?',
+    options: [{ value: 'a', label: 'About 3' }, { value: 'b', label: 'About 20' }, { value: 'c', label: 'About 40' }, { value: 'd', label: 'About 90' }],
+    answer: function () { var n = 100 * exactAny('none', 20, 0.025); return Math.abs(n - 40) < 1 ? 'c' : 'b'; },
+    explain: function () { return 'Exact chance per trial is ' + pct(exactAny('none', 20, 0.025)) + ', so about ' + Math.round(100 * exactAny('none', 20, 0.025)) + ' of 100.'; }
+  }, function (h) {
+    var flags = [], i; for (i = 0; i < 100; i++) flags.push(countOf(evalRun(Lab.draws(20, rng2, function (r) { return r(); }), 'none', 0.025)) > 0);
+    var n = flags.filter(Boolean).length;
+    iconArray(h, flags, 10, '100 simulated trials, red if at least one false alarm');
+    cap(h, 'Each dot is one trial of 20 tests. Red: ' + n + ' of 100 had a false alarm.');
+  });
+
+  card({
+    tag: 'Predict 4', type: 'choice',
+    q: 'Five useless tests again, but now each uses a stricter cutoff of 0.5% (Bonferroni: 2.5% divided by 5). Chance of at least one false alarm?',
+    options: [{ value: 'a', label: 'About 0.5%' }, { value: 'b', label: 'About 2.5%' }, { value: 'c', label: 'About 10%' }, { value: 'd', label: 'About 12%' }],
+    answer: function () { var p = exactAny('bonf', 5, 0.025); return Math.abs(p - 0.025) < 0.003 ? 'b' : 'a'; },
+    explain: function () { return 'With the fix, the chance of any false alarm across all 5 tests is ' + pct(exactAny('bonf', 5, 0.025)) + '.'; }
+  }, function (h) {
+    miniBars(h, [{ label: 'One test at 2.5%', value: exactAny('none', 1, 0.025), color: TEAL }, { label: '5 tests, no fix', value: exactAny('none', 5, 0.025), color: ORANGE }, { label: '5 tests, Bonferroni', value: exactAny('bonf', 5, 0.025), color: TEAL }], { max: 0.3, fmt: function (v) { return pct(v); }, label: 'Chance of a false alarm with and without the fix' });
+    cap(h, 'The price: a drug that really works is harder to detect.');
+  });
+
+  card({
+    tag: 'Predict 5', type: 'choice',
+    q: 'A drug helps 30% of patients at every site. At one site, 1 patient or fewer of 19 improves. Luck alone does that about 1 time in 100. The drug is tested at 17 sites. Chance that at least one site looks this bad?',
+    options: [{ value: 'a', label: 'About 1%' }, { value: 'b', label: 'About 16%' }, { value: 'c', label: 'About 50%' }, { value: 'd', label: 'About 90%' }],
+    answer: function () { return Math.abs(ANY17 - 0.16) < 0.02 ? 'b' : 'a'; },
+    explain: function () { return 'One site: ' + num(PM, 4) + '. Seventeen sites: 1 - (1 - ' + num(PM, 4) + ')^17 = ' + pct(ANY17) + ' (assuming sites are independent: luck at one site tells you nothing about luck at another).'; }
+  }, function (h) {
+    var items = [0, 1, 2].map(function (j) { return { label: j + (j === 1 ? ' bad site' : ' bad sites'), value: Lab.binomPmf(j, 17, PM), color: j === 0 ? TEAL : ORANGE }; });
+    items.push({ label: '3 or more', value: Math.max(0, 1 - items[0].value - items[1].value - items[2].value), color: ORANGE });
+    miniBars(h, items, { max: 1, fmt: function (v) { return pct(v); }, label: 'Chance of 0, 1, 2 or more bad sites out of 17' });
+    cap(h, 'Computed by counting all the ways luck can give 0, 1, 2 or more bad sites (the binomial formula).');
+  });
+
+  card({
+    tag: 'Predict 6', type: 'choice',
+    q: 'Five useless tests in a fixed order: test the next one only if the one before was under the cutoff. Chance of at least one false alarm?',
+    options: [{ value: 'a', label: 'About 2.5%' }, { value: 'b', label: 'About 12%' }, { value: 'c', label: 'About 23%' }],
+    answer: function () { return Math.abs(exactAny('fixed', 5, 0.025) - 0.025) < 0.003 ? 'a' : 'b'; },
+    explain: function () { return 'To get any false alarm, the first test must be under the cutoff, which happens ' + pct(0.025, 1) + ' of the time. If it is not, testing stops.'; }
+  }, function (h) {
+    var a = runMany(2000, 'none', 5, 0.025, rng2), b = runMany(2000, 'fixed', 5, 0.025, rng2);
+    miniBars(h, [{ label: 'No fix', value: a.any, color: ORANGE }, { label: 'Fixed order', value: b.any, color: TEAL }], { max: 0.3, fmt: function (v) { return pct(v); }, label: 'Simulated chance of a false alarm, all tests versus fixed order' });
+  });
+
+  card({
+    tag: 'Predict 7', type: 'slider', min: 0, max: 20, step: 1, start: 0, tol: 1, fmt: function (v) { return v + ' measurements'; },
+    q: 'A trial runs 100 independent tests on lab measurements. The drug changes none. Cutoff: one-sided 2.5%. About how many will look "significant" (one-sided p-value under 2.5%)? Drag to your guess.',
+    answer: function () { return 100 * 0.025; },
+    explain: function () { return 'On average 100 x 0.025 = ' + num(100 * 0.025, 1) + ' measurements. The chance of at least one is ' + pct(exactAny('none', 100, 0.025)) + '.'; }
+  }, function (h, r) {
+    var ps = Lab.draws(100, rng2, function (x) { return x(); }), flags = ps.map(function (p) { return p < 0.025; }), n = flags.filter(Boolean).length;
+    iconArray(h, flags, 20, '100 simulated measurements, red if a false alarm');
+    cap(h, 'One simulated run. Red: ' + n + ' false alarms. You guessed ' + Math.round(r.guess) + '.');
+  });
+
+  /* ---------- Fixed order ladder ---------- */
+  var LAD = ['Test 1', 'Test 2', 'Test 3', 'Test 4', 'Test 5'];
+  function drawLadder(states) {
+    var svg = $('ladder'); svg.innerHTML = '';
+    LAD.forEach(function (name, i) {
+      var x = 14 + i * 133, st = states && states[i] ? states[i] : null, fill = !st ? TL : st.kind === 'win' ? '#FBEAE6' : st.kind === 'stop' ? '#FFF4D6' : GREY;
+      if (i) se('path', { d: 'M' + (x - 25) + ',75 L' + (x - 4) + ',75 M' + (x - 11) + ',69 L' + (x - 4) + ',75 L' + (x - 11) + ',81', stroke: NAVY, 'stroke-width': 2, fill: 'none' }, svg);
+      se('rect', { x: x, y: 38, width: 108, height: 74, rx: 10, fill: fill, stroke: st && st.kind === 'win' ? BAD : GOODC, 'stroke-width': 2 }, svg);
+      se('text', { x: x + 54, y: 62, 'text-anchor': 'middle', 'font-weight': 600 }, svg).textContent = name;
+      if (st) {
+        se('text', { x: x + 54, y: 82, 'text-anchor': 'middle' }, svg).textContent = st.p === null ? 'not tested' : 'p = ' + num(st.p, 3);
+        se('text', { x: x + 54, y: 100, 'text-anchor': 'middle', 'font-weight': 600, fill: st.kind === 'win' ? BAD : '#555' }, svg).textContent = st.kind === 'win' ? 'under cutoff, go on' : st.kind === 'stop' ? 'not under, stop' : '';
+      }
+    });
+    se('text', { x: 14, y: 22, 'font-size': 12, fill: '#555' }, svg).textContent = 'Cutoff at every step: ' + fa(S.a);
+  }
+  var ladTimer = null;
+  function runLadder(works) {
+    clearTimeout(ladTimer); var st = [], i = 0, halted = false, fires = 0;
+    function step() {
+      if (i >= LAD.length) { $('ladNote').innerHTML = 'One simulated run: ' + fires + ' of 5 tests under the cutoff. ' + (works ? 'When the drug works, every test keeps the full ' + fa(S.a) + ' cutoff.' : 'When it is useless, the ladder usually stops right away.'); drawLadder(st); return; }
+      if (halted) st.push({ kind: 'skip', p: null });
+      else { var u = rng(), p = works ? u * u * 0.02 : u; if (p < S.a) { st.push({ kind: 'win', p: p }); fires++; } else { st.push({ kind: 'stop', p: p }); halted = true; } }
+      i++; drawLadder(st); ladTimer = setTimeout(step, 450);
+    }
+    step();
+  }
+  $('lad0').addEventListener('click', function () { runLadder(false); });
+  $('lad1').addEventListener('click', function () { runLadder(true); });
+  drawLadder(null);
+
+  /* ---------- Star signs ---------- */
+  var SIGNS = ['Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir', 'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis'];
+  function slice() {
+    var svg = $('signs'); svg.innerHTML = '';
+    var MU = 2.5, LINE = 1.96, ZMIN = -1, ZMAX = 6;
+    var zs = SIGNS.map(function () { return MU + Lab.normal(rng); }), L = 40, B = 190, T = 12, W = 640, bw = (W - L - 10) / 12;
+    var sy = function (z) { return T + (ZMAX - z) / (ZMAX - ZMIN) * (B - T); }, miss = 0;
+    [0, LINE].forEach(function (z) { se('line', { x1: L, x2: W - 10, y1: sy(z), y2: sy(z), stroke: z === 0 ? '#999' : ORANGE, 'stroke-dasharray': z === 0 ? '' : '5 4', 'stroke-width': z === 0 ? 1 : 1.5 }, svg); se('text', { x: L - 6, y: sy(z) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#555' }, svg).textContent = z === 0 ? '0' : ''; });
+    zs.forEach(function (z, i) {
+      var short = z < LINE; if (short) miss++;
+      var y0 = sy(0), y1 = sy(z);
+      se('rect', { x: L + i * bw + 5, y: Math.min(y0, y1), width: bw - 10, height: Math.max(1, Math.abs(y1 - y0)), fill: short ? BAD : TEAL, opacity: 0.85 }, svg);
+      se('text', { x: L + i * bw + bw / 2, y: B + 18, 'text-anchor': 'middle', 'font-size': 12, fill: NAVY }, svg).textContent = SIGNS[i];
+    });
+    se('text', { x: W - 10, y: 12, 'text-anchor': 'end', 'font-size': 11, fill: '#555' }, svg).textContent = 'Bar: drug minus placebo, in units of luck. Red: short of the orange line, so it looks like no benefit.';
+    var q = Lab.normalCdf(LINE, MU, 1);
+    $('signChips').innerHTML = '<span class="chip warm">This split: <b>' + miss + ' of 12</b> signs look like no benefit</span>' +
+      '<span class="chip">Chance a sign looks like no benefit: <b>' + pct(q, 0) + '</b></span>' +
+      '<span class="chip">At least 1 of 12 signs does: <b>' + pct(1 - Math.pow(1 - q, 12), 0) + '</b></span>';
+  }
+  $('reslice').addEventListener('click', slice);
+
+  /* ---------- Code ---------- */
+  Lab.CodeBox($('code'), {
+    py: 'import numpy as np\n' +
+      'rng = np.random.default_rng(1)\n' +
+      'k, alpha, trials = 20, 0.025, 100_000\n' +
+      'p = rng.uniform(size=(trials, k))          # every drug is useless\n' +
+      'print((p < alpha).any(axis=1).mean())      # no fix: about 0.40\n' +
+      'print((p < alpha / k).any(axis=1).mean())  # Bonferroni: about 0.025\n' +
+      'print(1 - (1 - alpha) ** k)                # exact, no fix: 0.3973\n' +
+      'print(1 - (1 - alpha / k) ** k)            # exact, Bonferroni: 0.0247',
+    r: 'set.seed(1)\n' +
+      'k <- 20; alpha <- 0.025; trials <- 1e5\n' +
+      'p <- matrix(runif(trials * k), nrow = trials)   # every drug is useless\n' +
+      'mean(apply(p < alpha, 1, any))                  # no fix: about 0.40\n' +
+      'mean(apply(p < alpha / k, 1, any))              # Bonferroni: about 0.025\n' +
+      '1 - (1 - alpha)^k                               # exact, no fix: 0.3973\n' +
+      '1 - (1 - alpha / k)^k                           # exact, Bonferroni: 0.0247\n'
+  });
+
+
+  /* ---------- Truth vs what the trials see ---------- */
+  (function () {
+    var TRUE_P = 0.3, ND = 20, NP = 40, ALPHA = 0.025, trng = Lab.rng(2026), TM = 'none', TR = null;
+    $('tTrue').textContent = Math.round(TRUE_P * 100); $('tN').textContent = NP; $('tN2').textContent = NP;
+    var tb = $('trueBars'), W = 640, H = 90, bw = (W - 60) / ND, i;
+    tb.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    for (i = 0; i < ND; i++) {
+      se('rect', { x: 50 + i * bw + 3, y: 10 + (1 - TRUE_P / 0.5) * 60, width: bw - 6, height: TRUE_P / 0.5 * 60, rx: 3, fill: TEAL, opacity: 0.85 }, tb);
+      se('text', { x: 50 + i * bw + bw / 2, y: 84, 'text-anchor': 'middle', 'font-size': 10, fill: '#555' }, tb).textContent = i + 1;
+    }
+    se('text', { x: 44, y: 10 + (1 - TRUE_P / 0.5) * 60 + 5, 'text-anchor': 'end', 'font-size': 11, fill: NAVY }, tb).textContent = Math.round(TRUE_P * 100) + '%';
+    se('text', { x: 50, y: 8, 'font-size': 11, fill: '#555' }, tb).textContent = 'True response rate';
+    se('text', { x: 44, y: 74, 'text-anchor': 'end', 'font-size': 11, fill: '#555' }, tb).textContent = '0%';
+    function arm() { var a = [], j; for (j = 0; j < NP; j++) a.push(trng() < TRUE_P ? 1 : 0); return a; }
+    function sum(a) { return a.reduce(function (x, y) { return x + y; }, 0); }
+    function deal() {
+      TR = [];
+      for (var d = 0; d < ND; d++) {
+        var t = arm(), c = arm(), xt = sum(t), xc = sum(c), pp = (xt + xc) / (2 * NP), se2 = Math.sqrt(pp * (1 - pp) * 2 / NP), z = se2 > 0 ? (xt - xc) / NP / se2 : 0;
+        TR.push({ t: t, c: c, xt: xt, xc: xc, p: 1 - Lab.normalCdf(z, 0, 1) });
+      }
+    }
+    // Exact chance one drug passes a cutoff in this widget: sum over every possible (drug, placebo) result.
+    function passProb(thr) {
+      var a, b, s = 0;
+      for (a = 0; a <= NP; a++) for (b = 0; b <= NP; b++) {
+        var pp = (a + b) / (2 * NP), se2 = Math.sqrt(pp * (1 - pp) * 2 / NP), z = se2 > 0 ? (a - b) / NP / se2 : 0;
+        if (1 - Lab.normalCdf(z, 0, 1) < thr) s += Lab.binomPmf(a, NP, TRUE_P) * Lab.binomPmf(b, NP, TRUE_P);
+      }
+      return s;
+    }
+    var ANY_NONE = 1 - Math.pow(1 - passProb(ALPHA), ND), ANY_BONF = 1 - Math.pow(1 - passProb(ALPHA / ND), ND);
+    function bar() { return TM === 'bonf' ? ALPHA / ND : ALPHA; }
+    function row(box, lab, a) {
+      var w = document.createElement('div'); w.className = 'trw';
+      var l = document.createElement('span'); l.textContent = lab; w.appendChild(l);
+      var r = document.createElement('div'); r.className = 'trow'; r.setAttribute('role', 'img'); r.setAttribute('aria-label', lab + ': ' + sum(a) + ' of ' + a.length + ' improved');
+      r.innerHTML = a.map(function (v) { return '<svg class="pp ' + (v ? 'yes' : 'no') + '" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>'; }).join('');
+      w.appendChild(r); box.appendChild(w);
+    }
+    function pstr(p) { return p < 0.001 ? '< 0.001' : num(p, 3); }
+    function render() {
+      var g = $('tgrid'); g.innerHTML = '';
+      var b = bar(), n5 = 0, nb = 0;
+      TR.forEach(function (d, k) {
+        if (d.p < ALPHA) n5++; if (d.p < ALPHA / ND) nb++;
+        var lit = d.p < b, c = document.createElement('div'); c.className = 'dcell' + (lit ? ' lit' : '');
+        var h = document.createElement('div'); h.className = 'dh';
+        var gap = (d.xt - d.xc) / NP * 100;
+        h.innerHTML = '<b>Drug ' + (k + 1) + '</b><span>' + (lit ? 'false alarm, ' : '') + 'p = ' + pstr(d.p) + '</span>';
+        c.appendChild(h); row(c, 'Drug: ' + d.xt + '/' + NP, d.t); row(c, 'Placebo: ' + d.xc + '/' + NP, d.c);
+        g.appendChild(c);
+      });
+      $('truthRule').textContent = TM === 'bonf' ? 'Bonferroni: split the 2.5% across 20 drugs. A drug passes only if its one-sided p-value is under ' + num(ALPHA / ND * 100, 3) + '%.' : 'No fix: a drug looks like it works if its one-sided p-value is under 2.5%.';
+      $('truthChips').innerHTML = '<span class="chip warm">False alarms, no fix: <b>' + n5 + ' of ' + ND + '</b></span><span class="chip">False alarms, Bonferroni: <b>' + nb + ' of ' + ND + '</b></span>' +
+        '<span class="chip">Chance of at least 1 false alarm in 20 independent trials like these: <b>' + pct(ANY_NONE, 1) + '</b> no fix, <b>' + pct(ANY_BONF, 1) + '</b> Bonferroni</span>';
+      document.querySelectorAll('#truthBtns .btn').forEach(function (x) { x.classList.toggle('on', x.dataset.m === TM); });
+    }
+    [['none', 'No fix: cutoff 2.5%'], ['bonf', 'Bonferroni: cutoff 2.5% \u00f7 20']].forEach(function (m) {
+      var bt = document.createElement('button'); bt.type = 'button'; bt.className = 'btn'; bt.textContent = m[1]; bt.dataset.m = m[0];
+      bt.addEventListener('click', function () { TM = m[0]; render(); }); $('truthBtns').appendChild(bt);
+    });
+    var nb2 = document.createElement('button'); nb2.type = 'button'; nb2.className = 'btn primary'; nb2.textContent = 'Run 20 new trials';
+    nb2.addEventListener('click', function () { deal(); render(); }); $('truthBtns').appendChild(nb2);
+    deal(); render();
+  })();
+
+  /* ---------- Start ---------- */
+  var first = document.querySelector('#examples .btn');
+  S.k = 20; S.a = 0.025; S.m = 'none';
+  document.querySelectorAll('#examples .btn')[2].classList.add('on');
+  $('presetNote').textContent = PRESETS[2].note;
+  refresh(true); slice();
+  // Test hook: open the page with #reveal to answer every card (used for rendering checks).
+  if (location.hash === '#reveal') { CARDS.forEach(function (c) { var o = c.el.querySelector('.opt'); if (o) o.click(); else { var i = c.el.querySelector('input[type=range]'); i.value = 7; i.dispatchEvent(new Event('input')); } c.check(); }); }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capstone: write and defend a Bayesian protocol | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive capstone: design one two-arm Bayesian trial step by step, test it by simulation, and print a one-page protocol summary tied to FDA and ICH guidance items.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<style>
+  .step { border: 1px solid #cfd6df; border-radius: 12px; padding: 1rem 1.2rem 1.1rem; margin: 1.2rem 0; background: #fff; }
+  .step h2 { font-size: 1.25rem; margin: 0 0 .4rem; }
+  .step h2 .num { display: inline-block; min-width: 1.9rem; height: 1.9rem; line-height: 1.9rem; text-align: center; border-radius: 50%; background: #0A1628; color: #fff; font-size: 1rem; margin-right: .5rem; }
+  .step p { margin: .3rem 0; }
+  .tk { margin: .8rem 0 0; padding: .45rem .8rem; border-left: 4px solid #1F6B6B; background: #eef6f6; font-weight: 600; }
+  .figure svg text { font-family: 'IBM Plex Sans', sans-serif; }
+  .seg { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0; }
+  .seg .btn[aria-pressed="true"] { background: #1F6B6B; color: #fff; border-color: #1F6B6B; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: .92rem; margin: .5rem 0; }
+  .tbl th, .tbl td { border-bottom: 1px solid #dde2e8; padding: .35rem .5rem; text-align: left; vertical-align: top; }
+  .tbl th { font-size: .8rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .04em; color: #5B6470; }
+  .tbl td.num2 { font-family: var(--mono); white-space: nowrap; }
+  .tbl .bad { color: #B8531A; font-weight: 600; }
+  .tbl .ok { color: #1F6B6B; font-weight: 600; }
+  .tbl tr.you td:first-child { font-weight: 600; }
+  .bar { height: 10px; background: #E6E9ED; border-radius: 3px; min-width: 70px; }
+  .bar i { display: block; height: 100%; border-radius: 3px; }
+  .wrapx { overflow-x: auto; }
+  .sumcard { border: 2px solid #0A1628; border-radius: 12px; padding: 1.1rem 1.3rem; margin: 1.2rem 0; background: #fff; }
+  .sumcard h2 { margin-top: 0; }
+  .sumcard .why { font-size: .85rem; color: #3b4450; }
+  .sumcard .why i { font-style: normal; color: #1F6B6B; font-weight: 600; }
+  .status { font-size: .9rem; color: #5B6470; min-height: 1.3em; }
+  @media (max-width: 800px) { .labgrid { grid-template-columns: 1fr !important; } }
+  @media print {
+    body.lab { background: #fff !important; }
+    .topbar, .skip, .hero, .step, .reg, .takeaway, .labfoot, #code, .noprint { display: none !important; }
+    main.wrap { max-width: none; padding: 0; }
+    .sumcard { border: none; padding: 0; margin: 0; }
+    .tbl { font-size: 9.5pt; }
+    .tbl th, .tbl td { padding: .2rem .35rem; }
+    .sumcard .why { font-size: 8.5pt; }
+    a { color: #000; text-decoration: none; }
+  }
+</style>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">16. Capstone: write and defend a Bayesian protocol</span>
+  <span class="pn"><a href="15-reading-bayesian-trials.html">&larr; Prev</a><a href="./">Index</a></span>
+</div></div>
+
+<main class="wrap" id="lab">
+<section class="hero">
+  <div class="kicker">Module 16</div>
+  <h1>Capstone: write and defend a Bayesian protocol</h1>
+  <p class="hook">Design one trial in nine steps, then print a one-page summary you can defend.</p>
+  <p class="note" style="margin:0 0 .6rem">The trial has two arms, drug and placebo, and a yes or no outcome. A <b>false win</b> calls a useless drug a success. <b>Power</b> is the chance to win when the drug works (<a href="03-errors-power.html">module 3</a>). The target for false wins is 2.5%.</p>
+</section>
+
+<section class="step" id="s1" aria-labelledby="h1">
+  <h2 id="h1"><span class="num">1</span>Question and endpoint</h2>
+  <p>Pick what you ask. Each patient is a yes (improved) or a no.</p>
+  <div class="seg" id="endp" role="group" aria-label="Endpoint"></div>
+  <div class="chips" id="endChips" aria-live="polite"></div>
+  <p class="note">How to say exactly what you are estimating: the <b>estimand</b>, in <a href="06-fair-comparisons.html">module 6</a>. We assume about 30% of placebo patients improve (made-up).</p>
+  <p class="tk">One clear question and a yes or no outcome keep every later step simple.</p>
+</section>
+
+<section class="step" id="s2" aria-labelledby="h2">
+  <h2 id="h2"><span class="num">2</span>The prior</h2>
+  <p>A prior is what you believe before the trial. Pick one, and see what it is worth in patients.</p>
+  <div class="seg" id="priorBtns" role="group" aria-label="Prior"></div>
+  <div class="plotbox"><svg id="plot2"></svg></div>
+  <div class="chips" id="priorChips" aria-live="polite"></div>
+  <p class="note">Beta(<i>a</i>, <i>b</i>) = as if you had already seen <i>a</i> &minus; 1 responders and <i>b</i> &minus; 1 non-responders (<a href="01-prior-posterior.html">module 1</a>). So an arm is "worth" <i>a</i> + <i>b</i> &minus; 2 patients. Historical: 30 of 100 placebo patients in an earlier trial, placebo arm only.</p>
+  <p class="tk">A prior is worth a number of patients, and you must be able to defend that number.</p>
+</section>
+
+<section class="step" id="s3" aria-labelledby="h3">
+  <h2 id="h3"><span class="num">3</span>When the new data disagree with history</h2>
+  <p>History says 30% on placebo. Today's trial enrolls 40 placebo patients. Drag the result.</p>
+  <div class="labgrid">
+    <div class="panel">
+      <div class="field"><label for="k3">Improved among 40 new placebo patients</label><input id="k3" type="range" min="0" max="40" step="1" value="20"><output id="k3O"></output></div>
+      <p class="note">Full borrowing: trust history as 100 patients. Robust mixture: 80% history, 20% flat, and the data decide which one fits.</p>
+      <div class="seg" id="borrowBtns" role="group" aria-label="Use as the placebo prior"></div>
+    </div>
+    <div>
+      <div class="plotbox"><svg id="plot3"></svg><div class="chips" id="chips3" aria-live="polite"></div></div>
+    </div>
+  </div>
+  <div class="qcards" id="q3"></div>
+  <p class="tk">The robust mixture lets go of history when the new data clearly disagree. Full borrowing does not.</p>
+</section>
+
+<section class="step" id="s4" aria-labelledby="h4">
+  <h2 id="h4"><span class="num">4</span>The success rule</h2>
+  <p>The trial wins if the chance that the drug beats placebo by more than <i>a</i> points is above <i>c</i>. Write it as Pr(drug &minus; placebo &gt; <i>a</i> | data) &gt; <i>c</i>.</p>
+  <div class="labgrid">
+    <div class="panel">
+      <div class="field"><label for="aS"><i>a</i>: smallest benefit that counts</label><input id="aS" type="range" min="0" max="10" step="1" value="0"><output id="aO"></output></div>
+      <div class="field"><label for="cS"><i>c</i>: how sure we must be</label><input id="cS" type="range" min="0.9" max="0.995" step="0.005" value="0.975"><output id="cO"></output></div>
+      <div class="field"><label for="nS">Patients per arm</label><input id="nS" type="range" min="40" max="200" step="10" value="100"><output id="nO"></output></div>
+      <h3 style="margin:.8rem 0 .2rem;font-size:.95rem">A trial result to try</h3>
+      <div class="field"><label for="opc">Placebo improved</label><input id="opc" type="range" min="0" max="100" step="1" value="30"><output id="opcO"></output></div>
+      <div class="field"><label for="opt">Drug improved</label><input id="opt" type="range" min="0" max="100" step="1" value="48"><output id="optO"></output></div>
+    </div>
+    <div>
+      <div class="plotbox"><svg id="plot4"></svg><div class="chips" id="chips4" aria-live="polite"></div></div>
+    </div>
+  </div>
+  <p class="note">The curve is the chance for each true gap (drug minus placebo), using your prior from step 2 or 3. The dashed line is <i>a</i>.</p>
+  <p class="tk">The rule has two dials, and both go in the protocol before the first patient.</p>
+</section>
+
+<section class="step" id="s5" aria-labelledby="h5">
+  <h2 id="h5"><span class="num">5</span>Simulation report</h2>
+  <p>Simulate 2,000 trials in each row where the drug does nothing (placebo 20%, 30%, 40%), and 2,000 where it works. If <i>a</i> is above 0, also simulate rows where the drug beats placebo by exactly <i>a</i>: the edge of the claim.</p>
+  <div class="labgrid">
+    <div class="panel">
+      <div class="field"><label for="eS">True gain when the drug works (placebo 30%)</label><input id="eS" type="range" min="10" max="30" step="5" value="20"><output id="eO"></output></div>
+      <div class="seg" id="looksBtns" role="group" aria-label="Looks at the data"></div>
+      <div class="row"><button class="btn primary" id="findBtn" type="button">Find my bar</button></div>
+      <p class="status" id="status5" aria-live="polite"></p>
+      <p class="note" id="check5" aria-live="polite" style="margin:.4rem 0 0"></p>
+    </div>
+    <div>
+      <div class="plotbox"><svg id="plot5"></svg></div>
+    </div>
+  </div>
+  <div class="wrapx"><table class="tbl" id="tbl5"><caption class="note" style="text-align:left;caption-side:bottom">The false-win rate in each null row (and edge row) should be at or below 2.5%. &plusmn; is the Monte Carlo standard error (simulation noise).</caption></table></div>
+  <div class="qcards" id="q5"></div>
+  <p class="tk">Pass the test in the worst row, not the friendliest one.</p>
+</section>
+
+<section class="step" id="s6" aria-labelledby="h6">
+  <h2 id="h6"><span class="num">6</span>Sensitivity analyses</h2>
+  <p>Rerun everything under the other priors, with your <i>a</i>, <i>c</i> and trial size.</p>
+  <div class="wrapx"><table class="tbl" id="tbl6"><caption class="note" style="text-align:left;caption-side:bottom">Differences under about 1 point are within simulation noise.</caption></table></div>
+  <div class="qcards" id="q6"></div>
+  <p class="tk">If the answer flips with the prior, the protocol must say why yours is the right one.</p>
+</section>
+
+<section class="step" id="s7" aria-labelledby="h7">
+  <h2 id="h7"><span class="num">7</span>Interim looks and the DMC</h2>
+  <p>A <b>DMC</b> (Data Monitoring Committee, a small independent group of experts) and its independent analysis team see interim results by treatment. The sponsor’s trial team stays blinded. Pick the futility rule.</p>
+  <div class="seg" id="futBtns" role="group" aria-label="Futility rule"></div>
+  <p class="note">Predictive probability of winning is defined in <a href="07-interim-looks.html">module 7</a>. The simulation in step 5 has no futility stop, so a real protocol must simulate it too.</p>
+  <p class="tk">Write who looks, when, and what they may do before the trial starts.</p>
+</section>
+
+<section class="step" id="s8" aria-labelledby="h8">
+  <h2 id="h8"><span class="num">8</span>Talking to the FDA</h2>
+  <p>Pick where you bring this design.</p>
+  <div class="seg" id="mtgBtns" role="group" aria-label="Meeting"></div>
+  <div class="chips" id="mtgChips" aria-live="polite"></div>
+  <p class="note">The CID program takes 1 to 2 proposals a quarter. Who talks to whom, and when: <a href="13-regulators-map.html">module 13</a>. <a href="https://www.fda.gov/drugs/development-resources/complex-innovative-trial-design-meeting-program">FDA CID meeting program</a>.</p>
+  <p class="tk">Agree the success rule and the simulations with the FDA before you run the trial.</p>
+</section>
+
+<section class="sumcard" id="summary" aria-labelledby="h9">
+  <h2 id="h9">9. The one-page protocol summary</h2>
+  <p class="note noprint">It fills in from your choices. Each line names the guidance item it answers.</p>
+  <div class="wrapx"><table class="tbl" id="tbl9"></table></div>
+  <div class="row noprint" style="margin-top:.6rem"><button class="btn primary" id="printBtn" type="button">Print this summary</button></div>
+  <p class="why" id="stale9" aria-live="polite"></p>
+</section>
+
+<div id="code"></div>
+
+<section class="reg">
+  <h3>Regulator's corner</h3>
+  <p>Both documents are drafts. The FDA Bayesian draft (January 2026) says:</p>
+  <blockquote>"It is always critical for Bayesian analyses to have a prespecified prior"</blockquote>
+  <p class="note">Section IV.B. <a href="https://www.fda.gov/media/190505/download">FDA draft guidance on Bayesian methods</a>. Simulation reports: ICH E20 draft, section 5.2, <a href="https://www.fda.gov/media/188961/download">ICH E20</a>.</p>
+</section>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>Write the prior, the success rule and the simulations before the first patient.</li>
+    <li>Test the rule where history is wrong, not only where it is right.</li>
+    <li>Raise <i>c</i> until the worst null row is at or below 2.5%.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/prior-distribution">Prior distribution</a>, <a href="encyclopedia/#/e/bayesian-borrowing">Bayesian borrowing</a>, <a href="encyclopedia/#/e/skeptical-prior">Skeptical prior</a>, <a href="encyclopedia/#/e/bayesian-protocol">Bayesian protocol</a>, <a href="encyclopedia/#/e/prespecification">Prespecification</a>, <a href="encyclopedia/#/e/effective-sample-size">Effective sample size</a>, <a href="encyclopedia/#/e/enthusiastic-prior">Enthusiastic prior</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/07-priors.html">8</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/16-borrowing.html">19</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/19-protocol.html">23</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters</a>)</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a> (earlier public version of the submitted manuscript that supplies the numbers above).</li>
+    <li>Muss, H. B. et al. (2009). Adjuvant chemotherapy in older women with early-stage breast cancer. N Engl J Med 360(20):2055-2065. <a href="https://doi.org/10.1056/NEJMoa0810266">doi:10.1056/NEJMoa0810266</a> (CALGB 49907; numbers via the submitted manuscript).</li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', ORANGE = '#E07A3F', NAVY = '#0A1628', RUST = '#B8531A', GREY = '#7b8794', BROWN = '#8a6d3b';
+  var $ = function (id) { return document.getElementById(id); };
+  function chip(t, v, w) { return '<span class="chip' + (w ? ' warm' : '') + '">' + t + ' <b>' + v + '</b></span>'; }
+  function pct1(x) { return Lab.pct(x, 1); }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  /* ---------- State ---------- */
+  var ENDP = [
+    { label: 'Pain relief at week 4', yes: 'report pain relief at week 4' },
+    { label: 'Infection cleared by day 14', yes: 'have the infection cleared by day 14' },
+    { label: 'No relapse at 6 months', yes: 'have no relapse at 6 months' }
+  ];
+  // Beta components per arm: [{w, a, b}]. ESS = sum w (a + b - 2).
+  var FLAT = [{ w: 1, a: 1, b: 1 }];
+  var PRI = {
+    flat: { name: 'Flat', C: FLAT, T: FLAT },
+    skept: { name: 'Skeptical', C: [{ w: 1, a: 4, b: 8 }], T: [{ w: 1, a: 4, b: 8 }] },
+    enth: { name: 'Enthusiastic', C: [{ w: 1, a: 4, b: 9 }], T: [{ w: 1, a: 10, b: 12 }] },
+    hist: { name: 'Historical, full borrowing', C: [{ w: 1, a: 31, b: 71 }], T: FLAT },
+    robust: { name: 'Historical, robust mixture', C: [{ w: 0.8, a: 31, b: 71 }, { w: 0.2, a: 1, b: 1 }], T: FLAT }
+  };
+  var PORDER = ['flat', 'skept', 'enth', 'hist', 'robust'];
+  var PDESC = {
+    flat: 'Both arms start with no opinion.',
+    skept: 'Both arms start as if 3 of 10 patients improved: it expects no gap.',
+    enth: 'Placebo arm starts as if 3 of 11 improved (about 30%), drug arm as if 9 of 20 improved (about 45%): it expects a gap.',
+    hist: 'Placebo arm starts with 30 of 100 from an earlier trial. Drug arm flat.',
+    robust: 'Placebo arm: 80% the earlier trial, 20% flat. Drug arm flat.'
+  };
+  var S = { endp: 0, prior: 'flat', n: 100, A: 0, c: 0.975, looks: 1, eff: 20, fut: 1, mtg: 'cid', k3: 20, opc: 30, opt: 48 };
+  function ess(comps) { var s = 0; comps.forEach(function (c) { s += c.w * (c.a + c.b - 2); }); return s; }
+  function compTxt(comps) { return comps.map(function (c) { return (comps.length > 1 ? Math.round(100 * c.w) + '% ' : '') + 'Beta(' + c.a + ', ' + c.b + ')'; }).join(' + '); }
+  function fmtN(x) { return (Math.round(x * 10) / 10).toString(); }
+  // Size of an arm prior in words: a mixture is not "worth" one number of patients.
+  function sizeTxt(comps) {
+    if (comps.length < 2) return 'worth ' + fmtN(ess(comps)) + ' patients';
+    return Math.round(100 * comps[0].w) + '% historical part, based on ' + fmtN(comps[0].a + comps[0].b - 2) + ' patients; ' + Math.round(100 * comps[1].w) + '% flat part';
+  }
+
+  /* ---------- Grid engine ---------- */
+  var G = 200, XS = [], i0;
+  for (i0 = 0; i0 < G; i0++) XS.push((i0 + 0.5) / G);
+  var cEdge = {}, cArm = {}, cCdf = {}, cWin = {};
+  // Exact Beta CDF at the grid edges 0, 1/G, ..., 1.
+  function edgeBeta(a, b) {
+    var k = a + ',' + b; if (cEdge[k]) return cEdge[k];
+    var v = new Float64Array(G + 1), i;
+    for (i = 1; i < G; i++) v[i] = Lab.betaCdf(i / G, a, b);
+    v[G] = 1;
+    return (cEdge[k] = v);
+  }
+  // Posterior components after k improved of m: weights by beta-binomial marginal likelihood.
+  function postComps(comps, m, k) {
+    var lw = comps.map(function (c) { return Math.log(c.w) + Lab.lbeta(c.a + k, c.b + m - k) - Lab.lbeta(c.a, c.b); });
+    var mx = Math.max.apply(null, lw), s = 0, w = lw.map(function (x) { var e = Math.exp(x - mx); s += e; return e; });
+    return comps.map(function (c, j) { return { w: w[j] / s, a: c.a + k, b: c.b + m - k }; });
+  }
+  // Continuous posterior CDF of one arm at the grid edges.
+  function armCdf(pid, arm, m, k) {
+    var key = pid + arm + '|' + m + '|' + k; if (cCdf[key]) return cCdf[key];
+    var pc = postComps(PRI[pid][arm], m, k), v = new Float64Array(G + 1), i;
+    pc.forEach(function (c) { var e = edgeBeta(c.a, c.b); for (i = 0; i <= G; i++) v[i] += c.w * e[i]; });
+    return (cCdf[key] = v);
+  }
+  // Probability in each grid cell (used for the gap curve and as the weights in winP).
+  function armPmf(pid, arm, m, k) {
+    var key = pid + arm + '|' + m + '|' + k; if (cArm[key]) return cArm[key];
+    var e = armCdf(pid, arm, m, k), v = new Float64Array(G), i;
+    for (i = 0; i < G; i++) v[i] = e[i + 1] - e[i];
+    return (cArm[key] = v);
+  }
+  // Pr(drug - placebo > A points | sc of m placebo, st of m drug) under prior pid.
+  // The placebo posterior is cut into cells; the drug posterior enters through its continuous CDF (interpolated between edges).
+  function winP(pid, A, m, sc, st) {
+    var key = pid + '|' + A + '|' + m, tb = cWin[key], ix = sc * (m + 1) + st;
+    if (!tb) tb = cWin[key] = new Float32Array((m + 1) * (m + 1)).fill(-1);
+    if (tb[ix] >= 0) return tb[ix];
+    var pC = armPmf(pid, 'C', m, sc), F = armCdf(pid, 'T', m, st), s = 0, j, u, pos, i, fr;
+    for (j = 0; j < G; j++) {
+      u = (j + 0.5) / G + A / 100; if (u >= 1) break;
+      pos = u * G; i = Math.floor(pos); fr = pos - i;
+      s += pC[j] * (1 - (F[i] * (1 - fr) + F[i + 1] * fr));
+    }
+    return (tb[ix] = Math.min(1, s));
+  }
+
+  /* ---------- Simulation cache (common random numbers) ---------- */
+  var NT = 2000, CH = 200;
+  function rowsDef(eff, A) {
+    var rows = [
+      { k: 'n20', label: 'Drug does nothing, placebo 20%', pc: 0.2, pt: 0.2, seed: 101, nul: true },
+      { k: 'n30', label: 'Drug does nothing, placebo 30%', pc: 0.3, pt: 0.3, seed: 102, nul: true },
+      { k: 'n40', label: 'Drug does nothing, placebo 40%', pc: 0.4, pt: 0.4, seed: 103, nul: true },
+      { k: 'pw', label: 'Drug works: placebo 30%, drug ' + Math.round(30 + eff) + '%', pc: 0.3, pt: 0.3 + eff / 100, seed: 104, nul: false }
+    ];
+    // When a > 0 the claim is "drug beats placebo by more than a", so its null edge is drug = placebo + a.
+    if (A > 0) [20, 30, 40].forEach(function (p, i) { rows.push({ k: 'e' + p, label: 'Edge: placebo ' + p + '%, drug ' + (p + A) + '%', pc: p / 100, pt: (p + A) / 100, seed: 111 + i, nul: true, edge: true }); });
+    return rows;
+  }
+  var cCounts = {}, cStat = {};
+  function getCounts(n, row) {
+    var key = [n, row.pc.toFixed(3), row.pt.toFixed(3), row.seed].join('|'); if (cCounts[key]) return cCounts[key];
+    var r = Lab.rng(row.seed), h = n / 2, o = { c1: new Int16Array(NT), t1: new Int16Array(NT), cF: new Int16Array(NT), tF: new Int16Array(NT) }, t, a, b, c2, t2;
+    for (t = 0; t < NT; t++) {
+      a = Lab.binomial(r, h, row.pc); b = Lab.binomial(r, h, row.pt); c2 = Lab.binomial(r, h, row.pc); t2 = Lab.binomial(r, h, row.pt);
+      o.c1[t] = a; o.t1[t] = b; o.cF[t] = a + c2; o.tF[t] = b + t2;
+    }
+    return (cCounts[key] = o);
+  }
+  function statKey(pid, A, n, looks, row) { return [pid, A, n, looks, row.pc.toFixed(3), row.pt.toFixed(3), row.seed].join('|'); }
+  function fillStat(pid, A, n, looks, row, st, from, to) {
+    var cn = getCounts(n, row), h = n / 2, t, s, s1;
+    for (t = from; t < to; t++) {
+      s = winP(pid, A, n, cn.cF[t], cn.tF[t]);
+      if (looks === 2) { s1 = winP(pid, A, h, cn.c1[t], cn.t1[t]); if (s1 > s) s = s1; }
+      st.arr[t] = s;
+    }
+    if (to >= NT) st.done = true;
+  }
+  function rowTasks(pid, A, n, looks, row, tasks) {
+    var key = statKey(pid, A, n, looks, row), st = cStat[key];
+    if (st && st.done) return st;
+    st = cStat[key] = { arr: new Float32Array(NT), done: false };
+    for (var from = 0; from < NT; from += CH) (function (f) { tasks.push(function () { fillStat(pid, A, n, looks, row, st, f, Math.min(NT, f + CH)); }); })(from);
+    return st;
+  }
+  function getStat(pid, row) { var st = cStat[statKey(pid, S.A, S.n, S.looks, row)]; return st && st.done ? st : null; }
+  function rate(st, c) { var k = 0, i, a = st.arr; for (i = 0; i < NT; i++) if (a[i] > c) k++; return k / NT; }
+  function se(p) { return Math.sqrt(p * (1 - p) / NT); }
+  function allDone(pid) { return rowsDef(S.eff, S.A).every(function (r) { return getStat(pid, r); }); }
+
+  // Time-boxed chunk runner: never holds the thread for more than about 30 ms.
+  var tok = 0;
+  function runTasks(my, tasks, prog, done) {
+    var i = 0;
+    (function step() {
+      if (my !== tok) return;
+      var t0 = performance.now();
+      while (i < tasks.length && performance.now() - t0 < 30) tasks[i++]();
+      if (prog) prog(tasks.length ? i / tasks.length : 1);
+      if (i < tasks.length) setTimeout(step, 0); else if (done) done();
+    })();
+  }
+
+  /* ---------- Step 1 ---------- */
+  function mkSeg(id, items, get, set) {
+    var box = $(id); box.innerHTML = '';
+    items.forEach(function (it) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = it.label; b.dataset.v = it.v;
+      b.addEventListener('click', function () { set(it.v); });
+      box.appendChild(b);
+    });
+    return function () { [].forEach.call(box.children, function (b) { b.setAttribute('aria-pressed', String(String(get()) === b.dataset.v)); }); };
+  }
+  var syncEnd = mkSeg('endp', ENDP.map(function (e, i) { return { label: e.label, v: i }; }), function () { return S.endp; }, function (v) { S.endp = +v; r1(); summary(); });
+  function r1() { syncEnd(); $('endChips').innerHTML = chip('Question', 'Does the drug raise the share of patients who improve?') + chip('A patient counts as yes if they', ENDP[S.endp].yes, true); }
+
+  /* ---------- Step 2 ---------- */
+  var plot2 = Lab.Plot($('plot2'), { xlim: [0, 1], ylim: [0, 3], xlabel: 'True response rate', ylabel: 'Belief', label: 'Prior curves for the placebo arm and the drug arm' });
+  var xs201 = Lab.linspace(0.002, 0.998, 200);
+  function pdfMix(comps, xs) { return xs.map(function (x) { var s = 0; comps.forEach(function (c) { s += c.w * Lab.betaPdf(x, c.a, c.b); }); return s; }); }
+  var syncPri;
+  function setPrior(p) { S.prior = p; r2(); r3(); r4(); rebuild(); }
+  syncPri = mkSeg('priorBtns', PORDER.map(function (p) { return { label: PRI[p].name, v: p }; }), function () { return S.prior; }, setPrior);
+  function r2() {
+    syncPri();
+    var p = PRI[S.prior], yc = pdfMix(p.C, xs201), yt = pdfMix(p.T, xs201), mx = Math.max(Math.max.apply(null, yc), Math.max.apply(null, yt));
+    plot2.setYlim(0, Math.max(2, Math.ceil(mx * 1.1)));
+    plot2.line('c', xs201, yc, { stroke: ORANGE, width: 3 }, 0);
+    plot2.line('t', xs201, yt, { stroke: TEAL, width: 2.5, dash: '6 4' }, 0);
+    plot2.legend([{ label: 'Placebo arm', color: ORANGE, kind: 'line' }, { label: 'Drug arm', color: TEAL, kind: 'dash' }]);
+    $('priorChips').innerHTML = chip('Placebo arm', compTxt(p.C) + ', ' + sizeTxt(p.C)) + chip('Drug arm', compTxt(p.T) + ', ' + sizeTxt(p.T), true) + chip('Chance drug beats placebo, before any data', pct1(winP(S.prior, 0, 0, 0, 0))) + '<span class="chip">' + PDESC[S.prior] + '</span>';
+  }
+
+  /* ---------- Step 3 ---------- */
+  var plot3 = Lab.Plot($('plot3'), { xlim: [0, 1], ylim: [0, 10], xlabel: 'True placebo response rate', ylabel: 'Belief', label: 'Placebo rate: history, new data alone, full borrowing posterior and robust mixture posterior' });
+  var M3 = 40;
+  var syncBor = mkSeg('borrowBtns', [{ label: 'Use full borrowing', v: 'hist' }, { label: 'Use robust mixture', v: 'robust' }], function () { return S.prior; }, setPrior);
+  function r3() {
+    syncBor();
+    var k = S.k3, m = M3, xs = xs201, hist = PRI.hist.C, rob = PRI.robust.C;
+    var full = postComps(hist, m, k), rb = postComps(rob, m, k), flat = postComps(FLAT, m, k);
+    var yh = pdfMix(hist, xs), yf = pdfMix(full, xs), yr = pdfMix(rb, xs), yd = pdfMix(flat, xs);
+    plot3.setYlim(0, Math.max(5, Math.ceil(Math.max(Math.max.apply(null, yh), Math.max.apply(null, yf), Math.max.apply(null, yr), Math.max.apply(null, yd)) * 1.1)));
+    plot3.line('h', xs, yh, { stroke: GREY, width: 1.5, dash: '3 4' }, 0);
+    plot3.line('d', xs, yd, { stroke: NAVY, width: 1.5, dash: '6 3' }, 0);
+    plot3.line('f', xs, yf, { stroke: ORANGE, width: 2.5 }, 0);
+    plot3.line('r', xs, yr, { stroke: TEAL, width: 3 }, 0);
+    plot3.vline('o', k / m, 'new data', { color: RUST, dash: '5 4' }, 0);
+    plot3.legend([{ label: 'History', color: GREY, kind: 'dash' }, { label: 'New data alone', color: NAVY, kind: 'dash' }, { label: 'Full borrowing', color: ORANGE, kind: 'line' }, { label: 'Robust mixture', color: TEAL, kind: 'line' }]);
+    var mean = function (cs) { var s = 0; cs.forEach(function (c) { s += c.w * c.a / (c.a + c.b); }); return s; };
+    $('k3O').textContent = k + ' of ' + m + ' (' + Lab.pct(k / m, 0) + ')';
+    $('chips3').innerHTML = chip('Full borrowing: best guess', Lab.pct(mean(full), 1), true) + chip('Robust mixture: best guess', Lab.pct(mean(rb), 1)) + chip('Robust mixture: weight on history', Lab.pct(rb[0].w, 0)) + chip('Data alone', Lab.pct(mean(flat), 1));
+  }
+  function wHist(k) { return postComps(PRI.robust.C, M3, k)[0].w; }
+
+  /* ---------- Step 4 ---------- */
+  var plot4 = Lab.Plot($('plot4'), { xlim: [-30, 60], ylim: [0, 0.05], xlabel: 'True gap, drug minus placebo (points)', ylabel: 'Belief', label: 'Posterior curve of the gap between drug and placebo with the benefit line a' });
+  function r4() {
+    var n = S.n, kc = Math.round(S.opc * n / 100), kt = Math.round(S.opt * n / 100);
+    $('aO').textContent = S.A + ' points'; $('cO').textContent = S.c.toFixed(3); $('nO').textContent = n; $('opcO').textContent = S.opc + '% (' + kc + ' of ' + n + ')'; $('optO').textContent = S.opt + '% (' + kt + ' of ' + n + ')';
+    var pC = armPmf(S.prior, 'C', n, kc), pT = armPmf(S.prior, 'T', n, kt), d = new Float64Array(2 * G - 1), i, j, xs = [], ys = [], mx = 0;
+    for (i = 0; i < G; i++) for (j = 0; j < G; j++) d[i - j + G - 1] += pT[i] * pC[j];
+    for (i = 0; i < 2 * G - 1; i++) { var x = (i - G + 1) * 100 / G; if (x >= -30 && x <= 60) { xs.push(x); ys.push(d[i] / (100 / G)); if (ys[ys.length - 1] > mx) mx = ys[ys.length - 1]; } }
+    plot4.setYlim(0, Math.max(0.02, Math.ceil(mx * 1.15 * 100) / 100));
+    plot4.line('d', xs, ys, { stroke: TEAL, width: 3 }, 0);
+    plot4.vline('a', S.A, 'a = ' + S.A, { color: NAVY, dash: '5 4' }, 0);
+    var pr = winP(S.prior, S.A, n, kc, kt), win = pr > S.c;
+    $('chips4').innerHTML = chip('Pr(gap > ' + S.A + ' points)', pr.toFixed(3), true) + chip('Bar c', S.c.toFixed(3)) + chip('Verdict', win ? 'WIN' : 'not a win', !win);
+  }
+
+  /* ---------- Step 5 ---------- */
+  var plot5 = Lab.Plot($('plot5'), { xlim: [0.9, 0.995], ylim: [0, 1], xlabel: 'Bar c', ylabel: 'Share of simulated trials that win', label: 'False-win rate in the null rows and power as the bar c rises' });
+  var CGRID = Lab.linspace(0.9, 0.995, 20);
+  var ROWCOL = { n20: ORANGE, n30: RUST, n40: BROWN, pw: TEAL, e20: ORANGE, e30: RUST, e40: BROWN };
+  function r5() {
+    var rows = rowsDef(S.eff, S.A), pid = S.prior;
+    $('eO').textContent = S.eff + ' points';
+    var ok = allDone(pid);
+    var html = '<thead><tr><th>Row</th><th>Win rate</th><th></th><th>&plusmn; SE</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      var st = getStat(pid, r);
+      if (!st) { html += '<tr><td>' + r.label + '</td><td colspan="3" class="note">running...</td></tr>'; return; }
+      var p = rate(st, S.c), bad = r.nul && p > 0.025;
+      html += '<tr><td>' + r.label + '</td><td class="num2 ' + (r.nul ? (bad ? 'bad' : 'ok') : '') + '">' + pct1(p) + (r.nul ? (bad ? ' over 2.5%' : ' ok') : ' power') + '</td><td><div class="bar"><i style="width:' + Math.min(100, 100 * p) + '%;background:' + (r.nul ? (bad ? RUST : GREY) : TEAL) + '"></i></div></td><td class="num2">&plusmn;' + Lab.pct(se(p), 2) + '</td></tr>';
+    });
+    var cap = $('tbl5').querySelector('caption').outerHTML;
+    $('tbl5').innerHTML = cap + html + '</tbody>';
+    if (ok) {
+      ['e20', 'e30', 'e40'].forEach(function (k) { if (!rows.some(function (r) { return r.k === k; })) { try { plot5.remove(k); } catch (e) {} } });
+      rows.forEach(function (r) {
+        var st = getStat(pid, r); plot5.line(r.k, CGRID, CGRID.map(function (c) { return rate(st, c); }), { stroke: ROWCOL[r.k], width: r.k === 'pw' ? 3 : 2, dash: r.edge ? '1 3' : (r.k === 'n20' ? '6 3' : (r.k === 'n40' ? '2 3' : null)) }, 0);
+      });
+      plot5.line('lim', [0.9, 0.995], [0.025, 0.025], { stroke: GREY, width: 1, dash: '4 4' }, 0);
+      plot5.vline('c', S.c, 'c = ' + S.c.toFixed(3), { color: NAVY, dash: '5 4' }, 0);
+      plot5.legend([{ label: 'Null, placebo 20%', color: ORANGE, kind: 'dash' }, { label: 'Null, placebo 30%', color: RUST, kind: 'line' }, { label: 'Null, placebo 40%', color: BROWN, kind: 'dash' }, { label: 'Power', color: TEAL, kind: 'line' }, { label: '2.5% line', color: GREY, kind: 'dash' }].concat(S.A > 0 ? [{ label: 'Dotted: drug ahead by exactly a', color: GREY, kind: 'dash' }] : []));
+    }
+  }
+  function worstNull(pid, c) {
+    var w = 0, who = '';
+    rowsDef(S.eff, S.A).forEach(function (r) { if (!r.nul) return; var st = getStat(pid, r), p = rate(st, c); if (p > w) { w = p; who = r.label; } });
+    return { w: w, who: who };
+  }
+  var syncLooks = mkSeg('looksBtns', [{ label: 'One look (at the end)', v: 1 }, { label: 'Two looks (half way and at the end)', v: 2 }], function () { return S.looks; }, function (v) { S.looks = +v; rebuild(); });
+
+  /* Fresh check: the chosen bar on new, independent simulated trials (different seeds from the ones used to pick it). */
+  function freshCheck(pid) {
+    var my = tok, tasks = [], c = S.c, box = $('check5'), fr = rowsDef(S.eff, S.A).filter(function (r) { return r.nul; }).map(function (r) { return { k: r.k, label: r.label, pc: r.pc, pt: r.pt, seed: r.seed + 1000, nul: true }; });
+    box.textContent = 'Checking the bar on new trials...';
+    var sts = fr.map(function (r) { return rowTasks(pid, S.A, S.n, S.looks, r, tasks); });
+    runTasks(my, tasks, null, function () {
+      var w = -1, who = '', i, p;
+      fr.forEach(function (r, j) { p = rate(sts[j], c); if (p > w) { w = p; who = r.label; } });
+      box.textContent = 'Fresh check: 2,000 new trials per null row. Worst row (' + who.replace('Drug does nothing, ', 'drug does nothing, ') + '): estimated false-win rate ' + pct1(w) + ' (\u00b1' + Lab.pct(se(w), 2) + '). This is an estimate, not a guarantee.';
+    });
+  }
+
+  /* Find my bar: bisection on c over stored win probabilities (same simulated trials every time, so it is stable). */
+  function findBar() {
+    var pid = S.prior;
+    if (!allDone(pid)) { $('status5').textContent = 'Wait for the simulation to finish.'; return; }
+    var f = function (c) { return worstNull(pid, c).w; }, target = 0.025;
+    if (f(S.c) <= target) { $('status5').textContent = 'Your bar c = ' + S.c.toFixed(3) + ' already passes: the worst null row is ' + pct1(f(S.c)) + '.'; freshCheck(pid); return; }
+    if (f(0.995) > target) { S.c = 0.995; syncSliders(); rebuildKeep(); $('status5').textContent = 'Even c = 0.995 leaves the worst null row at ' + pct1(f(0.995)) + '. This prior and trial cannot pass. Try another prior (step 2), a larger a, or a bigger trial.'; return; }
+    var lo = S.c, hi = 0.995, it;
+    for (it = 0; it < 30; it++) { var mid = (lo + hi) / 2; if (f(mid) > target) lo = mid; else hi = mid; }
+    var c2 = Math.min(0.995, Math.ceil(hi * 200 - 1e-9) / 200);
+    S.c = c2; syncSliders(); rebuildKeep();
+    var w = worstNull(pid, c2);
+    $('status5').textContent = 'Found c = ' + c2.toFixed(3) + ' (rounded up to the slider step). The worst null row is now ' + pct1(w.w) + ' (' + w.who + ').';
+    freshCheck(pid);
+  }
+
+  /* ---------- Step 6 ---------- */
+  function r6() {
+    var rows = rowsDef(S.eff, S.A), html = '<thead><tr><th>Prior</th>' + rows.map(function (r) { return '<th>' + (r.edge ? 'Edge, placebo ' + Math.round(100 * r.pc) + '%' : r.nul ? 'False wins, placebo ' + Math.round(100 * r.pc) + '%' : 'Power') + '</th>'; }).join('') + '</tr></thead><tbody>';
+    PORDER.forEach(function (p) {
+      html += '<tr class="' + (p === S.prior ? 'you' : '') + '"><td>' + PRI[p].name + (p === S.prior ? ' (yours)' : '') + '</td>';
+      rows.forEach(function (r) {
+        var st = getStat(p, r);
+        if (!st) { html += '<td class="note">...</td>'; return; }
+        var v = rate(st, S.c), bad = r.nul && v > 0.025;
+        html += '<td class="num2 ' + (r.nul ? (bad ? 'bad' : 'ok') : '') + '">' + pct1(v) + '</td>';
+      });
+      html += '</tr>';
+    });
+    var cap = $('tbl6').querySelector('caption').outerHTML;
+    $('tbl6').innerHTML = cap + html + '</tbody>';
+  }
+
+  /* ---------- Step 7, 8 ---------- */
+  var FUT = [{ label: 'No futility stop', v: 0 }, { label: 'Stop for futility if predictive probability of winning is below 10%', v: 1 }];
+  var syncFut = mkSeg('futBtns', FUT, function () { return S.fut; }, function (v) { S.fut = +v; r7(); summary(); });
+  function r7() { syncFut(); }
+  var MTG = {
+    b: { label: 'End-of-phase-2 (Type B) meeting', txt: 'End-of-phase-2 (Type B) meeting' },
+    c: { label: 'Type C meeting', txt: 'Type C meeting' },
+    cid: { label: 'CID paired meeting program', txt: 'Complex Innovative Trial Design (CID) paired meeting program: two FDA meetings for selected sponsors' }
+  };
+  var syncMtg = mkSeg('mtgBtns', Object.keys(MTG).map(function (k) { return { label: MTG[k].label, v: k }; }), function () { return S.mtg; }, function (v) { S.mtg = v; r8(); summary(); });
+  function r8() { syncMtg(); $('mtgChips').innerHTML = chip('Route', MTG[S.mtg].txt, true); }
+
+  /* ---------- Step 9: summary ---------- */
+  var Q = {
+    prior: '"It is always critical for Bayesian analyses to have a prespecified prior" (FDA Bayesian draft, Section IV.B)',
+    rule: '"based on the posterior probability that the true treatment effect size exceeds some threshold" (FDA Bayesian draft, Section IV.A)',
+    cal: '"a and c can be chosen such that the overall FWER is controlled at a given level, typically 0.025 one-sided" (FDA Bayesian draft, Section IV.A.1)',
+    sim: '"A simulation is the repeated execution of a large number of hypothetical clinical trials" (ICH E20 draft, Section 5.2)',
+    oc: '"can achieve targeted operating characteristics ... while maintaining Type I error probability control" (ICH E20 draft, Section 5.3)',
+    conf: 'dynamic methods "borrow less when the data are less similar and more when the data are more similar" (FDA Bayesian draft, Section V)',
+    sens: '"the accuracy of conclusions depends strongly on the choice of prior distribution" (FDA Bayesian draft, Section IV.B.2)',
+    pre: '"the potential trial adaptations are pre-specified in the clinical trial protocol prior to initiation of the trial" (ICH E20 draft, Section 1)'
+  };
+  function summary() {
+    var p = PRI[S.prior], pid = S.prior, rows = rowsDef(S.eff, S.A), done = allDone(pid), sens = PORDER.every(allDone2);
+    function allDone2(q) { return allDone(q); }
+    function line(a, b, c) { return '<tr><td><b>' + a + '</b></td><td>' + b + '</td><td class="why"><i>Answers:</i> ' + c + '</td></tr>'; }
+    var oc = '';
+    if (done) {
+      oc = rows.map(function (r) { var st = getStat(pid, r), v = rate(st, S.c); return r.label.replace('Drug does nothing, ', 'Drug does nothing, ') + ': ' + pct1(v) + ' (&plusmn;' + Lab.pct(se(v), 2) + ')'; }).join('<br>');
+      var w = worstNull(pid, S.c);
+      oc += '<br><b>Worst null row: ' + pct1(w.w) + (w.w <= 0.025 ? ', at or below 2.5%' : ', ABOVE 2.5%: raise c or change the design') + '</b>';
+    } else oc = 'Simulation still running, wait a moment.';
+    var sv = '';
+    if (sens) sv = PORDER.map(function (q) { var wv = worstNull(q, S.c).w, pw = rate(getStat(q, rows[3]), S.c); return PRI[q].name + ': worst null row ' + pct1(wv) + ', power ' + pct1(pw); }).join('<br>'); else sv = 'Simulation still running, wait a moment.';
+    var html = '<thead><tr><th>Item</th><th>Our choice</th><th>Guidance item</th></tr></thead><tbody>';
+    html += line('Question', 'Two-arm trial, drug versus placebo, ' + S.n + ' patients per arm. A patient is a yes if they ' + ENDP[S.endp].yes + '. Assumed placebo rate about 30%.', 'the estimand (module 6)');
+    html += line('Prior', p.name + '. Placebo arm ' + compTxt(p.C) + ' (' + sizeTxt(p.C) + '). Drug arm ' + compTxt(p.T) + ' (' + sizeTxt(p.T) + '). Fixed before the first patient.', Q.prior);
+    html += line('If data disagree with history', S.prior === 'hist' ? 'Full borrowing: history keeps its full weight. This is a risk (step 3).' : S.prior === 'robust' ? 'Robust mixture: weight on history is recomputed from the new data.' : 'No placebo history is borrowed.', Q.conf);
+    html += line('Success rule', 'Win if Pr(drug &minus; placebo &gt; ' + S.A + ' points | data) &gt; ' + S.c.toFixed(3) + '.', Q.rule);
+    html += line('Calibration', done ? ('With c = ' + S.c.toFixed(3) + ' the worst null row is ' + pct1(worstNull(pid, S.c).w) + ', ' + (worstNull(pid, S.c).w <= 0.025 ? 'at or below' : 'ABOVE') + ' the 0.025 target.') : 'Checked by simulation.', Q.cal);
+    html += line('Looks', S.looks === 1 ? 'One analysis, at the end.' : 'Two analyses: half way and at the end. A win at either counts.', Q.pre);
+    html += line('Operating characteristics by simulation', '2,000 simulated trials per row.<br>' + oc, Q.sim + '; ' + Q.oc);
+    html += line('Sensitivity to the prior', sv, Q.sens);
+    html += line('Monitoring', 'The DMC and its independent analysis team see interim results by treatment. The sponsor’s trial team stays blinded. ' + (S.fut ? 'Stop for futility if the predictive probability of winning is below 10% (not simulated here).' : 'No futility stop.'), 'Interim plans written before the trial starts (ICH E20 draft, Section 1)');
+    html += line('FDA discussion', MTG[S.mtg].txt + '.', 'FDA CID meeting program page (fda.gov); both guidance documents are drafts');
+    $('tbl9').innerHTML = html + '</tbody>';
+    $('stale9').textContent = 'Guidance: FDA draft "Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products" (January 2026); ICH E20 draft "Adaptive Designs for Clinical Trials". Numbers come from this page\'s simulation, with its own random draws.';
+  }
+  $('printBtn').addEventListener('click', function () { window.print(); });
+
+  /* ---------- Orchestration ---------- */
+  function syncSliders() {
+    $('aS').value = S.A; $('cS').value = S.c; $('nS').value = S.n; $('eS').value = S.eff; $('k3').value = S.k3; $('opc').value = S.opc; $('opt').value = S.opt;
+  }
+  var deb = null;
+  function rebuild() { $('check5').textContent = ''; clearTimeout(deb); deb = setTimeout(rebuildKeep, 220); r4(); r5(); r6(); summary(); }
+  function rebuildKeep() {
+    r4();
+    var my = ++tok, tasks = [], rows = rowsDef(S.eff, S.A), pid = S.prior;
+    rows.forEach(function (r) { rowTasks(pid, S.A, S.n, S.looks, r, tasks); });
+    syncLooks();
+    var st5 = $('status5');
+    runTasks(my, tasks, function (f) { if (f < 1) st5.textContent = 'Simulating... ' + Math.round(100 * f) + '%'; }, function () {
+      if (/^Simulating/.test(st5.textContent)) st5.textContent = 'Done. 2,000 trials per row.';
+      r5(); summary();
+      var t2 = [];
+      PORDER.forEach(function (q) { rows.forEach(function (r) { rowTasks(q, S.A, S.n, S.looks, r, t2); }); });
+      runTasks(my, t2, null, function () { r6(); summary(); });
+    });
+    r5(); r6(); summary();
+  }
+  function bind(id, key, conv, after) {
+    $(id).addEventListener('input', function () { S[key] = conv(this.value); after(); });
+  }
+  bind('k3', 'k3', Number, r3);
+  bind('aS', 'A', Number, function () { r4(); rebuild(); });
+  bind('cS', 'c', function (v) { return Math.round(parseFloat(v) * 1000) / 1000; }, function () { $('check5').textContent = ''; r4(); r5(); r6(); summary(); });
+  bind('nS', 'n', Number, function () { r4(); rebuild(); });
+  bind('opc', 'opc', Number, r4); bind('opt', 'opt', Number, r4);
+  bind('eS', 'eff', Number, function () { r5(); rebuild(); });
+  $('findBtn').addEventListener('click', findBar);
+
+  /* ---------- Predict, then check ---------- */
+  function syncStat(pid, A, n, looks, row) { var t = [], st = rowTasks(pid, A, n, looks, row, t); t.forEach(function (f) { f(); }); return st; }
+  var qrow = function (pc, pt, seed, nul) { return { pc: pc, pt: pt, seed: seed, nul: nul }; };
+  function miniBars(box, labels, vals, cols) {
+    var h = '';
+    labels.forEach(function (l, i) { h += '<div style="display:grid;grid-template-columns:11rem 1fr 3.5rem;gap:.4rem;align-items:center;margin:.2rem 0;font-size:.85rem"><span>' + l + '</span><div class="bar"><i style="width:' + Math.min(100, vals[i]) + '%;background:' + cols[i] + '"></i></div><b>' + vals[i].toFixed(1) + '%</b></div>'; });
+    box.innerHTML = h;
+  }
+  function q1res() {
+    var n0 = syncStat('flat', 0, 100, 1, rowsDef(20)[1]), pw = syncStat('flat', 0, 100, 1, rowsDef(20)[3]);
+    return { f1: rate(n0, 0.95), f2: rate(n0, 0.99), p1: rate(pw, 0.95), p2: rate(pw, 0.99) };
+  }
+  Lab.QuestionCard($('q5'), {
+    tag: 'Predict', type: 'choice',
+    q: 'Flat prior, 100 per arm, placebo 30%, true gain 20 points, a = 0. Raise c from 0.95 to 0.99. What happens to false wins and power?',
+    options: [{ value: 'both', label: 'Both fall' }, { value: 'fpow', label: 'False wins fall, power rises' }, { value: 'up', label: 'Both rise' }],
+    answer: function () { var r = q1res(); return (r.f2 < r.f1 && r.p2 < r.p1) ? 'both' : 'other'; },
+    revealPlot: function (b) { var r = q1res(); miniBars(b, ['False wins, c = 0.95', 'False wins, c = 0.99', 'Power, c = 0.95', 'Power, c = 0.99'], [100 * r.f1, 100 * r.f2, 100 * r.p1, 100 * r.p2], [ORANGE, ORANGE, TEAL, TEAL]); },
+    explain: function () { var r = q1res(); return 'False wins ' + pct1(r.f1) + ' to ' + pct1(r.f2) + ', power ' + pct1(r.p1) + ' to ' + pct1(r.p2) + '. A stricter bar costs power.'; }
+  });
+  function q2res() {
+    var r40 = rowsDef(20)[2], f = syncStat('flat', 0, 100, 1, r40), h = syncStat('hist', 0, 100, 1, r40), rb = syncStat('robust', 0, 100, 1, r40);
+    return { f: rate(f, 0.975), h: rate(h, 0.975), rb: rate(rb, 0.975) };
+  }
+  Lab.QuestionCard($('q6'), {
+    tag: 'Predict', type: 'choice',
+    q: 'History says 30% on placebo, but today the true placebo rate is 40% and the drug does nothing. You borrow all of history for the placebo arm (c = 0.975). Compared with a flat prior, false wins are...',
+    options: [{ value: 'higher', label: 'Higher' }, { value: 'same', label: 'About the same' }, { value: 'lower', label: 'Lower' }],
+    answer: function () { var r = q2res(); return r.h > r.f + 0.02 ? 'higher' : (r.h < r.f - 0.02 ? 'lower' : 'same'); },
+    revealPlot: function (b) { var r = q2res(); miniBars(b, ['Flat prior', 'Full borrowing', 'Robust mixture'], [100 * r.f, 100 * r.h, 100 * r.rb], [GREY, ORANGE, TEAL]); },
+    explain: function () { var r = q2res(); return 'False wins ' + pct1(r.f) + ' with a flat prior, ' + pct1(r.h) + ' with full borrowing, ' + pct1(r.rb) + ' with the robust mixture. Old data made the placebo arm look worse than it is, so the drug wins too easily.'; }
+  });
+  Lab.QuestionCard($('q3'), {
+    tag: 'Predict', type: 'choice',
+    q: 'The robust mixture starts with 80% weight on history. The 40 new placebo patients show 20 improved (50%). What happens to the weight on history?',
+    options: [{ value: 'same', label: 'Stays near 80%' }, { value: 'up', label: 'Rises' }, { value: 'down', label: 'Falls' }],
+    answer: function () { var w = wHist(20); return w < 0.75 ? 'down' : (w > 0.85 ? 'up' : 'same'); },
+    onReveal: function () { S.k3 = 20; $('k3').value = 20; r3(); },
+    revealPlot: function (b) { miniBars(b, ['Before the data', 'After 12 of 40 (30%)', 'After 20 of 40 (50%)'], [80, 100 * wHist(12), 100 * wHist(20)], [GREY, TEAL, ORANGE]); },
+    explain: function () { return 'The weight falls from 80% to ' + Lab.pct(wHist(20), 0) + '. If the new patients had matched history (12 of 40), it would be ' + Lab.pct(wHist(12), 0) + '.'; }
+  });
+
+  /* ---------- Code ---------- */
+  Lab.CodeBox($('code'), {
+    py: 'import numpy as np\n' +
+      'rng = np.random.default_rng(1)\n' +
+      'n, p, a, c, N = 100, 0.30, 0.0, 0.975, 2000    # null: drug = placebo + a (a = 0: drug does nothing)\n' +
+      'def win_prob(sc, st, g=4000):                   # P(drug - placebo > a | data), flat priors\n' +
+      '    return np.mean(rng.beta(1+st, 1+n-st, g) - rng.beta(1+sc, 1+n-sc, g) > a)\n' +
+      'wins = [win_prob(rng.binomial(n, p), rng.binomial(n, p + a)) > c for _ in range(N)]\n' +
+      'rate = np.mean(wins)\n' +
+      'print(rate, np.sqrt(rate*(1-rate)/N))           # false-win rate and Monte Carlo SE',
+    r: 'set.seed(1)\n' +
+      'n <- 100; p <- 0.30; a <- 0; cc <- 0.975; N <- 2000    # null: drug = placebo + a (a = 0: drug does nothing)\n' +
+      'win_prob <- function(sc, st, g = 4000)\n' +
+      '  mean(rbeta(g, 1 + st, 1 + n - st) - rbeta(g, 1 + sc, 1 + n - sc) > a)\n' +
+      'wins <- replicate(N, win_prob(rbinom(1, n, p), rbinom(1, n, p + a)) > cc)\n' +
+      'rate <- mean(wins)\n' +
+      'print(c(rate, sqrt(rate * (1 - rate) / N)))              # false-win rate and Monte Carlo SE'
+  });
+
+  /* ---------- Start ---------- */
+  syncSliders(); r1(); r2(); r3(); r4(); r7(); r8(); r5(); r6(); summary(); syncLooks();
+  rebuildKeep();
+})();
+</script>
+</body>
+</html>

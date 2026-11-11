@@ -1,0 +1,23 @@
+id: eq-gittins
+section: 16/the-gittins-index
+title: Gittins index
+tex: \htmlClass{term c1}{G(s)} = \htmlClass{term c2}{\sup_{\tau > 0}} \frac{\htmlClass{term c3}{\mathrm{E}\bigl[\sum_{t=0}^{\tau-1} \gamma^t r_t \mid s\bigr]}}{\htmlClass{term c4}{\mathrm{E}\bigl[\sum_{t=0}^{\tau-1} \gamma^t \mid s\bigr]}},
+parts:
+- 'The '
+- k: c1
+  words: index of an arm in state $s$
+- ' is the best, over '
+- k: c2
+  words: all stopping times at which one might abandon the arm
+- ', of the ratio of '
+- k: c3
+  words: expected discounted reward
+- ' to '
+- k: c4
+  words: expected discounted time
+- .
+notes:
+  c1: Give each patient the arm with the highest index; each arm's index depends only on its own history.
+  c2: The highest achievable ratio over stopping times $\tau$.
+  c3: Rewards $r_t$ discounted by $\gamma < 1$ per patient.
+  c4: The same discounting applied to time.

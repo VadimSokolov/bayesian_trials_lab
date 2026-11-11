@@ -1,0 +1,16 @@
+id: eq-selection
+section: 5/the-counterfactual-problem
+title: "Observed difference splits into effect and selection bias"
+tex: "\\begin{aligned}\n\\htmlClass{term c1}{\\underbrace{\\mathbb{E}[Y \\mid D=1] - \\mathbb{E}[Y \\mid D=0]}_{\\text{what the trial shows}}}\n\\;=\\;& \\htmlClass{term c2}{\\underbrace{\\mathbb{E}[Y(1) - Y(0) \\mid D=1]}_{\\text{effect on those who were treated}}}\\\\\n&+\\; \\htmlClass{term c3}{\\underbrace{\\mathbb{E}[Y(0) \\mid D=1] - \\mathbb{E}[Y(0) \\mid D=0]}_{\\text{selection bias}}} .\n\\end{aligned}"
+parts:
+  - "The "
+  - {k: c1, words: "difference in average outcomes between the two groups"}
+  - " is "
+  - {k: c2, words: "the drug's effect on those who were treated"}
+  - " plus "
+  - {k: c3, words: "how different the two groups would have been without any treatment"}
+  - "."
+notes:
+  c1: "What a comparison of groups actually shows."
+  c2: "The quantity of interest."
+  c3: "Zero on average when a coin assigns treatment, which is why randomization works."

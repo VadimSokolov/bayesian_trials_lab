@@ -1,0 +1,38 @@
+/* Trial simulator: report styles (screen and print). MIT License, Copyright 2026 Nytel. Used with NSim.report.build(). */
+.nsim-report { --rep-ink: #1b1b1b; --rep-muted: #555; --rep-line: #cfcfcf; --rep-head: #eef3f8; --rep-warn: #9a3412; --rep-ok: #166534; color: var(--rep-ink); font: 14px/1.5 system-ui, "Helvetica Neue", Arial, sans-serif; max-width: 1100px; margin: 0 auto; }
+.nsim-report h1 { font-size: 1.7rem; margin: 0 0 .2rem; line-height: 1.2; }
+.nsim-report h2 { font-size: 1.2rem; margin: 1.8rem 0 .2rem; padding-bottom: .15rem; border-bottom: 2px solid var(--rep-line); break-after: avoid; }
+.nsim-report h4 { font-size: 1rem; margin: .8rem 0 .2rem; break-after: avoid; }
+.nsim-report .rep-meta { color: var(--rep-muted); margin: 0 0 1rem; }
+.nsim-report .guide { color: var(--rep-muted); font-size: .85rem; font-style: italic; margin: 0 0 .6rem; }
+.nsim-report p { margin: .4rem 0; }
+.nsim-report ul { margin: .3rem 0 .6rem 1.2rem; padding: 0; }
+.nsim-report .tablewrap { overflow-x: auto; margin: .6rem 0 1rem; }
+.nsim-report table { border-collapse: collapse; width: 100%; font-size: .82rem; }
+.nsim-report caption { caption-side: top; text-align: left; font-size: .82rem; color: var(--rep-muted); padding-bottom: .25rem; }
+.nsim-report th, .nsim-report td { border: 1px solid var(--rep-line); padding: .25rem .45rem; text-align: left; vertical-align: top; }
+.nsim-report thead th { background: var(--rep-head); font-weight: 600; }
+.nsim-report table.oc td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.nsim-report table.oc td.k-na { color: var(--rep-muted); font-style: italic; }
+.nsim-report td.k-miss { color: var(--rep-warn); font-style: italic; }
+.nsim-report td.k-flag, .nsim-report td.st-missing, .nsim-report td.k-st-missing { color: var(--rep-warn); font-weight: 600; }
+.nsim-report td.k-ok, .nsim-report td.k-st-covered { color: var(--rep-ok); }
+.nsim-report table.kv th { width: 22%; background: var(--rep-head); font-weight: 600; }
+.nsim-report table.kv td ul { margin: 0 0 0 1rem; }
+.nsim-report .narrative { border-left: 3px solid var(--rep-line); padding: .1rem .8rem; margin: .6rem 0; }
+.nsim-report figure.plotfig { margin: .8rem 0 1.2rem; break-inside: avoid; }
+.nsim-report figure.plotfig svg { max-width: 720px; height: auto; display: block; }
+.nsim-report figcaption { font-size: .82rem; color: var(--rep-muted); margin-top: .2rem; }
+@page { size: A4 landscape; margin: 14mm; }
+@media print {
+  .nsim-report { max-width: none; font-size: 10.5pt; color: #000; }
+  .nsim-report h2 { break-before: auto; }
+  .nsim-report .rep-sec { break-inside: auto; }
+  .nsim-report table { font-size: 8.5pt; }
+  .nsim-report .tablewrap { overflow: visible; }
+  .nsim-report tr, .nsim-report .narrative { break-inside: avoid; }
+  .nsim-report thead { display: table-header-group; }
+  .nsim-report figure.plotfig svg { max-width: 100%; }
+  .nsim-report a { color: inherit; text-decoration: none; }
+  .no-print, .nsim-no-print { display: none !important; }
+}

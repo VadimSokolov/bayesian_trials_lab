@@ -1,0 +1,14 @@
+id: eq-sv-var
+section: sec-survival-traditional
+title: Variance of the log hazard ratio estimate
+tex: \htmlClass{term c1}{\operatorname{Var}(\hat\theta)} \approx \frac{4}{\htmlClass{term c2}{D}},
+parts:
+- k: c1
+  words: The variance of the estimated treatment effect
+- ' is about four divided by '
+- k: c2
+  words: the total number of events
+- .
+notes:
+  c1: With $\theta = -\log \mathrm{HR}$ under 1:1 allocation; accurate when the hazard ratio is not far from one.
+  c2: Patients enter only through the events they produce, which is why an event-driven trial fixes $D$.

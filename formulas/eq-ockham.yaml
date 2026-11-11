@@ -1,0 +1,16 @@
+id: eq-ockham
+section: sec-evidence-gaussian
+title: "Fit minus Ockham penalty"
+tex: "\\htmlClass{term c1}{2 \\log \\mathrm{BF}_{10}} \\;\\approx\\; \\htmlClass{term c2}{\\underbrace{Z_n^2}_{\\text{fit}}} \\;-\\; \\htmlClass{term c3}{\\underbrace{\\log(1+I_n\\tau^2)}_{L_n,\\ \\text{Ockham penalty}}}."
+parts:
+  - "For large information, "
+  - {k: c1, words: "twice the log Bayes factor"}
+  - " is about "
+  - {k: c2, words: "how well the best-fitting alternative explains the data"}
+  - " minus "
+  - {k: c3, words: "a charge for flexibility that grows with the information"}
+  - "."
+notes:
+  c1: "The evidence for the alternative on the log scale."
+  c2: "The same quantity that the z test examines."
+  c3: "A wide prior wastes most of its range on effects the data rule out; the penalty grows like $\\log I_n$."

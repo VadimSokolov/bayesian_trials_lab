@@ -1,0 +1,1407 @@
+{
+  "generated": "2026-11-08",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "entries": [
+    {
+      "id": "gsDesign-OBF_classical-K2-pow0.8",
+      "description": "gsDesign OBF classical, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.2, sfu=\"OF\")",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.5, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [2.796509688279, 1.977430964236],
+        "nominal_p": [0.002582893107717, 0.02399646840384],
+        "cum_alpha_spent": [0.002582893107717, 0.02499999989531],
+        "inflation_factor": 1.007786184269,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-OBF_classical-K2-pow0.9",
+      "description": "gsDesign OBF classical, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.1, sfu=\"OF\")",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.5, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [2.796509688279, 1.977430964236],
+        "nominal_p": [0.002582893107717, 0.02399646840384],
+        "cum_alpha_spent": [0.002582893107717, 0.02499999989531],
+        "inflation_factor": 1.007126225513,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K2-pow0.8",
+      "description": "gsDesign Pocock classical, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.2, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.5, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.178272101526, 2.178272101526],
+        "nominal_p": [0.01469289245699, 0.01469289245699],
+        "cum_alpha_spent": [0.01469289245699, 0.02499999997888],
+        "inflation_factor": 1.110412596771,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K2-pow0.9",
+      "description": "gsDesign Pocock classical, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.1, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.5, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.178272101526, 2.178272101526],
+        "nominal_p": [0.01469289245699, 0.01469289245699],
+        "cum_alpha_spent": [0.01469289245699, 0.02499999997888],
+        "inflation_factor": 1.100082322801,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K2-pow0.8",
+      "description": "gsDesign Lan-DeMets OF, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDOF)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.5, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [2.962588042728, 1.968595527337],
+        "nominal_p": [0.001525322757989, 0.02449977830017],
+        "cum_alpha_spent": [0.001525322757989, 0.025],
+        "inflation_factor": 1.00372487304,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K2-pow0.9",
+      "description": "gsDesign Lan-DeMets OF, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDOF)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.5, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [2.962588042728, 1.968595527337],
+        "nominal_p": [0.001525322757989, 0.02449977830017],
+        "cum_alpha_spent": [0.001525322757989, 0.025],
+        "inflation_factor": 1.003417674536,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K2-pow0.8",
+      "description": "gsDesign Lan-DeMets Pocock, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.5, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.156999218345, 2.200976979837],
+        "nominal_p": [0.01550286267396, 0.01386882677654],
+        "cum_alpha_spent": [0.01550286267396, 0.025],
+        "inflation_factor": 1.122550202926,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K2-pow0.9",
+      "description": "gsDesign Lan-DeMets Pocock, K=2 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=2, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.5, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.156999218345, 2.200976979837],
+        "nominal_p": [0.01550286267396, 0.01386882677654],
+        "cum_alpha_spent": [0.01550286267396, 0.025],
+        "inflation_factor": 1.111046469302,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K2-pow0.8",
+      "description": "rpact OBF classical (typeOfDesign OF), K=2, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"OF\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.796509681468, 1.97743095942],
+        "nominal_p": [0.002582893162157, 0.0239964686758],
+        "cum_alpha_spent": [0.002582893162157, 0.02499999],
+        "inflation_factor": 1.007786255048,
+        "shift": 7.909993113803
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K2-pow0.9",
+      "description": "rpact OBF classical (typeOfDesign OF), K=2, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"OF\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.796509681468, 1.97743095942],
+        "nominal_p": [0.002582893162157, 0.0239964686758],
+        "cum_alpha_spent": [0.002582893162157, 0.02499999],
+        "inflation_factor": 1.007126409568,
+        "shift": 10.582303261677
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K2-pow0.8",
+      "description": "rpact Pocock classical (typeOfDesign P), K=2, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"P\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.178272094823, 2.178272094823],
+        "nominal_p": [0.01469289270635, 0.01469289270635],
+        "cum_alpha_spent": [0.01469289270635, 0.02499999],
+        "inflation_factor": 1.110412627748,
+        "shift": 8.715495170696
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K2-pow0.9",
+      "description": "rpact Pocock classical (typeOfDesign P), K=2, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"P\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.178272094823, 2.178272094823],
+        "nominal_p": [0.01469289270635, 0.01469289270635],
+        "cum_alpha_spent": [0.01469289270635, 0.02499999],
+        "inflation_factor": 1.100082490398,
+        "shift": 11.559032129095
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K2-pow0.8",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=2, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asOF\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.962588042728, 1.968595646322],
+        "nominal_p": [0.001525322757989, 0.02449977146303],
+        "cum_alpha_spent": [0.001525322757989, 0.02499999],
+        "inflation_factor": 1.003725029969,
+        "shift": 7.878117046586
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K2-pow0.9",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=2, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asOF\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.962588042728, 1.968595646322],
+        "nominal_p": [0.001525322757989, 0.02449977146303],
+        "cum_alpha_spent": [0.001525322757989, 0.02499999],
+        "inflation_factor": 1.003417938365,
+        "shift": 10.543336785843
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K2-pow0.8",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=2, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asP\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.156999218345, 2.200976975262],
+        "nominal_p": [0.01550286267396, 0.01386882693848],
+        "cum_alpha_spent": [0.01550286267396, 0.02499999],
+        "inflation_factor": 1.122550224896,
+        "shift": 8.810761710977
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K2-pow0.9",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=2, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=2, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asP\", informationRates=(1:2)/2); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 2,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.5, 1]
+      },
+      "outputs": {
+        "z_upper": [2.156999218345, 2.200976975262],
+        "nominal_p": [0.01550286267396, 0.01386882693848],
+        "cum_alpha_spent": [0.01550286267396, 0.02499999],
+        "inflation_factor": 1.111046588037,
+        "shift": 11.674236541473
+      }
+    },
+    {
+      "id": "gsDesign-OBF_classical-K3-pow0.8",
+      "description": "gsDesign OBF classical, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.2, sfu=\"OF\")",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [3.471091494749, 2.454432334056, 2.004035608875],
+        "nominal_p": [0.0002591736751453, 0.007055360918624, 0.02253312305587],
+        "cum_alpha_spent": [0.0002591736751453, 0.007160051040085, 0.02499999517165],
+        "inflation_factor": 1.0174061317,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-OBF_classical-K3-pow0.9",
+      "description": "gsDesign OBF classical, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.1, sfu=\"OF\")",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [3.471091494749, 2.454432334056, 2.004035608875],
+        "nominal_p": [0.0002591736751453, 0.007055360918624, 0.02253312305587],
+        "cum_alpha_spent": [0.0002591736751453, 0.007160051040085, 0.02499999517165],
+        "inflation_factor": 1.016100383655,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K3-pow0.8",
+      "description": "gsDesign Pocock classical, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.2, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.289478468582, 2.289478468582, 2.289478468582],
+        "nominal_p": [0.01102578376528, 0.01102578376528, 0.01102578376528],
+        "cum_alpha_spent": [0.01102578376528, 0.01896887823899, 0.02500000008175],
+        "inflation_factor": 1.166386165695,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K3-pow0.9",
+      "description": "gsDesign Pocock classical, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.1, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.289478468582, 2.289478468582, 2.289478468582],
+        "nominal_p": [0.01102578376528, 0.01102578376528, 0.01102578376528],
+        "cum_alpha_spent": [0.01102578376528, 0.01896887823899, 0.02500000008175],
+        "inflation_factor": 1.150637899189,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K3-pow0.8",
+      "description": "gsDesign Lan-DeMets OF, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDOF)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [3.710302873263, 2.511427013908, 1.993047522772],
+        "nominal_p": [0.0001035057181471, 0.006012207391929, 0.02312812175409],
+        "cum_alpha_spent": [0.0001035057181471, 0.006048389129908, 0.025],
+        "inflation_factor": 1.012794707748,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K3-pow0.9",
+      "description": "gsDesign Lan-DeMets OF, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDOF)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [3.710302873263, 2.511427013908, 1.993047522772],
+        "nominal_p": [0.0001035057181471, 0.006012207391929, 0.02312812175409],
+        "cum_alpha_spent": [0.0001035057181471, 0.006048389129908, 0.025],
+        "inflation_factor": 1.011852482806,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K3-pow0.8",
+      "description": "gsDesign Lan-DeMets Pocock, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.279428238917, 2.294910465066, 2.295939349589],
+        "nominal_p": [0.0113208106316, 0.01086912797467, 0.01083967472027],
+        "cum_alpha_spent": [0.0113208106316, 0.01908456288475, 0.025],
+        "inflation_factor": 1.170419276668,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K3-pow0.9",
+      "description": "gsDesign Lan-DeMets Pocock, K=3 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=3, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.3333333333333, 0.6666666666667, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.279428238917, 2.294910465066, 2.295939349589],
+        "nominal_p": [0.0113208106316, 0.01086912797467, 0.01083967472027],
+        "cum_alpha_spent": [0.0113208106316, 0.01908456288475, 0.025],
+        "inflation_factor": 1.154219840562,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K3-pow0.8",
+      "description": "rpact OBF classical (typeOfDesign OF), K=3, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"OF\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [3.471091444654, 2.454432298634, 2.004035579953],
+        "nominal_p": [0.0002591737234965, 0.00705536161371, 0.02253312460483],
+        "cum_alpha_spent": [0.0002591737234965, 0.007160059401483, 0.02499999],
+        "inflation_factor": 1.017406224423,
+        "shift": 7.985499096477
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K3-pow0.9",
+      "description": "rpact OBF classical (typeOfDesign OF), K=3, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"OF\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [3.471091444654, 2.454432298634, 2.004035579953],
+        "nominal_p": [0.0002591737234965, 0.00705536161371, 0.02253312460483],
+        "cum_alpha_spent": [0.0002591737234965, 0.007160059401483, 0.02499999],
+        "inflation_factor": 1.016100709346,
+        "shift": 10.676600026125
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K3-pow0.8",
+      "description": "rpact Pocock classical (typeOfDesign P), K=3, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"P\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [2.289478456456, 2.289478456456, 2.289478456456],
+        "nominal_p": [0.01102578411717, 0.01102578411717, 0.01102578411717],
+        "cum_alpha_spent": [0.01102578411717, 0.0189688785187, 0.02499999],
+        "inflation_factor": 1.166386064246,
+        "shift": 9.154823942087
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K3-pow0.9",
+      "description": "rpact Pocock classical (typeOfDesign P), K=3, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"P\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [2.289478456456, 2.289478456456, 2.289478456456],
+        "nominal_p": [0.01102578411717, 0.01102578411717, 0.01102578411717],
+        "cum_alpha_spent": [0.01102578411717, 0.0189688785187, 0.02499999],
+        "inflation_factor": 1.150638073712,
+        "shift": 12.090241031088
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K3-pow0.8",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=3, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asOF\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [3.710302873263, 2.511427484453, 1.993047483265],
+        "nominal_p": [0.0001035057181471, 0.006012199376896, 0.0231281239169],
+        "cum_alpha_spent": [0.0001035057181471, 0.006048389077275, 0.02499999],
+        "inflation_factor": 1.012794812671,
+        "shift": 7.949304680229
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K3-pow0.9",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=3, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asOF\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [3.710302873263, 2.511427484453, 1.993047483265],
+        "nominal_p": [0.0001035057181471, 0.006012199376896, 0.0231281239169],
+        "cum_alpha_spent": [0.0001035057181471, 0.006048389077275, 0.02499999],
+        "inflation_factor": 1.011852763255,
+        "shift": 10.63196505941
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K3-pow0.8",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=3, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asP\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [2.279428238917, 2.294911138713, 2.295939587057],
+        "nominal_p": [0.0113208106316, 0.0108691086678, 0.01083966793046],
+        "cum_alpha_spent": [0.0113208106316, 0.01908456280982, 0.02499999],
+        "inflation_factor": 1.170419372122,
+        "shift": 9.186480890536
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K3-pow0.9",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=3, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=3, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asP\", informationRates=(1:3)/3); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 3,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.3333333333333, 0.6666666666667, 1]
+      },
+      "outputs": {
+        "z_upper": [2.279428238917, 2.294911138713, 2.295939587057],
+        "nominal_p": [0.0113208106316, 0.0108691086678, 0.01083966793046],
+        "cum_alpha_spent": [0.0113208106316, 0.01908456280982, 0.02499999],
+        "inflation_factor": 1.154220188641,
+        "shift": 12.127879828105
+      }
+    },
+    {
+      "id": "gsDesign-OBF_classical-K4-pow0.8",
+      "description": "gsDesign OBF classical, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.2, sfu=\"OF\")",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [4.048591194917, 2.862786288178, 2.337455216224, 2.024295597459],
+        "nominal_p": [2.576342832151e-05, 0.002099668498606, 0.009707763473231, 0.02146987317538],
+        "cum_alpha_spent": [2.576342832151e-05, 0.00211034078531, 0.01045588902045, 0.02499999993665],
+        "inflation_factor": 1.023846324181,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-OBF_classical-K4-pow0.9",
+      "description": "gsDesign OBF classical, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.1, sfu=\"OF\")",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [4.048591194917, 2.862786288178, 2.337455216224, 2.024295597459],
+        "nominal_p": [2.576342832151e-05, 0.002099668498606, 0.009707763473231, 0.02146987317538],
+        "cum_alpha_spent": [2.576342832151e-05, 0.00211034078531, 0.01045588902045, 0.02499999993665],
+        "inflation_factor": 1.022162711553,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K4-pow0.8",
+      "description": "gsDesign Pocock classical, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.2, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.361299682072, 2.361299682072, 2.361299682072, 2.361299682072],
+        "nominal_p": [0.009105503765927, 0.009105503765927, 0.009105503765927, 0.009105503765927],
+        "cum_alpha_spent": [0.009105503765927, 0.01577289617815, 0.02087732009386, 0.02500000022302],
+        "inflation_factor": 1.202468907454,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K4-pow0.9",
+      "description": "gsDesign Pocock classical, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.1, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.361299682072, 2.361299682072, 2.361299682072, 2.361299682072],
+        "nominal_p": [0.009105503765927, 0.009105503765927, 0.009105503765927, 0.009105503765927],
+        "cum_alpha_spent": [0.009105503765927, 0.01577289617815, 0.02087732009386, 0.02500000022302],
+        "inflation_factor": 1.183133980806,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K4-pow0.8",
+      "description": "gsDesign Lan-DeMets OF, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDOF)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [4.33263364605, 2.96313084198, 2.359044391859, 2.01409035729],
+        "nominal_p": [7.366808435938e-06, 0.001522635468462, 0.009161031930098, 0.02200002386664],
+        "cum_alpha_spent": [7.366808435938e-06, 0.001525322757989, 0.009649324953512, 0.025],
+        "inflation_factor": 1.019637285135,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K4-pow0.9",
+      "description": "gsDesign Lan-DeMets OF, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDOF)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [4.33263364605, 2.96313084198, 2.359044391859, 2.01409035729],
+        "nominal_p": [7.366808435938e-06, 0.001522635468462, 0.009161031930098, 0.02200002386664],
+        "cum_alpha_spent": [7.366808435938e-06, 0.001525322757989, 0.009649324953512, 0.025],
+        "inflation_factor": 1.01827958452,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K4-pow0.8",
+      "description": "gsDesign Lan-DeMets Pocock, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.368327703524, 2.367523986253, 2.358168227967, 2.350035960693],
+        "nominal_p": [0.00893435048772, 0.008953779603244, 0.009182684040231, 0.009385798708501],
+        "cum_alpha_spent": [0.00893435048772, 0.01550286267396, 0.02069972348107, 0.025],
+        "inflation_factor": 1.196305157908,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K4-pow0.9",
+      "description": "gsDesign Lan-DeMets Pocock, K=4 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=4, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.25, 0.5, 0.75, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.368327703524, 2.367523986253, 2.358168227967, 2.350035960693],
+        "nominal_p": [0.00893435048772, 0.008953779603244, 0.009182684040231, 0.009385798708501],
+        "cum_alpha_spent": [0.00893435048772, 0.01550286267396, 0.02069972348107, 0.025],
+        "inflation_factor": 1.177586541348,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K4-pow0.8",
+      "description": "rpact OBF classical (typeOfDesign OF), K=4, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"OF\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [4.048591007349, 2.862786155547, 2.337455107932, 2.024295503674],
+        "nominal_p": [2.576344896532e-05, 0.002099669377456, 0.009707766285665, 0.0214698779973],
+        "cum_alpha_spent": [2.576344896532e-05, 0.002110346802603, 0.01045589372081, 0.02499999],
+        "inflation_factor": 1.023846457942,
+        "shift": 8.036047714822
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K4-pow0.9",
+      "description": "rpact OBF classical (typeOfDesign OF), K=4, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"OF\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [4.048591007349, 2.862786155547, 2.337455107932, 2.024295503674],
+        "nominal_p": [2.576344896532e-05, 0.002099669377456, 0.009707766285665, 0.0214698779973],
+        "cum_alpha_spent": [2.576344896532e-05, 0.002110346802603, 0.01045589372081, 0.02499999],
+        "inflation_factor": 1.022163040392,
+        "shift": 10.740299503168
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K4-pow0.8",
+      "description": "rpact Pocock classical (typeOfDesign P), K=4, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"P\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [2.361299664717, 2.361299664717, 2.361299664717, 2.361299664717],
+        "nominal_p": [0.009105504192099, 0.009105504192099, 0.009105504192099, 0.009105504192099],
+        "cum_alpha_spent": [0.009105504192099, 0.01577289662656, 0.02087732028889, 0.02499999],
+        "inflation_factor": 1.202469071325,
+        "shift": 9.438035125104
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K4-pow0.9",
+      "description": "rpact Pocock classical (typeOfDesign P), K=4, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"P\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [2.361299664717, 2.361299664717, 2.361299664717, 2.361299664717],
+        "nominal_p": [0.009105504192099, 0.009105504192099, 0.009105504192099, 0.009105504192099],
+        "cum_alpha_spent": [0.009105504192099, 0.01577289662656, 0.02087732028889, 0.02499999],
+        "inflation_factor": 1.18313436822,
+        "shift": 12.431693345413
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K4-pow0.8",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=4, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asOF\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [4.33263364605, 2.963131599128, 2.359044276178, 2.014090143144],
+        "nominal_p": [7.366808435938e-06, 0.00152263172299, 0.00916103478591, 0.02200003510617],
+        "cum_alpha_spent": [7.366808435938e-06, 0.001525322757471, 0.009649325119183, 0.025],
+        "inflation_factor": 1.019637329173,
+        "shift": 8.003010769329
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K4-pow0.9",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=4, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asOF\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [4.33263364605, 2.963131599128, 2.359044276178, 2.014090143144],
+        "nominal_p": [7.366808435938e-06, 0.00152263172299, 0.00916103478591, 0.02200003510617],
+        "cum_alpha_spent": [7.366808435938e-06, 0.001525322757471, 0.009649325119183, 0.025],
+        "inflation_factor": 1.018280017057,
+        "shift": 10.699498934226
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K4-pow0.8",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=4, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asP\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [2.368327703524, 2.367524288595, 2.358168311417, 2.350035972893],
+        "nominal_p": [0.00893435048772, 0.008953772287468, 0.009182681975844, 0.00938579840085],
+        "cum_alpha_spent": [0.00893435048772, 0.01550286282009, 0.02069972348365, 0.02499999],
+        "inflation_factor": 1.196305377516,
+        "shift": 9.389657033679
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K4-pow0.9",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=4, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=4, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asP\", informationRates=(1:4)/4); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 4,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.25, 0.5, 0.75, 1]
+      },
+      "outputs": {
+        "z_upper": [2.368327703524, 2.367524288595, 2.358168311417, 2.350035972893],
+        "nominal_p": [0.00893435048772, 0.008953772287468, 0.009182681975844, 0.00938579840085],
+        "cum_alpha_spent": [0.00893435048772, 0.01550286282009, 0.02069972348365, 0.02499999],
+        "inflation_factor": 1.177586974449,
+        "shift": 12.373404532176
+      }
+    },
+    {
+      "id": "gsDesign-OBF_classical-K5-pow0.8",
+      "description": "gsDesign OBF classical, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.2, sfu=\"OF\")",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [4.561742502737, 3.225639057712, 2.633723261929, 2.280871251368, 2.040073266394],
+        "nominal_p": [2.536541954836e-06, 0.0006284587990611, 0.004222714561733, 0.0112780332888, 0.02067151446589],
+        "cum_alpha_spent": [2.536541954836e-06, 0.0006295275563349, 0.004451797694836, 0.01279229254152, 0.02499999981611],
+        "inflation_factor": 1.028410645045,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-OBF_classical-K5-pow0.9",
+      "description": "gsDesign OBF classical, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.1, sfu=\"OF\")",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "OBF classical"
+      },
+      "outputs": {
+        "z_upper": [4.561742502737, 3.225639057712, 2.633723261929, 2.280871251368, 2.040073266394],
+        "nominal_p": [2.536541954836e-06, 0.0006284587990611, 0.004222714561733, 0.0112780332888, 0.02067151446589],
+        "cum_alpha_spent": [2.536541954836e-06, 0.0006295275563349, 0.004451797694836, 0.01279229254152, 0.02499999981611],
+        "inflation_factor": 1.026485833043,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K5-pow0.8",
+      "description": "gsDesign Pocock classical, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.2, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.413180313484, 2.413180313484, 2.413180313484, 2.413180313484, 2.413180313484],
+        "nominal_p": [0.007906996973162, 0.007906996973162, 0.007906996973162, 0.007906996973162, 0.007906996973162],
+        "cum_alpha_spent": [0.007906996973162, 0.01376283907254, 0.01827213456311, 0.02192725249751, 0.02499999996505],
+        "inflation_factor": 1.228572475236,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Pocock_classical-K5-pow0.9",
+      "description": "gsDesign Pocock classical, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.1, sfu=\"Pocock\")",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "Pocock classical"
+      },
+      "outputs": {
+        "z_upper": [2.413180313484, 2.413180313484, 2.413180313484, 2.413180313484, 2.413180313484],
+        "nominal_p": [0.007906996973162, 0.007906996973162, 0.007906996973162, 0.007906996973162, 0.007906996973162],
+        "cum_alpha_spent": [0.007906996973162, 0.01376283907254, 0.01827213456311, 0.02192725249751, 0.02499999996505],
+        "inflation_factor": 1.20657997922,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K5-pow0.8",
+      "description": "gsDesign Lan-DeMets OF, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDOF)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [4.876884948776, 3.357010992883, 2.680279581382, 2.289816682347, 2.03103221506],
+        "nominal_p": [5.38871262945e-07, 0.0003939498997846, 0.003678034622027, 0.01101597283977, 0.0211258633806],
+        "cum_alpha_spent": [5.388712629451e-07, 0.0003941517566912, 0.003808063310989, 0.01221179034645, 0.025],
+        "inflation_factor": 1.024719559421,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_OF-K5-pow0.9",
+      "description": "gsDesign Lan-DeMets OF, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDOF)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "Lan-DeMets OF"
+      },
+      "outputs": {
+        "z_upper": [4.876884948776, 3.357010992883, 2.680279581382, 2.289816682347, 2.03103221506],
+        "nominal_p": [5.38871262945e-07, 0.0003939498997846, 0.003678034622027, 0.01101597283977, 0.0211258633806],
+        "cum_alpha_spent": [5.388712629451e-07, 0.0003941517566912, 0.003808063310989, 0.01221179034645, 0.025],
+        "inflation_factor": 1.023077768669,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K5-pow0.8",
+      "description": "gsDesign Lan-DeMets Pocock, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.8",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.2, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.43797668805, 2.426813688666, 2.410194122069, 2.396649301141, 2.385999729451],
+        "nominal_p": [0.007384863228009, 0.007616037946041, 0.007972017285482, 0.008272875633818, 0.008516381795898],
+        "cum_alpha_spent": [0.007384863228009, 0.01307842909029, 0.01771282667156, 0.02162099312908, 0.025],
+        "inflation_factor": 1.212612838708,
+        "theta_drift": 2.801585218113
+      }
+    },
+    {
+      "id": "gsDesign-Lan-DeMets_Pocock-K5-pow0.9",
+      "description": "gsDesign Lan-DeMets Pocock, K=5 equally spaced, one-sided alpha 0.025, efficacy only, power 0.9",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "gsDesign(k=5, test.type=1, alpha=0.025, beta=0.1, sfu=sfLDPocock)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "timing": [0.2, 0.4, 0.6, 0.8, 1],
+        "spending": "Lan-DeMets Pocock"
+      },
+      "outputs": {
+        "z_upper": [2.43797668805, 2.426813688666, 2.410194122069, 2.396649301141, 2.385999729451],
+        "nominal_p": [0.007384863228009, 0.007616037946041, 0.007972017285482, 0.008272875633818, 0.008516381795898],
+        "cum_alpha_spent": [0.007384863228009, 0.01307842909029, 0.01771282667156, 0.02162099312908, 0.025],
+        "inflation_factor": 1.192331146275,
+        "theta_drift": 3.241515550085
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K5-pow0.8",
+      "description": "rpact OBF classical (typeOfDesign OF), K=5, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"OF\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [4.561742327214, 3.225638933598, 2.633723160591, 2.280871163607, 2.040073187898],
+        "nominal_p": [2.536544075782e-06, 0.0006284590715617, 0.004222715821942, 0.01127803588617, 0.02067151837443],
+        "cum_alpha_spent": [2.536544075782e-06, 0.0006295298679784, 0.004451805975916, 0.01279229890327, 0.02499999],
+        "inflation_factor": 1.028410978155,
+        "shift": 8.071874085021
+      }
+    },
+    {
+      "id": "rpact-OBF_classical-K5-pow0.9",
+      "description": "rpact OBF classical (typeOfDesign OF), K=5, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"OF\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [4.561742327214, 3.225638933598, 2.633723160591, 2.280871163607, 2.040073187898],
+        "nominal_p": [2.536544075782e-06, 0.0006284590715617, 0.004222715821942, 0.01127803588617, 0.02067151837443],
+        "cum_alpha_spent": [2.536544075782e-06, 0.0006295298679784, 0.004451805975916, 0.01279229890327, 0.02499999],
+        "inflation_factor": 1.026486311809,
+        "shift": 10.785725944951
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K5-pow0.8",
+      "description": "rpact Pocock classical (typeOfDesign P), K=5, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"P\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [2.413180287054, 2.413180287054, 2.413180287054, 2.413180287054, 2.413180287054],
+        "nominal_p": [0.007906997546553, 0.007906997546553, 0.007906997546553, 0.007906997546553, 0.007906997546553],
+        "cum_alpha_spent": [0.007906997546553, 0.01376283979984, 0.01827213515705, 0.02192725278905, 0.025],
+        "inflation_factor": 1.228572722352,
+        "shift": 9.642919542641
+      }
+    },
+    {
+      "id": "rpact-Pocock_classical-K5-pow0.9",
+      "description": "rpact Pocock classical (typeOfDesign P), K=5, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"P\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [2.413180287054, 2.413180287054, 2.413180287054, 2.413180287054, 2.413180287054],
+        "nominal_p": [0.007906997546553, 0.007906997546553, 0.007906997546553, 0.007906997546553, 0.007906997546553],
+        "cum_alpha_spent": [0.007906997546553, 0.01376283979984, 0.01827213515705, 0.02192725278905, 0.025],
+        "inflation_factor": 1.206580529542,
+        "shift": 12.67805208159
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K5-pow0.8",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=5, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asOF\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [4.876884948791, 3.357011921704, 2.680280067027, 2.289816774428, 2.031032063067],
+        "nominal_p": [5.388712629451e-07, 0.0003939485763709, 0.00367802928543, 0.01101597016972, 0.02112587108929],
+        "cum_alpha_spent": [5.388712629451e-07, 0.0003941517590887, 0.003808063250732, 0.01221179019124, 0.02499999],
+        "inflation_factor": 1.024719891466,
+        "shift": 8.042903189515
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_OF-K5-pow0.9",
+      "description": "rpact Lan-DeMets OF (typeOfDesign asOF), K=5, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asOF\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [4.876884948791, 3.357011921704, 2.680280067027, 2.289816774428, 2.031032063067],
+        "nominal_p": [5.388712629451e-07, 0.0003939485763709, 0.00367802928543, 0.01101597016972, 0.02112587108929],
+        "cum_alpha_spent": [5.388712629451e-07, 0.0003941517590887, 0.003808063250732, 0.01221179019124, 0.02499999],
+        "inflation_factor": 1.023078337373,
+        "shift": 10.74991691577
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K5-pow0.8",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=5, one-sided alpha 0.025, power 0.8",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.2, sided=1, typeOfDesign=\"asP\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.8,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [2.43797668805, 2.426813863218, 2.410194136202, 2.396649293602, 2.385999701917],
+        "nominal_p": [0.007384863228009, 0.007616034281996, 0.00797201697663, 0.008272875804021, 0.008516382433509],
+        "cum_alpha_spent": [0.007384863228009, 0.01307842900758, 0.01771282677301, 0.02162099305057, 0.025],
+        "inflation_factor": 1.212613099103,
+        "shift": 9.517654379153
+      }
+    },
+    {
+      "id": "rpact-Lan-DeMets_Pocock-K5-pow0.9",
+      "description": "rpact Lan-DeMets Pocock (typeOfDesign asP), K=5, one-sided alpha 0.025, power 0.9",
+      "package": "rpact",
+      "version": "4.4.0",
+      "r_version": "4.5.2",
+      "call": "getDesignGroupSequential(kMax=5, alpha=0.025, beta=0.1, sided=1, typeOfDesign=\"asP\", informationRates=(1:5)/5); getDesignCharacteristics(.)",
+      "inputs": {
+        "K": 5,
+        "alpha": 0.025,
+        "power": 0.9,
+        "informationRates": [0.2, 0.4, 0.6, 0.8, 1]
+      },
+      "outputs": {
+        "z_upper": [2.43797668805, 2.426813863218, 2.410194136202, 2.396649293602, 2.385999701917],
+        "nominal_p": [0.007384863228009, 0.007616034281996, 0.00797201697663, 0.008272875804021, 0.008516382433509],
+        "cum_alpha_spent": [0.007384863228009, 0.01307842900758, 0.01771282677301, 0.02162099305057, 0.025],
+        "inflation_factor": 1.192331716838,
+        "shift": 12.528333778389
+      }
+    },
+    {
+      "id": "gsDesign-binary-30v45-K4-OF",
+      "description": "Two-arm binary 30% vs 45%, 4 looks, OBF-type, one-sided 0.025, power 0.9; n.fix total N from nBinomial (equal allocation), group sequential N = n.fix * inflation",
+      "package": "gsDesign",
+      "version": "3.11.0",
+      "r_version": "4.5.2",
+      "call": "nfix <- nBinomial(p1=0.3, p2=0.45, alpha=0.025, beta=0.1, sided=1); gsDesign(k=4, test.type=1, alpha=0.025, beta=0.1, sfu=\"OF\", n.fix=nfix)",
+      "inputs": {
+        "p1": 0.3,
+        "p2": 0.45,
+        "alpha": 0.025,
+        "power": 0.9,
+        "K": 4,
+        "ratio": 1
+      },
+      "outputs": {
+        "n_fixed_total": 433.639870520885,
+        "n_per_look_total": [110.812624810159, 221.625249620317, 332.437874430476, 443.250499240634],
+        "total_N_max": 443.250499240634,
+        "inflation_factor": 1.022162696221,
+        "z_upper": [4.048591194917, 2.862786288178, 2.337455216224, 2.024295597459],
+        "nominal_p": [2.576342832151e-05, 0.002099668498606, 0.009707763473231, 0.02146987317538],
+        "cum_alpha_spent": [2.576342832151e-05, 0.00211034078531, 0.01045588902045, 0.02499999993665]
+      }
+    }
+  ]
+}

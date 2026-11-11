@@ -1,0 +1,16 @@
+id: eq-lifecycle-cost
+section: sec-lifecycle-options
+title: "Cost per approved drug"
+tex: "\\htmlClass{term c1}{C_{\\mathrm{approved}}} = \\frac{\\htmlClass{term c2}{c_1 + p_{12}c_2 + p_{12}p_{23}c_3}}{\\htmlClass{term c3}{p_{12}\\,p_{23}\\,p_{3A}}}."
+parts:
+  - "The long-run "
+  - {k: c1, words: "cost per approval"}
+  - " is "
+  - {k: c2, words: "the expected cost per drug started, where each phase is paid for only if all earlier phases succeed"}
+  - ", divided by "
+  - {k: c3, words: "the expected number of approvals per drug started"}
+  - "."
+notes:
+  c1: "What a company spends, on average, for each approved drug."
+  c2: "Phase I cost, plus Phase II cost weighted by the chance of reaching it, plus Phase III cost weighted by the chance of reaching it."
+  c3: "The chance that a started drug passes all three transitions to approval; low attrition probabilities inflate the cost."

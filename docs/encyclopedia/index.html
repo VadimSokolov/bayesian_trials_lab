@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bayesian Clinical Trials: encyclopedia</title>
+<meta name="description" content="Encyclopedia, knowledge graph and optional tutor on top of the book Bayesian Clinical Trials and Personalized Medicine, Volume I.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#view">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="#/" aria-label="Home">Bayesian Clinical Trials</a>
+  <nav aria-label="Main">
+    <a href="#/graph" data-nav="graph">Map</a>
+    <a href="../">Lab</a>
+  </nav>
+  <div id="header-search" class="search-slot"></div>
+</header>
+<main id="view" tabindex="-1" aria-live="polite"></main>
+<footer class="site-footer" id="footer"></footer>
+
+<aside id="tutor" class="drawer" role="dialog" aria-modal="false" aria-labelledby="tutor-title" hidden>
+  <div class="drawer-head">
+    <h2 id="tutor-title">Tutor</h2>
+    <button type="button" id="t-close" class="icon-btn" aria-label="Close tutor">&times;</button>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Tutor mode">
+    <button type="button" role="tab" id="tab-tutor" data-mode="tutor" aria-selected="true">Tutor</button>
+    <button type="button" role="tab" id="tab-ask" data-mode="ask" aria-selected="false">Ask</button>
+  </div>
+  <details id="t-settings" class="settings">
+    <summary>Settings and tools</summary>
+    <div id="t-modelrow"><label for="t-model">Model</label>
+    <select id="t-model">
+      <option value="claude-opus-5-5">Claude Opus 5.5</option>
+      <option value="claude-sonnet-5-5">Claude Sonnet 5.5</option>
+      <option value="claude-haiku-5-5">Claude Haiku 5.5</option>
+    </select></div>
+    <label for="t-key">Anthropic API key (optional)</label>
+    <input id="t-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
+    <label class="inline"><input type="checkbox" id="t-remember"> Remember my key in this browser</label>
+    <p class="note" id="t-free">Free, via the site (Haiku). Add your own key for other models.</p>
+    <p class="note">A key stays in your browser and goes straight to Anthropic, never through this site. Use a key with a spend limit.</p>
+  <div class="row tools">
+    <button type="button" id="t-copy" class="btn small">Copy tutor prompt</button>
+    <button type="button" id="t-save" class="btn small">Save state</button>
+    <button type="button" id="t-resume" class="btn small">Resume</button>
+    <button type="button" id="t-reset" class="btn small">Clear chat</button>
+  </div>
+  </details>
+  <div id="t-map" class="skillmap" aria-label="Skill map"></div>
+  <div id="t-log" class="chat" role="log" aria-live="polite" aria-label="Conversation"></div>
+  <p id="t-status" class="status" role="status"></p>
+  <form id="t-form" class="chat-form">
+    <label for="t-input" class="sr-only">Your message</label>
+    <textarea id="t-input" rows="2" placeholder="Type your answer or question"></textarea>
+    <div class="row">
+      <button type="submit" id="t-send" class="btn primary">Send</button>
+      <button type="button" id="t-stop" class="btn" hidden>Stop</button>
+      <button type="button" id="t-start" class="btn">Start</button>
+    </div>
+  </form>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@18.2.0/lib/marked.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.17/dist/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.35.0/dist/cytoscape.min.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

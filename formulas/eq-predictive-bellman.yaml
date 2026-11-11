@@ -1,0 +1,23 @@
+id: eq-predictive-bellman
+section: 15/the-sufficient-statistic-reduction
+title: Bellman equation for the predictive design
+tex: \htmlClass{term c1}{V_k(s_1,s_0)} = \min\Big\{ \htmlClass{term c2}{h_k(s_1,s_0)},\ \htmlClass{term c3}{\kappa} + \htmlClass{term c4}{\sum_{y_1,y_0\in\{0,1\}} \Pr(y_1,y_0 \mid s_1,s_0,k)\, V_{k+1}(s_1+y_1,\, s_0+y_0)} \Big\},
+parts:
+- 'The '
+- k: c1
+  words: best expected loss from here
+- ' is the smaller of '
+- k: c2
+  words: the loss from stopping now
+- ' and '
+- k: c3
+  words: the cost of one more pair
+- ' plus '
+- k: c4
+  words: the expected loss at the next stage, averaged over the four outcomes of the next pair
+- .
+notes:
+  c1: The minimum expected loss from state $(s_1, s_0)$ at stage $k$ onward; the argument that achieves the minimum is the optimal action.
+  c2: Stopping loss at the current state.
+  c3: Cost of one more pair (normalized by $L_{FP}+L_{FN}$ in the classification version).
+  c4: Weights are the predictive probabilities of the next outcomes; solved backward from $V_T = h_T$.

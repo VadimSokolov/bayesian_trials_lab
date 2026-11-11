@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adaptive and Bayesian designs | Bayesian Clinical Trials Lab</title>
+<meta name="description" content="Interactive lesson: a Bayesian success rule, its false-positive rate and power, borrowing from history, and trials that adapt as data arrive.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="lab.css">
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<style>
+  .tip { border-bottom: 1px dotted #1F6B6B; cursor: help; }
+  .sub { margin: 2.2rem 0 .4rem; }
+  .sub h2 { margin-bottom: .3rem; }
+  .sub p { margin: .2rem 0; }
+  .aside2 { margin-top: 1rem; }
+  .stack { display: flex; height: 44px; border-radius: 6px; overflow: hidden; border: 1px solid #cfd6df; margin: .3rem 0 .2rem; }
+  .stack div { display: flex; align-items: center; justify-content: center; font-size: .78rem; color: #fff; white-space: nowrap; overflow: hidden; transition: width 1.1s ease; }
+  .stack .g { background: #7b8794; } .stack .o { background: #B8531A; } .stack .t { background: #1F6B6B; }
+  .stlbl { font-size: .85rem; font-weight: 600; margin-top: .6rem; }
+  .figure svg text { font-family: 'IBM Plex Sans', sans-serif; }
+  #award .dose { transition: opacity .6s, fill .6s, r .6s; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+  #award.pulse .dose, #award.pulse .ctrl { animation: pulse 1.2s ease-in-out 2; }
+  .stepline { min-height: 2.6em; font-weight: 600; }
+  #tv .trow { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; min-height: 18px; }
+  .pp { width: 12px; height: 15px; display: block; }
+  .pp.yes { fill: #2D8B8B; stroke: none; }
+  .pp.no { fill: none; stroke: #9AA3AE; stroke-width: 1.3; }
+  #tv .legend .pp { display: inline-block; width: 14px; height: 17px; vertical-align: middle; }
+  #tv .rowwrap { display: grid; grid-template-columns: 7.5rem 1fr; gap: .6rem; align-items: center; margin: .45rem 0; }
+  #tv .rl { font-weight: 600; font-size: .95rem; line-height: 1.25; }
+  #tv .rl b { display: block; font-family: var(--mono); font-weight: 600; color: #1F6B6B; font-size: .85rem; }
+  #tv h3 { font-size: .8rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; color: #5B6470; margin: .8rem 0 .3rem; }
+  #tv .tbar { height: 18px; background: #E6E9ED; border-radius: 4px; overflow: hidden; }
+  #tv .tbar i { display: block; height: 100%; transition: width .5s; }
+  #tv .legend { font-size: .85rem; margin: .4rem 0; }
+  @media (max-width: 800px) { #tv .rowwrap { grid-template-columns: 5.5rem 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .stack div, #award .dose { transition: none; } #award.pulse .dose, #award.pulse .ctrl { animation: none; } }
+</style>
+</head>
+<body class="lab">
+<a class="skip" href="#lab">Skip to the lab</a>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./">Bayesian Clinical Trials Lab</a>
+  <span class="crumb"><a href="encyclopedia/">Encyclopedia</a></span>
+  <span class="title">9. Adaptive and Bayesian designs</span>
+  <span class="pn"><a href="08-e-values.html">&larr; Prev</a><a href="./">Index</a><a href="10-platform-trials.html">Next &rarr;</a></span>
+</div></div>
+
+<main class="wrap">
+<section class="hero">
+  <div class="kicker">Module 9</div>
+  <h1>Adaptive and Bayesian designs</h1>
+  <p class="hook">Can a trial change its plan on the way and still be fair?</p>
+  <p class="note" style="margin:0 0 .6rem">Bayesian means updating a belief with each patient, as in <a href="01-prior-posterior.html">module 1</a>.</p>
+  <p class="note" style="margin:0 0 .6rem"><b>Power</b> is the chance a trial finds a real effect (<a href="03-errors-power.html">module 3</a>). A false positive (a false win) calls a useless drug a success. The target is 2.5% (the one-sided 0.025 line from <a href="02-p-values.html">module 2</a>). The default bar 0.90 gives about 10% false wins. A bar of 0.975 ("97.5% sure") gives about 2.5%, but only with no prior opinion and one look at the data.</p>
+  <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
+</section>
+
+<section id="lab" class="labgrid" aria-label="Success rule lab">
+  <div class="panel">
+    <h3>1. The rule</h3>
+    <p class="note" style="margin:0 0 .4rem">After the trial, compute the chance the drug beats placebo. Call it a success if that chance is above the <span class="tip" tabindex="0" title="The cut-off you set in advance. Higher means stricter.">bar</span>.</p>
+    <div class="field"><label for="thr">Bar</label><input id="thr" type="range" min="0.5" max="0.995" step="0.005" value="0.9"><output id="thrO"></output></div>
+    <h3>2. The trial</h3>
+    <div class="field"><label for="nn">Patients per group</label><input id="nn" type="range" min="10" max="150" step="5" value="50"><output id="nnO"></output></div>
+    <div class="field"><label for="pc">Placebo: true response rate</label><input id="pc" type="range" min="0.1" max="0.6" step="0.05" value="0.3"><output id="pcO"></output></div>
+    <div class="field"><label for="pt">Drug: true response rate</label><input id="pt" type="range" min="0.1" max="0.8" step="0.05" value="0.55"><output id="ptO"></output></div>
+    <p class="note">1,500 simulated trials where the drug does nothing (orange) and 1,500 where it works (teal).</p>
+  </div>
+  <div>
+    <div class="plotbox"><svg id="plot"></svg>
+      <div class="chips" aria-live="polite" id="chips"></div>
+      <p class="note" id="plotNote" style="margin:.5rem 0 0">Trials right of the dashed line call the drug a success.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tv">
+  <h2>Truth versus what the trial sees</h2>
+  <p>The true response rates are hidden from the trial. Patients arrive one by one. The better a treatment looks so far, the likelier the next patient gets it. This is <b>response-adaptive randomization</b>: more patients go to the treatment doing better.</p>
+  <p class="note">Benefit: more patients get the better treatment (watch "On the drug"). Pitfall: early luck can fool it (try "Start over with new luck"), and it can need more patients for the same power.</p>
+  <h3>Hidden truth</h3>
+  <div class="rowwrap"><div class="rl">Placebo<b id="tvTC"></b></div><div class="tbar" role="img" id="tvBC"><i style="background:#E07A3F"></i></div></div>
+  <div class="rowwrap"><div class="rl">Drug<b id="tvTD"></b></div><div class="tbar" role="img" id="tvBD"><i style="background:#2D8B8B"></i></div></div>
+  <h3>What the trial sees</h3>
+  <div class="rowwrap"><div class="rl">Placebo<b id="tvNC"></b></div><div class="trow" id="tvRC" role="img"></div></div>
+  <div class="rowwrap"><div class="rl">Drug<b id="tvND"></b></div><div class="trow" id="tvRD" role="img"></div></div>
+  <p class="legend"><svg class="pp yes" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> filled = improved &nbsp; <svg class="pp no" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg> outline = did not. An arm is the group on one treatment.</p>
+  <div class="row"><button class="btn primary" id="tvStep" type="button">Enroll next 10</button><button class="btn" id="tvAll" type="button">Enroll all 100</button><button class="btn" id="tvReset" type="button">Start over with new luck</button></div>
+  <div class="chips" id="tvChips" aria-live="polite"></div>
+  <p class="note" id="tvNote" style="margin:.5rem 0 0"></p>
+</section>
+
+<section class="section">
+  <h2>The price of a lower bar</h2>
+  <p>Each bar gives one false-positive rate and one power.</p>
+  <p class="note">Each point on the curve is one bar. False positives run across, power runs up, and the grey diagonal is a coin flip instead of a trial.</p>
+  <div class="plotbox"><svg id="plot2"></svg><p class="note" style="margin:.4rem 0 0">Red dashed line: your bar.</p></div>
+</section>
+
+<section class="section">
+  <h2>Borrowing from history</h2>
+  <p>Last year's trial had 30 improvements in 100 placebo patients. Can we reuse it, so today's trial needs fewer placebo patients?</p>
+  <div class="presets" id="bpre"><span class="lbl">Today's true rate:</span></div>
+  <div class="labgrid" style="margin-top:.6rem">
+    <div class="panel">
+      <h3>How much to borrow</h3>
+      <div class="field"><label for="bw"><span class="tip" tabindex="0" title="1 means last year's 100 patients count fully. 0 means ignore them.">Weight</span></label><input id="bw" type="range" min="0" max="1" step="0.05" value="0.5"><output id="bwO"></output></div>
+      <div class="field"><label for="bt">Today's true placebo rate</label><input id="bt" type="range" min="0.15" max="0.6" step="0.05" value="0.3"><output id="btO"></output></div>
+      <p class="note">Today 30 placebo patients enroll. Their results are drawn at random from the true rate. Made-up example.</p>
+      <button type="button" class="btn" id="bre">Draw new patients</button>
+    </div>
+    <div>
+      <div class="plotbox"><svg id="bplot"></svg><div class="chips" id="bchips" aria-live="polite"></div></div>
+      <div class="plotbox" style="margin-top:.8rem"><svg id="rplot"></svg>
+        <p class="note" style="margin:.4rem 0 0">Average error of the estimate. Lower is better.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Predict, then check</h2>
+  <p class="note">Cards 1, 3 and 4 use numbers from the sequential cost-based design in <a href="https://arxiv.org/abs/2602.09208">Sokolova, Sokolov and Polson (2026)</a>, which this lab does not simulate.</p>
+  <div class="scorebar" id="score"></div>
+  <div class="qcards" id="qcards"></div>
+</section>
+
+<section class="example">
+  <h2>Real trial 1: AWARD-5, picking a dose on the fly</h2>
+  <p>Seven doses of dulaglutide (0.25 to 3.0 mg) and placebo and an approved drug started together. Step through what happened.</p>
+  <figure class="figure">
+    <svg id="award" viewBox="0 0 640 230" role="img" aria-label="Diagram of the AWARD-5 dose picking: seven dose circles and placebo and approved-drug squares, then one dose stopped and two picked"></svg>
+    
+  </figure>
+  <div class="row"><button class="btn primary" id="awNext" type="button">Next step</button></div>
+  <p class="stepline" id="awStep" aria-live="polite"></p>
+  <p class="note">The drug was approved in 2014.</p>
+</section>
+
+<section class="example">
+  <h2>Real trial 2: lecanemab Study 201</h2>
+  <p>Alzheimer's drug, 5 doses plus placebo. Planned split versus final split.</p>
+  <div class="stlbl">At the start (planned)</div>
+  <div class="stack" id="lecA"></div>
+  <div class="stlbl">By the end (actual)</div>
+  <div class="stack" id="lecB"></div>
+  <div class="row" style="margin-top:.5rem"><button class="btn primary" id="lecGo" type="button">Let the trial run</button><button class="btn" id="lecReset" type="button">Reset</button></div>
+  <p class="note" id="lecNote"></p>
+  <p>Phase 2 (the smaller first trial) estimated 33% slower decline at 18 months on CDR-SB, a score of memory and daily living. Phase 3 (the big trial) found 27% on the same score.</p>
+  <p>At 12 months it missed its own pre-set success bar on a different score (ADCOMS): a 0.64 chance of at least 25% slower decline, versus 0.80 needed. It still went on to a positive phase 3.</p>
+  <p class="note">Sources: <a href="https://doi.org/10.1186/s13195-021-00813-8">Swanson 2021</a>, <a href="https://doi.org/10.1056/NEJMoa2212948">van Dyck 2023</a>.</p>
+</section>
+
+<div id="code"></div>
+
+<section class="reg">
+  <h3>Regulator's corner</h3>
+  <p>The FDA's draft guidance on Bayesian methods (January 2026) describes a success rule like ours as:</p>
+  <blockquote>"the posterior probability that the true treatment effect size exceeds some threshold"</blockquote>
+  <p class="note">Posterior probability = the chance after the trial. Effect size = the gap between the groups.</p>
+  <p class="note"><a href="https://www.fda.gov/media/190505/download">FDA draft guidance on Bayesian methods</a>, section IV.A. The Bayesian guidance is still a draft. Adaptive plans: <a href="https://www.fda.gov/media/78495/download">FDA guidance (2019)</a>.</p>
+</section>
+
+<section class="takeaway">
+  <h2>Takeaway</h2>
+  <ul>
+    <li>Before the trial, simulate a Bayesian rule to count its false positives and its power.</li>
+    <li>Borrowing history helps when it matches today and hurts when it does not.</li>
+    <li>A trial may adapt, if the rules are written before the first patient.</li>
+  </ul>
+</section>
+</main>
+<p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/response-adaptive-randomization">Response-adaptive randomization</a>, <a href="encyclopedia/#/e/hierarchical-model">Hierarchical model</a>, <a href="encyclopedia/#/e/bayesian-borrowing">Bayesian borrowing</a>, <a href="encyclopedia/#/e/operating-characteristics">Operating characteristics</a>, <a href="encyclopedia/#/e/posterior-probability-success-criterion">Posterior probability success criterion</a>, <a href="encyclopedia/#/e/calibration">Calibration of the success threshold</a>, <a href="encyclopedia/#/e/power-prior">Power prior</a>.</p>
+<footer class="labfoot"><div class="wrap">
+  <strong>Further reading</strong>
+  <ul>
+    <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/12-simulation.html">14</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/13-predictive.html">15</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/14-rar.html">16</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/16-borrowing.html">19</a>.</li>
+    <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters</a>)</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a> (earlier public version of the submitted manuscript that supplies the numbers above).</li>
+    <li>Skrivanek, Z. et al. (2014). Dose-finding results in an adaptive, seamless, randomized trial of once-weekly dulaglutide combined with metformin in type 2 diabetes patients (AWARD-5). Diabetes Obes Metab 16(8):748-756. <a href="https://doi.org/10.1111/dom.12305">doi:10.1111/dom.12305</a></li>
+    <li>Muss, H. B. et al. (2009). Adjuvant chemotherapy in older women with early-stage breast cancer. N Engl J Med 360(20):2055-2065. <a href="https://doi.org/10.1056/NEJMoa0810266">doi:10.1056/NEJMoa0810266</a> (CALGB 49907; numbers via the submitted manuscript).</li>
+  </ul>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+</div></footer>
+
+<script src="lab.js"></script>
+<script>
+(function () {
+  var TEAL = '#2D8B8B', ORANGE = '#E07A3F', NAVY = '#0A1628', RUST = '#B8531A', GREY = '#7b8794';
+  var $ = function (id) { return document.getElementById(id); };
+  function r3(v) { return Math.round(v * 1000) / 1000; }
+  function chip(txt, val, warm) { return '<span class="chip' + (warm ? ' warm' : '') + '">' + txt + ' <b>' + val + '</b></span>'; }
+
+  /* ============ Main lab: Bayesian success rule ============ */
+  var NT = 1500, cacheP = {};
+  // P(pT > pC | data) with flat priors: integral of Beta density of pT times Beta cdf of pC (midpoint grid).
+  function pBetter(n, sc, st) {
+    var key = n + ',' + sc + ',' + st; if (cacheP[key] !== undefined) return cacheP[key];
+    var G = 120, num = 0, den = 0, aT = 1 + st, bT = 1 + n - st, aC = 1 + sc, bC = 1 + n - sc, i, x, w;
+    for (i = 0; i < G; i++) { x = (i + 0.5) / G; w = Lab.betaPdf(x, aT, bT); num += w * Lab.betaCdf(x, aC, bC); den += w; }
+    return (cacheP[key] = num / den);
+  }
+  var simCache = {};
+  // Simulate NT trials where the drug does nothing and NT where it works; return arrays of P(drug better).
+  function simulate(n, pc, pt) {
+    var key = n + '|' + pc + '|' + pt; if (simCache[key]) return simCache[key];
+    var r = Lab.rng(11), nul = [], eff = [], t, sc;
+    for (t = 0; t < NT; t++) {
+      sc = Lab.binomial(r, n, pc);
+      nul.push(pBetter(n, sc, Lab.binomial(r, n, pc)));
+      eff.push(pBetter(n, Lab.binomial(r, n, pc), Lab.binomial(r, n, pt)));
+    }
+    return (simCache[key] = { nul: nul, eff: eff });
+  }
+  function rates(sim, thr) { return { fp: Lab.prob(sim.nul, function (v) { return v > thr; }), pw: Lab.prob(sim.eff, function (v) { return v > thr; }) }; }
+  function shares(xs) { var h = Lab.histogram(xs, 0, 1, 20).counts; return h.map(function (c) { return c / xs.length; }); }
+
+  var plot = Lab.Plot($('plot'), { xlim: [0, 1], ylim: [0, 0.5], xlabel: 'P(drug better) in each trial', ylabel: 'Share of trials', label: 'Histogram of the Bayesian probability that the drug is better, when it does nothing (orange) and when it works (teal)' });
+  var plot2 = Lab.Plot($('plot2'), { xlim: [0, 1], ylim: [0, 1], xlabel: 'False-positive rate', ylabel: 'Power', label: 'Power against false-positive rate as the bar moves' });
+  var M = { n: 50, pc: 0.3, pt: 0.55, thr: 0.9 };
+
+  function renderMain(ms) {
+    var sim = simulate(M.n, M.pc, M.pt), rt = rates(sim, M.thr);
+    var hn = shares(sim.nul), he = shares(sim.eff), top = Math.max(Math.max.apply(null, hn), Math.max.apply(null, he));
+    plot.setYlim(0, Math.max(0.1, Math.ceil(top * 1.15 * 20) / 20));
+    plot.bars('nul', hn, 0, 1, { fill: ORANGE, opacity: 0.55 }, ms);
+    plot.bars('eff', he, 0, 1, { fill: TEAL, opacity: 0.6 }, ms);
+    plot.vline('thr', M.thr, 'bar ' + M.thr.toFixed(3), { color: NAVY, dash: '5 4' }, ms);
+    plot.legend([{ label: 'Drug does nothing', color: ORANGE, kind: 'box' }, { label: 'Drug works', color: TEAL, kind: 'box' }]);
+    $('chips').innerHTML = chip('False positives', Lab.pct(rt.fp, 1), true) + chip('Power', Lab.pct(rt.pw, 1));
+    // trade-off curve over 60 bars
+    var xs = [], ys = [], k, th;
+    for (k = 0; k < 60; k++) { th = 0.5 + 0.499 * k / 59; var q = rates(sim, th); xs.push(q.fp); ys.push(q.pw); }
+    xs.reverse(); ys.reverse();
+    plot2.line('roc', xs, ys, { stroke: TEAL, width: 2.5 }, ms);
+    plot2.line('diag', [0, 1], [0, 1], { stroke: GREY, width: 1, dash: '4 4' }, 0);
+    plot2.vline('now', rt.fp, 'your bar', { color: RUST, dash: '5 4' }, ms);
+    plot2.legend([{ label: 'Simulated trials', color: TEAL, kind: 'line' }, { label: 'Guessing at random', color: GREY, kind: 'dash' }]);
+  }
+  function syncOut() {
+    $('thrO').textContent = M.thr.toFixed(3); $('nnO').textContent = M.n; $('pcO').textContent = Lab.pct(M.pc, 0); $('ptO').textContent = Lab.pct(M.pt, 0); if (window.__tvSync) window.__tvSync();
+    $('thr').value = M.thr; $('nn').value = M.n; $('pc').value = M.pc; $('pt').value = M.pt;
+  }
+  function applyMain(o, ms) { for (var k in o) M[k] = o[k]; syncOut(); renderMain(ms == null ? 500 : ms); }
+  [['thr', 'thr', r3], ['nn', 'n', Number], ['pc', 'pc', r3], ['pt', 'pt', r3]].forEach(function (c) {
+    $(c[0]).addEventListener('input', function () { M[c[1]] = c[2](this.value); syncOut(); renderMain(150); });
+  });
+  var PRE = [
+    { label: 'Small trial', o: { n: 20, pc: 0.3, pt: 0.55, thr: 0.9 } },
+    { label: 'Big trial', o: { n: 100, pc: 0.3, pt: 0.55, thr: 0.9 } },
+    { label: 'Weak drug', o: { n: 60, pc: 0.3, pt: 0.4, thr: 0.95 } },
+    { label: 'Strict bar', o: { n: 50, pc: 0.3, pt: 0.55, thr: 0.99 } },
+    { label: 'Strict bar, 55 per group', o: { n: 55, pc: 0.3, pt: 0.55, thr: 0.975 } }
+  ];
+  PRE.forEach(function (p) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = p.label;
+    b.addEventListener('click', function () {
+      applyMain(p.o, 600);
+      document.querySelectorAll('#examples .btn').forEach(function (x) { x.classList.toggle('on', x === b); });
+    });
+    $('examples').appendChild(b);
+  });
+
+  /* ============ Borrowing lab ============ */
+  var NC = 30, NH = 100, SH = 30;
+  var B = { w: 0.5, t: 0.3 };
+  var bplot = Lab.Plot($('bplot'), { xlim: [0, 1], ylim: [0, 6], xlabel: 'Placebo response rate', ylabel: 'Belief', label: 'Posterior for the placebo rate without borrowing (orange) and with borrowing (teal)' });
+  var rplot = Lab.Plot($('rplot'), { xlim: [0, 1], ylim: [0, 0.2], xlabel: 'Borrowing weight', ylabel: 'Average error', label: 'Typical error of the estimate against the borrowing weight' });
+  var gx = Lab.linspace(0.002, 0.998, 200);
+  var brng = Lab.rng(31), BU = [];
+  function redraw() { BU = []; for (var i = 0; i < NC; i++) BU.push(brng()); }
+  function drawn(t) { var c = 0; BU.forEach(function (u) { if (u < t) c++; }); return c; }
+  redraw();
+  function postAB(w, t, k) { var s = (k === undefined) ? Math.round(NC * t + 1e-9) : k; return [1 + s + w * SH, 1 + (NC - s) + w * (NH - SH)]; }
+  function rmse(w, t) {
+    var tot = 0, k, m;
+    for (k = 0; k <= NC; k++) { m = (1 + k + w * SH) / (2 + NC + w * NH); tot += Lab.binomPmf(k, NC, t) * (m - t) * (m - t); }
+    return Math.sqrt(tot);
+  }
+  function curve(a, b) { return gx.map(function (x) { return Lab.betaPdf(x, a, b); }); }
+  function renderB(ms) {
+    var kk = drawn(B.t), p0 = postAB(0, B.t, kk), p1 = postAB(B.w, B.t, kk), c0 = curve(p0[0], p0[1]), c1 = curve(p1[0], p1[1]);
+    bplot.setYlim(0, Math.ceil(Math.max(Math.max.apply(null, c0), Math.max.apply(null, c1)) * 1.1));
+    bplot.line('nob', gx, c0, { stroke: ORANGE, width: 2, fill: ORANGE }, ms);
+    bplot.line('bor', gx, c1, { stroke: TEAL, width: 2.5 }, ms);
+    var same = Math.abs(B.t - 0.3) < 1e-9;
+    bplot.vline('tru', B.t, same ? 'true rate = history' : 'true rate', { color: NAVY, dash: '4 3' }, ms);
+    if (same) bplot.remove('his'); else bplot.vline('his', 0.3, 'history', { color: GREY, dash: '2 3' }, ms);
+    bplot.legend([{ label: 'Today only', color: ORANGE, kind: 'line' }, { label: 'With borrowing', color: TEAL, kind: 'line' }]);
+    var mean = p1[0] / (p1[0] + p1[1]);
+    $('bchips').innerHTML = chip('Borrowed', Math.round(B.w * NH) + ' extra patients', true) + chip('Estimate', Lab.pct(mean, 1)) + chip('Today', kk + ' of ' + NC + ' placebo patients improved') + chip('True rate', Lab.pct(B.t, 0)) + chip('Off by', (100 * Math.abs(mean - B.t)).toFixed(1) + ' points');
+    var ws = Lab.linspace(0, 1, 41), y1 = ws.map(function (w) { return rmse(w, 0.3); }), y2 = ws.map(function (w) { return rmse(w, B.t); });
+    rplot.setYlim(0, Math.ceil(Math.max(Math.max.apply(null, y1), Math.max.apply(null, y2)) * 1.1 * 50) / 50);
+    rplot.line('r1', ws, y1, { stroke: TEAL, width: 2.5 }, ms);
+    rplot.line('r2', ws, y2, { stroke: ORANGE, width: 2.5, dash: '6 4' }, ms);
+    rplot.vline('w', B.w, 'weight', { color: NAVY, dash: '4 3' }, ms);
+    rplot.legend([{ label: 'True rate = history (30%)', color: TEAL, kind: 'line' }, { label: 'True rate you chose', color: ORANGE, kind: 'dash' }]);
+    $('bwO').textContent = B.w.toFixed(2); $('btO').textContent = Lab.pct(B.t, 0); $('bw').value = B.w; $('bt').value = B.t;
+  }
+  $('bre').addEventListener('click', function () { redraw(); renderB(300); });
+  $('bw').addEventListener('input', function () { B.w = r3(+this.value); renderB(150); });
+  $('bt').addEventListener('input', function () { B.t = r3(+this.value); renderB(150); });
+  [['History matches (30%)', 0.3], ['History conflicts (45%)', 0.45]].forEach(function (p) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = p[0];
+    b.addEventListener('click', function () { B.t = p[1]; renderB(600); document.querySelectorAll('#bpre .btn').forEach(function (x) { x.classList.toggle('on', x === b); }); });
+    $('bpre').appendChild(b);
+  });
+
+
+  /* ============ Question cards ============ */
+  var score = Lab.Score($('score')), Q = $('qcards');
+  // Mini bar chart with k labeled bars of given colors.
+  function miniBars(box, labels, vals, colors, ymax, ylab) {
+    var k = vals.length, nb = 2 * k + 1;
+    var P = Lab.miniPlot(box, { xlim: [0, nb], ylim: [0, ymax], xlabel: '', ylabel: ylab, label: 'Bar chart: ' + labels.join(', '), xticks: labels.map(function (l, i) { return { x: 2 * i + 1.5, label: l }; }) });
+    vals.forEach(function (v, i) { var a = []; for (var j = 0; j < nb; j++) a.push(j === 2 * i + 1 ? v : 0); P.bars('b' + i, a, 0, nb, { fill: colors[i], opacity: 0.9 }, 800); });
+    return P;
+  }
+  function miniCurves(box, specs, vl) {
+    var P = Lab.miniPlot(box, { xlim: [0, 1], ylim: [0, 1], xlabel: 'placebo rate', ylabel: 'share of trials', label: 'Posterior curves' });
+    var ys = specs.map(function (c) { return curve(c.a, c.b); });
+    P.setYlim(0, Math.ceil(Math.max.apply(null, ys.map(function (y) { return Math.max.apply(null, y); })) * 1.1));
+    specs.forEach(function (c, i) { P.line('c' + i, gx, ys[i], { stroke: c.color, width: 2, dash: c.dash }, 700); });
+    P.vline('v', vl.x, '', { color: NAVY, dash: '4 3' }, 0);
+    P.legend(specs.map(function (c) { return { label: c.label, color: c.color, kind: c.dash ? 'dash' : 'line' }; }).concat([{ label: vl.label, color: NAVY, kind: 'dash' }]));
+  }
+
+  // Q1: cost-only rule under the null
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 1', score: score, type: 'slider', min: 0, max: 100, step: 1, start: 20, tol: 8, fmt: function (v) { return v + '%'; },
+    q: 'A rule stops as soon as the drug looks even slightly better (stopping early saves the cost of more patients). The drug does nothing. How often does the rule say "better"?',
+    answer: 51.3,
+    revealPlot: function (b) { miniBars(b, ['Plain rule', 'Rule with false-positive cost'], [51.3, 2.6], [ORANGE, TEAL], 60, 'percent'); },
+    explain: 'About 51%. The rule must pick an arm when it stops, so with a useless drug it picks the drug about half the time. That is a treatment choice, not a false win rate.'
+  });
+  // Q2: raise the bar
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 2', score: score, type: 'choice',
+    q: 'Same trial (50 per group, 30% vs 55%). You raise the bar from 0.90 to 0.99. What happens to false positives and power?',
+    options: [{ value: 'both', label: 'Both fall' }, { value: 'fpow', label: 'False positives fall, power rises' }, { value: 'up', label: 'Both rise' }, { value: 'same', label: 'Nothing changes' }],
+    answer: function () { var s = simulate(50, 0.3, 0.55), a = rates(s, 0.9), c = rates(s, 0.99); return (c.fp < a.fp && c.pw < a.pw) ? 'both' : 'other'; },
+    onReveal: function () { applyMain({ n: 50, pc: 0.3, pt: 0.55, thr: 0.9 }, 0); setTimeout(function () { applyMain({ thr: 0.99 }, 1200); }, 500); },
+    revealPlot: function (b) { var s = simulate(50, 0.3, 0.55), a = rates(s, 0.9), c = rates(s, 0.99); miniBars(b, ['False pos. at 0.90', 'False pos. at 0.99', 'Power at 0.90', 'Power at 0.99'], [100 * a.fp, 100 * c.fp, 100 * a.pw, 100 * c.pw], [ORANGE, ORANGE, TEAL, TEAL], 100, 'percent'); },
+    explain: function () { var s = simulate(50, 0.3, 0.55), a = rates(s, 0.9), c = rates(s, 0.99); return 'False positives ' + Lab.pct(a.fp, 1) + ' to ' + Lab.pct(c.fp, 1) + ', power ' + Lab.pct(a.pw, 1) + ' to ' + Lab.pct(c.pw, 1) + '. A stricter bar costs power.'; }
+  });
+  // Q3: sampling cost
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 3', score: score, type: 'choice',
+    q: 'A rule stops when more patients are not worth their cost. Make each patient 100 times cheaper. If the drug does nothing, does the trial use more or fewer patients?',
+    options: [{ value: 'less', label: 'Fewer' }, { value: 'same', label: 'About the same' }, { value: 'more', label: 'More' }],
+    answer: function () { return 66.4 / 25.0 > 2 ? 'more' : 'same'; },
+    revealPlot: function (b) { miniBars(b, ['High cost', 'Medium', '100x cheaper'], [25.0, 34.7, 66.4], [ORANGE, GREY, TEAL], 80, 'patients per group'); },
+    explain: function () { return 'From 25 to 66 per group on average.'; }
+  });
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 4', score: score, type: 'choice',
+    q: 'Both arms start as if 3 of 10 patients had already improved. What happens to false positives and power?',
+    options: [{ value: 'bothdown', label: 'Both drop a little' }, { value: 'fpdown', label: 'False positives drop, power rises' }, { value: 'bothup', label: 'Both rise' }],
+    answer: function () { return (0.020 < 0.026 && 0.867 < 0.896) ? 'bothdown' : 'other'; },
+    revealPlot: function (b) { miniBars(b, ['False pos. no opinion', 'False pos. doubtful', 'Power no opinion', 'Power doubtful'], [2.6, 2.0, 89.6, 86.7], [ORANGE, ORANGE, TEAL, TEAL], 100, 'percent'); },
+    explain: 'False positives fall from 2.6% to 2.0%, power from 89.6% to 86.7%. Caution costs power.'
+  });
+  // Q5: borrowing under conflict
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 5', score: score, type: 'choice',
+    q: 'Today the true placebo rate is 45%, but last year it was 30%. You borrow all 100 old patients. Is the estimate too low, too high, or fine?',
+    options: [{ value: 'low', label: 'Too low' }, { value: 'high', label: 'Too high' }, { value: 'fine', label: 'About right' }],
+    answer: function () { var p = postAB(1, 0.45); return p[0] / (p[0] + p[1]) < 0.4 ? 'low' : 'fine'; },
+    onReveal: function () { B.t = 0.45; B.w = 0; renderB(0); setTimeout(function () { B.w = 1; renderB(1200); }, 400); },
+    revealPlot: function (b) { var p0 = postAB(0, 0.45), p1 = postAB(1, 0.45); miniCurves(b, [{ a: p0[0], b: p0[1], label: 'Today only', color: ORANGE }, { a: p1[0], b: p1[1], label: 'Borrow all', color: TEAL }], { x: 0.45, label: 'true rate 45%' }); },
+    explain: function () { var p0 = postAB(0, 0.45), p1 = postAB(1, 0.45); return 'Estimates: ' + (p0[0] / (p0[0] + p0[1])).toFixed(3) + ' today only, ' + (p1[0] / (p1[0] + p1[1])).toFixed(3) + ' with all history. Old data pulled it down to 34% and made the trial overconfident.'; }
+  });
+  // Q6: CALGB 49907
+  Lab.QuestionCard(Q, {
+    tag: 'Predict 6', score: score, type: 'slider', min: 0, max: 100, step: 1, start: 30, tol: 8, fmt: function (v) { return v + '%'; },
+    q: 'A cancer trial planned 1,800 patients and stopped at 633. What share of patients did it not need?',
+    answer: function () { return Math.round(100 * (1 - 633 / 1800)); },
+    revealPlot: function (b) { miniBars(b, ['Planned', 'Stopped at'], [1800, 633], [GREY, TEAL], 2000, 'patients'); },
+    explain: function () { return 'At 600 patients, the chance the new pill was worse than allowed was 96%, above an 80% line. The 80% line was set from the predictive probability (module 7) that more follow-up would end in failure, so enrollment stopped. ' + Lab.pct(1 - 633 / 1800, 0) + ' of patients saved (CALGB 49907, Muss et al., NEJM 2009).'; }
+  });
+
+  /* ============ Truth versus what the trial sees ============ */
+  var TV = { r: Lab.rng(909), N: 100, sa: 0, fa: 0, sb: 0, fb: 0, key: '', prev: null, A: [], B: [] };
+  function pBetterAB(sa, fa, sb, fb) {
+    var G = 120, num = 0, den = 0, i, x, w;
+    for (i = 0; i < G; i++) { x = (i + 0.5) / G; w = Lab.betaPdf(x, 1 + sb, 1 + fb); num += w * Lab.betaCdf(x, 1 + sa, 1 + fa); den += w; }
+    return num / den;
+  }
+  function tvTiles(box, arr, name) {
+    var h = '';
+    arr.forEach(function (v) { h += '<svg class="pp ' + (v ? 'yes' : 'no') + '" viewBox="0 0 16 20" aria-hidden="true"><circle cx="8" cy="5" r="4"/><path d="M1 19.5c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5z"/></svg>'; });
+    box.innerHTML = h;
+    box.setAttribute('aria-label', name + ': ' + arr.reduce(function (a, b) { return a + b; }, 0) + ' of ' + arr.length + ' worked');
+  }
+  function tvDraw() {
+    var nA = TV.A.length, nB = TV.B.length, rA = nA ? TV.sa / nA : 0, rB = nB ? TV.sb / nB : 0, left = TV.N - nA - nB, ch;
+    $('tvBC').firstChild.style.width = (100 * M.pc) + '%'; $('tvBD').firstChild.style.width = (100 * M.pt) + '%';
+    $('tvBC').setAttribute('aria-label', 'True placebo rate ' + Lab.pct(M.pc, 0)); $('tvBD').setAttribute('aria-label', 'True drug rate ' + Lab.pct(M.pt, 0));
+    $('tvTC').textContent = 'true ' + Lab.pct(M.pc, 0); $('tvTD').textContent = 'true ' + Lab.pct(M.pt, 0);
+    tvTiles($('tvRC'), TV.A, 'Placebo'); tvTiles($('tvRD'), TV.B, 'Drug');
+    $('tvNC').textContent = TV.sa + ' of ' + nA + (nA ? ' (' + Lab.pct(rA, 0) + ')' : ''); $('tvND').textContent = TV.sb + ' of ' + nB + (nB ? ' (' + Lab.pct(rB, 0) + ')' : '');
+    ch = chip('Patients enrolled', (nA + nB) + ' of ' + TV.N) + chip('On the drug', nA + nB ? Lab.pct(nB / (nA + nB), 0) : '0%', true);
+    if (left > 0) ch += chip('Next patient gets the drug: chance', Lab.pct(pBetterAB(TV.sa, TV.fa, TV.sb, TV.fb), 0));
+    else {
+      ch += chip('Gap seen', Math.round(100 * (rB - rA)) + ' points') + chip('True gap', Math.round(100 * (M.pt - M.pc)) + ' points');
+      if (TV.prev !== null) ch += chip('Gap in your previous run', TV.prev + ' points', true);
+    }
+    $('tvChips').innerHTML = ch;
+    $('tvNote').textContent = left > 0 ? 'That chance is the chance the drug is better, given the patients so far.' : 'Same truth, new patients: the gap the trial sees changes.';
+    $('tvStep').disabled = $('tvAll').disabled = left <= 0;
+  }
+  function tvEnroll(k) {
+    var i, a, y, d0, d1;
+    for (i = 0; i < k && TV.A.length + TV.B.length < TV.N; i++) {
+      d0 = Lab.beta(TV.r, 1 + TV.sa, 1 + TV.fa); d1 = Lab.beta(TV.r, 1 + TV.sb, 1 + TV.fb);
+      a = d1 > d0 ? 1 : 0; y = TV.r() < (a ? M.pt : M.pc) ? 1 : 0;
+      if (a) { TV.B.push(y); if (y) TV.sb++; else TV.fb++; } else { TV.A.push(y); if (y) TV.sa++; else TV.fa++; }
+    }
+    tvDraw();
+  }
+  function tvReset(keepPrev) {
+    var n = TV.A.length + TV.B.length;
+    if (keepPrev && n === TV.N) TV.prev = Math.round(100 * (TV.sb / TV.B.length - TV.sa / TV.A.length)); else if (!keepPrev) TV.prev = null;
+    TV.sa = TV.fa = TV.sb = TV.fb = 0; TV.A = []; TV.B = []; tvDraw();
+  }
+  window.__tvSync = function () { var k = M.pc + ',' + M.pt; if (k !== TV.key) { TV.key = k; tvReset(false); tvEnroll(20); } };
+  $('tvStep').addEventListener('click', function () { tvEnroll(10); });
+  $('tvAll').addEventListener('click', function () { tvEnroll(TV.N); });
+  $('tvReset').addEventListener('click', function () { tvReset(true); });
+
+  /* ============ AWARD-5 diagram ============ */
+  var AW = [
+    { t: 'Start: 7 doses, placebo and an approved drug all get patients.', cls: '' },
+    { t: 'Every 2 weeks the data are checked and more patients go to promising doses.', cls: 'pulse' },
+    { t: 'April 2009: the safety board stops the 3.0 mg dose (heart rate and pancreas).', cls: 'stop' },
+    { t: 'At the first allowed check, 0.75 and 1.5 mg are picked. The other doses are dropped.', cls: 'pick' }
+  ];
+  var awPos = [[70, 70], [130, 70], [190, 70], [250, 70], [100, 135], [160, 135], [220, 135]], awStop = 3, awPick = [1, 5], awStep = 0;
+  function drawAward() {
+    var s = '<text x="20" y="30" font-size="14" font-weight="600" fill="#0A1628">7 doses of the drug</text><text x="380" y="30" font-size="14" font-weight="600" fill="#0A1628">placebo, approved drug</text>';
+    awPos.forEach(function (p, i) {
+      var fill = '#9fb0c3', op = 1, rr = 17, extra = '';
+      if (awStep >= 2 && i === awStop) { fill = '#B8531A'; extra = '<text x="' + p[0] + '" y="' + (p[1] + 6) + '" text-anchor="middle" font-size="18" fill="#fff" font-weight="600">x</text><text x="' + p[0] + '" y="' + (p[1] + 34) + '" text-anchor="middle" font-size="12" fill="#B8531A">3.0 mg stopped</text>'; }
+      if (awStep >= 3) { if (awPick.indexOf(i) >= 0) { fill = '#1F6B6B'; rr = 21; extra = '<text x="' + p[0] + '" y="' + (p[1] + 36) + '" text-anchor="middle" font-size="12" fill="#1F6B6B">' + (i === 1 ? '0.75 mg' : '1.5 mg') + ' picked</text>'; } else if (i !== awStop) op = 0.25; }
+      s += '<circle class="dose" cx="' + p[0] + '" cy="' + p[1] + '" r="' + rr + '" fill="' + fill + '" opacity="' + op + '"/>' + extra;
+    });
+    s += '<rect class="ctrl" x="395" y="52" width="36" height="36" rx="6" fill="#E07A3F" opacity="' + (awStep >= 3 ? 0.55 : 1) + '"/><rect class="ctrl" x="445" y="52" width="36" height="36" rx="6" fill="#E07A3F" opacity="' + (awStep >= 3 ? 0.55 : 1) + '"/>';
+    s += '<text x="20" y="205" font-size="12" fill="#444">Step ' + (awStep + 1) + ' of ' + AW.length + '</text>';
+    $('award').innerHTML = s; $('award').setAttribute('class', AW[awStep].cls === 'pulse' ? 'pulse' : '');
+    $('awStep').textContent = AW[awStep].t;
+    $('awNext').textContent = awStep === AW.length - 1 ? 'Start over' : 'Next step';
+  }
+  $('awNext').addEventListener('click', function () { awStep = (awStep + 1) % AW.length; drawAward(); });
+
+  /* ============ Lecanemab bars ============ */
+  var LA = [2 / 7, 3 / 7, 2 / 7], LB = [0.12, 0.40, 0.48];
+  function lecDraw(el, v, labels) {
+    var cls = ['o', 'g', 't'];
+    el.innerHTML = v.map(function (x, i) { return '<div class="' + cls[i] + '" style="width:' + (100 * x).toFixed(2) + '%">' + Lab.pct(x, 1).replace('.0%', '%') + '</div>'; }).join('');
+  }
+  var lecNames = '<span style="color:#B8531A">orange</span> = two lowest doses, <span style="color:#7b8794">grey</span> = placebo plus the middle dose, <span style="color:#1F6B6B">teal</span> = two highest doses.';
+  function lecReset() { lecDraw($('lecA'), LA); lecDraw($('lecB'), LA); $('lecNote').innerHTML = lecNames + ' Start shares are computed from the plan (2/7 placebo, 1/7 per dose).'; }
+  $('lecGo').addEventListener('click', function () {
+    var segs = $('lecB').children, i; for (i = 0; i < 3; i++) { segs[i].style.width = (100 * LB[i]) + '%'; segs[i].textContent = Lab.pct(LB[i], 0); }
+    $('lecNote').innerHTML = lecNames + ' End shares are reported, not simulated: 48% on the top two doses, 12% on the bottom two.';
+  });
+  $('lecReset').addEventListener('click', lecReset);
+
+  /* ============ Code ============ */
+  Lab.CodeBox($('code'), {
+    py: 'import numpy as np\n' +
+      'rng = np.random.default_rng(1)\n' +
+      'def p_better(sc, st, n, g=4000):      # P(pT > pC | data), flat priors\n' +
+      '    return np.mean(rng.beta(1+st, 1+n-st, g) > rng.beta(1+sc, 1+n-sc, g))\n' +
+      'n, pc, pt, bar = 50, 0.30, 0.55, 0.90\n' +
+      'for p in (pc, pt):                     # drug does nothing, then drug works\n' +
+      '    sims = [p_better(rng.binomial(n, pc), rng.binomial(n, p), n)\n' +
+      '            for _ in range(1000)]\n' +
+      '    print(p, np.mean(np.array(sims) > bar))   # false positives, then power',
+    r: 'set.seed(1)\n' +
+      'p_better <- function(sc, st, n, g = 4000)\n' +
+      '  mean(rbeta(g, 1 + st, 1 + n - st) > rbeta(g, 1 + sc, 1 + n - sc))\n' +
+      'n <- 50; pc <- 0.30; pt <- 0.55; bar <- 0.90\n' +
+      'for (p in c(pc, pt)) {                 # drug does nothing, then drug works\n' +
+      '  sims <- replicate(1000, p_better(rbinom(1, n, pc), rbinom(1, n, p), n))\n' +
+      '  print(mean(sims > bar))              # false positives, then power\n' +
+      '}'
+  });
+
+  // Initial state
+  syncOut(); renderMain(0); renderB(0); lecReset(); drawAward();
+  document.querySelector('#bpre .btn').classList.add('on');
+})();
+</script>
+</body>
+</html>

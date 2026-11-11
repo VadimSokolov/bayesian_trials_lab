@@ -1,0 +1,17 @@
+id: eq-assurance
+section: 9/power-is-conditional
+title: Assurance
+tex: |-
+  \htmlClass{term c1}{\text{Assurance}} = \int \htmlClass{term c2}{\text{Power}(\theta)}\,\htmlClass{term c3}{\pi(\theta)}\,d\theta .
+parts:
+  - "The "
+  - {k: c1, words: "assurance"}
+  - " is "
+  - {k: c2, words: "the power at each possible effect"}
+  - ", averaged with weights from "
+  - {k: c3, words: "the prior belief about the effect"}
+  - "."
+notes:
+  c1: "The probability that the trial will be successful, given what is known before it starts."
+  c2: "The power curve, which treats the effect as known."
+  c3: "The sponsor's prior from phase 2 results, mechanism and class experience; it replaces the single design value."

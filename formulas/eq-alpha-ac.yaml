@@ -1,0 +1,16 @@
+id: eq-alpha-ac
+section: sec-evidence-mapping
+title: "Type I error of a posterior probability criterion"
+tex: "\\htmlClass{term c1}{\\alpha(a, c)} \\;=\\; 1 - \\Phi\\!\\left(\\htmlClass{term c2}{\\frac{a}{s}} + \\htmlClass{term c3}{z_c}\\right)."
+parts:
+  - "With a flat prior, "
+  - {k: c1, words: "the chance of meeting the criterion when there is no effect"}
+  - " is one minus the standard normal distribution function at "
+  - {k: c2, words: "the threshold in standard errors"}
+  - " plus "
+  - {k: c3, words: "the normal quantile of the required probability"}
+  - "."
+notes:
+  c1: "The type I error at $\\theta = 0$."
+  c2: "A positive threshold makes the criterion harder to meet, so the error falls below $1-c$."
+  c3: "With $a = 0$ this gives $\\alpha = 1-c$."

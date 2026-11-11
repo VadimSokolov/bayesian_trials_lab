@@ -1,0 +1,18 @@
+name = "bct-lab-proxy"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://vsokolov.org,http://localhost:8765"
+DAILY_CAP_USD = "3"
+
+# per visitor IP: 12 requests a minute
+[[ratelimits]]
+name = "RL"
+namespace_id = "1001"
+simple = { limit = 12, period = 60 }
+
+# filled in by `wrangler kv namespace create USAGE`
+[[kv_namespaces]]
+binding = "USAGE"
+id = "a0f04990f3cd4ababbb959e18c44ef12"
