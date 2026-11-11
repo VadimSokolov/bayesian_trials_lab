@@ -96,7 +96,7 @@ svg text { font-family: var(--sans); }
   <p class="note" id="truthRule" style="margin:.5rem 0 0"></p>
   <div class="tgrid" id="tgrid"></div>
   <div class="chips" id="truthChips" aria-live="polite"></div>
-  <p class="note" style="margin:.5rem 0 0">The <span class="tip" tabindex="0" data-tip="How often a drug that does nothing would look at least this good, by luck alone. Small means surprising. Explained in module 2.">p-value</span> asks how often a useless drug would look this good. A useless drug that passes is a false alarm.</p>
+  <p class="note" style="margin:.5rem 0 0">The <span class="tip" tabindex="0" data-tip="How often a drug that does nothing would look at least this good, by luck alone. Small means surprising. Explained in module 2.">p-value</span> asks how often a useless drug would look at least this good by luck alone. A useless drug that passes is a false alarm.</p>
 </section>
 
 <section id="lab" class="labgrid" aria-label="False alarm lab">
@@ -176,7 +176,7 @@ svg text { font-family: var(--sans); }
 
 <section class="example">
   <h2>Another one: a site that looks bad</h2>
-  <p>A drug helps 30% of patients at every site. One site enrolls 19 patients and only 1 improves. Look at card 5 above for how often luck alone does that when the drug is tested at many sites.</p>
+  <p>30% of patients on the drug improve at every site. One site enrolls 19 patients and only 1 improves. Look at card 5 above for how often luck alone does that when the drug is tested at many sites.</p>
   <p class="note">The page's own binomial formula gives the 1-in-100 number. We treat each site as separate luck.</p>
 </section>
 
@@ -184,7 +184,7 @@ svg text { font-family: var(--sans); }
 
 <section class="reg">
   <h3>Regulator's corner</h3>
-  <p>The trial rulebook ICH E9 (section 5.6) lists where many tests come from: several main outcomes, several treatments, and repeated looks at the data before the trial ends.</p>
+  <p>The ICH E9 guideline (adopted by FDA and EMA, section 5.6) lists where many tests come from: several main outcomes, several treatments, and repeated looks at the data before the trial ends.</p>
   <p>Write the fix into the trial plan before any results come in. <a href="https://database.ich.org/sites/default/files/E9_Guideline.pdf">ICH E9, Statistical Principles for Clinical Trials (PDF)</a></p>
 </section>
 
@@ -208,11 +208,11 @@ svg text { font-family: var(--sans); }
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805 (chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>)</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/09-multiplicity.html">10</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials/09-multiplicity.html">10</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters online</a>)</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -441,7 +441,7 @@ svg text { font-family: var(--sans); }
 
   card({
     tag: 'Predict 5', type: 'choice',
-    q: 'A drug helps 30% of patients at every site. At one site, 1 patient or fewer of 19 improves. Luck alone does that about 1 time in 100. The drug is tested at 17 sites. Chance that at least one site looks this bad?',
+    q: '30% of patients on the drug improve at every site. At one site, 1 patient or fewer of 19 improves. Luck alone does that about 1 time in 100. The drug is tested at 17 sites. Chance that at least one site looks this bad?',
     options: [{ value: 'a', label: 'About 1%' }, { value: 'b', label: 'About 16%' }, { value: 'c', label: 'About 50%' }, { value: 'd', label: 'About 90%' }],
     answer: function () { return Math.abs(ANY17 - 0.16) < 0.02 ? 'b' : 'a'; },
     explain: function () { return 'One site: ' + num(PM, 4) + '. Seventeen sites: 1 - (1 - ' + num(PM, 4) + ')^17 = ' + pct(ANY17) + ' (assuming sites are independent: luck at one site tells you nothing about luck at another).'; }
@@ -519,7 +519,7 @@ svg text { font-family: var(--sans); }
       se('rect', { x: L + i * bw + 5, y: Math.min(y0, y1), width: bw - 10, height: Math.max(1, Math.abs(y1 - y0)), fill: short ? BAD : TEAL, opacity: 0.85 }, svg);
       se('text', { x: L + i * bw + bw / 2, y: B + 18, 'text-anchor': 'middle', 'font-size': 12, fill: NAVY }, svg).textContent = SIGNS[i];
     });
-    se('text', { x: W - 10, y: 12, 'text-anchor': 'end', 'font-size': 11, fill: '#555' }, svg).textContent = 'Bar: drug minus placebo, in units of luck. Red: short of the orange line, so it looks like no benefit.';
+    se('text', { x: W - 10, y: 12, 'text-anchor': 'end', 'font-size': 11, fill: '#555' }, svg).textContent = 'Bar: drug minus placebo, in units of luck. Red: short of the orange line, so not significant, which is not the same as no benefit.';
     var q = Lab.normalCdf(LINE, MU, 1);
     $('signChips').innerHTML = '<span class="chip warm">This split: <b>' + miss + ' of 12</b> signs look like no benefit</span>' +
       '<span class="chip">Chance a sign looks like no benefit: <b>' + pct(q, 0) + '</b></span>' +

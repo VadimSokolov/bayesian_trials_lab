@@ -1,6 +1,6 @@
-# Bayesian Clinical Trials and Personalized Medicine: Volume I: Bayesian Clinical Trials: encyclopedia and knowledge graph
+# Bayesian Clinical Trials: encyclopedia and knowledge graph
 
-This site is a study aid on top of the book "Bayesian Clinical Trials and Personalized Medicine: Volume I: Bayesian Clinical Trials" (Sokolova, Sokolov and Polson, 2026).
+This site is a study aid on top of the book "Bayesian Clinical Trials" (Sokolova, Sokolov and Polson, 2026).
 It has one short page per concept, method, design, trial, regulation and principle in the book,
 with prerequisite links, section-level pointers into the book, equations, R functions of the
 bayestrials package and links to the companion lab. Every statement on an entity page cites a
@@ -8,9 +8,9 @@ section of the book. The book is the source of truth; these pages are a navigati
 
 ## Cite the book
 
-Sokolova, Sokolov and Polson (2026). Bayesian Clinical Trials and Personalized Medicine: Volume I: Bayesian Clinical Trials. Version 1.1.3.
+Sokolova, Sokolov and Polson (2026). Bayesian Clinical Trials. Version 1.2.0.
 DOI: https://doi.org/10.5281/zenodo.24141732
-HTML edition: https://vsokolov.org/bayesian_clinical_trials_v1/
+HTML edition: https://vsokolov.org/bayesian_clinical_trials/
 Companion lab: https://vsokolov.org/bayesian_trials_lab/
 
 ## Machine-readable data

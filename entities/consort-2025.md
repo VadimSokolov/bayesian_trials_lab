@@ -4,7 +4,7 @@ name: CONSORT 2025
 type: regulation
 aliases: []
 level: 2
-summary: The reporting guideline for the results of a randomized trial; the adaptive-designs extension (ACE) extends CONSORT 2010 and predates it.
+summary: The reporting guideline for the results of a randomized trial; the adaptive-designs extension (ACE) extends CONSORT 2010 and predates CONSORT 2025.
 chapters: ['23']
 home: 23/structured-protocols-ich-m11-and-spirit-2025
 sections: [23/checklists]

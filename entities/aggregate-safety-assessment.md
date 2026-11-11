@@ -22,10 +22,10 @@ cites: [gould2017canary, xia2011hierarchical, mehrotra2012flagging, kulldorff201
 ---
 ## What it is
 
-A sponsor's safety review is not one statistic. Four layers sit side by side, and each answers a different question. [sec-safety-aggregate]
+A trial's safety review is not one statistic. Four layers sit side by side; the sponsor runs three, and the unblinded comparison of arms belongs to the independent DMC, whose comparative results the sponsor does not see. [sec-safety-aggregate]
 
 - [[blinded-pooled-review]] asks whether the overall event rate is higher than expected, without revealing the arms. [sec-safety-aggregate]
-- The unblinded DMC review compares arms, with the boundaries and posterior rules of the monitoring and toxicity sections. [sec-safety-aggregate]
+- The independent DMC's unblinded review compares arms, with the boundaries and posterior rules of the monitoring and toxicity sections. [sec-safety-aggregate]
 - A hierarchical model across adverse event terms shrinks many rare events toward a common distribution before flagging. [sec-safety-aggregate] See [[adverse-event-hierarchy]].
 - A false discovery rate flag, such as the double FDR of Mehrotra and Adewale, limits the expected false-discovery proportion among flagged terms. [sec-safety-aggregate]
 

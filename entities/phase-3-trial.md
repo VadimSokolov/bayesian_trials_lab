@@ -20,7 +20,7 @@ lab: []
 cites: [barter2007illuminate]
 ---
 ## What it is
-Phase III trials are large, randomized and usually blinded, designed to confirm efficacy and characterize safety in the population for which the drug will be licensed. They enroll hundreds to tens of thousands of patients and cost from tens to hundreds of millions of dollars. [sec-lifecycle-p3] The traditional FDA standard is two adequate and well-controlled trials, or one large trial with confirmatory evidence. [sec-lifecycle-p3]
+Phase III trials are large, randomized and usually blinded, designed to confirm efficacy and characterize safety in the population for which the drug will be licensed. They enroll hundreds to tens of thousands of patients and cost from tens to hundreds of millions of dollars. [sec-lifecycle-p3] The traditional FDA standard is two adequate and well-controlled trials, or one adequate and well-controlled trial with confirmatory evidence. [sec-lifecycle-p3]
 
 ## Why it matters
 This is the stage at which the type I error rate is the contract with the regulator and at which interim analyses are governed by the strictest rules. [sec-lifecycle-p3] A Bayesian criterion here is judged by its operating characteristics under a pre-specified design. [2/key-points]
@@ -32,5 +32,5 @@ In December 2006 Pfizer stopped ILLUMINATE, a Phase III outcomes trial of torcet
 The type I error rate is the contract with the regulator, so a Bayesian Phase III design must keep it through calibration or borrowing rules. [sec-lifecycle-p3] The traditional design is fixed or group sequential at type I error 0.025. [sec-lifecycle-reading]
 
 ## Check yourself
-- Q: What is the traditional FDA evidentiary standard? A: Two adequate and well-controlled trials, or one large trial with confirmatory evidence. [sec-lifecycle-p3]
+- Q: What is the traditional FDA evidentiary standard? A: Two adequate and well-controlled trials, or one adequate and well-controlled trial with confirmatory evidence. [sec-lifecycle-p3]
 - Q: What earlier information belonged in the Phase III prior for torcetrapib? A: Higher blood pressure seen in earlier studies. [sec-lifecycle-p3]

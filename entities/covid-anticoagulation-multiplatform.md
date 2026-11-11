@@ -19,7 +19,7 @@ cites: [lawler2021anticoag, goligher2021anticoag]
 ---
 ## What it is
 
-Three independently funded Bayesian platforms (REMAP-CAP, ATTACC in Canada and ACTIV-4a in the United States) asked the same question early in the pandemic: therapeutic-dose against prophylactic-dose anticoagulation in COVID-19. [20/the-covid-anticoagulation-multiplatform]
+Three independently funded Bayesian platforms (REMAP-CAP, ATTACC, an international platform led from Canada, and ACTIV-4a in the United States) asked the same question early in the pandemic: therapeutic-dose against prophylactic-dose anticoagulation in COVID-19. [20/the-covid-anticoagulation-multiplatform]
 
 ## Why it matters
 

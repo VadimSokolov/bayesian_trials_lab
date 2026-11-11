@@ -173,7 +173,7 @@
 <aside class="reg">
   <h3>Regulator's corner</h3>
   <p>Trial rules (<span class="tip" tabindex="0" data-tip="International Council for Harmonisation: regulators and industry who write shared trial rules.">ICH</span> E9): plan every look in advance and write it in the protocol (the trial plan).</p>
-  <blockquote>"any analysis intended to compare treatment arms with respect to efficacy or safety at any time prior to formal completion of a trial"</blockquote>
+  <blockquote>"any analysis intended to compare treatment arms with respect to efficacy or safety at any time prior to the formal completion of a trial"</blockquote>
   <p>In plain words: any look at whether the drug is working before the trial ends.</p>
   <p class="note">ICH E9, section 4.5. <a href="https://database.ich.org/sites/default/files/E9_Guideline.pdf">Official PDF</a>.</p>
 </aside>
@@ -183,7 +183,7 @@
   <ul>
     <li>Every extra look is another chance for a false alarm.</li>
     <li>Plan the looks first, and use stricter bars so false alarms stay at 2.5%.</li>
-    <li>Stopping early saves patients, but the early estimate tends to be too big.</li>
+    <li>Stopping early for benefit saves patients, but the estimate from a trial that stops early tends to be too big.</li>
     <li>Predictive probability is the chance of a win at the end, not how sure we are today.</li>
   </ul>
 </section>
@@ -193,7 +193,7 @@
   <strong>Sources</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/10-sequential.html">11</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/13-predictive.html">15</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/10-sequential.html">11</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/13-predictive.html">15</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570</li>
     <li>ICH E9 (1998), Statistical Principles for Clinical Trials.</li>
     <li>Marion, R. et al. (2025). Predictive probabilities made simple. Statistics in Medicine.</li>
@@ -205,7 +205,7 @@
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
     <li>Sokolova, A. and Sokolov, V. (2026). E-values for adaptive clinical trials. <a href="https://arxiv.org/abs/2602.06379">arXiv:2602.06379</a></li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -597,7 +597,7 @@ function design(fr,rule){var key=rule+'|'+fr.join(',');if(cache[key])return cach
     options: [{ value: 0, label: 'Under 1%' }, { value: 1, label: 'About 5%' }, { value: 2, label: 'About 10%' }, { value: 3, label: 'About 25%' }],
     answer: function () { return nearest([0.005, 0.05, 0.1, 0.25], BT[0][1]); },
     onReveal: function () { h6.innerHTML = miniBars(BT.map(function (r) { return { label: r[0], vals: [r[1]] }; }), [TEAL], 1, function (v) { return (v * 100).toFixed(v < 0.1 ? 1 : 0) + '%'; }, { hl: 0, ref: { v: 0.025, label: '2.5%' }, yl: 'Stopped: drug works', aria: 'Table from Bayes, AI and Deep Learning, chapter 6: probability of stopping for efficacy by true effect' }); },
-    explain: function () { return '95% sure is a fair reading of this one trial. But 9.5% is how often a useless drug trips this rule across many looks, and regulators ask about that second number, so the bar is raised. (9.5% is from the table in <a href="https://vsokolov.org/html/_book/06-hyp.html#tbl-operating-chars">chapter 6 of <i>Bayes, AI and Deep Learning</i></a>. This page’s own code, with no prior opinion and 3 equal looks, gives ' + pc(flat3) + '. Both are about four times the 2.5% a regulator allows.)'; }
+    explain: function () { return '95% sure is a fair reading of this one trial. But 9.5% is how often a useless drug trips this rule across many looks, and regulators ask about that second number, so the bar is raised. (9.5% is from the table in <a href="https://vsokolov.org/html/_book/06-hyp.html#tbl-operating-chars">chapter 6 of <i>Bayes, AI and Deep Learning</i></a>. This page’s own code, with no prior opinion and 3 equal looks, gives ' + pc(flat3) + '. Both are about four times the one-sided 2.5% regulators usually expect for a confirmatory trial.)'; }
   }); h6 = host(c);
 
   // 7: sample size

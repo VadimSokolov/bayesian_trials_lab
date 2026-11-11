@@ -19,7 +19,7 @@ lab: []
 cites: [dunnett1977equivalence]
 ---
 ## What it is
-An equivalence trial asks for the difference to lie inside a two-sided margin, $-\log M<\gamma<\log M$ on the log scale, so the hazard ratio lies between $1/M$ and $M$. [4/equivalence] The standard analysis is two one-sided tests, one against each end of the margin, and equivalence is declared only if both reject. This is the same as the confidence interval lying entirely inside $(-\log M, \log M)$. [4/equivalence]
+An equivalence trial asks for the difference to lie inside a two-sided margin, $-\log M<\gamma<\log M$ on the log scale, so the hazard ratio lies between $1/M$ and $M$. [4/equivalence] The standard analysis is two one-sided tests, one against each end of the margin, and equivalence is declared only if both reject. This is the same as the $(1-2\alpha)$ confidence interval lying entirely inside $(-\log M, \log M)$: 90% for the usual bioequivalence test at 0.05 per side, 95% at 0.025 per side. [4/equivalence]
 
 ## Why it matters
 Putting the burden of proof on the claim of similarity, by reversing the roles of null and alternative, goes back to Dunnett and Gent for equivalence. [sec-testing-ni] Bioequivalence studies and some biosimilar comparisons use this form. [4/equivalence]

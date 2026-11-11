@@ -4,7 +4,7 @@ import glob, os, re, json
 D = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'docs')
 BRAND = 'Bayesian Clinical Trials Lab'
 FOOT = ('<div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), '
-        '<a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. '
+        '<a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. '
         '<a href="encyclopedia/">Encyclopedia</a> &middot; <a href="https://vsokolov.org/labs/">More labs</a> &middot; '
         '<a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>')
 n = 0

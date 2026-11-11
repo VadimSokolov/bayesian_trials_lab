@@ -31,4 +31,4 @@ Under non-proportional hazards one hazard ratio misdescribes both phases of an e
 A hazard ratio is one summary measure among others, such as the RMST difference. The choice is made before the trial. [sec-survival]
 
 ## Check yourself
-- Q: Is a hazard ratio of 0.8 a 20 percent hazard reduction? A: Yes. [sec-survival-info]
+- Q: Is a hazard ratio of 0.8 a 20 percent hazard reduction? A: Yes, a 20 percent relative reduction in the hazard. It is not a 20 percent reduction in the risk of the event by a given time, and it says nothing about the absolute reduction. [sec-survival-info]

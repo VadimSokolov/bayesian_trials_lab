@@ -1,0 +1,3 @@
+- I-SPY 2 platform section (book Section 15.10): page chips "9 of 23 graduated, 4 of 9 approved" had no source in the book; removed from the page. If the book gives counts, cite them with a date.
+- Phase II/III population wording (module 13): check that the book says "patients with the condition" for phase II and III, not "people".
+- Master protocols, substantial evidence (module 10, 11): book should mention that a draft guidance "would replace" the 1998 guidance only when finalized.

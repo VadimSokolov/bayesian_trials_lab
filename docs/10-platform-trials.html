@@ -142,19 +142,14 @@
 
 <section class="example">
   <h2>Real example 1: I-SPY 2</h2>
-  <p>A breast cancer platform that ran from 2010 to 2022. An arm <span class="tip" tabindex="0" data-tip="It cleared the bar to move on to a confirmatory trial: a larger trial run to prove the early signal.">graduates</span> when its chance of winning a later trial reaches 85%.</p>
-  <figure class="figure narrow">
-    <div class="ispy" id="ispy" aria-label="23 circles, one per therapy"></div>
-    <div class="row"><button class="btn" id="ispyBtn" type="button">Show the graduates</button></div>
-    <div class="chips" id="ispyChips"></div>
-    <figcaption>Star = later approved by FDA.</figcaption>
-  </figure>
+  <p>A neoadjuvant platform in high-risk early breast cancer (endpoint: pathologic complete response), open since 2010 (the original design ran to about 2022, now I-SPY 2.2). An arm <span class="tip" tabindex="0" data-tip="It cleared the bar to move on to a confirmatory trial: a larger trial run to prove the early signal.">graduates</span> when its predictive probability of success in a 300-patient phase 3 trial reaches 85% in at least one biomarker signature.</p>
+  <p class="note">Graduation sends a drug to a confirmatory trial; it is not approval.</p>
   <p class="note">Source: <a href="https://arxiv.org/abs/2602.09208">Sokolova, Sokolov and Polson (2026)</a> and the platform trial chapters of <a href="https://vsokolov.org/clinical_trials_in_practice/">Clinical Trials in Practice</a>.</p>
 </section>
 
 <section class="example">
   <h2>Real example 2: STAMPEDE</h2>
-  <p>A UK prostate cancer platform shared one control arm across 10 other arms, and abiraterone cut the death rate by about a third.</p>
+  <p>A UK prostate cancer platform shared one control arm across 10 other arms, and abiraterone added to hormone therapy lowered the hazard of death by about a third (HR 0.63) in men starting long-term hormone therapy.</p>
   <figure class="figure">
     <svg class="figsvg" id="stamp" viewBox="0 0 640 300" role="img" aria-label="Patients per arm in STAMPEDE"></svg>
     <figcaption>Patients per arm, 2005 to March 2023. Control arm A: <b id="stShare"></b>.</figcaption>
@@ -174,7 +169,7 @@
 <section class="takeaway">
   <h2>Takeaway</h2>
   <ul>
-    <li>One shared control group saves patients: 480 instead of 800 for five drugs.</li>
+    <li>A shared control saves patients: 480 instead of 800 in this simple case; real platforms enlarge the control and count only concurrent controls, so savings are smaller.</li>
     <li>Steering patients to the better drug helps them, but one trial can steer the wrong way.</li>
     <li>Compare each drug with controls from the same time.</li>
   </ul>
@@ -185,11 +180,11 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/17-platform.html">20</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials/17-platform.html">20</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -381,7 +376,7 @@
   var ecmoMC = (function () { var r = Lab.rng(99), c = 0, n = 20000; for (var i = 0; i < n; i++) if (Lab.beta(r, 12, 1) > Lab.beta(r, 1, 2)) c++; return c / n; })();
   Lab.QuestionCard(Q, {
     tag: 'Predict 3', score: score, type: 'choice',
-    q: 'ECMO (a heart-lung machine for very sick newborns) trial: 11 of 11 babies survived on ECMO, 0 of 1 on the other treatment. The adaptive rule from the lab sends each baby to ECMO with the chance that ECMO is better. Chance the next baby goes to ECMO?',
+    q: 'ECMO (a heart-lung machine for very sick newborns) trial: 11 of 11 babies survived on ECMO, 0 of 1 on the other treatment. The adaptive rule from the lab sends each baby to ECMO with the chance that ECMO is better (the real trial used a play-the-winner urn; this asks what the lab’s rule would do). Chance the next baby goes to ECMO?',
     options: [{ value: 50, label: '50%' }, { value: 75, label: '75%' }, { value: 99, label: 'About 99%' }],
     answer: function () { return ecmoMC > 0.95 ? 99 : 75; },
     revealPlot: function (b) {
@@ -461,14 +456,6 @@
 
   /* ---------- Real example figures ---------- */
   (function () {
-    var h = '', i;
-    for (i = 0; i < 23; i++) h += '<b class="" id="is' + i + '"></b>';
-    $('ispy').innerHTML = h;
-    $('ispyChips').innerHTML = chip('Graduated', '9 of 23 = ' + pc(9 / 23)) + chip('Approved', '4 of 9 = ' + pc(4 / 9), true);
-    $('ispyBtn').addEventListener('click', function () {
-      for (var j = 0; j < 9; j++) (function (j2) { setTimeout(function () { var e = $('is' + j2); e.classList.add('g'); if (j2 < 4) e.classList.add('a'); }, 120 * j2); })(j);
-      $('ispyBtn').disabled = true;
-    });
     var arms = [['A (control)', 4754], ['B', 593], ['C', 592], ['D', 312], ['E', 593], ['F', 311], ['G', 960], ['H', 1032], ['J', 989], ['K', 1509], ['L', 347]], tot = arms.reduce(function (s, a) { return s + a[1]; }, 0), svg = '', max = 4754;
     arms.forEach(function (a, j) {
       var y = 12 + j * 25, w = a[1] / max * 430;

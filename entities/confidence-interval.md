@@ -37,5 +37,5 @@ For the binary trial the interval for the risk difference is $0.15 \pm 0.132$, t
 It is not a 95% chance that the true difference lies in 0.017 to 0.283. A statement of that form is a credible interval and needs a prior. [4/what-the-95-refers-to] The test and interval agree exactly only with the same standard error. [4/tests-and-intervals-are-the-same-thing] The analysis plan should name the interval method. [4/what-the-95-refers-to]
 
 ## Check yourself
-- Q: In 50 reruns, how many intervals should miss the truth? A: About 5% in the long run, though in 50 trials the count is itself random. [4/what-the-95-refers-to]
+- Q: In 50 reruns, how many intervals should miss the truth? A: About 2 or 3 (5 percent of 50 is 2.5), though in 50 trials the count is itself random. [4/what-the-95-refers-to]
 - Q: What does a one-sided 0.025 test amount to? A: Rejecting essentially when the lower limit of the two-sided 95% interval is above zero. [4/tests-and-intervals-are-the-same-thing]

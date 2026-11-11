@@ -4,7 +4,7 @@ name: Bioequivalence
 type: concept
 aliases: []
 level: 2
-summary: The finding that a generic or reformulated drug delivers the same exposure as the reference, declared when the geometric mean ratio lies in (0.80, 1.25).
+summary: The finding that a generic or reformulated drug delivers the same exposure as the reference, declared when the 90 percent confidence interval for the geometric mean ratio lies within (0.80, 1.25).
 chapters: ['2']
 home: sec-lifecycle-be
 sections: []
@@ -20,7 +20,7 @@ lab: []
 cites: [schuirmann1987, fda_be_stat_2026, racinepoon1987, rodda1980probability, fluhler1983]
 ---
 ## What it is
-A generic or reformulated drug must deliver the same exposure as the reference product, measured by the area under the concentration-time curve. The parameter is the ratio $\rho = \mu_T/\mu_R$ of geometric means. Bioequivalence is declared when $\rho$ lies in the interval $(0.80, 1.25)$. [sec-lifecycle-be]
+A generic or reformulated drug must deliver the same exposure as the reference product, measured by the area under the concentration-time curve and the peak concentration (Cmax), each of which must meet the criterion. The parameter is the ratio $\rho = \mu_T/\mu_R$ of geometric means. Bioequivalence is concluded when the evidence places $\rho$ within $(0.80, 1.25)$, classically when the 90 percent confidence interval for $\rho$ lies inside it. [sec-lifecycle-be]
 
 ## Why it matters
 The classical analysis is the [[two-one-sided-tests|TOST]] procedure, equivalent to checking that the 90 percent confidence interval lies inside $(\log 0.80, \log 1.25)$. [sec-lifecycle-be] A Bayesian version asks directly for the posterior probability of equivalence. In a simplified normal model with a reference prior,

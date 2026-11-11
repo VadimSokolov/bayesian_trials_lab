@@ -4,7 +4,7 @@ name: Kaplan-Meier estimator
 type: method
 aliases: [Kaplan and Meier]
 level: 1
-summary: A model-free estimate of the survival function that handles censoring, and the curve every trial report draws.
+summary: A model-free estimate of the survival function that handles censoring, and the curve every report of a time-to-event trial draws.
 chapters: ['18']
 home: sec-survival-traditional
 sections: [sec-survival-traditional, sec-survival-nph-tests, sec-survival-nph, sec-survival-gamma]
@@ -18,7 +18,7 @@ cites: [kaplan1958nonparametric]
 ---
 
 ## What it is
-The Kaplan-Meier estimate of $S(t)$ handles censoring without a model. [sec-survival-traditional] It is the curve every trial report draws. [sec-survival-traditional]
+The Kaplan-Meier estimate of $S(t)$ handles censoring without a model. [sec-survival-traditional] It is the curve every report of a time-to-event trial draws. [sec-survival-traditional]
 
 ## Why it matters
 It displays the data before any treatment comparison. The comparison itself uses the log-rank test or the Cox model. [sec-survival-traditional]

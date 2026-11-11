@@ -33,5 +33,5 @@ In the simulation with three binary traits, the gap in a known trait under simpl
 In a small trial, chance may give unequal arm sizes and unequal covariate distributions. The loss in arm size is a little efficiency. The covariate imbalance is more serious. [5/simple-randomization] [[permuted-block-randomization]] fixes arm sizes. [[stratified-randomization]] and [[minimization]] fix known covariates.
 
 ## Check yourself
-- Q: How does the arm-size imbalance shrink when the trial grows from 40 to 200? A: The gap in the known trait falls by a factor of $\sqrt{5}$. [5/seeing-the-difference]
+- Q: How does the gap in a known trait change under simple randomization when the trial grows from 40 to 200 patients? A: It falls by a factor of about $\sqrt{5}$. [5/seeing-the-difference]
 - Q: Does simple randomization allow a clinician to predict the next assignment? A: No. Previous assignments say nothing about the next. [5/simple-randomization]

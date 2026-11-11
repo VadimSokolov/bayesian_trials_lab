@@ -35,7 +35,7 @@ The sufficient-statistic reduction collapses the exponential decision tree to a 
 
 ## In the book
 
-A loss ratio of 39:1 gives $\gamma = 0.975$, the Bayesian reading of one-sided 0.025 [15/the-decision-problem]. In the book's example a classification-loss policy gives power 0.903 with an expected sample size of 54.3 pairs against 100 for the fixed design [15/the-sufficient-statistic-reduction]. A utility-only rule declares treatment better with probability 0.513 under the null, so it is no confirmatory rule [15/what-backward-induction-does-and-does-not-do].
+A loss ratio of 39:1 gives $\gamma = 0.975$, which matches one-sided 0.025 only for a flat prior at a single analysis [15/the-decision-problem]. In the book's example a classification-loss policy gives power 0.903 with an expected sample size of 54.3 pairs against 100 for the fixed design [15/the-sufficient-statistic-reduction]. A utility-only rule declares treatment better with probability 0.513 under the null, so it is no confirmatory rule [15/what-backward-induction-does-and-does-not-do].
 
 ## Pitfalls
 
@@ -43,5 +43,5 @@ The rule is optimal only for the stated loss and prior, and the loss function is
 
 ## Check yourself
 
-- Q: What does a 39:1 loss ratio correspond to? A: $\gamma = 0.975$, one-sided 0.025 [15/the-decision-problem].
+- Q: What does a 39:1 loss ratio correspond to? A: $\gamma = 0.975$, which matches one-sided 0.025 only for a flat prior at a single analysis [15/the-decision-problem].
 - Q: Why can the policy be computed exactly? A: The posterior depends on the history only through $(s_1, s_0, k)$ [15/the-sufficient-statistic-reduction].

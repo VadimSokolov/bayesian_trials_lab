@@ -104,14 +104,14 @@
 <section class="case" aria-label="Case 3">
   <h2>Case 3: a borderline trial, EOLIA</h2>
   <p>EOLIA gave "not significant" in <a href="02-p-values.html">module 2</a> (p = 0.09). A later Bayesian reanalysis put the chance that ECMO lowers deaths at 88% to 99%, depending on the prior.</p>
-  <p>When the data are borderline, the prior decides. So who picks it? One way is to ask doctors.</p>
+  <p>When the data are borderline, the prior can decide the verdict. So who picks it? One way is to ask doctors.</p>
   <div class="presets" id="dpre"><span class="lbl">Five doctors:</span></div>
   <div class="labgrid" style="margin-top:.6rem">
     <div class="panel sliders">
       <h3>Ask five doctors</h3>
-      <p class="note" style="margin:0 0 .4rem">Each guess is how many fewer deaths per 100 patients the drug causes. Each doctor is unsure by about 5.</p>
+      <p class="note" style="margin:0 0 .4rem">Each guess is how many fewer deaths per 100 patients the treatment causes. Each doctor is unsure by about 5.</p>
       <div id="dsl"></div>
-      <p class="note" style="margin:.5rem 0 0">Made-up trial for this widget: the drug group had 11 fewer deaths per 100, give or take 6.5 from chance. Illustrative, not the EOLIA data.</p>
+      <p class="note" style="margin:.5rem 0 0">Made-up trial for this widget: the treated group had 11 fewer deaths per 100, give or take 6.5 from chance. Illustrative, not the EOLIA data.</p>
     </div>
     <div>
       <div class="plotbox"><svg id="dplot"></svg>
@@ -138,14 +138,14 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/05-bayes.html">6</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/18-cases.html">21</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/18a-reanalyses.html">22</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/05-bayes.html">6</a>, <a href="https://vsokolov.org/bayesian_clinical_trials/18-cases.html">21</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/18a-reanalyses.html">22</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters</a>)</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
     <li>Case sources: Polack F.P. et al. (2020), Safety and efficacy of the BNT162b2 mRNA Covid-19 vaccine, N Engl J Med 383:2603-2615. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2034577">doi:10.1056/NEJMoa2034577</a></li>
     <li>REMAP-CAP Investigators, Gordon A.C. et al. (2021), Interleukin-6 receptor antagonists in critically ill patients with Covid-19, N Engl J Med 384:1491-1502. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2100433">doi:10.1056/NEJMoa2100433</a></li>
     <li>Combes A. et al. (2018), N Engl J Med 378:1965-1975 (EOLIA). Goligher E.C. et al. (2018), JAMA 320:2251-2259.</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -167,7 +167,7 @@
   /* ============ Case 1: vaccine ============ */
   var A0 = 0.700102, B0 = 1, X_V = 8, X_P = 162;
   var PRIORS = [
-    { key: 'doubt', label: 'Doubtful (the paper)', a: A0, b: B0, note: 'The paper\'s prior: Beta(0.700102, 1), mean ' },
+    { key: 'doubt', label: 'Weak, centered on VE 30% (the paper)', a: A0, b: B0, note: 'The paper\'s prior: Beta(0.700102, 1), mean ' },
     { key: 'flat', label: 'Flat', a: 1, b: 1, note: 'Flat: Beta(1, 1), every share equally likely, mean ' },
     { key: 'skep', label: 'Very skeptical (illustrative)', a: 20, b: 20, note: 'Illustrative: Beta(20, 20), strongly expects no effect, mean ' }
   ];
@@ -194,7 +194,7 @@
     $('vchips').innerHTML = chip('VE estimate (median)', pc(r.med)) + chip('95% credible interval', pc(r.lo) + ' to ' + pc(r.hi)) +
       chip('Chance VE is above 30%', r.pr > 0.9999 ? 'above 99.99%' : pc(r.pr, 2)) + chip('Rule (above 98.6%)', win ? 'win' : 'no win', !win);
     var mt = cur.a / (cur.a + cur.b);
-    $('priorNote').textContent = cur.note + mt.toFixed(4) + ', which is a VE of ' + pc(ve(mt), 0) + (cur.key === 'doubt' ? ': a doubtful start.' : '.');
+    $('priorNote').textContent = cur.note + mt.toFixed(4) + ', which is a VE of ' + pc(ve(mt), 0) + (cur.key === 'doubt' ? ': a cautious but very weak start (worth under 2 cases).' : '.');
     $('vnote').textContent = 'Posterior: Beta(' + cur.a + ' + 8, ' + cur.b + ' + 162). Equal group sizes and follow-up assumed.';
   }
   PRIORS.forEach(function (p, i) {
@@ -241,7 +241,7 @@
   var TAU = 5, Y = 11, SE = 6.5;
   var DG = [4, 6, 8, 10, 12];
   var dsl = [], dout = [];
-  var dp = Lab.Plot($('dplot'), { xlim: [-25, 40], ylim: [0, 0.1], xlabel: 'Fewer deaths per 100 patients with the drug', ylabel: 'Belief', label: 'Prior blended from five doctors (orange) and posterior (teal) for the drug effect, with a line at 0' });
+  var dp = Lab.Plot($('dplot'), { xlim: [-25, 40], ylim: [0, 0.1], xlabel: 'Fewer deaths per 100 patients with the treatment', ylabel: 'Belief', label: 'Prior blended from five doctors (orange) and posterior (teal) for the drug effect, with a line at 0' });
   var DX = Lab.linspace(-25, 40, 261);
   function mixture(g) {
     var n = g.length, ws = [], tot = 0, post = [], i;

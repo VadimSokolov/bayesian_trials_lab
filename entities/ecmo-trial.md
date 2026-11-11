@@ -20,7 +20,7 @@ cites: [bartlett1985, ware1989, orourke1989, uk_ecmo_1996, kass1989]
 ---
 ## What it is
 
-Extracorporeal membrane oxygenation (ECMO) is a form of heart-lung bypass for newborns with persistent pulmonary hypertension [16/what-was-done]. Bartlett and colleagues thought randomizing to conventional medical therapy was close to unethical, and used a randomized play-the-winner rule [16/what-was-done]. The final tally was 11 of 11 on ECMO and 0 of 1 on conventional therapy [16/what-was-done].
+Extracorporeal membrane oxygenation (ECMO) is a form of heart-lung bypass, here used for newborns in severe respiratory failure, often with persistent pulmonary hypertension [16/what-was-done]. Bartlett and colleagues thought randomizing to conventional medical therapy was close to unethical, and used a randomized play-the-winner rule [16/what-was-done]. The final tally was 11 of 11 on ECMO and 0 of 1 on conventional therapy [16/what-was-done].
 
 ## Why it matters
 

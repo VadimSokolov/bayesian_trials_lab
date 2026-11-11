@@ -90,7 +90,7 @@
 <section class="hero">
   <div class="kicker">Module 12</div>
   <h1>Decisions: the price of avoiding false wins</h1>
-  <p class="hook">Every rule for saying "yes" trades false wins against missed drugs. What does safety cost in patients?</p>
+  <p class="hook">Every rule for saying "yes" trades false wins against missed drugs. What does protection against false wins cost in patients?</p>
   <div class="presets" id="examples"><span class="lbl">Jump to an example:</span></div>
 </section>
 
@@ -128,7 +128,7 @@
 </section>
 
 <section class="sec" id="secB">
-  <h2>B. The price of safety: loss of <span class="tip" tabindex="0" data-tip="Power: the chance a trial finds a real effect when there is one.">power</span></h2>
+  <h2>B. The price of caution: loss of <span class="tip" tabindex="0" data-tip="Power: the chance a trial finds a real effect when there is one.">power</span></h2>
   <p class="setup">A stricter bar for "yes" protects against false alarms. It also makes real drugs harder to find.</p>
   <div id="labB" class="labgrid" aria-label="Power lab" style="margin-top:.5rem">
     <div class="panel">
@@ -161,13 +161,13 @@
   <p class="setup">FDA&rsquo;s 2026 draft gives three ways to decide a trial succeeded. <a href="https://www.fda.gov/media/190505/download">Read it at fda.gov</a>.</p>
   <div class="three">
     <div class="rcard"><svg viewBox="0 0 220 80" id="c1" role="img" aria-label="Normal curve with a small orange tail beyond a cutoff"></svg><div class="n">Route 1</div><h3>Cap false wins</h3>
-      <p class="note">Default: at most a 2.5% chance of any false win across all endpoints (<a href="04-multiplicity.html">module 4</a>).</p></div>
+      <p class="note">Default: at most a 2.5% (one-sided) chance of any false win across the primary and key secondary endpoints (<a href="04-multiplicity.html">module 4</a>).</p></div>
     <div class="rcard"><svg viewBox="0 0 220 80" id="c2" role="img" aria-label="Posterior curve with the area above a threshold shaded"></svg><div class="n">Route 2</div><h3>Judge what we believe after the trial</h3>
       <p>Start from what is already known, then ask how sure we are now.</p>
       <p class="note">Win if we are sure enough (say 97.5%) the drug beats placebo by a set amount.</p></div>
-    <div class="rcard"><svg viewBox="0 0 220 80" id="c3" role="img" aria-label="A balance scale weighing benefit against risk"></svg><div class="n">Route 3</div><h3>Weigh benefit against risk</h3>
-      <p>Weigh what each mistake costs, as in section A.</p>
-      <p class="note">Benefit-risk: do the gains outweigh the harms?</p></div>
+    <div class="rcard"><svg viewBox="0 0 220 80" id="c3" role="img" aria-label="A balance scale weighing the cost of each wrong decision"></svg><div class="n">Route 3</div><h3>Use a loss function</h3>
+      <p>Set what each wrong decision costs, as in section A, and pick the decision with the lowest expected loss.</p>
+      <p class="note">This is separate from FDA's benefit-risk review at approval.</p></div>
   </div>
 </section>
 
@@ -200,7 +200,7 @@
   <ul>
     <li>Every rule for saying yes trades false wins against missed drugs and trial size.</li>
     <li>FDA's default bar: at most a 2.5% false win chance, one-sided.</li>
-    <li>Simulated trials show what a rule really does: here 0.026 to 0.038 (the source aimed for 0.05). FDA's Bayesian draft allows other routes too.</li>
+    <li>Simulated trials show what a rule really does: here 0.026 to 0.038 (the source aimed for 0.05). All are above FDA's 2.5% default because the source designed them for 5%. FDA's Bayesian draft allows other routes too.</li>
   </ul>
 </section>
 </main>
@@ -209,7 +209,7 @@
   <strong>Sources</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/01-decision.html">1</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/18-cases.html">21</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/01-decision.html">1</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/18-cases.html">21</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (worked design in <a href="https://vsokolov.org/clinical_trials_in_practice/09-phase3-overview.html">chapter 9</a>: effect 3, SD 10, 90% power, one-sided 0.025)</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). A Tutorial on Bayesian Clinical Trial Design: Prior Specification, Computation, and Optimal Stopping. Manuscript submitted to Statistics in Medicine. All numbers in section D and the card on priors.</li>
     <li>FDA (2026, draft). <a href="https://www.fda.gov/media/190505/download">Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products</a>, Section IV.A.</li>
@@ -222,7 +222,7 @@
     <li>Sokolova, Sokolov and Polson (2026), <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>, arXiv:2602.09208.</li>
     <li>Sokolova and Sokolov (2026), <a href="https://arxiv.org/abs/2602.06379">E-values for adaptive clinical trials</a>, arXiv:2602.06379.</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -415,7 +415,7 @@
       nb += '<div class="mrow"><span>' + METHODS[i] + '</span><span class="tr"><span class="fl" style="display:block;width:' + r[1] + '%;background:' + GREY + '"></span></span><span class="v">' + r[1].toFixed(1) + '</span></div>';
     });
     $('dBarsP').innerHTML = pb; $('dBarsN').innerHTML = nb;
-    $('dNote').innerHTML = isNull ? 'The drug does nothing. The first rule only chooses a treatment, and with equal costs it chooses the new drug about half the time. The other rules declare a win, and their false win chance is 0.026 to 0.038. The source study aimed for 0.05, not 0.025.' : 'The new drug truly helps, so each bar is power.';
+    $('dNote').innerHTML = isNull ? 'The drug does nothing. The first rule only chooses a treatment, and with equal costs it chooses the new drug about half the time. The other rules declare a win, and their false win chance is 0.026 to 0.038. The source study aimed for 0.05, not 0.025, so all are above FDA’s 2.5% default.' : 'The new drug truly helps, so each bar is power.';
     var tb = $('dTabs').querySelectorAll('.btn'); for (var i = 0; i < tb.length; i++) tb[i].classList.toggle('on', i === D.d);
   }
   DELTAS.forEach(function (d, i) { btn($('dTabs'), GAINL[i], '', function () { D.d = i; renderD(); }); });
@@ -470,7 +470,7 @@
   var PRI = { flat: [0.026, 0.896], skep: [0.020, 0.867] };
   Lab.QuestionCard(Q, {
     tag: 'Predict 4', score: score, type: 'choice',
-    q: 'Before the trial, assume the new drug is no better (as if 3 of 10 improved on each arm). What happens to false wins and power (new drug 30% to 55%)?',
+    q: 'Before the trial, assume a doubtful start (the same prior on each arm, as if 3 of 10 improved; centered at 30%, a simple stand-in for a skeptical prior). What happens to false wins and power (new drug 30% to 55%)?',
     options: [{ value: 'a', label: 'Fewer false wins, more power' }, { value: 'b', label: 'Fewer false wins, less power' }, { value: 'c', label: 'More false wins, more power' }, { value: 'd', label: 'No change' }],
     answer: function () { return PRI.skep[0] < PRI.flat[0] && PRI.skep[1] < PRI.flat[1] ? 'b' : 'a'; },
     explain: function () { return 'False wins ' + Lab.pct(PRI.flat[0], 1) + ' to ' + Lab.pct(PRI.skep[0], 1) + '; power ' + Lab.pct(PRI.flat[1], 0) + ' to ' + Lab.pct(PRI.skep[1], 0) + ' (from a separate set of simulated trials that uses an exact version of the rule, so it is a little below the 91% in section D).'; },

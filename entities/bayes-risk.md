@@ -20,7 +20,7 @@ cites: [neyman1933problem]
 
 ## What it is
 
-Let $D(y) = 1$ declare the treatment effective, $\pi_0 = \Pr(H_0)$, and let the loss be $\ell_1$ for approving a useless drug and $\ell_0$ for withholding a useful one. The Bayes risk is [sec-evidence-bayesrisk]:
+Let $D(y) = 1$ declare the treatment effective, $\pi_0 = \Pr(H_0)$, and let the loss be $\ell_1$ for declaring a useless drug effective (a false positive) and $\ell_0$ for withholding a useful one. The Bayes risk is [sec-evidence-bayesrisk]:
 
 $$
 r(D) \;=\; \pi_0\,\ell_1\,\alpha(D) \;+\; (1-\pi_0)\,\ell_0 \int \beta_\theta(D)\, g(\theta)\, d\theta .

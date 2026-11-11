@@ -67,7 +67,7 @@
   <p class="note" id="exStory" aria-live="polite">You know nothing about this new drug, so every true response rate starts equally likely.</p>
 </section>
 
-<p class="setup">A drug's true response rate is the share of patients it helps: 0.5 means half. Your prior is your belief before the trial; the posterior is your belief after.</p>
+<p class="setup">A drug's true response rate is the share of patients who respond on it: 0.5 means half. Your prior is your belief before the trial; the posterior is your belief after.</p>
 <section id="lab" aria-label="Prior times likelihood equals posterior">
   <div class="panel controls">
     <div class="grp">
@@ -163,7 +163,7 @@
   <h3 class="sub">Bars and formula agree</h3>
   <figure class="figure narrow" style="margin-top:.5rem"><svg id="m0"></svg><figcaption id="m0cap"></figcaption></figure>
   <h3 class="sub">Its name</h3>
-  <p>Start from no idea (flat bars): after \(h\) responders and \(t\) non-responders the posterior has exactly this shape, called a <b>Beta curve</b>, Beta(\(h+1\), \(t+1\)). Beta(<i>a</i>, <i>b</i>) = as if you had already seen <i>a</i> &minus; 1 responders and <i>b</i> &minus; 1 non-responders. Beta(1, 1) = no patients yet. The best guess, the average of the curve, is <i>a</i>/(<i>a</i> + <i>b</i>).</p>
+  <p>Start from no idea (flat bars): after \(h\) responders and \(t\) non-responders the posterior has exactly this shape, called a <b>Beta curve</b>, Beta(\(h+1\), \(t+1\)). Beta(<i>a</i>, <i>b</i>) = as if you had already seen <i>a</i> &minus; 1 responders and <i>b</i> &minus; 1 non-responders. Beta(1, 1) = no patients yet. (Counting from a flat start. Many texts count <i>a</i> + <i>b</i> patients, so Beta(20, 20) is worth about 40.) The best guess, the average of the curve, is <i>a</i>/(<i>a</i> + <i>b</i>).</p>
   <p class="note">Each curve's <span class="tip" tabindex="0" title="Height is how believable a true response rate is. The area under the curve over a range is the chance the true response rate lands in that range.">height</span> shows how believable each true response rate is. The orange tick marks the best guess <i>a</i>/(<i>a</i> + <i>b</i>).</p>
   <div class="gallery" id="gallery"></div>
   <h3 class="sub">The shortcut</h3>
@@ -239,11 +239,11 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805. Chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>.</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/05-bayes.html">6</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials/05-bayes.html">6</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570. <a href="https://vsokolov.org/clinical_trials_in_practice/">Chapters online</a>.</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a>.</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -280,7 +280,7 @@
   ];
   var EXAMPLES = [
     { id: 'coin', label: 'New drug: no idea yet', story: 'You know nothing about this drug, so every true response rate starts equally likely. Treat patients and watch the bars move.', shape: 'flat', h: 0, t: 0, theta: 0.62, s: 'responded', f: 'did not respond', what: 'Possible true response rate', Ls: 'Responded', Lf: 'Did not respond' },
-    { id: 'ft', label: 'Similar drug: you have a hunch', story: 'You think a similar drug works in about 70% of patients, so your starting bars pile up near 0.7. Watch some patients respond.', shape: 'ft', h: 0, t: 0, theta: 0.78, s: 'responded', f: 'did not respond', what: 'Possible true response rate', Ls: 'Responded', Lf: 'Did not respond' },
+    { id: 'ft', label: 'Similar drug: you have a hunch', story: 'You think a similar drug gets a response in about 70% of patients, so your starting bars pile up near 0.7. Watch some patients respond.', shape: 'ft', h: 0, t: 0, theta: 0.78, s: 'responded', f: 'did not respond', what: 'Possible true response rate', Ls: 'Responded', Lf: 'Did not respond' },
     { id: 'ecmo', label: 'Newborn trial (real)', story: 'Real data: all 11 very sick newborns treated with ECMO survived. Starting from no idea, what survival chance is believable now?', shape: 'flat', real: true, h: 11, t: 0, theta: 0.5, s: 'survived', f: 'died', what: 'Possible survival chance on ECMO', Ls: 'Survived', Lf: 'Died' }
   ];
   var COIN = EXAMPLES[0];
@@ -595,7 +595,7 @@
     answer: function () { return 19 + 19; },
     onReveal: function () { setM(20, 20, 7, 3); },
     revealPlot: function (b) { miniBeta(b, [{ a: 20, b: 20, label: 'Prior Beta(20, 20)', color: ORANGE, fill: ORANGE }, { a: 27, b: 23, label: 'After 7 and 3', color: TEAL }]); },
-    explain: function () { return 'Beta(20, 20) reads as 19 responders and 19 non-responders already seen, 38 patients. 7 responders and 3 non-responders barely move it.'; }
+    explain: function () { return 'Beta(20, 20) reads as 19 responders and 19 non-responders already seen, 38 patients beyond a flat start (often quoted as a + b = 40). 7 responders and 3 non-responders barely move it.'; }
   });
 
   /* ---------- ECMO, two arms: simulate both posteriors ---------- */

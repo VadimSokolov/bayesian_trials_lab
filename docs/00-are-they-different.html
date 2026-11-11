@@ -174,7 +174,7 @@
 
 <section class="section" id="game">
   <h2>Same or different?</h2>
-  <p>Each round is a small trial of a drug against a placebo (a dummy pill). The drug's true response rate (the share of all patients it would help) is hidden; in half the trials it equals the placebo's.</p>
+  <p>Each round is a small trial of a drug against a placebo (a dummy pill). The drug's true response rate (the share of all patients who would improve on it) is hidden; in half the trials it equals the placebo's.</p>
   <div class="labgrid" id="lab" aria-label="Same or different trials">
     <div class="panel">
       <h3>1. Patients per group</h3>
@@ -209,11 +209,11 @@
   <p>In physics, if you repeat an experiment the same way, you get almost the same result. So if you change one thing and the result changes, that change caused it.</p>
   <p>Patients are not like that. Two patients on the same drug can do very differently, because of health, age, habits and things we cannot control.</p>
   <p>Sicker patients tend to do worse no matter what they take. If more of them end up on placebo, the placebo group does worse because of who is in it, and the drug looks better even if it does nothing.</p>
-  <p>So we flip a coin for each patient: heads gets the drug, tails gets placebo. Then sicker and less sick patients end up in both groups in about the same numbers. The coin also splits things we never measured, like sleep or diet. What is left is luck, and the randomization test below shows how big luck can be.</p>
+  <p>So we flip a coin for each patient: heads gets the drug, tails gets placebo. Then, on average, sicker and less sick patients end up in both groups in the same numbers, and in a large trial the split is close. The coin also splits things we never measured, like sleep or diet. What is left is luck, and the randomization test below shows how big luck can be.</p>
   <p class="note">Idea from D. R. Cox, <i>Planning of Experiments</i> (1958).</p>
   <p>Each column is one of 40 patients: top icon = result on the drug, bottom = on placebo.</p>
   <p>The colored bar is each patient's health at the start: orange sicker, teal less sick.</p>
-  <p><b>Who decides who gets the drug? Try both.</b> When patients choose, the less sick ones tend to pick the drug. Watch how far the trial's answer lands from the true effect.</p>
+  <p><b>Who decides who gets the drug? Try both.</b> When patients choose, who takes the drug depends on their health. In this demo the less sick pick it (healthy-user bias); in practice doctors often give new drugs to sicker patients, which biases the other way. Watch how far the trial's answer lands from the true effect.</p>
   <div class="row" id="cfMode" role="group" aria-label="Who decides">
     <button class="btn prior" type="button" data-m="choose">Patients choose</button>
     <button class="btn" type="button" data-m="coin">Coin decides</button>
@@ -242,7 +242,7 @@
 
 <section class="section" id="shuffle">
   <h2>The randomization test</h2>
-  <p>In a trial, a coin flip decides who gets the drug. Suppose the drug does nothing, so each patient's result stays fixed. Re-randomizing flips the coins again and asks how big a gap luck makes.</p>
+  <p>In a trial, a random schedule (think of a coin flip) decides who gets the drug. Suppose the drug does nothing, so each patient's result stays fixed. Re-randomizing flips the coins again and asks how big a gap luck makes.</p>
   <div class="pillrow" id="exbtns" role="group" aria-label="Load an example"><span class="lbl">Load an example:</span></div>
   <p class="note" id="srcLine"></p>
   <div class="block">
@@ -283,7 +283,7 @@
     <li>A test asks: is the gap bigger than chance usually makes?</li>
     <li>Small trials fool everyone. Big trials let real gaps stand out.</li>
   </ul>
-  <div class="namebox"><p>This is why trials randomize: the coin flip itself tells us what gaps chance makes. The share of re-randomizations with a gap at least as big as the real one is the p-value.</p></div>
+  <div class="namebox"><p>This is why trials randomize: the coin flip itself tells us what gaps chance makes. The share of re-randomizations with a gap at least as big as the real one is the two-sided p-value (module 2 counts only gaps favoring the drug, the one-sided version).</p></div>
 </section>
 </main>
 <p class="note lookup">In the encyclopedia: <a href="encyclopedia/#/e/randomization">Randomization</a>, <a href="encyclopedia/#/e/p-value">P-value</a>, <a href="encyclopedia/#/e/confidence-interval">Confidence interval</a>, <a href="encyclopedia/#/e/z-test">z test</a>, <a href="encyclopedia/#/e/confounding-by-indication">Confounding by indication</a>, <a href="encyclopedia/#/e/sampling-distribution">Sampling distribution of a trial result</a>, <a href="encyclopedia/#/e/counterfactual">Counterfactual</a>.</p>
@@ -302,11 +302,11 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>, chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/03-testing.html">4</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/04-randomization.html">5</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/06-evidence.html">7</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/03-testing.html">4</a>, <a href="https://vsokolov.org/bayesian_clinical_trials/04-randomization.html">5</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/06-evidence.html">7</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570. Chapters at <a href="https://vsokolov.org/clinical_trials_in_practice/">vsokolov.org/clinical_trials_in_practice</a>.</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -636,7 +636,7 @@
   function p5() { var s = 0, d; for (d = -20; d <= 20; d++) if (Math.abs(d) >= 5) s += pmfDiff(20, d); return s; }
   Lab.QuestionCard(Q, {
     tag: 'Predict 3', score: score, type: 'choice',
-    q: 'Two drugs that each help 50% of patients, 20 patients each. How often do their responder counts differ by 5 or more?',
+    q: 'Two drugs that each have a 50% response rate, 20 patients each. How often do their responder counts differ by 5 or more?',
     options: [{ value: 0, label: 'About 2% of the time' }, { value: 1, label: 'About 15% of the time' }, { value: 2, label: 'About 40% of the time' }, { value: 3, label: 'About 70% of the time' }],
     answer: function () { return nearest(p5(), [0.02, 0.15, 0.4, 0.7]); },
     revealPlot: function (b) { pmfPlot(b, 20, 12, function (d) { return Math.abs(d) >= 5; }, 'responders A minus responders B'); },
@@ -652,7 +652,7 @@
   });
   Lab.QuestionCard(Q, {
     tag: 'Predict 5', score: score, type: 'choice',
-    q: 'A drug that helps 50% of patients, two trials of 50. Do the two responder counts match exactly?',
+    q: 'A drug with a 50% response rate, two trials of 50. Do the two responder counts match exactly?',
     options: [{ value: 0, label: 'Often (about 1 time in 3)' }, { value: 1, label: 'Sometimes (about 1 in 10)' }, { value: 2, label: 'Rarely (about 1 in 25)' }, { value: 3, label: 'Almost never' }],
     answer: function () { return nearest(pmfDiff(50, 0), [1 / 3, 0.1, 0.04, 0.0001]); },
     revealPlot: function (b) { pmfPlot(b, 50, 20, function (d) { return d === 0; }, 'responders A minus responders B'); },
@@ -994,7 +994,7 @@
     options: [{ value: 'lower', label: 'Lower, as expected' }, { value: 'same', label: 'No change' }, { value: 'higher', label: 'Higher' }],
     answer: 'higher',
     onReveal: function () { miniBars(cardEl.q7.el, [{ label: 'Heart disease', value: 29, color: ORANGE }, { label: 'Stroke', value: 41, color: ORANGE }], 50, null, function (v) { return '+' + v + '%'; }, 'Change in risk on estrogen plus progestin vs placebo. Heart disease = heart attacks plus deaths from heart disease. Women\'s Health Initiative (Rossouw et al., JAMA 2002).', false); },
-    explain: function () { return 'Women who chose hormones may have been healthier already. The coin ignored health, and the harm showed.'; } };
+    explain: function () { return 'Women who chose hormones may have been healthier already. Randomized, the expected heart benefit did not appear and the risk went up.'; } };
   cfCard('q7', q7);
   })(score);
 

@@ -29,7 +29,7 @@ The regulation lists the evidence that suggests a causal relationship, among it 
 
 ## In the book
 
-The FDA guidance of December 2025 recommends a safety surveillance plan, aggregate review, and blinded individual assignments with unblinded aggregate review by a group independent of the sponsor's study team. Guidance recommends and does not require. [sec-safety] ICH E2A supplies the definitions of serious, unexpected and related events. [sec-safety]
+The FDA guidance of December 2025 recommends a safety surveillance plan, aggregate review, and keeping individual treatment assignments blinded to the sponsor's study team, with unblinded aggregate review by a group independent of that team. Guidance recommends and does not require. [sec-safety] ICH E2A supplies the definitions of serious, unexpected and related events. [sec-safety]
 
 The 7-day limit runs from initial receipt for a single interpretable case, whereas the 15-day limit runs from the date the sponsor determines the information qualifies. [sec-safety-reg] For events needing an aggregate analysis, the sponsor makes the determination once the analysis meets the criterion and then reports as soon as possible. [sec-safety-reg]
 

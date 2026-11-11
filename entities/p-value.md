@@ -32,7 +32,7 @@ equation eq-testing-pvalue, with the probability taken over repetition of the tr
 Sloppy definitions drive misuse. A p-value of 0.014 does not mean a 1.4% chance that the drug does not work. [sec-testing-pvalue] It depends on the plan: the same 9 heads and 3 tails have different p-values under different stopping rules. [sec-testing-pvalue] It depends on how many questions were asked, and ICH E9 section 5.6 says multiplicity may necessitate an adjustment. [sec-testing-pvalue]
 
 ## In the book
-In the simulated trial, about 1.0% of null reruns reach a difference of 0.15 or larger, and the p-values from the three methods range from 0.014 to 0.021. [sec-testing-sampling] The ANDROMEDA-SHOCK trial gave P = .06 with a hazard ratio of 0.75 (95% CI 0.55 to 1.02), which is inconclusive, not evidence of no effect. [4/andromeda-shock-what-not-significant-does-and-does-not-mean]
+In the simulated trial, in reruns with both arms known to be at 30%, about 1.0% reach a difference of 0.15 or larger; the p-values computed from the one trial's data range from 0.014 to 0.021 because a real trial does not know the common rate. [sec-testing-sampling] The ANDROMEDA-SHOCK trial gave P = .06 with a hazard ratio of 0.75 (95% CI 0.55 to 1.02), which is inconclusive, not evidence of no effect. [4/andromeda-shock-what-not-significant-does-and-does-not-mean]
 
 ## Pitfalls
 It mixes the effect size with the trial size. A large p-value is not evidence of no effect. [sec-testing-pvalue] The ASA statement collects these points and Goodman lists twelve misreadings. [sec-testing-pvalue]

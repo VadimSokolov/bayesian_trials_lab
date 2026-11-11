@@ -28,7 +28,7 @@ Patients differ, so a difference in averages comes with a question attached: wou
 In the simulated binary trial 30 of 100 respond on control and 45 of 100 on the drug. [sec-testing-example] RECOVERY's dexamethasone comparison is statistically the same kind of trial: 482 of 2104 (22.9%) died on dexamethasone against 1110 of 4321 (25.7%) on usual care, an age-adjusted rate ratio of 0.83 (95% CI 0.75 to 0.93). [4/recovery-a-two-group-comparison-a-rate-ratio-and-an-interval] The analysis is frequentist: only a p-value and an interval. The same 2.8 point gap in a trial of 100 per arm would be buried in a standard error of about 0.06. [4/recovery-a-two-group-comparison-a-rate-ratio-and-an-interval]
 
 ## Pitfalls
-Each patient has two potential outcomes and only one is seen. Randomization lets the observed gap stand in for the unobservable average difference. [sec-testing-example]
+Each patient has two potential outcomes and only one is seen. Randomization makes the observed gap an unbiased estimate of the unobservable average difference, with chance error measured by the standard error. [sec-testing-example]
 
 ## Check yourself
 - Q: What is the true effect in the binary version? A: 15 percentage points, 45% against 30%. [sec-testing-example]

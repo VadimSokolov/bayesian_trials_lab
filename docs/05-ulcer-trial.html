@@ -116,8 +116,8 @@ svg.fig text.dim { fill: rgba(10,22,40,.62); }
 
 <section class="example">
   <h2>Where the numbers come from</h2>
-  <p class="srcline">Illustrative counts based on Novick and Grizzle (1965), <a href="https://doi.org/10.1080/01621459.1965.10480777">"A Bayesian approach to the analysis of data from clinical trials"</a>.</p>
-  <p class="note">The operations were not named.</p>
+  <p class="srcline">Illustrative counts at the scale of Novick and Grizzle (1965), not transcribed from the paper, <a href="https://doi.org/10.1080/01621459.1965.10480777">"A Bayesian approach to the analysis of data from clinical trials"</a>.</p>
+  <p class="note">The operations are labeled A to D here.</p>
 </section>
 
 <div id="code"></div>
@@ -148,11 +148,11 @@ svg.fig text.dim { fill: rgba(10,22,40,.62); }
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805. This page draws on chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>.</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/09-multiplicity.html">10</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials/09-multiplicity.html">10</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570. Chapters at <a href="https://vsokolov.org/clinical_trials_in_practice/">vsokolov.org/clinical_trials_in_practice</a>.</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -434,7 +434,7 @@ svg.fig text.dim { fill: rgba(10,22,40,.62); }
       txt(svg, 245, 206, 'Deaths in A', { 'text-anchor': 'middle', 'class': 'dim', 'font-size': 11 });
       svg.querySelectorAll('text').forEach(function (t) { t.style.fill = NAVY; t.style.fontFamily = 'var(--sans)'; });
     },
-    explain: function () { return 'One-sided p = ' + fp(FI.one) + ' (line 0.025), two-sided p = ' + fp(FI.two) + ' (line 0.05). The two lines are built to agree. A was also picked as the worst, so this p is too small.'; }
+    explain: function () { return 'One-sided p = ' + fp(FI.one) + ' (line 0.025), two-sided p = ' + fp(FI.two) + ' (line 0.05). With equal arms the two-sided p is exactly twice the one-sided p, so the two lines agree here. A was also picked as the worst, so this p is too small.'; }
   });
   // 5. prior
   var PVALS = [[1, 1], [2, 20], [5, 50]].map(function (p) { return probGreater(p[0], p[1], DA, NA, DB, NB); });

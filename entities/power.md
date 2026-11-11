@@ -39,7 +39,7 @@ Power is a conditional probability: the chance of a significant result given tha
 
 ## Pitfalls
 
-Raising the sample size buys power and nothing else, since the type I error stays at 0.025 [9/the-power-curve]. Power is not a condition of approval in the way that error control is [9/two-errors-and-one-guess].
+Raising the sample size buys power (and precision) but leaves the type I error at 0.025 [9/the-power-curve]. Power is not a condition of approval in the way that error control is [9/two-errors-and-one-guess].
 
 ## Check yourself
 

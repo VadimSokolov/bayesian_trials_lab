@@ -32,7 +32,7 @@ $$
 This is equation eq-ch01-rule. [sec-decision-decision]
 
 ## Why it matters
-The threshold depends only on the ratio of the two costs. If a false approval is thirty-nine times as costly as a missed drug, the threshold is 39/40 = 0.975, so the one-sided $\alpha = 0.025$ is an implicit statement of that ratio. [sec-decision-decision] With a flat prior and a normal likelihood, approving above 0.975 is the same as rejecting when $p < 0.025$. [sec-decision-decision]
+The threshold depends only on the ratio of the two costs. If a false approval is thirty-nine times as costly as a missed drug, the threshold is 39/40 = 0.975, so the one-sided $\alpha = 0.025$ is an implicit statement of that ratio. [sec-decision-decision] With a flat prior and a normal likelihood, approving above 0.975 is the same as rejecting when the one-sided p-value is below 0.025. [sec-decision-decision]
 
 ## In the book
 Every protocol fixes what is known going in, what will count as success, and what the sponsor may do along the way. [1/the-three-things-a-protocol-fixes] The regulator can judge a design by what it does under pre-specified truths, without sharing the sponsor's prior or utility. [1/the-three-things-a-protocol-fixes]

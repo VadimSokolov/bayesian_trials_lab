@@ -37,7 +37,7 @@ In a mechanism example with ten baskets of 30 patients, nine baskets have 12 res
 
 ## Pitfalls
 
-A basket that does not respond has its response overestimated, by almost three-fold in the example, and may be rejected more often than under independent analyses. The remedy is calibration by simulation with some baskets not responding. [sec-borrowing-basket]
+A basket that does not respond has its response overestimated, by almost three-fold in the example, and its null hypothesis of no response may be rejected more often than under independent analyses, a false positive. The remedy is calibration by simulation with some baskets not responding. [sec-borrowing-basket]
 
 ## Check yourself
 

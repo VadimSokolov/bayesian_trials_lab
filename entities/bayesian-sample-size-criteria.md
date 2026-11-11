@@ -28,7 +28,7 @@ Read by the question each answers, the length and coverage criteria size an esti
 
 ## In the book
 
-With design prior $N(0.3, 0.1^2)$ and a flat analysis prior, 90% power needs 234 per arm [sec-power-criteria]. With a flat analysis prior the ALC reduces to $n \ge 2(3.92\sigma/\ell)^2$ [sec-power-criteria]. If the informative prior is also the analysis prior, the prior alone gives $\Pr(\theta > 0) = \Phi(3) = 0.9987$, so the trial is unnecessary for an analyst holding it [sec-power-criteria]. In the lupus example, 50% on control and a hoped-for 25% on treatment needs 77 per arm by power. An estimation-based width of 0.3 gives 75 per arm [sec-power-lupus].
+At $\theta = 0.3$ (a point-mass design prior) and a flat analysis prior, 90% power needs 234 per arm [sec-power-criteria]. Under the design prior $N(0.3, 0.1^2)$ the assurance at 234 per arm is only 0.81 [sec-power-criteria]. With a flat analysis prior the ALC reduces to $n \ge 2(3.92\sigma/\ell)^2$ [sec-power-criteria]. If the informative prior is also the analysis prior, the prior alone gives $\Pr(\theta > 0) = \Phi(3) = 0.9987$, so the trial is unnecessary for an analyst holding it [sec-power-criteria]. In the lupus example, 50% on control and a hoped-for 25% on treatment needs 77 per arm by power. An estimation-based width of 0.3 gives 75 per arm [sec-power-lupus].
 
 ## Pitfalls
 

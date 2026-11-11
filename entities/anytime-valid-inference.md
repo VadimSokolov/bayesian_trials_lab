@@ -34,7 +34,7 @@ A naive z test at the 0.025 level applied at every look inflates the false posit
 
 The always-valid p-value is $p_n = \min(1, 1/\max_{m\le n} E_m)$. [sec-evalues-p] It is nonincreasing in $n$. [sec-evalues-p] The validity costs the [[surcharge]]. [sec-evalues-surcharge]
 
-No FDA or ICH guidance names e-values, test martingales or anytime-valid inference as of November 2026. [sec-evalues] A sponsor proposing one is proposing a method and should expect to justify it in a CID paired meeting. [sec-evalues] No trial has yet been run on an e-process as its primary analysis. [sec-evalues-practice]
+No FDA or ICH guidance names e-values, test martingales or anytime-valid inference as of November 2026. [sec-evalues] A sponsor proposing one is proposing a method and should expect to justify it in a CID paired meeting. [sec-evalues] The book knows of no confirmatory drug trial that has used an e-process as its primary analysis. [sec-evalues-practice]
 
 ## Pitfalls
 

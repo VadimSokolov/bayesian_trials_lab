@@ -32,11 +32,11 @@ This is equation eq-implied-c. [sec-evidence-implied]
 
 ## Why it matters
 
-A fixed $\alpha$ hides the loss ratio. As trials grow, a fixed level behaves as if the prior odds on the null or the harm of a false approval were shrinking toward zero [sec-evidence-implied]. In normal model the implied threshold satisfies $2\log b_n = z_{\mathrm{crit}}^2\,\frac{q}{1+q} - \log(1+q)$ [sec-evidence-implied].
+A fixed $\alpha$ hides the loss ratio. As trials grow, a fixed level behaves as if the prior odds on the null or the harm of declaring a useless drug effective were shrinking toward zero [sec-evidence-implied]. In normal model the implied threshold satisfies $2\log b_n = z_{\mathrm{crit}}^2\,\frac{q}{1+q} - \log(1+q)$ [sec-evidence-implied].
 
 ## In the book
 
-A posterior threshold of 0.975, 0.99 or 0.995 says approving a useless drug is 39, 99 or 199 times worse than withholding a useful one [7/key-points]. The ratio is not statistical. It depends on the disease, and Isakov, Lo and Montazerhodjat find the best threshold differs by disease [sec-evidence-lossratio].
+A posterior threshold of 0.975, 0.99 or 0.995 says declaring a useless drug effective (a false positive) is 39, 99 or 199 times worse than withholding a useful one [7/key-points]. The ratio is not statistical. It depends on the disease, and Isakov, Lo and Montazerhodjat find the best threshold differs by disease [sec-evidence-lossratio].
 
 ## Pitfalls
 
@@ -44,5 +44,5 @@ This is the point-null, two-sided calculation. It is not the benefit probability
 
 ## Check yourself
 
-- Q: What loss ratio does a posterior threshold of 0.99 imply? A: A false approval is about 99 times worse than a false rejection [7/key-points].
+- Q: What loss ratio does a posterior threshold of 0.99 imply? A: Declaring a useless drug effective is about 99 times worse than a false rejection [7/key-points].
 - Q: What does a regulator holding alpha fixed behave like as trials grow? A: As if the prior odds on the null were shrinking toward zero [sec-evidence-implied].

@@ -39,7 +39,7 @@ The type I error of the design is $\sum_k p_k$ at $\xi = 0$, and power is the sa
 
 ## In the book
 
-The package computes it with `gs_crossing_prob`, using Gauss-Legendre nodes, accurate to many digits. [11/the-armitage-recursion] Four unadjusted looks at 1.96 give 0.0631. [11/the-armitage-recursion]
+The package computes it with `gs_crossing_prob`, using Gauss-Legendre nodes, accurate to many digits. [11/the-armitage-recursion] Four equally spaced unadjusted looks at 1.96 give a one-sided type I error of 0.0631, more than two and a half times the nominal 0.025. [11/the-armitage-recursion]
 
 The recursion is exact except for numerical integration, because it uses only independent normal increments and the fact that the standardized statistic is a function of the score. [11/the-armitage-recursion]
 

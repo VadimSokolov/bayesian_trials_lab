@@ -38,5 +38,5 @@ The book calls this the most useful list for a trialist to carry. [3/the-regulat
 The regulation names placebo concurrent control, dose-comparison, no treatment, active treatment and historical control as recognized control types. [3/the-regulation-what-adequate-and-well-controlled-means] The 2026 draft cautions that external controls differ from the treated group "because of the lack of randomized treatment assignment". [3/the-regulation-what-adequate-and-well-controlled-means]
 
 ## Check yourself
-- Q: Which item of the list is the root of pre-specification? A: Item 7, an adequate analysis, with methods stated in the protocol. [3/the-regulation-what-adequate-and-well-controlled-means]
+- Q: Which item of the list is the root of pre-specification? A: Item 1, a clear statement of objectives and of the proposed methods of analysis in the protocol, together with item 7, an adequate analysis. [3/the-regulation-what-adequate-and-well-controlled-means]
 - Q: Is historical control an admitted control type? A: Yes, but the 2026 draft warns about its weakness. [3/the-regulation-what-adequate-and-well-controlled-means]

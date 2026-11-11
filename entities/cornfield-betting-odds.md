@@ -4,7 +4,7 @@ name: Cornfield and the betting odds of 1966
 type: history
 aliases: [Cornfield]
 level: 3
-summary: In 1966 Cornfield proposed relative betting odds as a sequential stopping criterion, an early form of the mixture e-value that lost to alpha spending.
+summary: In 1966 Cornfield proposed relative betting odds as a sequential stopping criterion, an early form of the mixture e-value that lost to frequentist group sequential boundaries (later alpha spending).
 chapters: ['12']
 home: 12/cornfield-and-the-betting-odds-of-1966
 sections: [12/cornfield-and-the-betting-odds-of-1966]
@@ -29,11 +29,11 @@ For a simple null the betting odds are a [[test-martingale]], so [[villes-inequa
 
 ## In the book
 
-His proposal lost to alpha spending for a reason that is not statistical. Betting odds require a declared prior on the alternative, and the reviewer has to accept it. [12/cornfield-and-the-betting-odds-of-1966] The [[mixture-method]] of the chapter makes the same trade. [12/cornfield-and-the-betting-odds-of-1966] The regulatory conversation about registering the prior is the modern version of that objection. [12/cornfield-and-the-betting-odds-of-1966]
+His proposal lost to frequentist group sequential boundaries, later alpha spending, for a reason that is not statistical. Betting odds require a declared prior on the alternative, and the reviewer has to accept it. [12/cornfield-and-the-betting-odds-of-1966] The [[mixture-method]] of the chapter makes the same trade. [12/cornfield-and-the-betting-odds-of-1966] The regulatory conversation about registering the prior is the modern version of that objection. [12/cornfield-and-the-betting-odds-of-1966]
 
 Shafer and colleagues connect test martingales, Bayes factors and p-values, and Vovk and Wang develop calibration and combination rules for e-values. [12/cornfield-and-the-betting-odds-of-1966]
 
 ## Check yourself
 
-- Q: Why did Cornfield's betting odds lose to alpha spending? A: They need a declared prior on the alternative that the reviewer must accept. [12/cornfield-and-the-betting-odds-of-1966]
+- Q: Why did Cornfield's betting odds lose to group sequential boundaries? A: They need a declared prior on the alternative that the reviewer must accept. [12/cornfield-and-the-betting-odds-of-1966]
 - Q: What makes the odds valid at any stopping time for a simple null? A: They are a test martingale, so Ville's inequality applies. [12/cornfield-and-the-betting-odds-of-1966]

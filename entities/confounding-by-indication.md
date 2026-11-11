@@ -26,7 +26,7 @@ A physician who thinks a new drug is promising may offer it to patients who seem
 ## Why it matters
 A larger trial does not help. The standard error is about the same whether a doctor or a coin chooses, so more patients only make the wrong answer more convincing. [5/confounding-by-indication-a-doctor-picks-the-patients]
 
-Adjustment helps only for what was recorded. Stratifying on a recorded health score moves the estimate closer to the truth but not onto it, because patients within a band still differ. [5/confounding-by-indication-a-doctor-picks-the-patients] The coin balances health as recorded, as sensed and as nobody has thought of. [5/confounding-by-indication-a-doctor-picks-the-patients]
+Adjustment helps only for what was recorded. Stratifying on a recorded health score moves the estimate closer to the truth but not onto it, because patients within a band still differ. [5/confounding-by-indication-a-doctor-picks-the-patients] The coin balances health as recorded, as sensed and as nobody has thought of, on average over randomizations; any one trial keeps a chance imbalance, which the standard error accounts for. [5/confounding-by-indication-a-doctor-picks-the-patients]
 
 ## In the book
 Each patient has a hidden health score. The new drug truly adds 10 percentage points to the probability of recovery. Each simulated trial has 400 patients, and 1,000 trials of each kind are run. [5/confounding-by-indication-a-doctor-picks-the-patients]

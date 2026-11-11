@@ -33,4 +33,4 @@ The skeleton is a shape, not the truth. A real simulation report should include 
 
 ## Check yourself
 - Q: What does the CRM need in the protocol that the 3+3 does not? A: A skeleton and a prior on its parameter. [17/the-continual-reassessment-method]
-- Q: Does CRM beat the 3+3 at any sample size? A: No. At n = 15 it is worse in scenario B. [17/comparing-the-designs]
+- Q: Does CRM beat the 3+3 at every sample size? A: No. At n = 15 it is worse in scenario B, though at n = 30 it selects the true MTD more often. [17/comparing-the-designs]

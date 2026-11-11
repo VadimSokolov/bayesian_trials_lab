@@ -34,7 +34,7 @@ It says something that does not depend on a particular prior, at the cost of bei
 
 ## In the book
 
-A two-sided p-value of 0.05 corresponds at best to a Bayes factor of about 2.5 and a posterior probability of the null of at least 29%. So "95% sure" is at best "71% sure" [sec-evidence-calibration]. At p = 0.01 the Bayes factor is at most 8 and the null keeps at least 11%. Only at p = 0.001 does it reach 53 [sec-evidence-calibration]. In a worked trial with Z = 2.8 the bound allows at most 13.6 for $\mathrm{BF}_{10}$ [7/a-worked-comparison].
+A two-sided p-value of 0.05 corresponds at best to a Bayes factor of about 2.5 and a posterior probability of the null of at least 29%. So the common misreading of p = 0.05 as "95% sure the effect is real" overstates: even the alternative most favorable in the class gives at most 71% [sec-evidence-calibration]. At p = 0.01 the Bayes factor is at most 8 and the null keeps at least 11%. Only at p = 0.001 does it reach 53 [sec-evidence-calibration]. In a worked trial with Z = 2.8 the bound allows at most 13.6 for $\mathrm{BF}_{10}$ [7/a-worked-comparison].
 
 ## Pitfalls
 

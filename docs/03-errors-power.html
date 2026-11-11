@@ -189,7 +189,7 @@
     </div>
     <div class="figure">
       <h3>Rare side effects need crowds</h3>
-      <p class="note" style="margin:0"><span class="tip" tabindex="0" data-tip="International Council for Harmonisation: regulators and industry who write trial rules that the US, Europe and Japan share.">ICH</span> E1 asks for about 1,500 patients exposed to a drug taken long-term for a non-life-threatening condition. Pick a true side-effect rate.</p>
+      <p class="note" style="margin:0"><span class="tip" tabindex="0" data-tip="International Council for Harmonisation: regulators and industry who write guidelines adopted by the US, EU, Japan and many other regions.">ICH</span> E1 asks for about 1,500 patients exposed to a drug taken long-term for a non-life-threatening condition. Pick a true side-effect rate.</p>
       <div class="row" id="rates" style="margin:.5rem 0"></div>
       <svg id="people" class="dotsvg" viewBox="0 0 500 200" role="img" aria-label="1,500 person icons, one per patient; orange filled icons are patients with the side effect"></svg>
       <p class="plain" id="peopleOut"></p>
@@ -220,11 +220,11 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning</a> (chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>). doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/03-testing.html">4</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/08-power.html">9</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/03-testing.html">4</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/08-power.html">9</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice</a> (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters online</a>). doi:10.5281/zenodo.23933570</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials, <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -482,7 +482,7 @@
   Lab.QuestionCard(Q, {
     tag: 'Predict 1', score: score, type: 'choice',
     q: 'A jury sets a guilty person free. In a drug trial, what is the same mistake?',
-    options: [{ value: 'I', label: 'Type I: approving a useless drug' }, { value: 'II', label: 'Type II: missing a drug that works' }],
+    options: [{ value: 'I', label: 'Type I: a trial calls a useless drug effective' }, { value: 'II', label: 'Type II: missing a drug that works' }],
     answer: 'II',
     revealPlot: function (box) { var s = svgEl('svg', { role: 'img', 'aria-label': 'Decision table with the Type II cell highlighted', style: 'width:100%;height:auto;display:block' }, box); drawTable(s, 'II'); },
     explain: 'The guilty person is a drug that works. Freeing them is a miss, so it is Type II (β).'
@@ -560,7 +560,7 @@
   // 6. Rule of 3
   Lab.QuestionCard(Q, {
     tag: 'Predict 6', score: score, type: 'choice',
-    q: 'In 1,500 patients nobody had a certain side effect. Which true rates can we rule out (with only a 5% chance of being wrong)?',
+    q: 'In 1,500 patients nobody had a certain side effect. Which true rates can we rule out at 95% confidence (rates for which seeing zero cases would happen under 5% of the time)?',
     options: [{ value: 'a', label: 'Rates above about 0.02%' }, { value: 'b', label: 'Rates above about 0.2%' }, { value: 'c', label: 'Rates above about 2%' }],
     answer: function () { var r = 1 - Math.pow(0.05, 1 / 1500); return r < 0.0006 ? 'a' : r < 0.006 ? 'b' : 'c'; },
     revealPlot: function (box) {

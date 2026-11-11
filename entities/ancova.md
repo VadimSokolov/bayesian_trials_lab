@@ -29,7 +29,7 @@ For 90 percent power at a two-sided 5 percent level and a difference of 0.4 stan
 
 FDA says power and sample size can be based on adjusted or unadjusted methods, and that the unadjusted choice is often more conservative. [5/continuous-outcomes-ancova]
 
-For a linear model, the treatment effect is identical whether the outcome is the raw follow-up value or the change, so reporting on the change scale is a separate question from estimation. [5/change-from-baseline-or-ancova]
+In ANCOVA, with baseline as a covariate in a linear model, the treatment effect is identical whether the outcome is the raw follow-up value or the change, so reporting on the change scale is a separate question from estimation. [5/change-from-baseline-or-ancova]
 
 ## Pitfalls
 The gain applies to a planned adjusted analysis: the covariate must be committed to in the protocol. [5/continuous-outcomes-ancova] The change-score analysis is unbiased in a randomized trial, but it spends precision. [5/change-from-baseline-or-ancova]

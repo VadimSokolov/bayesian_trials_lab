@@ -20,7 +20,7 @@ cites: [thompson1933, kaufmann2012thompson, agrawal2013, russo2016, hill2017]
 ---
 ## What it is
 
-With a Beta prior on each success probability, the posterior after $s$ successes and $f$ failures is Beta$(1+s, 1+f)$ [16/thompson-sampling-in-four-lines]. Thompson sampling draws one value from each arm's posterior and assigns the patient to the arm with the largest draw [16/thompson-sampling-in-four-lines]. For two arms the probability that arm 1 is chosen is exactly $\Pr(p_1 > p_0 \mid \text{data})$ [16/thompson-sampling-in-four-lines].
+With a uniform Beta(1, 1) prior on each success probability, the posterior after $s$ successes and $f$ failures is Beta$(1+s, 1+f)$ [16/thompson-sampling-in-four-lines]. Thompson sampling draws one value from each arm's posterior and assigns the patient to the arm with the largest draw [16/thompson-sampling-in-four-lines]. For two arms the probability that arm 1 is chosen is exactly $\Pr(p_1 > p_0 \mid \text{data})$ [16/thompson-sampling-in-four-lines].
 
 ## Why it matters
 

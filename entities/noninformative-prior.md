@@ -29,7 +29,7 @@ A noninformative or reference prior, such as a normal with a very large variance
 
 ## In the book
 
-Independent Jeffreys Beta(1/2, 1/2) or uniform Beta(1, 1) priors on two arms put 49 to 56 percent prior probability on a risk difference larger than 30 points [8/key-points]. A prior that says "no opinion" about each rate says the drug is very likely dramatically effective or harmful [8/independent-beta-priors-imply-an-extreme-prior-on-the-risk-difference]. A vague $N(0, 10^2)$ on logistic coefficients pushes mass to the boundaries because the inverse logit saturates [8/flat-priors-on-logistic-coefficients]. A weakly informative default such as a half-normal on a between-trial standard deviation is common for nuisance parameters [sec-priors-three].
+Independent Jeffreys Beta(1/2, 1/2) or uniform Beta(1, 1) priors on two arms put 49 to 56 percent prior probability on a risk difference larger than 30 points in either direction [8/key-points]. A prior that says "no opinion" about each rate says the drug is very likely dramatically effective or harmful [8/independent-beta-priors-imply-an-extreme-prior-on-the-risk-difference]. A vague $N(0, 10^2)$ on logistic coefficients pushes mass to the boundaries because the inverse logit saturates [8/flat-priors-on-logistic-coefficients]. A weakly informative default such as a half-normal on a between-trial standard deviation is common for nuisance parameters [sec-priors-three].
 
 ## Pitfalls
 

@@ -68,7 +68,7 @@
 <section class="hero">
   <div class="kicker">Module 6</div>
   <h1>Fair comparisons: placebo, blinding and who counts</h1>
-  <p class="hook">Randomization made the two groups alike. What can still go wrong?</p>
+  <p class="hook">Randomization made the two groups alike on average. What can still go wrong?</p>
 </section>
 
 <section class="section" style="padding-bottom:0">
@@ -84,7 +84,7 @@
       <button class="btn prior" type="button" data-m="itt">Count everyone</button>
       <button class="btn" type="button" data-m="pp">Drop quitters</button>
     </div>
-    <p class="note" style="margin-top:.5rem"><b>Count everyone</b> is called <b>intention to treat</b>: every patient is counted in the group the coin chose, even if they quit. <b>Drop quitters</b> is called <b>per protocol</b>: only patients who stuck to the plan are counted. Patients who quit get no help from the drug.</p>
+    <p class="note" style="margin-top:.5rem"><b>Count everyone</b> is called <b>intention to treat</b>: every patient is counted in the group the coin chose, even if they quit. <b>Drop quitters</b> is called <b>per protocol</b>: only patients who stuck to the plan are counted. In this simulation, patients who quit get no help from the drug.</p>
     <h3>2. Settings</h3>
     <div class="field"><label for="eff">Drug effect for patients who take it (extra recoveries per 100): <b id="effv"></b></label></div>
     <div class="field"><input id="eff" type="range" min="0" max="20" step="1" value="0"></div>
@@ -160,10 +160,10 @@
 <section class="takeaway">
   <h2>Takeaway</h2>
   <ul>
-    <li>Hide who got what with a look-alike placebo, so hopes cannot color the results.</li>
+    <li>Hide who got what where possible (a look-alike placebo or double dummy), so hopes cannot color the results. When patients cannot be blinded, keep the outcome assessors blind and prefer objective endpoints.</li>
     <li>Count everyone in the group the coin chose, even people who quit (intention to treat).</li>
     <li>Say up front which question the trial answers: the drug if taken, or prescribing it (the estimand).</li>
-    <li>Dropping quitters makes the groups unequal again.</li>
+    <li>Dropping quitters can make the groups unequal again, when the patients who quit differ (for example, are sicker) from those who stay.</li>
   </ul>
 </section>
 </main>
@@ -172,11 +172,11 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials_v1/04-randomization.html">5</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapter <a href="https://vsokolov.org/bayesian_clinical_trials/04-randomization.html">5</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a> (chapters on <a href="https://vsokolov.org/clinical_trials_in_practice/">trial design and analysis</a>). doi:10.5281/zenodo.23933570</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). <a href="https://arxiv.org/abs/2602.09208">Some Bayesian Perspectives on Clinical Trials</a>. arXiv:2602.09208</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 
@@ -326,7 +326,7 @@
     options: [{ value: 'up', label: 'Yes, it looks like it helps' }, { value: 'zero', label: 'No, nothing on average' }, { value: 'down', label: 'It looks like it hurts' }],
     answer: function () { qA.m = many({ eff: 0, quit: 30, str: 1.5, N: 400 }, 500); var m = Lab.mean(qA.m.itt); return m > 1 ? 'up' : m < -1 ? 'down' : 'zero'; },
     onReveal: function () { miniHist(cardEl.qA.el, [{ vals: qA.m.itt, color: TEAL, label: 'Count everyone' }], -30, 30, 40, 0, null, 'Average: ' + signed(Lab.mean(qA.m.itt), 1) + ' (truth 0).'); },
-    explain: function () { return 'Counting everyone keeps the groups alike. So a useless drug shows about 0.'; } };
+    explain: function () { return 'Counting everyone keeps the coin’s balance, so on average a useless drug shows about 0.'; } };
   mk('qA', qA);
 
   var q6 = { tag: 'Predict 2', type: 'choice',
@@ -355,7 +355,7 @@
       q4.o = a; q4.b = b; return Lab.mean(a) > 2 ? 'up' : 'zero';
     },
     onReveal: function () { miniHist(cardEl.q4.el, [{ vals: q4.o, color: ORANGE, label: 'Patients know' }, { vals: q4.b, color: TEAL, label: "Patients don't know" }], -15, 15, 30, 0, null, 'Assumed: knowing you got the pill adds 8 to the rating. Average: ' + signed(Math.round(Lab.mean(q4.o)) || 0, 0) + ' when patients know, ' + signed(Math.round(Lab.mean(q4.b)) || 0, 0) + ' when they don\'t.'); },
-    explain: function () { return 'Hope, not the pill, raised the ratings. A look-alike dummy pill (placebo) removes that.'; } };
+    explain: function () { return 'Hope, not the pill, raised the ratings. A look-alike dummy pill (placebo) gives both groups the same hopes, so they cancel out of the comparison.'; } };
   mk('q4', q4);
 
   // ITT with 30% not taking the drug.
@@ -381,7 +381,7 @@
     });
     E('line', { x1: x0 + w, x2: x0 + w, y1: 6, y2: 98, stroke: NAVY, 'stroke-dasharray': '4 3' }, svg);
     E('text', { x: x0 + w / 2, y: 114, 'text-anchor': 'middle' }, svg).textContent = 'deaths vs usual care (1 = same)';
-    var cap = $('recFig'); var p = document.createElement('p'); p.className = 'note'; p.textContent = 'After adjusting for age: ' + Math.round((1 - 0.83) * 100) + '% fewer deaths overall, ' + Math.round((1 - 0.64) * 100) + '% fewer on ventilators (rate ratios 0.83 and 0.64).'; cap.appendChild(p);
+    var cap = $('recFig'); var p = document.createElement('p'); p.className = 'note'; p.textContent = 'After adjusting for age: ' + Math.round((1 - 0.83) * 100) + '% fewer deaths overall in relative terms (22.9% vs 25.7% died by day 28), ' + Math.round((1 - 0.64) * 100) + '% fewer on ventilators (rate ratios 0.83 and 0.64).'; cap.appendChild(p);
     var pb = $('panFig'), s2 = E('svg', { viewBox: '0 0 300 150', role: 'img', 'aria-label': 'One in 100 icons highlighted in each group' }, pb), g;
     [['Molnupiravir', 0], ['Usual care', 1]].forEach(function (d, gi) {
       var ox = 10 + gi * 150;
@@ -393,7 +393,7 @@
 
   /* ---------- Blinding figure ---------- */
   (function () {
-    var LV = [['Open label', [1, 1, 1], 'Everyone knows. Hopes can color ratings.'], ['Single blind', [0, 1, 1], 'Patients do not know. Doctors know and may treat patients differently.'], ['Double blind', [0, 0, 1], 'Patients and doctors do not know.'], ['Triple blind', [0, 0, 0], 'Patients, doctors and the analyst do not know.']];
+    var LV = [['Open label', [1, 1, 1], 'Everyone knows. Hopes can color ratings.'], ['Single blind', [0, 1, 1], 'Patients do not know. Doctors know and may treat patients differently.'], ['Double blind', [0, 0, 1], 'Patients and doctors do not know.'], ['Triple blind', [0, 0, 0], 'Patients, doctors and the analyst do not know. These labels are used inconsistently; good reports say exactly who was blinded: patients, clinicians, outcome assessors, analysts.']];
     var svg = $('blind'), cols = ['Patient', 'Doctor', 'Analyst'], cur = 2;
     function eye(x, y, knows) {
       E('ellipse', { cx: x, cy: y, rx: 16, ry: 9, fill: '#fff', stroke: NAVY, 'stroke-width': 1.5 }, svg);

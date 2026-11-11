@@ -35,7 +35,7 @@ Two arms' test statistics have correlation $1/(1+r)$, which is 0.5 under equal a
 
 ## In the book
 
-At 480 total patients the square-root rule lowers each contrast variance by 10% with four arms and 15% with six. [20/shared-control-arithmetic] If all four arms are null at one-sided 0.025, the expected number of false positives is $0.025k$ whatever the correlation, but the count distribution changes. With a shared control and equal allocation, at least one false positive falls from 9.6% to 7.8% and two or more rises from 0.4% to 1.7%. [20/the-number-of-false-positives] FDA and the EMA ask for more control participants than each arm. [20/shared-control-arithmetic]
+At 480 total patients the square-root rule lowers each contrast variance by 10% with four arms and 15% with six. [20/shared-control-arithmetic] If all four arms are null at one-sided 0.025, the expected number of false positives is $0.025k$ whatever the correlation, but the count distribution changes. With a shared control and equal allocation, at least one false positive falls from 9.6% to 7.8% and two or more rises from 0.4% to 1.7%. [20/the-number-of-false-positives] FDA's draft recommends a control allocation larger than any single arm, and EMA's draft points to larger control groups as the more efficient remedy. [20/shared-control-arithmetic]
 
 ## Pitfalls
 

@@ -98,13 +98,13 @@ svg text { font-family: var(--sans); }
   <h2>Meeting clocks</h2>
   <p class="note">Click a row.</p>
   <figure class="figure"><svg id="clocks" viewBox="0 0 920 270" role="img" aria-label="Bars of FDA reply days and meeting scheduling days for each meeting type"></svg>
-    <figcaption><b>Source:</b> FDA formal meetings guidance (August 2026), Tables 1 and 2.</figcaption></figure>
+    <figcaption><b>Source:</b> FDA formal meetings guidance (final, August 2026), Tables 1 and 2.</figcaption></figure>
 </section>
 
 <section class="section">
   <h2>Talking to FDA about a new design</h2>
   <p>FDA's <b>Complex Innovative Trial Design (CID) paired meeting program</b> is where sponsors discuss designs such as Bayesian ones with FDA staff.</p>
-  <p class="note">Designs are usually agreed at an end-of-phase-2 meeting (Type B) or a Type C meeting. The clocks above apply.</p>
+  <p class="note">Designs are usually discussed at an end-of-phase-2 meeting (Type B) or a Type C meeting; binding agreement needs a Special Protocol Assessment. The clocks above apply.</p>
 </section>
 
 <section class="section">
@@ -161,7 +161,7 @@ svg text { font-family: var(--sans); }
   <h3>Regulator's corner</h3>
   <p>FDA says a Type A meeting is for a program that is stuck:</p>
   <blockquote>"necessary for an otherwise stalled drug or biological product development program to proceed or to address an important safety issue."</blockquote>
-  <p class="note">Section III. <a href="https://www.fda.gov/media/172311/download">FDA, Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products</a> (August 2026).</p>
+  <p class="note">Section III. <a href="https://www.fda.gov/media/172311/download">FDA, Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products</a> (final, August 2026).</p>
 </section>
 
 <div id="code"></div>
@@ -181,12 +181,12 @@ svg text { font-family: var(--sans); }
   <ul>
     <li>FDA: <a href="https://www.fda.gov/media/172311/download">Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products</a> (August 2026); <a href="https://www.fda.gov/media/190505/download">Use of Bayesian Methodology in Clinical Trials</a> (draft). Chapter on the drug development process: <a href="https://vsokolov.org/clinical_trials_in_practice/">Clinical Trials in Practice</a>.</li>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/02-regulatory.html">3</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/19-protocol.html">23</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/02-regulatory.html">3</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/19-protocol.html">23</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570</li>
     <li>21 CFR 312.52, Transfer of obligations to a contract research organization. <a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-312/subpart-D/section-312.52">eCFR</a></li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -206,8 +206,8 @@ svg text { font-family: var(--sans); }
     { id: 'disc', name: 'Discovery', min: 2, max: 4, q: 'Which molecule might work?', who: 'Lab work only', reg: 'No FDA touch point yet.' },
     { id: 'pre', name: 'Preclinical', min: 1, max: 3, q: 'Is it safe enough to try in people?', who: 'Cells and animals', reg: 'Often a first meeting with FDA (pre-IND).' },
     { id: 'p1', name: 'Phase I', min: 1, max: 2, q: 'Is it tolerated? What does the body do to it?', who: 'A small group, often healthy volunteers (patients for cancer drugs)', reg: 'IND filed. If FDA does not object within 30 days, the trial may start.' },
-    { id: 'p2', name: 'Phase II', min: 1, max: 3, q: 'Does it seem to work? Which dose?', who: '20 to 300 people is typical', reg: 'Type B: end of Phase 2. Show FDA the Phase III plan.' },
-    { id: 'p3', name: 'Phase III', min: 2, max: 4, q: 'Does it beat placebo or the usual drug?', who: 'Hundreds to thousands, many sites', reg: 'Pre-NDA/BLA meeting: is the file complete?' },
+    { id: 'p2', name: 'Phase II', min: 1, max: 3, q: 'Does it seem to work? Which dose?', who: 'Up to several hundred patients with the condition', reg: 'Type B: end of Phase 2. Show FDA the Phase III plan.' },
+    { id: 'p3', name: 'Phase III', min: 2, max: 4, q: 'Does it beat placebo or the usual drug?', who: 'Hundreds to thousands of patients, many sites', reg: 'Pre-NDA/BLA meeting: is the file complete?' },
     { id: 'rev', name: 'Review', min: 0.5, max: 1, q: 'Should FDA approve it?', who: 'FDA reviewers', reg: 'NDA or BLA filed. FDA checks completeness for 60 days first.' },
     { id: 'p4', name: 'Phase IV', q: 'Any rare or long-term harm?', who: 'Everyone who takes it', reg: 'Safety monitoring goes on after approval.' }
   ];
@@ -317,10 +317,10 @@ svg text { font-family: var(--sans); }
   var ROLES = [
     { id: 'sponsor', t: 'Sponsor', l: ['Owns the trial,', 'answers for it'], d: 'The sponsor is ultimately responsible for the trial.' },
     { id: 'cro', t: 'CRO', l: ['Hired company that', 'does tasks for sponsor'], d: 'A CRO (contract research organization) does tasks the sponsor hands over. The sponsor stays responsible for overseeing the work. The CRO answers for duties it took over in writing.' },
-    { id: 'pi', t: 'Investigator', l: ['Runs the trial at a', 'site, gets consent'], d: 'The principal investigator runs the study at one site and makes sure patients give consent. Consent means patients agree in writing after hearing the risks.' },
+    { id: 'pi', t: 'Investigator', l: ['Runs the trial at a', 'site, gets consent'], d: 'The principal investigator runs the study at one site and makes sure patients give consent. Consent means participants agree, usually in writing, after learning the purpose, risks, possible benefits and alternatives, and that they may leave at any time.' },
     { id: 'irb', t: 'IRB', l: ['Ethics committee:', 'approves the plan'], d: 'The IRB (institutional review board) approves the trial plan and the consent form.' },
     { id: 'fda', t: 'FDA', l: ['Inspects and', 'can halt a trial'], d: 'The regulator can inspect a trial and halt it.' },
-    { id: 'CDER', t: 'CDER', l: ['Most drugs'], d: 'CDER handles most drugs.', c: 1 },
+    { id: 'CDER', t: 'CDER', l: ['Most drugs'], d: 'CDER handles most drugs and most therapeutic biologics, such as monoclonal antibodies.', c: 1 },
     { id: 'CBER', t: 'CBER', l: ['Vaccines, blood,', 'gene and cell therapy'], d: 'CBER handles vaccines, blood, gene therapy and cell therapy.', c: 1 },
     { id: 'CDRH', t: 'CDRH', l: ['Medical devices'], d: 'CDRH handles medical devices.', c: 1 }
   ];
@@ -352,7 +352,7 @@ svg text { font-family: var(--sans); }
     { y: 1947, t: 'Nuremberg Code', d: 'After the trials of Nazi doctors: people must agree to take part in research.' },
     { y: 1962, t: 'Thalidomide, Kefauver-Harris', d: 'A sleeping pill, thalidomide, caused birth defects. A 1962 law then required proof a drug works.' },
     { y: 1964, t: 'Declaration of Helsinki', d: 'Doctors set their own ethics rules for research on people.' },
-    { y: 1974, t: 'National Research Act', d: 'US ethics review boards (IRBs) became required.' },
+    { y: 1974, t: 'National Research Act', d: 'US ethics review boards (IRBs) became required for federally funded research.' },
     { y: 1979, t: 'Belmont Report', d: 'Three ideas: respect people, do good, be fair.' },
     { y: 1991, t: 'Common Rule', d: 'One set of US rules for federally funded research on people.' },
     { y: 1996, t: 'ICH E6 (GCP)', d: 'US, European and Japanese regulators agreed one standard for running trials well (GCP, good clinical practice).' },
@@ -388,13 +388,13 @@ svg text { font-family: var(--sans); }
     { id: 'e9r1', s: 'ICH E9(R1)', topic: 'Estimands', title: 'Addendum on Estimands and Sensitivity Analysis', date: 'Adopted 20 November 2019', say: 'Say exactly which treatment effect you want to measure before you start.', quote: 'An estimand is a precise description of the treatment effect reflecting the clinical question posed by a given clinical trial objective.', url: 'https://database.ich.org/sites/default/files/E9-R1_Step4_Guideline_2019_1203.pdf', rel: 'Fair comparisons' },
     { id: 'se', s: 'Substantial evidence', topic: 'Proof of benefit', title: 'Demonstrating Substantial Evidence of Effectiveness', date: 'Revised draft, June 2026', say: 'What FDA needs to see before it says a drug works.', quote: 'evidence consisting of adequate and well-controlled investigations', url: 'https://www.fda.gov/media/133660/download', rel: 'Substantial evidence' },
     { id: 'mp', s: 'Master protocols', topic: 'Platform trials', title: 'Master Protocols for Drug and Biological Product Development', date: 'Revised draft, June 2026', say: 'One trial shell can test many drugs and share a control group.', quote: 'improve efficiency by using a shared control arm in evaluating multiple drugs', url: 'https://www.fda.gov/media/174976/download', rel: 'Platform trials' },
-    { id: 'ad', s: 'Adaptive designs', topic: 'Changing a trial', title: 'Adaptive Designs for Clinical Trials of Drugs and Biologics', date: 'Final, November 2019', say: 'You may change a trial as data arrive if the changes were planned and false approvals stay controlled.', quote: 'the chance of erroneous conclusions should be adequately controlled', url: 'https://www.fda.gov/media/78495/download', rel: 'Adaptive designs' },
+    { id: 'ad', s: 'Adaptive designs', topic: 'Changing a trial', title: 'Adaptive Designs for Clinical Trials of Drugs and Biologics', date: 'Final, November 2019', say: 'You may change a trial as data arrive if the changes were planned in advance and the chance of a false positive result stays controlled.', quote: 'the chance of erroneous conclusions should be adequately controlled', url: 'https://www.fda.gov/media/78495/download', rel: 'Adaptive designs' },
     { id: 'e20', s: 'ICH E20', topic: 'Adaptive (global)', title: 'Adaptive Designs for Clinical Trials', date: 'Draft, June 2025', say: 'The world-wide draft rulebook for adaptive trials.', quote: 'A proposed adaptive design requires a clear and compelling justification.', url: 'https://www.fda.gov/media/188961/download', rel: 'Adaptive designs' },
-    { id: 'bayes', s: 'Bayesian draft', topic: 'Using past knowledge', title: 'Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products', date: 'Draft, January 2026', say: 'How to use a prior in a trial, and how to show the design is safe from false wins.', quote: 'It is always critical for Bayesian analyses to have a prespecified prior', url: 'https://www.fda.gov/media/190505/download', rel: 'Prior and posterior' },
+    { id: 'bayes', s: 'Bayesian draft', topic: 'Using past knowledge', title: 'Use of Bayesian Methodology in Clinical Trials of Drug and Biological Products', date: 'Draft, January 2026', say: 'How to choose and justify a prior, and how to judge success: by false-win rate or by other routes.', quote: 'It is always critical for Bayesian analyses to have a prespecified prior', url: 'https://www.fda.gov/media/190505/download', rel: 'Prior and posterior' },
     { id: 'm15', s: 'ICH M15', topic: 'Models', title: 'General Principles for Model-Informed Drug Development', date: 'Final, January 2026', say: 'Computer models can help pick doses and designs.', quote: 'the use of computational modeling and simulation (M&S) methods', url: 'https://www.fda.gov/media/184747/download', rel: 'Decisions' },
     { id: 'ai', s: 'AI credibility', topic: 'AI tools', title: 'Considerations for the Use of Artificial Intelligence to Support Regulatory Decision-Making', date: 'Draft, January 2025', say: 'Seven steps to show an AI model can be trusted for one specific job.', quote: 'Model risk is a combination of two factors: (a) model influence ... and (b) decision consequence', url: 'https://www.fda.gov/media/184830/download', rel: 'Decisions' },
     { id: 'nam', s: 'NAMs', topic: 'Beyond animals', title: 'General Considerations for the Use of New Approach Methodologies in Drug Development', date: 'Draft, March 2026', say: 'Lab-dish and computer tests can count as evidence, even if not fully validated.', quote: 'A fit-for-purpose NAM, even if not validated, may adequately address specific toxicological concerns.', url: 'https://www.fda.gov/media/191589/download', rel: 'Safety evidence' },
-    { id: 'meet', s: 'Formal meetings', topic: 'Talking to FDA', title: 'Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products', date: 'August 2026', say: 'The meeting types, who can ask, and how fast FDA answers.', quote: 'necessary for an otherwise stalled drug or biological product development program to proceed or to address an important safety issue.', url: 'https://www.fda.gov/media/172311/download', rel: 'This page' }
+    { id: 'meet', s: 'Formal meetings', topic: 'Talking to FDA', title: 'Formal Meetings Between the FDA and Sponsors or Applicants of PDUFA Products', date: 'Final, August 2026', say: 'The meeting types, who can ask, and how fast FDA answers.', quote: 'necessary for an otherwise stalled drug or biological product development program to proceed or to address an important safety issue.', url: 'https://www.fda.gov/media/172311/download', rel: 'This page' }
   ];
   var GAME = [
     ['Which paper says what proof FDA needs that a drug works?', 'se'], ['Many drugs share one control group. Which?', 'mp'],

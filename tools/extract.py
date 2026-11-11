@@ -11,7 +11,7 @@ Usage: python3 tools/extract.py [BOOK_DIR]
 import json, os, re, subprocess, sys
 
 BOOK = os.path.expanduser(sys.argv[1] if len(sys.argv) > 1 else '~/pap/trials-book')
-HTML = 'https://vsokolov.org/bayesian_clinical_trials_v1/'
+HTML = 'https://vsokolov.org/bayesian_clinical_trials/'
 OUT = os.path.join(os.path.dirname(__file__), '..', 'build', 'skeleton.json')
 
 try:

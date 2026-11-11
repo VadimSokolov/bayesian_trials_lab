@@ -29,7 +29,7 @@ Without calibration the rule inflates the error, because each look is a new chan
 
 ## In the book
 
-The four-call workflow simulates the null, calibrates $c$ to 2.5 percent, simulates the alternative and reports the operating characteristics [14/the-algorithm]. A threshold of $c = 0.975$ is a 2.5 percent test at one look, and $c = 0.991$ is a 2.5 percent test at four looks [sec-sim-inflation]. Raising $a$ lowers the calibrated $c$ and lowers the power at $p_1 = 0.45$ [14/choosing-a-and-c]. Futility stopping is simulated inside the null run, so the calibration accounts for it [14/the-algorithm].
+The four-call workflow simulates the null, calibrates $c$ to 2.5 percent, simulates the alternative and reports the operating characteristics [14/the-algorithm]. A threshold of $c = 0.975$ is a 2.5 percent test at one look, and $c = 0.991$ is a 2.5 percent test at four looks [sec-sim-inflation]. Raising $a$ lowers the calibrated $c$ and lowers the power at $p_1 = 0.45$ [14/choosing-a-and-c]. If futility is binding, it is simulated inside the null run and the calibration takes credit for it; if it is non-binding (the usual regulatory assumption), calibrate on the maximum over all looks ignoring futility [14/the-algorithm].
 
 ## Pitfalls
 

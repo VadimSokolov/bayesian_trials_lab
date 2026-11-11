@@ -723,7 +723,7 @@
     p.appendChild(h('div', { id: 'staleNote', class: 'msg warn' + (stale ? '' : ' hide'), text: 'The design changed after this run. Run again to update the results.' }));
     p.appendChild(h('p', { class: 'note', text: R.label + ': ' + R.S.sim.nSims.toLocaleString('en-US') + ' trials per scenario, seed ' + R.S.sim.seed + ', engine ' + C.version + ', ' + (R.ms / 1000).toFixed(1) + ' s' + (R.mode === 'page' ? ' (page thread).' : ' (Web Worker).') }));
     p.appendChild(h('div', { class: 'card' }, [h('h3', { text: 'How to read the results' }), h('ul', { class: 'note' }, [
-      h('li', { text: 'The null row (the drug does nothing): its success rate is the false-win rate, also called Type I error. Lower is safer.' }),
+      h('li', { text: 'A null row (the drug does nothing): its success rate is the false-win rate (Type I error) at that control rate. Check several null rows and use the largest. Lower is safer.' }),
       h('li', { text: 'The other rows (the drug works): the success rate is power, the chance to find a real effect. Higher is better.' }),
       h('li', { text: 'Mean patients: how many patients the trial enrolls on average. Early stopping lowers it.' }),
       h('li', { text: 'Bias: how far the estimated effect lands from the truth on average. Zero is ideal.' })]),
@@ -732,7 +732,7 @@
         h('li', { text: 'tau: how much the true effects of the arms are allowed to differ when the model borrows strength across them. Small tau borrows more.' }),
         h('li', { text: 'gamma: how strongly adaptive randomization favors the arm that looks better. 0 keeps equal groups; larger values shift patients faster.' }),
         h('li', { text: 'Spending function: the rule that splits the total false-win allowance (alpha) across the looks.' }),
-        h('li', { text: 'Conditional power: the chance of winning at the end if the true effect is the one assumed. Predictive probability: the same chance, averaged over what the data so far say the effect could be.' }),
+        h('li', { text: 'Conditional power: the chance of winning at the end if the true effect equals an assumed value (this engine assumes the current estimate, the current trend). Predictive probability: the same chance, averaged over what the data so far say the effect could be.' }),
         h('li', { text: 'Effective sample size of a prior: how many patients the prior opinion is worth.' })])])]));
     p.appendChild(h('h3', { text: 'Summary by scenario (Monte Carlo SE under each value)' }));
     p.appendChild(h('div', { id: 'resSummary' }));

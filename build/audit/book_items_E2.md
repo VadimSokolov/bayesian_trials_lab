@@ -1,0 +1,7 @@
+3/what-the-standard-implies-for-the-numbers; 14/rebyota-two-thresholds; sec-borrowing-rebyota | "one-sided 0.00125" | two trials at one-sided 0.025 give 0.000625 one-sided; 0.00125 is two-sided | say "0.00125 two-sided, i.e. 0.000625 one-sided" (check CBER briefing)
+16/the-mechanism | "later, healthier patients" | drift raises response on any arm; patients are not healthier | "later patients, who respond better on any treatment"
+20/the-covid-anticoagulation-multiplatform | "ATTACC in Canada" | enrolled internationally, led from Canada | "an international platform led from Canada"
+sec-lifecycle-p3 | "one large trial with confirmatory evidence" | statute says one adequate and well-controlled trial; size not the criterion | "one adequate and well-controlled trial with confirmatory evidence"
+8/key-points | "risk difference larger than 30 points" (49 to 56 percent) | figure is for either direction, not one-sided | add "in either direction"
+12/cornfield-and-the-betting-odds-of-1966 | "lost to alpha spending" | alpha spending dates from Lan and DeMets 1983; earlier alternatives were repeated significance tests and group sequential boundaries | "lost to frequentist group sequential boundaries (later alpha spending)"
+sec-safety (IND safety report) | "blinded individual assignments with unblinded aggregate review" | garbled; individual assignments stay blinded to the study team | "keeping individual treatment assignments blinded to the sponsor's study team, with unblinded aggregate review by an independent group"

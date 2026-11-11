@@ -4,7 +4,7 @@ name: SELECT
 type: trial
 aliases: [semaglutide cardiovascular outcomes trial, semaglutide]
 level: 2
-summary: A cardiovascular outcomes trial of semaglutide in adults with obesity, used in the book as the favorable case for pricing Bayesian monitoring in events, time and money.
+summary: A cardiovascular outcomes trial of semaglutide in adults with overweight or obesity and established cardiovascular disease, without diabetes, used in the book as the favorable case for pricing Bayesian monitoring in events, time and money.
 chapters: ['21', '1', '9', '12']
 home: sec-cases-select
 sections: [21/the-trial-as-conducted, 21/three-monitoring-schemes-and-selects-own-design-one-error-rate, 21/what-the-monitoring-committee-would-have-seen, 21/what-a-dmc-and-a-regulator-would-have-had-to-accept, sec-cases]

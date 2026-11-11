@@ -4,7 +4,7 @@ name: Vaccine efficacy trial
 type: design
 aliases: []
 level: 2
-summary: A trial that estimates vaccine efficacy from case counts in two arms; in the book BNT162b2 is a confirmatory trial whose Bayesian analysis led to an authorization.
+summary: A trial that estimates vaccine efficacy from case counts in two arms; in the book BNT162b2 is a confirmatory trial whose prespecified Bayesian primary analysis met its success criterion before the emergency use authorization.
 chapters: ['21', '15']
 home: sec-cases-bnt
 sections: [21/the-trial-as-conducted-3, 21/the-bayesian-element, 21/what-happened-and-what-the-regulator-did, 21/the-lesson-for-this-chapter, 23/bnt162b2-thresholds-calibrated-to-25]

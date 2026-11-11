@@ -26,11 +26,11 @@ BOIN of Liu and Yuan is derived from a Bayesian argument, but at the bedside it 
 The protocol carries a grid of DLT counts and patient numbers, like the 3+3, so no software is needed on the day. [17/the-bayesian-optimal-interval-design]
 
 ## In the book
-With cohorts of three, the rule is to escalate on zero DLTs and de-escalate on one or more. [17/the-bayesian-optimal-interval-design] A dose is eliminated with all higher ones if the posterior probability that its DLT rate exceeds the target is above 0.95. [17/the-bayesian-optimal-interval-design] With 30 patients BOIN selects the true MTD more often than the 3+3. [17/comparing-the-designs] At 15 patients it is about level with the 3+3 in scenario B. [17/comparing-the-designs]
+With cohorts of three and the book's target DLT rate, the rule is to escalate on zero DLTs and de-escalate on one or more (at a target of 0.30, one DLT in three means stay). [17/the-bayesian-optimal-interval-design] A dose is eliminated with all higher ones if the posterior probability that its DLT rate exceeds the target is above 0.95. [17/the-bayesian-optimal-interval-design] With 30 patients BOIN selects the true MTD more often than the 3+3. [17/comparing-the-designs] At 15 patients it is about level with the 3+3 in scenario B. [17/comparing-the-designs]
 
 ## Pitfalls
 FDA's determination concerns a context of use and does not exempt a sponsor from simulations for its own trial. [17/the-bayesian-optimal-interval-design]
 
 ## Check yourself
-- Q: With cohorts of three, what does BOIN do after one DLT? A: De-escalate. [17/the-bayesian-optimal-interval-design]
+- Q: With cohorts of three, what does BOIN do after one DLT? A: De-escalate at the book's target (at a target of 0.30, one DLT in three means stay). [17/the-bayesian-optimal-interval-design]
 - Q: What must the protocol attach for BOIN? A: The boundaries, the elimination rule and a simulation report. [17/protocol-language]

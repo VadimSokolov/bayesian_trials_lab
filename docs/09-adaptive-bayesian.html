@@ -74,7 +74,7 @@
   <h1>Adaptive and Bayesian designs</h1>
   <p class="hook">Can a trial change its plan on the way and still be fair?</p>
   <p class="note" style="margin:0 0 .6rem">Bayesian means updating a belief with each patient, as in <a href="01-prior-posterior.html">module 1</a>.</p>
-  <p class="note" style="margin:0 0 .6rem"><b>Power</b> is the chance a trial finds a real effect (<a href="03-errors-power.html">module 3</a>). A false positive (a false win) calls a useless drug a success. The target is 2.5% (the one-sided 0.025 line from <a href="02-p-values.html">module 2</a>). The default bar 0.90 gives about 10% false wins. A bar of 0.975 ("97.5% sure") gives about 2.5%, but only with no prior opinion and one look at the data.</p>
+  <p class="note" style="margin:0 0 .6rem"><b>Power</b> is the chance a trial declares success when the drug truly has the assumed effect (<a href="03-errors-power.html">module 3</a>). A false positive (a false win) calls a useless drug a success. The target is 2.5% (the one-sided 0.025 line from <a href="02-p-values.html">module 2</a>). The default bar 0.90 gives about 10% false wins. A bar of 0.975 ("97.5% sure") gives about 2.5%, but only with no prior opinion and one look at the data.</p>
   <div class="presets" id="examples"><span class="lbl">Try an example:</span></div>
 </section>
 
@@ -188,7 +188,7 @@
   <ul>
     <li>Before the trial, simulate a Bayesian rule to count its false positives and its power.</li>
     <li>Borrowing history helps when it matches today and hurts when it does not.</li>
-    <li>A trial may adapt, if the rules are written before the first patient.</li>
+    <li>A trial may adapt if the rules are written in advance, normally in the protocol before enrollment and always before anyone sees unblinded results.</li>
   </ul>
 </section>
 </main>
@@ -197,13 +197,13 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a>. doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/12-simulation.html">14</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/13-predictive.html">15</a>, <a href="https://vsokolov.org/bayesian_clinical_trials_v1/14-rar.html">16</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/16-borrowing.html">19</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/12-simulation.html">14</a>, <a href="https://vsokolov.org/bayesian_clinical_trials/13-predictive.html">15</a>, <a href="https://vsokolov.org/bayesian_clinical_trials/14-rar.html">16</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/16-borrowing.html">19</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a>. doi:10.5281/zenodo.23933570 (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters</a>)</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a> (earlier public version of the submitted manuscript that supplies the numbers above).</li>
     <li>Skrivanek, Z. et al. (2014). Dose-finding results in an adaptive, seamless, randomized trial of once-weekly dulaglutide combined with metformin in type 2 diabetes patients (AWARD-5). Diabetes Obes Metab 16(8):748-756. <a href="https://doi.org/10.1111/dom.12305">doi:10.1111/dom.12305</a></li>
     <li>Muss, H. B. et al. (2009). Adjuvant chemotherapy in older women with early-stage breast cancer. N Engl J Med 360(20):2055-2065. <a href="https://doi.org/10.1056/NEJMoa0810266">doi:10.1056/NEJMoa0810266</a> (CALGB 49907; numbers via the submitted manuscript).</li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>
@@ -377,7 +377,7 @@
   });
   Lab.QuestionCard(Q, {
     tag: 'Predict 4', score: score, type: 'choice',
-    q: 'Both arms start as if 3 of 10 patients had already improved. What happens to false positives and power?',
+    q: 'Both arms start as if 3 of 10 patients had already improved (the same prior on each arm, centered at 30%; a simple stand-in for a skeptical prior). What happens to false positives and power?',
     options: [{ value: 'bothdown', label: 'Both drop a little' }, { value: 'fpdown', label: 'False positives drop, power rises' }, { value: 'bothup', label: 'Both rise' }],
     answer: function () { return (0.020 < 0.026 && 0.867 < 0.896) ? 'bothdown' : 'other'; },
     revealPlot: function (b) { miniBars(b, ['False pos. no opinion', 'False pos. doubtful', 'Power no opinion', 'Power doubtful'], [2.6, 2.0, 89.6, 86.7], [ORANGE, ORANGE, TEAL, TEAL], 100, 'percent'); },
@@ -396,10 +396,10 @@
   // Q6: CALGB 49907
   Lab.QuestionCard(Q, {
     tag: 'Predict 6', score: score, type: 'slider', min: 0, max: 100, step: 1, start: 30, tol: 8, fmt: function (v) { return v + '%'; },
-    q: 'A cancer trial planned 1,800 patients and stopped at 633. What share of patients did it not need?',
+    q: 'A cancer trial planned up to 1,800 patients and stopped at 633. What share of the planned maximum was not enrolled?',
     answer: function () { return Math.round(100 * (1 - 633 / 1800)); },
     revealPlot: function (b) { miniBars(b, ['Planned', 'Stopped at'], [1800, 633], [GREY, TEAL], 2000, 'patients'); },
-    explain: function () { return 'At 600 patients, the chance the new pill was worse than allowed was 96%, above an 80% line. The 80% line was set from the predictive probability (module 7) that more follow-up would end in failure, so enrollment stopped. ' + Lab.pct(1 - 633 / 1800, 0) + ' of patients saved (CALGB 49907, Muss et al., NEJM 2009).'; }
+    explain: function () { return 'At 600 patients, the chance the new pill was worse than allowed was 96%, above an 80% line. The 80% line was set from the predictive probability (module 7) that more follow-up would end in failure, so enrollment stopped. ' + Lab.pct(1 - 633 / 1800, 0) + ' of the planned maximum not enrolled (CALGB 49907, Muss et al., NEJM 2009).'; }
   });
 
   /* ============ Truth versus what the trial sees ============ */

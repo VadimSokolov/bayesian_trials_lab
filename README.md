@@ -1,6 +1,6 @@
 # Bayesian Clinical Trials: encyclopedia and knowledge graph
 
-A static website on top of the book "Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials" (Sokolova, Sokolov and Polson, 2026; HTML edition https://vsokolov.org/bayesian_clinical_trials_v1/, DOI https://doi.org/10.5281/zenodo.24122875). It has one short page per concept, method, design, trial, regulation and principle, linked by prerequisites, with section-level pointers into the book, equations, R functions of the bayestrials package, links to the companion lab (https://nytel.ai/testing/), a graph view, study paths, and an optional LLM tutor.
+A static website on top of the book "Bayesian Clinical Trials" (Sokolova, Sokolov and Polson, 2026; HTML edition https://vsokolov.org/bayesian_clinical_trials/, DOI https://doi.org/10.5281/zenodo.24122875). It has one short page per concept, method, design, trial, regulation and principle, linked by prerequisites, with section-level pointers into the book, equations, R functions of the bayestrials package, links to the companion lab (https://nytel.ai/testing/), a graph view, study paths, and an optional LLM tutor.
 
 ## Layout
 

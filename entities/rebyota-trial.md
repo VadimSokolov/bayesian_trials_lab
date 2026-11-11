@@ -25,11 +25,11 @@ REBYOTA (RBX2660) prevents recurrence of *Clostridioides difficile* infection af
 
 ## Why it matters
 
-FDA wrote that the studies are generally exchangeable but not identical, and accepted a hierarchical model with dynamic borrowing, in which borrowing depends on how similar the effect is in both arms. The January 2026 FDA draft guidance cites it as its example of borrowing from a previous trial of the same drug. [sec-borrowing-rebyota]
+FDA wrote that the studies are generally exchangeable but not identical, and accepted a hierarchical model with dynamic borrowing, in which the amount borrowed depends on how similar the treatment effect is in the two studies. The January 2026 FDA draft guidance cites it as its example of borrowing from a previous trial of the same drug. [sec-borrowing-rebyota]
 
 ## In the book
 
-Two success thresholds on the posterior probability of superiority were analogues of one-sided type I errors of 0.025 (one trial) and 0.00125 (two trials), and after adjustment they were 0.9750338 and 0.9993275. The result was a success rate of 0.71 on RBX2660 against 0.57 on placebo (95% credible interval 0.02 to 0.24 for the difference), with posterior probability of superiority 0.991, meeting the one-trial threshold and missing the two-trial threshold. [sec-borrowing-rebyota] FDA requested a refined analysis aligning the success definition, the assessment period (9 weeks against 8 weeks) and the analysis populations. Both analyses reached the same conclusion. [sec-borrowing-rebyota]
+Two success thresholds on the posterior probability of superiority were set as analogues of one-sided type I error rates of 0.025 (the usual level for one trial) and 0.00125 (a very persuasive single trial that could stand in for two), and after adjustment they were 0.9750338 and 0.9993275. The result was a success rate of 0.71 on RBX2660 against 0.57 on placebo (95% credible interval 0.02 to 0.24 for the difference), with posterior probability of superiority 0.991, meeting the one-trial threshold and missing the two-trial threshold. [sec-borrowing-rebyota] FDA requested a refined analysis aligning the success definition, the assessment period (9 weeks against 8 weeks) and the analysis populations. Both analyses reached the same conclusion. [sec-borrowing-rebyota]
 
 ## Pitfalls
 

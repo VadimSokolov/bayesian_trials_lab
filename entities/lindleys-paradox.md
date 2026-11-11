@@ -24,7 +24,7 @@ Lindley, following Jeffreys, noticed that the Ockham penalty can turn a rejectio
 
 ## Why it matters
 
-A fixed p-value threshold cannot mean a fixed amount of evidence as a trial grows [sec-evidence-lindley]. This is why very large trials sometimes find significant effects that are clinically trivial [sec-evidence-lindley]. The Bayesian remedy is to ask whether $\theta$ exceeds a clinically relevant $a$, not whether it is exactly zero [sec-evidence-lindley].
+A fixed p-value threshold cannot mean a fixed amount of evidence as a trial grows [sec-evidence-lindley]. A related point is that very large trials can reach significance for clinically trivial effects. Lindley's paradox adds that the same p-value in a larger trial is weaker evidence against the null [sec-evidence-lindley]. The Bayesian remedy is to ask whether $\theta$ exceeds a clinically relevant $a$, not whether it is exactly zero [sec-evidence-lindley].
 
 ## In the book
 

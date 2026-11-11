@@ -33,7 +33,7 @@ The distinction matters with an informative prior, where the credible interval s
 Averaged over true rates drawn from the prior, a credible interval covers 95% by construction. [sec-intervals]
 
 ## Pitfalls
-If the prior is wrong, coverage at a specific $p$ can be off, which is why the FDA draft asks for operating characteristics under a range of scenarios. [sec-intervals] Many trialists read confidence intervals as credible intervals, and in large trials with weak priors they get away with it. [sec-intervals]
+At a specific $p$ the frequentist coverage can differ from 95% (it is guaranteed only on average over the prior), which is why the FDA draft asks for operating characteristics under a range of scenarios. [sec-intervals] Many trialists read confidence intervals as credible intervals, and in large trials with weak priors they get away with it. [sec-intervals]
 
 ## Check yourself
 - Q: Which interval supports the statement "the effect is in this range with 95% probability"? A: The credible interval. [sec-intervals]

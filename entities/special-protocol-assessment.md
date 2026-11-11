@@ -29,7 +29,7 @@ The statute also allows changes by agreement with the sponsor. [23/the-interacti
 It is worth considering for a Bayesian confirmatory trial because it gets the prior, the criterion and the calibration agreed in writing before the data are seen. [23/the-interaction-timeline-with-fda]
 
 ## In the book
-The timeline lists the SPA request at the phase 3 protocol stage, with a Type C meeting, to agree on the design and analysis. [23/the-interaction-timeline-with-fda]
+The timeline lists an SPA request (a written submission with a 45-day review, optionally alongside a Type C meeting) at the phase 3 protocol stage, to agree on the design and analysis. [23/the-interaction-timeline-with-fda]
 A resubmission after FDA comments is reviewed on a 45-day goal. [23/the-interaction-timeline-with-fda]
 
 ## Pitfalls

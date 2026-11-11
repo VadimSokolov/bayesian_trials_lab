@@ -45,4 +45,4 @@ Exploratory endpoints, safety endpoints and descriptive subgroup displays are ou
 ## Check yourself
 
 - Q: A protocol says the claim rests on one prespecified comparison, but the analyst runs forty tests. How big is the family? A: One, because the family is defined by the claims. [sec-mult-problem]
-- Q: Does keeping many analyses open cost patients? A: Yes, by the factor $((z_K + z_\beta)/(z_1 + z_\beta))^2$, about 1.48 for five analyses and 2.38 for a hundred. [sec-mult-cost]
+- Q: Does keeping many analyses open cost patients? A: Yes, by the factor $((z_K + z_\beta)/(z_1 + z_\beta))^2$, about 1.48 for five analyses and 2.38 for a hundred, at 80 percent power and one-sided 0.025. [sec-mult-cost]

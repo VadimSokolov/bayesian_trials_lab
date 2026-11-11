@@ -28,7 +28,7 @@ Their primary endpoints are composites of cardiovascular events analyzed as time
 For new type 2 diabetes drugs, the 2008 FDA guidance asked for cardiovascular evidence, in practice comparing the upper bound of the 95 percent interval for the cardiovascular risk ratio against margins of 1.8 and 1.3. [sec-cases]
 
 ## Why it matters
-Cardiovascular outcomes trials are usually the only large trial a sponsor has, which makes the substantial-evidence standard the one in play. [sec-cases]
+A cardiovascular outcomes trial is usually the only trial behind the cardiovascular claim, which makes the one-trial-plus-confirmatory-evidence standard the one in play. [sec-cases]
 They are event driven, so the question is how many events a monitoring rule needs. [21/the-trial-as-conducted]
 
 ## In the book
@@ -43,4 +43,4 @@ SELECT enrolled people without diabetes and is not governed by the 2008 diabetes
 
 ## Check yourself
 - Q: Where does the book say the scheduled design wins? A: Marginal effects and fixed looks, as in REWIND. [sec-cases-side]
-- Q: Why is the substantial-evidence standard in play? A: These are usually the only large trial a sponsor has. [sec-cases]
+- Q: Why is the substantial-evidence standard in play? A: A cardiovascular outcomes trial is usually the only trial behind the cardiovascular claim. [sec-cases]

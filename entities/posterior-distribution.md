@@ -30,7 +30,7 @@ $$
 This is equation eq-bayes. [sec-bayes-rule]
 
 ## Why it matters
-The traditional analysis answers whether the difference could be produced by chance alone. A trialist usually wants to know how likely it is that the new treatment is better and by how much. The posterior answers this directly. [sec-bayes]
+The traditional analysis asks how surprising a difference this large would be if the treatment had no effect. A trialist usually wants to know how likely it is that the new treatment is better and by how much. The posterior answers this directly. [sec-bayes]
 
 Its statements are probabilities about the parameter given these data. A confidence interval is a statement about a procedure over repeated trials. [6/a-side-by-side]
 

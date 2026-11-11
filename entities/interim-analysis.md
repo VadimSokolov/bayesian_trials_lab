@@ -39,7 +39,7 @@ A committee that reviewed the data continuously at a fixed level would eventuall
 
 ## Pitfalls
 
-- Looking is not free for the posterior, but it is for the error rate: a Bayesian rule perfectly calibrated under the prior can still reject a true null far above 2.5%. [11/the-posterior-does-not-depend-on-the-stopping-rule]
+- Looking is free for the posterior but not for the error rate: a Bayesian rule perfectly calibrated under the prior can still reject a true null far above 2.5%. [11/the-posterior-does-not-depend-on-the-stopping-rule]
 - A DMC that reviews safety without an efficacy comparison does not touch alpha at all. [11/spending-functions-and-the-information-fraction]
 
 ## Check yourself

@@ -32,7 +32,7 @@ They weighted the earlier trials at 100, 50 and 10 percent and concluded that th
 ## In the book
 With GUSTO alone the probability that tPA lowers mortality was 0.9995, and 0.17, 0.44 and 0.98 at the three weights in Brophy and Joseph's arm model. [22/the-bayesian-question]
 The book puts the prior on the risk difference, with the earlier trials at weight $w$, and `reanalysis_gusto()` reproduces both models. [22/the-bayesian-question]
-That tPA lowers mortality at all is very probable under every weight, but that it lowers it by a full percentage point is unlikely once the earlier trials count at half weight or more. [22/the-bayesian-question]
+In the book's difference model, that tPA lowers mortality at all is very probable under every weight (at least 0.968); the low probabilities in Brophy and Joseph's arm model come from pooling each arm's rate across trials. That it lowers mortality by a full percentage point is unlikely once the earlier trials count at half weight or more. [22/the-bayesian-question]
 The models part company because pooling each arm's rate across trials absorbs the difference between trials into the difference between agents, the mechanism of Simpson's paradox. [22/the-bayesian-question]
 
 ## Pitfalls

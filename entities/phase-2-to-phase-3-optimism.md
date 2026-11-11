@@ -20,7 +20,7 @@ cites: [zia2005]
 
 ## What it is
 
-A drug is taken into phase III because phase II looked good. A design alternative equal to the phase II estimate is therefore biased upward, a trial sized on it is underpowered at the true effect, and the chance it succeeds is the assurance, not the 90% in the protocol [sec-power-zia]. In a simulation the same selection inflates a prior centered on the phase 2 estimate [sec-priors-selection].
+A drug is taken into phase III because phase II looked good. A design alternative equal to the phase II estimate is therefore biased upward, a trial sized on it is underpowered at the true effect, and its probability of success is better estimated by the assurance (power averaged over a realistic, shrunk prior) than by the 90% in the protocol [sec-power-zia]. In a simulation the same selection inflates a prior centered on the phase 2 estimate [sec-priors-selection].
 
 ## Why it matters
 

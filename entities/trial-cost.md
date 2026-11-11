@@ -30,7 +30,7 @@ The saving is not proportional to the whole budget: variable costs such as site 
 The book has no published cost for SELECT, which is far larger than the typical trial in that review. [21/trial-cost]
 It takes the cardiovascular mean of 157 million dollars as the base case and 350 million and 600 million as scenarios for a larger trial, not as estimates for any particular trial. [21/trial-cost]
 The modeled saving is the avoided share of person-time times the variable share, and the variable share is an assumption because the split is proprietary. [21/trial-cost]
-For a trial of SELECT's size the order of magnitude is tens to a couple of hundred million dollars. [21/trial-cost]
+For a trial of SELECT's size the modeled saving is of the order of tens to a couple of hundred million dollars. [21/trial-cost]
 
 ## Pitfalls
 The figure leaves out the cost of longer exposure that a regulator might require to build the safety database, which would reduce the saving. [21/trial-cost]

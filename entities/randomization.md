@@ -41,5 +41,5 @@ Randomization does not guarantee balance in any single trial. It guarantees that
 A random list the investigator can see is a way of choosing patients with extra steps, so randomization is only as good as its [[allocation-concealment]]. [sec-randomization-failures]
 
 ## Check yourself
-- Q: Does randomization balance a hidden trait in one trial? A: No. Its imbalance is the same under all four methods, as large as under simple randomization. [5/seeing-the-difference]
+- Q: Does randomization balance a hidden trait in one trial? A: No. For a trait unrelated to the factors balanced on, its imbalance is as large as under simple randomization under all four methods. [5/seeing-the-difference]
 - Q: What did Schulz and colleagues find about weak concealment? A: Odds ratios exaggerated on average by about 41 percent, an association and not a randomized comparison. [sec-randomization-failures]

@@ -25,7 +25,7 @@ The Fleming-Harrington test multiplies each event time's contribution by $S(t)^\
 Under a delayed effect the weighted and MaxCombo tests have more power than the log-rank test. Under proportional hazards the order reverses: MaxCombo gives up a little, the late-weighted test more. [sec-survival-nph-tests] All three hold the level under identical curves. [sec-survival-nph-tests]
 
 ## In the book
-Under a 2-year delay followed by hazard ratio 0.583, the log-rank test has power 0.55, against 0.80 for FH(0,1) and 0.74 for MaxCombo. [sec-survival-nph-tests] Under proportional hazards (HR 0.75) the figures are 0.67, 0.55 and 0.65. [sec-survival-nph-tests] Under the null the levels are 0.024, 0.022 and 0.021. [sec-survival-nph-tests]
+Under a 2-year delay followed by hazard ratio 0.583, the log-rank test has power 0.55, against 0.80 for FH(0,1) and 0.74 for MaxCombo. [sec-survival-nph-tests] Under proportional hazards (HR 0.75) the figures are 0.67, 0.55 and 0.65 (a fresh simulation; the 0.68 on the non-proportional-hazards page differs by Monte Carlo error). [sec-survival-nph-tests] Under the null the levels are 0.024, 0.022 and 0.021. [sec-survival-nph-tests]
 
 ## Pitfalls
 These test identical curves, and can reject when early harm and late benefit cancel, so significance need not mean patients did better. Modestly weighted tests were proposed to control that risk. [sec-survival-nph-tests] The primary test, weights and simulation go in the protocol before the curves are seen. [sec-survival-nph-tests]

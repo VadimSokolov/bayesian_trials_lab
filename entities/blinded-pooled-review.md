@@ -4,7 +4,7 @@ name: Blinded pooled review
 type: method
 aliases: []
 level: 2
-summary: Review of the pooled event rate of the whole trial, without revealing arms, to see whether it exceeds what comparable untreated patients would show.
+summary: Review of the pooled event rate of the whole trial, without revealing arms, to see whether it exceeds the background rate expected in comparable patients not receiving the investigational drug.
 chapters: ['13']
 home: sec-safety-aggregate
 sections: [sec-safety-aggregate, sec-safety]
@@ -27,7 +27,7 @@ It lets a sponsor watch safety while the trial stays blinded. The FDA guidance r
 
 ## In the book
 
-Given credible external information about adverse event rates in comparable untreated patients, Gould and Wang describe Bayesian monitoring for potential excess risk using pooled blinded data. Their title calls it the canary in the coal mine. [sec-safety-aggregate] It sits beside the unblinded DMC review, which compares arms. [sec-safety-aggregate]
+Given credible external information about adverse event rates in comparable patients not receiving the investigational drug, Gould and Wang describe Bayesian monitoring for potential excess risk using pooled blinded data. Their title calls it the canary in the coal mine. [sec-safety-aggregate] It sits beside the unblinded DMC review, which compares arms. [sec-safety-aggregate]
 
 ## Pitfalls
 
@@ -35,4 +35,4 @@ Given credible external information about adverse event rates in comparable untr
 
 ## Check yourself
 
-- Q: What does the pooled blinded review compare the overall rate with? A: The expected rate from external information on comparable untreated patients. [sec-safety-aggregate]
+- Q: What does the pooled blinded review compare the overall rate with? A: The expected rate from external information on comparable patients not receiving the investigational drug. [sec-safety-aggregate]

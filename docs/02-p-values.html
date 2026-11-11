@@ -61,7 +61,7 @@
   <div class="kicker">Module 2</div>
   <h1>What a p-value is (and isn't)</h1>
   <p class="hook">If the drug did nothing, how surprising would this result be?</p>
-  <p class="note">This page compares one group of patients on the drug with a known placebo rate. (Module 0 compared two groups.)</p>
+  <p class="note">This page compares one group of patients on the drug with a placebo rate we treat as known (a simplification; real trials estimate it with a control group). (Module 0 compared two groups.)</p>
 </section>
 
 <section id="lab" class="labgrid" aria-label="Simulate the null lab">
@@ -150,14 +150,14 @@
   <h3>Regulator's corner</h3>
   <p>Why do trials write the main outcome down before they see any data?</p>
   <blockquote>"To avoid multiplicity concerns arising from post hoc definitions, it is critical to specify in the protocol the precise definition of the primary variable ..."</blockquote>
-  <p class="note">Protocol: the trial's written plan, fixed before it starts. Primary variable: the main outcome. Post hoc: chosen after seeing the data. Multiplicity: many tests, as in Fishing above.</p>
-  <p class="ref"><span class="tip" tabindex="0" data-tip="International Council for Harmonisation: regulators and industry who write trial rules shared by the US, Europe and Japan.">ICH</span> E9, Statistical Principles for Clinical Trials, section 2.2.2. <a href="https://database.ich.org/sites/default/files/E9_Guideline.pdf">Read the guideline</a></p>
+  <p class="note">Protocol: the trial's written plan, set before it starts; changes are formally amended and documented. Primary variable: the main outcome. Post hoc: chosen after seeing the data. Multiplicity: many tests, as in Fishing above.</p>
+  <p class="ref"><span class="tip" tabindex="0" data-tip="International Council for Harmonisation: regulators and industry who write guidelines adopted by the US, EU, Japan and many other regions.">ICH</span> E9, Statistical Principles for Clinical Trials, section 2.2.2. <a href="https://database.ich.org/sites/default/files/E9_Guideline.pdf">Read the guideline</a></p>
 </section>
 
 <section class="takeaway">
   <h2>Takeaway</h2>
   <ul>
-    <li>A p-value asks: if the drug did nothing, how often would luck give a result this good?</li>
+    <li>A p-value asks: if the drug did nothing, how often would luck give a result at least this good?</li>
     <li>It is not the chance that the drug works, and it depends on the plan you had before you looked.</li>
     <li>Peeking and fishing make luck look like a discovery.</li>
     <li>A credible interval speaks about this trial, given a prior. A confidence interval speaks about the method: over many trials, about 95% of the intervals catch the truth.</li>
@@ -174,11 +174,11 @@
   <strong>Further reading</strong>
   <ul>
     <li>Polson, N. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/bayes_ai_deep_learning/">Bayes, AI and Deep Learning: Foundations of Data Science</a> (chapters <a href="https://vsokolov.org/html/_book/03-bl.html">3</a> and <a href="https://vsokolov.org/html/_book/06-hyp.html">6</a>). doi:10.5281/zenodo.23992805</li>
-    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine, Volume I: Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials_v1/03-testing.html">4</a> and <a href="https://vsokolov.org/bayesian_clinical_trials_v1/06-evidence.html">7</a>.</li>
+    <li>Sokolova, A., Sokolov, V. and Polson, N. G. (2026). <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. doi:<a href="https://doi.org/10.5281/zenodo.24122875">10.5281/zenodo.24122875</a>. This page goes with chapters <a href="https://vsokolov.org/bayesian_clinical_trials/03-testing.html">4</a> and <a href="https://vsokolov.org/bayesian_clinical_trials/06-evidence.html">7</a>.</li>
     <li>Sokolova, A. and Sokolov, V. (2026). <a href="https://vsokolov.org/books/clinical_trials_in_practice/">Clinical Trials in Practice: From Foundations to AI Agents</a> (<a href="https://vsokolov.org/clinical_trials_in_practice/">chapters</a>). doi:10.5281/zenodo.23933570</li>
     <li>Sokolova, A., Sokolov, V. and Polson, N. (2026). Some Bayesian Perspectives on Clinical Trials. <a href="https://arxiv.org/abs/2602.09208">arXiv:2602.09208</a></li>
   </ul>
-  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials_v1/">Bayesian Clinical Trials and Personalized Medicine</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
+  <div class="nyt">Companion lab to Sokolova, Sokolov and Polson (2026), <a href="https://vsokolov.org/bayesian_clinical_trials/">Bayesian Clinical Trials</a>. <a href="https://github.com/VadimSokolov/bayesian_trials_lab">Source</a></div>
 </div></footer>
 
 <script src="lab.js"></script>

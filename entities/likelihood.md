@@ -44,4 +44,4 @@ Because the posterior depends on the data only through the likelihood, it is unc
 
 ## Check yourself
 - Q: Where does the likelihood peak for the traditional estimate? A: At the maximum likelihood estimate. [sec-bayes-rule]
-- Q: Does the likelihood depend on the stopping rule? A: No, by the likelihood principle the evidence depends on the data only through it. [6/looking-does-not-change-the-posterior]
+- Q: Does the likelihood depend on the stopping rule? A: No, provided the stopping rule depends only on the data already observed: the likelihood is then the same up to a constant, so the posterior is unchanged. [6/looking-does-not-change-the-posterior]
