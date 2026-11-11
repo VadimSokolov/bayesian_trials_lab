@@ -6,7 +6,7 @@ import { esc } from './render.js';
 import { DEFAULTS, tokens, buildIndex, parseEmb, rankHybrid } from './rank.js';
 
 export { tokens };
-const TRANSFORMERS_URL = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/+esm';
+const TRANSFORMERS_URL = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/dist/transformers.web.min.js';
 
 let chunks = null;
 let idx = null;

@@ -3,7 +3,7 @@ main = "worker.js"
 compatibility_date = "2026-11-01"
 
 [vars]
-ALLOWED_ORIGINS = "https://vsokolov.org,http://localhost:8765"
+ALLOWED_ORIGINS = "https://vsokolov.org,http://vsokolov.org,https://www.vsokolov.org,http://www.vsokolov.org,http://localhost:8765"
 DAILY_CAP_USD = "3"
 
 # per visitor IP: 12 requests a minute

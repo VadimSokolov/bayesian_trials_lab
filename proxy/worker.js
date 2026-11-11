@@ -11,16 +11,16 @@ const FIELDS = new Set(['model', 'max_tokens', 'system', 'messages', 'thinking',
 // Haiku 5.5 prices in dollars per token
 const PRICE = { input: 0.10e-6, output: 0.50e-6, cache_read: 0.01e-6, cache_write: 0.125e-6 };
 
-function cors(origin, env) {
+function cors(origin, env, request) {
   const ok = (env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
   const allow = ok.includes(origin) ? origin : ok[0] || '';
   return {
     'Access-Control-Allow-Origin': allow,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'authorization, content-type, anthropic-version, anthropic-beta, x-api-key, anthropic-dangerous-direct-browser-access, x-stainless-arch, x-stainless-lang, x-stainless-os, x-stainless-package-version, x-stainless-retry-count, x-stainless-runtime, x-stainless-runtime-version, x-stainless-timeout, x-stainless-helper-method, x-stainless-helper',
+    'Access-Control-Allow-Headers': (request && request.headers.get('Access-Control-Request-Headers')) || 'authorization, content-type, anthropic-version, anthropic-beta, x-api-key, user-agent',
     'Access-Control-Expose-Headers': 'request-id',
     'Access-Control-Max-Age': '86400',
-    'Vary': 'Origin',
+    'Vary': 'Origin, Access-Control-Request-Headers',
   };
 }
 
@@ -66,7 +66,7 @@ async function meterStream(stream, env) {
 export default {
   async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '';
-    const h = cors(origin, env);
+    const h = cors(origin, env, request);
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: h });
     const url = new URL(request.url);
     if (request.method !== 'POST' || !url.pathname.endsWith('/v1/messages')) return err(404, 'Not found', h);
