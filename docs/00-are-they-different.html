@@ -138,14 +138,14 @@
 </section>
 
 <section class="section" id="arnold">
-  <p>Each set is 15 points on a circle. Real random points leave big and small gaps; made-up points are too even.</p>
+  <p>Each set is 15 points on a circle. Two follow a fixed rule, one comes from chance. Can your eye tell?</p>
   <div class="block">
     <div class="arcs" id="arSets"></div>
-    <p class="legend">One circle has truly random points. Which?</p>
+    <p class="legend">Which circle is chance?</p>
     <div class="pillrow"><button class="btn" id="arNew" type="button">New random set</button></div>
     <div id="arOut" aria-live="polite" hidden>
       <div class="verdict" id="arVerdict"></div>
-      <p class="note">The rule-made sets are too evenly spaced.</p>
+      <p class="note" id="arNote"></p>
     </div>
   </div>
   <div class="block">
@@ -168,7 +168,7 @@
       </div>
     </details>
   </div>
-  <p class="note">Idea from V. I. Arnold, <a href="https://old.mccme.ru/free-books/arnold/VIA-eulergroups.pdf" target="_blank" rel="noopener">Euler Groups and Arithmetics of Geometric Progressions, paragraph 9</a>.</p>
+  <p class="note">Idea from V. I. Arnold, <a href="https://old.mccme.ru/free-books/arnold/VIA-eulergroups.pdf" target="_blank" rel="noopener">Euler Groups and Arithmetics of Geometric Progressions, paragraphs 9 and 10</a>: powers of 2 modulo n look random, but their gaps are a little too even.</p>
 </section>
 
 
@@ -691,8 +691,18 @@
   }
   function gscore(pts) { var s = 0; gapsOf(pts).g.forEach(function (g) { s += (g / AL) * (g / AL); }); return pts.length * s; }
   function randSet() { var a = [], i; for (i = 0; i < AT; i++) a.push(rng() * AL); return a; }
-  function pw(base, mod) { var a = [], v = 1, i; for (i = 1; i <= AT; i++) { v = (v * base) % mod; a.push(v); } return a; }
-  function mult(k) { var a = [], i; for (i = 1; i <= AT; i++) a.push((k * i) % AL); return a; }
+  // Arnold's fixed rule: 15 consecutive powers 2^t mod n, scaled to the circle. They look random but repel a little.
+  var ARULES = (function () {
+    var out = [], n, t, v, i, a, seen;
+    for (n = 101; n < 1000; n += 2) {
+      v = 1; for (t = 0; t < 7 + (n % 13); t++) v = (v * 2) % n;   // start a few steps in
+      a = []; seen = {};
+      for (i = 0; i < AT; i++) { v = (v * 2) % n; if (seen[v]) break; seen[v] = 1; a.push(v * AL / n); }
+      if (a.length === AT) { var s = gscore(a); if (s >= 1.45 && s <= 1.75) out.push({ n: n, t0: 8 + (n % 13), pts: a }); }
+    }
+    return out;
+  })();
+  function ruleSet() { return ARULES[Math.floor(rng() * ARULES.length)]; }
   var ARHIST = (function () { var lo = 1, hi = 4, nb = 45, h = new Array(nb).fill(0), i, s, r = rng, sc = [];
     for (i = 0; i < 10000; i++) { s = gscore((function () { var a = [], j; for (j = 0; j < AT; j++) a.push(r() * AL); return a; })()); sc.push(s); h[Math.min(nb - 1, Math.floor((s - lo) / (hi - lo) * nb))]++; }
     return { lo: lo, hi: hi, nb: nb, h: h, sc: sc }; })();
@@ -730,8 +740,11 @@
 
   var AR = { sets: [], pick: -1, shade: 0 };
   function newArnold() {
-    var raw, tries = 0, rs; raw = [{ k: '3^i mod 100', pts: pw(3, AL), rnd: false }, { k: '37·i mod 100', pts: mult(37), rnd: false }, { k: 'simulated random', pts: randSet(), rnd: true }];
-    while (tries++ < 50) { rs = raw[2]; if (gscore(rs.pts) > 1.55 && gscore(rs.pts) < 2.3) break; rs.pts = randSet(); }
+    var raw, tries = 0, rs, r1 = ruleSet(), r2 = ruleSet();
+    while (r2.n === r1.n && tries++ < 20) r2 = ruleSet();
+    raw = [{ k: '2^t mod ' + r1.n, pts: r1.pts, rnd: false }, { k: '2^t mod ' + r2.n, pts: r2.pts, rnd: false }, { k: 'chance', pts: randSet(), rnd: true }];
+    tries = 0;
+    while (tries++ < 50) { rs = raw[2]; if (gscore(rs.pts) > 1.75 && gscore(rs.pts) < 2.4) break; rs.pts = randSet(); }
     shuffle(raw); AR.sets = raw; AR.pick = -1; AR.shade = 0;
     $('arOut').hidden = true;
     var box = $('arSets'); box.innerHTML = '';
@@ -749,7 +762,8 @@
     var ok = AR.sets[i].rnd;
     $('arOut').hidden = false;
     $('arVerdict').className = 'verdict ' + (ok ? 'ok' : 'no');
-    $('arVerdict').textContent = ok ? 'Right. Set ' + (i + 1) + ' is the simulated random one.' : 'Not quite. Set ' + (i + 1) + ' was made by a fixed rule, not chance.';
+    $('arVerdict').textContent = ok ? 'Right. Set ' + (i + 1) + ' is chance.' : 'Not quite. Set ' + (i + 1) + ' follows a fixed rule: ' + AR.sets[i].k.replace('^t', '\u1D57') + '.';
+    $('arNote').textContent = 'Gap scores: ' + AR.sets.map(function (s, j) { return 'set ' + (j + 1) + ' ' + s.score.toFixed(2) + (s.rnd ? ' (chance)' : ' (' + s.k.replace('^t', '\u1D57') + ')'); }).join(', ') + '. Chance averages 1.88; Arnold found powers of 2 near 1.6, a little too even. One set can still fool the score.';
     AR.sets.forEach(function (s) { drawCircle(s.svg, s.pts, true); });
   }
   $('arNew').addEventListener('click', newArnold);
