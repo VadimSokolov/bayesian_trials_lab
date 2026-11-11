@@ -1,6 +1,7 @@
 // Tutor drawer: Socratic tutor mode and "Ask about this page" mode.
 // Calls go through the site owner's proxy (Claude Haiku).
 import { esc, renderMarkdown, BRACKET_RE } from './render.js';
+import * as S from './search.js';
 
 import { MODELS, keys, client, makeThread, usageOf, fmtUsage, errorText, viaProxy, modelFor } from './llm.js';
 const LS = { key: 'kg.apikey', model: 'kg.model', level: (id) => 'kg.level.' + id, state: (mode, id) => `kg.state.${mode}.${id}` };
@@ -114,7 +115,7 @@ ${skill}
 ${levels}
 - Session start: if all levels are 0, run the short diagnostic (3 to 5 questions, one at a time, easy to hard, no teaching yet), then propose where to start. If some levels are above 0, welcome the reader back in one sentence and test one saved subskill with a single question before moving on.
 - Teach only from the pages below. If the pages do not cover something, say so plainly instead of answering from memory. Never invent numbers, dates, trial facts or citations; every number you give must appear in a page below.
-- Cite sections as markdown links to the book, for example [§15.2.2](https://...), using the section key table at the end. Cite when you introduce a fact or send the reader to read.
+- Cite sections as markdown links to the book, for example [§15.2.2](https://...), using the section key table at the end or the links given with the excerpts. Cite when you introduce a fact or send the reader to read.
 - Use each page's "Check yourself" questions and the linked lab modules as exercises. Prefer predict-then-check questions. Paraphrase a question rather than copying it when the reader has already seen it.
 - Ask exactly one question per message and stop after it.
 - Write math with $...$ and $$...$$.
@@ -137,16 +138,54 @@ ${keyTable(pages)}
   return { sys, first };
 }
 
+// Retrieve passages from the whole book and encyclopedia for one question (zero tokens) and wrap the question with them.
+// One tiny Haiku call turns a free-form question into search queries in the book's vocabulary (about 200 tokens).
+async function searchQueries(q) {
+  try {
+    const cl = await client(getKey());
+    const r = await cl.messages.create({
+      model: modelFor(), max_tokens: 300,
+      output_config: { effort: 'low', format: { type: 'json_schema', schema: { type: 'object', properties: { queries: { type: 'array', items: { type: 'string' } } }, required: ['queries'], additionalProperties: false } } },
+      messages: [{ role: 'user', content: `A reader asks about a textbook on Bayesian clinical trials (design, regulation, priors, interim monitoring, adaptive and platform trials). Write 3 short search queries, in the words such a book would use, that would find the passages answering this question. Question: ${q}` }],
+    });
+    const txt = (r.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('');
+    const qs = (JSON.parse(txt).queries || []).filter((s) => typeof s === 'string' && s.trim()).slice(0, 3);
+    return qs;
+  } catch (err) { return []; }
+}
+
+async function withBookExcerpts(q) {
+  const [qs] = await Promise.all([searchQueries(q), Promise.race([S.loadSemantic(), new Promise((r) => setTimeout(r, 8000))])]);
+  const seen = new Map();
+  for (const query of [q, ...qs]) {
+    (await S.search(query, { k: 6, maxPerRef: 1 })).forEach((h, rank) => {
+      const key = h.chunk.kind + ':' + (h.chunk.ref || h.chunk.id);
+      const score = 1 / (rank + 1);
+      const prev = seen.get(key);
+      seen.set(key, { h, score: (prev ? prev.score : 0) + score });
+    });
+  }
+  const hits = [...seen.values()].sort((a, b) => b.score - a.score).slice(0, 8).map((x) => x.h);
+  const lines = hits.map((h, i) => {
+    const c = h.chunk;
+    const label = c.kind === 'entity' ? `encyclopedia page "${c.title}"` : `book section ${c.number ? '§' + c.number + ' ' : ''}${c.title}`;
+    const link = c.kind === 'entity' ? `#/e/${c.ref}` : c.url;
+    const words = String(c.text || '').split(/\s+/);
+    return `[${i + 1}] ${label} (link: ${link})\n${words.slice(0, 150).join(' ')}${words.length > 150 ? ' ...' : ''}`;
+  });
+  return lines.length ? `Excerpts retrieved from the whole book for this question:\n\n${lines.join('\n\n')}\n\nQuestion: ${q}` : q;
+}
+
 async function askPrompt(id) {
   const e = E(id);
   const nb = [...new Set([...(e.prerequisites || []), ...(e.needed_for || []), ...(e.related || []).map((r) => r.to), ...(e.related_in || []).map((r) => r.from)])]
     .filter((i) => E(i) && !E(i).stub && i !== id).slice(0, 8);
   const pages = [e, ...nb.map((i) => E(i))];
   const stubs = [...new Set([...(e.prerequisites || []), ...(e.needed_for || [])])].filter((i) => E(i) && E(i).stub).map((i) => E(i).name);
-  const sys = `You answer questions about one page of an encyclopedia built on the book ${bookLine()}. The reader is on the page "${e.name}". Answer from the pages below only; they are the current page and its neighbors.
+  const sys = `You answer questions about one page of an encyclopedia built on the book ${bookLine()}. The reader is on the page "${e.name}". Each question arrives with excerpts that a search engine retrieved from the whole book and encyclopedia for that question. Answer from those excerpts and the pages below (the current page and its neighbors) only; prefer whichever answers the question best, even if it is far from the current page.
 
-- If the pages do not cover the question, say so and point to the most relevant section link instead of answering from memory.
-- Never invent numbers, dates, trial facts or citations; every number must appear in a page below.
+- If neither the excerpts nor the pages cover the question, say so and point to the most relevant section link instead of answering from memory.
+- Never invent numbers, dates, trial facts or citations; every number must appear in an excerpt or a page below.
 - Cite sections as markdown links to the book, for example [§15.2.2](https://...), using the section key table at the end.
 - Be concise: a short paragraph unless the reader asks for more. Write math with $...$ and $$...$$.
 - When useful, mention other entities by name so the reader can open them.${stubs.length ? `\n- Neighbors without a page yet (name only): ${stubs.join(', ')}.` : ''}
@@ -222,13 +261,13 @@ function addMsg(role, html, cls) {
 function renderLog() {
   $('#t-log').innerHTML = '';
   getConv().forEach((m) => {
-    if (m.role === 'user') addMsg('user', m.content);
+    if (m.role === 'user') addMsg('user', m.shown || m.content);
     else { const el = addMsg('assistant', renderMarkdown(hideLevelLines(m.content), kg)); if (m.usage) { const u = document.createElement('div'); u.className = 'usage'; u.textContent = m.usage; el.appendChild(u); } }
   });
   if (!getConv().length) {
     addMsg('assistant', null, 'notice').firstChild.textContent = cur.mode === 'tutor'
       ? 'Press Start. The tutor asks a few questions, one at a time, and teaches only from this page and its prerequisites.'
-      : 'Ask a question about this page. Answers use only this page and its neighbors.';
+      : 'Ask anything about the book. Answers search the whole book and cite its sections.';
   }
   $('#t-start').hidden = getConv().length > 0;
 }
@@ -272,8 +311,14 @@ async function send(text) {
   const mode = cur.mode, id = cur.id;
   const conv = convs[`${mode}:${id}`] = convs[`${mode}:${id}`] || [];
   const logHere = () => cur.mode === mode && cur.id === id;
-  conv.push({ role: 'user', content: text });
-  if (logHere()) { if (conv.length === 1) $('#t-log').innerHTML = ''; addMsg('user', text); }
+  if (logHere()) { if (!conv.length) $('#t-log').innerHTML = ''; addMsg('user', text); }
+  setBusy(true);
+  let apiText = text;
+  if (mode === 'ask') {
+    if (logHere()) setStatus('Searching the book...');
+    try { apiText = await withBookExcerpts(text); } catch (err) { apiText = text; }
+  }
+  conv.push({ role: 'user', content: apiText, shown: text });
   $('#t-start').hidden = true;
   const msgEl = logHere() ? addMsg('assistant', null) : null;
   const bodyEl = msgEl ? msgEl.firstChild : null;
@@ -292,7 +337,7 @@ async function send(text) {
       const seed = conv.slice(0, -1).map((m) => ({ role: m.role, content: m.content }));
       th = tthreads[ck] = { model, proxy: viaProxy(), cl, thread: makeThread(cl, { model, system: sys, max_tokens: viaProxy() ? 1500 : 16000, seed, proxy: viaProxy() }) };
     }
-    const stream = th.thread.stream({ role: 'user', content: text });
+    const stream = th.thread.stream({ role: 'user', content: apiText });
     streaming = stream;
     stream.on('text', (delta) => {
       acc += delta;
