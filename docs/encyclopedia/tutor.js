@@ -274,7 +274,7 @@ function renderLog() {
 
 function refreshAll() {
   const e = cur.id ? E(cur.id) : null;
-  $('#tutor-title').textContent = e ? (cur.mode === 'tutor' ? 'Tutor: ' : 'Ask: ') + e.name : 'Tutor';
+  $('#tutor-title').textContent = e ? (cur.general && cur.mode === 'ask' ? 'Ask the book' : (cur.mode === 'tutor' ? 'Tutor: ' : 'Ask: ') + e.name) : 'Tutor';
   document.querySelectorAll('.tabs [role=tab]').forEach((t) => t.setAttribute('aria-selected', t.dataset.mode === cur.mode ? 'true' : 'false'));
   renderMap();
   renderLog();
@@ -290,6 +290,19 @@ export function open(id, mode) {
   $('#t-input').focus();
 }
 
+// Open the drawer on the Ask tab with a prefilled question (not sent). Answers search the whole book;
+// `id` only anchors the page context, so pass the best matching page or none.
+export function openAsk(question, id) {
+  const pick = (id && E(id) && !E(id).stub) ? id : (routeId && E(routeId) && !E(routeId).stub ? routeId : 'clinical-trial');
+  returnFocus = document.activeElement;
+  cur = { id: pick, mode: 'ask', general: true };
+  $('#tutor').hidden = false;
+  refreshAll();
+  const ta = $('#t-input');
+  ta.value = question || '';
+  ta.focus();
+}
+
 function close() {
   if (streaming) { try { streaming.abort(); } catch (e) { /* ignore */ } }
   $('#tutor').hidden = true;
@@ -298,7 +311,7 @@ function close() {
 
 export function onRoute(id) {
   routeId = id;
-  if (!$('#tutor').hidden && id && id !== cur.id && E(id) && !E(id).stub) { cur.id = id; refreshAll(); }
+  if (!$('#tutor').hidden && id && id !== cur.id && E(id) && !E(id).stub) { cur.id = id; cur.general = false; refreshAll(); }
   else if (!$('#tutor').hidden && id && id !== cur.id) { /* stub or unknown: keep the current session */ }
 }
 
@@ -436,7 +449,7 @@ export function init(data) {
   keys.init();
   $('#t-close').addEventListener('click', close);
   document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !$('#tutor').hidden && !ev.defaultPrevented) close(); });
-  document.querySelectorAll('.tabs [role=tab]').forEach((t) => t.addEventListener('click', () => { cur.mode = t.dataset.mode; refreshAll(); }));
+  document.querySelectorAll('.tabs [role=tab]').forEach((t) => t.addEventListener('click', () => { cur.mode = t.dataset.mode; if (cur.mode === 'tutor') cur.general = false; refreshAll(); }));
   $('#t-form').addEventListener('submit', (ev) => {
     ev.preventDefault();
     const v = $('#t-input').value.trim();

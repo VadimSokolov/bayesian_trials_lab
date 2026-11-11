@@ -103,7 +103,7 @@ function mountSearch(container, big) {
   const n = ++searchCount;
   container.innerHTML = `<div class="search${big ? ' big' : ''}">
     <label class="sr-only" for="q${n}">Search concepts, methods, trials</label>
-    <input id="q${n}" type="search" role="combobox" aria-expanded="false" aria-controls="ql${n}" aria-autocomplete="list" autocomplete="off" placeholder="${big ? 'Search or ask: futility, Bayes factor, priors' : 'Search'}">
+    <input id="q${n}" type="search" role="combobox" aria-expanded="false" aria-controls="ql${n}" aria-autocomplete="list" autocomplete="off" placeholder="${big ? 'Search or ask a question' : 'Search'}">
     <ul id="ql${n}" role="listbox" hidden></ul></div>`;
   const input = $('input', container);
   const list = $('ul', container);
@@ -123,7 +123,7 @@ function mountSearch(container, big) {
     if (!input.value.trim()) { close(); return; }
     list.hidden = false;
     input.setAttribute('aria-expanded', 'true');
-    const more = `<li role="option" id="o${n}-${results.length}" aria-selected="false" class="more" data-search="1"><span>Search for "${esc(input.value.trim())}"</span></li>`;
+    const more = `<li role="option" id="o${n}-${results.length}" aria-selected="false" class="more" data-search="1"><span>Search for "${esc(input.value.trim())}"</span></li>${big ? `<li role="presentation" class="more" data-ask="1"><span>Ask the assistant</span></li>` : ''}`;
     list.innerHTML = results.map((e, i) => `<li role="option" id="o${n}-${i}" aria-selected="false" data-id="${esc(e.id)}">
       <span>${esc(e.name)} ${typeChip(e.type)}${e.stub ? ' <span class="ty">planned</span>' : ''}</span>
       <span class="sub">${esc(e.summary || (e.aliases || []).join(', ') || 'Ch. ' + (e.chapters[0] || ''))}</span></li>`).join('') + more;
@@ -134,12 +134,13 @@ function mountSearch(container, big) {
     if (ev.key === 'ArrowDown') { ev.preventDefault(); if (list.hidden) render(); else setActive((active + 1) % (results.length + 1)); }
     else if (ev.key === 'ArrowUp') { ev.preventDefault(); setActive((active - 1 + results.length + 1) % (results.length + 1)); }
     else if (ev.key === 'Enter') { ev.preventDefault(); if (active >= 0 && active < results.length) go(results[active]); else goSearch(); }
-    else if (ev.key === 'Escape') { if (!list.hidden) { ev.stopPropagation(); close(); } else input.value = ''; }
+    else if (ev.key === 'Escape') { if (!list.hidden) { ev.preventDefault(); ev.stopPropagation(); close(); } else input.value = ''; }
   });
   list.addEventListener('mousedown', (ev) => {
     const li = ev.target.closest('li[data-id]');
     if (li) { ev.preventDefault(); go(ents()[li.dataset.id]); }
     else if (ev.target.closest('li[data-search]')) { ev.preventDefault(); goSearch(); }
+    else if (ev.target.closest('li[data-ask]')) { ev.preventDefault(); const v = input.value.trim(); close(); input.blur(); Tutor.openAsk(v, (results[0] || {}).id); }
   });
   input.addEventListener('blur', () => setTimeout(close, 120));
   input.addEventListener('focus', () => { if (input.value.trim()) render(); });
@@ -217,40 +218,71 @@ function mentionedIn(num) {
   return Object.values(ents()).filter((e) => (e.chapters || []).slice(1).includes(String(num)));
 }
 
-function homeView() {
+// ---------- learning path (computed once at load) ----------
+// Chapters in book order; inside a chapter, the pages it owns (first chapter in `chapters`) in
+// prerequisite order, ties by the number of the home section, then name.
+let PATH = [];
+const POS = {};
+const CHTOP = {};
+const secNum = (e) => {
+  const s = (e.chips && e.chips[e.home]) || (KG.sections || {})[e.home];
+  return s && s.n ? String(s.n).split('.').map((x) => parseInt(x, 10) || 0) : [9999];
+};
+const cmpNum = (a, b) => {
+  for (let i = 0; i < Math.max(a.length, b.length); i++) { const d = (a[i] || 0) - (b[i] || 0); if (d) return d; }
+  return 0;
+};
+function buildPath() {
+  PATH = [];
+  Object.keys(CHTOP).forEach((k) => delete CHTOP[k]);
   const all = Object.values(ents());
-  const pages = all.filter((e) => !e.stub);
-  const dep = depths(new Set(pages.map((e) => e.id)));
-  const sorted = pages.slice().sort((a, b) => (dep[a.id] - dep[b.id]) || (chapNum(a) - chapNum(b)) || sortName(a, b));
-  const start = [];
-  const per = {};
-  sorted.forEach((e) => { const p = (partOfChapter(e.chapters[0]) || {}).name; per[p] = (per[p] || 0) + 1; if (per[p] <= 2 && start.length < 8) start.push(e); });
-  start.sort((a, b) => chapNum(a) - chapNum(b));
-  const byType = {};
-  all.forEach((e) => { byType[e.type] = (byType[e.type] || 0) + 1; });
+  const key = (a, b) => cmpNum(secNum(ents()[a]), secNum(ents()[b])) || sortName(ents()[a], ents()[b]);
+  KG.chapters.forEach((c) => {
+    const own = all.filter((e) => !e.stub && (e.chapters || [])[0] === c.num);
+    const set = new Set(own.map((e) => e.id));
+    const indeg = {}, out = {};
+    own.forEach((e) => { indeg[e.id] = 0; out[e.id] = []; });
+    own.forEach((e) => (e.prerequisites || []).forEach((p) => { if (set.has(p) && p !== e.id) { indeg[e.id]++; out[p].push(e.id); } }));
+    const ready = own.filter((e) => !indeg[e.id]).map((e) => e.id).sort(key);
+    const order = [];
+    while (ready.length) {
+      const id = ready.shift();
+      order.push(id);
+      out[id].forEach((t) => { if (--indeg[t] === 0) ready.push(t); });
+      ready.sort(key);
+    }
+    own.map((e) => e.id).filter((id) => !order.includes(id)).sort(key).forEach((id) => order.push(id)); // cycles, if any
+    CHTOP[c.num] = order;
+    order.forEach((id, i) => { POS[id] = { idx: PATH.length, ch: c.num, k: i + 1, n: order.length }; PATH.push(id); });
+  });
+}
+const chapLabel = (c) => (/^\d+$/.test(c.num) ? 'Chapter ' + c.num : 'Appendix ' + c.num);
+const firstSentence = (s) => { s = (s || '').trim(); const m = s.match(/^.*?[.!?](?=\s+[A-Z(]|$)/); return m ? m[0] : s; };
+const plainSum = (s) => { const t = firstSentence(s).replace(/^This (chapter|appendix) /i, ''); return t.charAt(0).toUpperCase() + t.slice(1); };
+const sentences = (s, n) => { const out = []; let r = (s || '').trim(); while (r && out.length < n) { const f = firstSentence(r); out.push(f); r = r.slice(f.length).trim(); } return out.join(' '); };
+const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+
+function homeView() {
   let h = `<section class="hero"><h1>Bayesian Clinical Trials</h1>
-    <p>Short pages for the ideas, methods and trials of the book, linked by what to learn first.</p><div id="home-search"></div></section>`;
-  h += `<h2>Start here</h2><ol class="route">${start.map((e) => `<li><a class="title" href="#/e/${esc(e.id)}">${esc(e.name)}</a><span class="sum">${esc(e.summary)}</span></li>`).join('')}</ol>
-    <p class="quiet"><a href="#/graph">See the whole map</a></p>`;
-  h += `<h2>The book</h2><div class="parts">`;
+    <p>Learn clinical trials step by step, or look a topic up.</p>
+    <div id="home-search"></div>
+    <p class="askline"><button type="button" class="linkbtn" id="home-ask">or ask the assistant</button></p></section>
+    <h2 class="learn-h">Learn</h2>`;
   KG.parts.forEach((p) => {
-    h += `<details class="part"><summary>${esc(p.name || 'Chapters')}</summary><ul class="chaplist">`;
+    h += `<section class="lpart"><h3>${esc(p.name || 'Chapters')}</h3><ol class="learn">`;
     p.chapters.forEach((n) => {
       const c = chapterByNum(n);
-      h += `<li><span class="num">${esc(n)}</span><a href="#/c/${esc(n)}">${esc(c.title)}</a></li>`;
+      if (!c) return;
+      const cnt = (CHTOP[n] || []).length;
+      h += `<li><a class="lrow" href="#/c/${esc(n)}"><span class="num">${esc(n)}</span>
+        <span class="body"><span class="title">${esc(c.title)}</span><span class="sum">${esc(plainSum(c.summary))}</span></span>
+        <span class="cnt">${cnt ? plural(cnt, 'topic') : ''}</span></a></li>`;
     });
-    h += `</ul></details>`;
+    h += `</ol></section>`;
   });
-  const nfx = (KG.formulas || []).length;
-  h += `</div><details class="browse"><summary>Browse</summary>${nfx ? `<h3>Formulas in words</h3><p class="typerow"><a href="#/formulas">${nfx} book formulas, each read aloud in a sentence</a></p>` : ''}<h3>By type</h3><p class="typerow">${KG.types.filter((t) => byType[t]).map((t) =>
-    `<a href="#/type/${t}">${t} ${byType[t]}</a>`).join('')}</p>
-    <h3>Catalogued results</h3>`;
-  h += KG.results.map((r) => `<div class="resitem"><strong>${esc(r.name)}</strong> <span class="ty">${esc(r.status || '')}</span>
-    <div class="meta"><a href="#/c/${esc(r.chapter)}">Chapter ${esc(r.chapter)}</a>${(r.entities || []).map((id) => ' &middot; ' + entA(id)).join('')}</div>
-    <div>${esc(r.summary || '')}</div></div>`).join('');
-  h += `</details>`;
-  view.innerHTML = h;
-  mountSearch($('#home-search'), true);
+  view.innerHTML = `<div class="home">${h}</div>`;
+  const input = mountSearch($('#home-search'), true);
+  $('#home-ask').addEventListener('click', () => Tutor.openAsk(input.value.trim(), (runSearch(input.value)[0] || {}).id));
   document.title = 'Bayesian Clinical Trials: encyclopedia';
 }
 
@@ -297,10 +329,19 @@ function groupRelated(e) {
   return groups;
 }
 
+function pnHtml(pos) {
+  const link = (i, cls, dir) => {
+    if (i < 0 || i >= PATH.length) return '<span></span>';
+    return `<a class="${cls}" href="#/e/${esc(PATH[i])}"><span class="dir">${dir}</span><span class="nm">${esc(ents()[PATH[i]].name)}</span></a>`;
+  };
+  return `<nav class="pn" aria-label="Previous and next topic">${link(pos.idx - 1, 'prev', '&larr; Previous')}${link(pos.idx + 1, 'next', 'Next &rarr;')}</nav>`;
+}
+
 function entityView(id) {
   const e = ents()[id];
   if (!e) { view.innerHTML = `<h1>Not found</h1><p>No entity "${esc(id)}". <a href="#/">Home</a></p>`; return; }
   const ch = chapterByNum(e.chapters[0]);
+  const pos = POS[id];
   let article;
   if (e.stub) {
     article = `<div class="stubnote"><strong>This page is not written yet.</strong>
@@ -342,14 +383,14 @@ function entityView(id) {
   side += `<details class="more" id="more"><summary>More</summary>${more}</details>`;
 
   view.innerHTML = `<div class="entity-head">
-    <p class="kicker">${typeChip(e.type)}${e.stub ? ' &middot; planned' : ''}${ch ? ` &middot; <a href="#/c/${esc(ch.num)}">Chapter ${esc(ch.num)}</a>` : ''}</p>
+    <p class="kicker">${ch ? `<a href="#/c/${esc(ch.num)}">${esc(chapLabel(ch))}${pos ? ` &middot; Topic ${pos.k} of ${pos.n}` : ''}</a> &middot; ` : ''}${typeChip(e.type)}${e.stub ? ' &middot; planned' : ''}</p>
     <h1>${esc(e.name)}</h1>
     ${e.summary ? `<p class="summary">${esc(e.summary)}</p>` : ''}
     <div class="actions">
       ${e.stub ? '' : `<button type="button" class="btn primary" id="btn-tutor">Study with a tutor</button>`}
-      <a class="quiet" href="#/path/${esc(e.id)}">Study path</a>
       <a class="quiet" href="#/graph?focus=${esc(e.id)}">Show in graph</a></div></div>
-    <div class="entity-grid"><article class="article">${article}</article><aside class="panel" aria-label="Related information">${side}</aside></div>`;
+    <div class="entity-grid"><article class="article">${article}</article><aside class="panel" aria-label="Related information">${side}</aside></div>
+    ${pos ? pnHtml(pos) : ''}`;
   document.title = e.name + ' | Bayesian Clinical Trials';
   enhanceFormulas(view);
   const bt = $('#btn-tutor'); if (bt) bt.addEventListener('click', () => Tutor.open(e.id, 'tutor'));
@@ -408,24 +449,25 @@ function graphStyle(mini) {
 function chapterView(num) {
   const c = chapterByNum(num);
   if (!c) { view.innerHTML = `<h1>Not found</h1><p>No chapter "${esc(num)}". <a href="#/">Home</a></p>`; return; }
-  const owned = ownedBy(num).sort(pagesFirst);
-  const mentioned = mentionedIn(num).sort(pagesFirst);
-  const byName = {};
-  Object.values(ents()).forEach((e) => { byName[e.name.toLowerCase()] = e.id; (e.aliases || []).forEach((a) => { byName[a.toLowerCase()] = byName[a.toLowerCase()] || e.id; }); });
+  const topics = (CHTOP[c.num] || []).map((id) => ents()[id]);
+  const mentioned = mentionedIn(c.num).filter((e) => !e.stub).sort(sortName);
+  const labs = (KG.lab || []).filter((l) => (l.chapters || []).includes(c.num));
   const idx = KG.chapters.findIndex((x) => x.num === c.num);
   const prev = KG.chapters[idx - 1], next = KG.chapters[idx + 1];
-  const li = (e) => `<li>${entA(e.id)} ${typeChip(e.type)}${e.stub ? ' <span class="ty">planned</span>' : ''}</li>`;
-  view.innerHTML = `<p class="crumbs"><a href="#/">Home</a> / ${esc(c.part)}</p>
-    <h1>Chapter ${esc(c.num)}: ${esc(c.title)}</h1>
-    <p><a class="btn" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">Read the chapter in the book</a></p>
-    <p>${esc(c.summary)}</p>
-    ${c.key_terms.length ? `<h2>Key terms</h2><ul class="keyterms">${c.key_terms.map((t) => byName[t.toLowerCase()] ? `<li>${entA(byName[t.toLowerCase()], t)}</li>` : `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
-    <div class="two-col"><div><h2>Owned here (${owned.length})</h2><ul class="sections">${owned.map(li).join('') || '<li class="small">None yet</li>'}</ul></div>
-    <div><h2>Also discussed (${mentioned.length})</h2><ul class="sections">${mentioned.map(li).join('') || '<li class="small">None yet</li>'}</ul></div></div>
-    <h2>Sections</h2><ul class="sections">${c.sections.map((s) =>
-      `<li class="l${Math.min(s.level, 3)}"><span class="n">${esc(s.number)}</span><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a></li>`).join('')}</ul>
-    <p>${prev ? `<a href="#/c/${esc(prev.num)}">&larr; Chapter ${esc(prev.num)}</a>` : ''} ${next ? `&nbsp; <a href="#/c/${esc(next.num)}">Chapter ${esc(next.num)} &rarr;</a>` : ''}</p>`;
-  document.title = 'Chapter ' + c.num + ': ' + c.title;
+  const lnk = (u, t) => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(t)}</a>`;
+  const quiet = [`<span class="quiet">${lnk(c.url, 'Read the chapter in the book')}</span>`]
+    .concat(labs.length ? [`<span class="quiet">Try it in the lab: ${labs.map((l) => lnk(l.url, l.title)).join(', ')}</span>`] : []);
+  view.innerHTML = `<div class="chapter">
+    <p class="crumbs"><a href="#/">Learn</a> &rsaquo; ${esc(c.part)}</p>
+    <h1><span class="chnum">${esc(/^\d+$/.test(c.num) ? c.num : 'Appendix ' + c.num)}</span> ${esc(c.title)}</h1>
+    <p class="summary">${esc(sentences(c.summary, 2))}</p>
+    <p class="quietrow">${quiet.join('')}</p>
+    <h2>Topics, in order</h2>
+    ${topics.length ? `<ol class="topics">${topics.map((e) => `<li><a class="trow" href="#/e/${esc(e.id)}"><span class="title">${esc(e.name)}</span><span class="sum">${esc(firstSentence(e.summary))}</span></a></li>`).join('')}</ol>` : '<p class="muted">No topic pages for this chapter yet. Read it in the book.</p>'}
+    ${mentioned.length ? `<p class="also"><span class="muted">Also discussed here</span> ${mentioned.map((e) => entA(e.id)).join(' &middot; ')}</p>` : ''}
+    <nav class="pn" aria-label="Chapters">${prev ? `<a class="prev" href="#/c/${esc(prev.num)}"><span class="dir">&larr; Previous</span><span class="nm">${esc(chapLabel(prev))}: ${esc(prev.title)}</span></a>` : '<span></span>'}
+      ${next ? `<a class="next" href="#/c/${esc(next.num)}"><span class="dir">Next &rarr;</span><span class="nm">${esc(chapLabel(next))}: ${esc(next.title)}</span></a>` : '<span></span>'}</nav></div>`;
+  document.title = chapLabel(c) + ': ' + c.title;
 }
 
 function graphView(params) {
@@ -670,6 +712,7 @@ async function init() {
     return;
   }
   INDEX = buildIndex();
+  buildPath();
   mountSearch($('#header-search'), false);
   renderFooter();
   Tutor.init(KG);

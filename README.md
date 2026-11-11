@@ -40,7 +40,9 @@ Open http://localhost:8000/. The site needs HTTP (it fetches `data/kg.json`), so
 
 ## Routes
 
-`#/` home, `#/search?q=` search and smart search (`#/ask` redirects here), `#/e/<id>` entity, `#/c/<n>` chapter, `#/graph` (optional `?focus=<id>`), `#/path/<id>` study path, `#/type/<type>` entries by type.
+`#/` home (one search or ask input, then the book's chapters and appendices in reading order under the five part names), `#/search?q=` search and smart search (`#/ask` redirects here), `#/c/<n>` chapter page (summary, links to the book chapter and the lab modules, "Topics, in order", "Also discussed here", previous and next chapter), `#/e/<id>` topic page (kicker "Chapter 15 · Topic 3 of 8", Previous and Next along the global path), `#/graph` (optional `?focus=<id>`), `#/path/<id>` study path, `#/type/<type>` entries by type, `#/formulas` formulas in words (the last three are not linked from the home page).
+
+The learning path is computed once at load in `app.js` (`buildPath`): chapters in book order, and inside a chapter the pages it owns (the first chapter in an entity's `chapters` list) in topological order of prerequisites, ties by home section number and then name. Home, chapter pages and Previous/Next all use it. The home input's "or ask the assistant" opens the tutor drawer on the Ask tab with the text prefilled (`openAsk` in `tutor.js`; not sent).
 
 ## The tutor
 
