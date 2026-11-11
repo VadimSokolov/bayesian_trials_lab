@@ -209,11 +209,11 @@
   <p>In physics, if you repeat an experiment the same way, you get almost the same result. So if you change one thing and the result changes, that change caused it.</p>
   <p>Patients are not like that. Two patients on the same drug can do very differently, because of health, age, habits and things we cannot control.</p>
   <p>Sicker patients tend to do worse no matter what they take. If more of them end up on placebo, the placebo group does worse because of who is in it, and the drug looks better even if it does nothing.</p>
-  <p>So we flip a coin for each patient: heads gets the drug, tails gets placebo. Then healthy and sick patients end up in both groups in about the same numbers. The coin also splits things we never measured, like sleep or diet. What is left is luck, and the randomization test below shows how big luck can be.</p>
+  <p>So we flip a coin for each patient: heads gets the drug, tails gets placebo. Then sicker and less sick patients end up in both groups in about the same numbers. The coin also splits things we never measured, like sleep or diet. What is left is luck, and the randomization test below shows how big luck can be.</p>
   <p class="note">Idea from D. R. Cox, <i>Planning of Experiments</i> (1958).</p>
   <p>Each column is one of 40 patients: top icon = result on the drug, bottom = on placebo.</p>
-  <p>The colored bar is each patient's health at the start: orange sicker, teal healthier.</p>
-  <p><b>Who decides who gets the drug? Try both.</b> When patients choose, healthier ones tend to pick the drug. Watch how far the trial's answer lands from the true effect.</p>
+  <p>The colored bar is each patient's health at the start: orange sicker, teal less sick.</p>
+  <p><b>Who decides who gets the drug? Try both.</b> When patients choose, the less sick ones tend to pick the drug. Watch how far the trial's answer lands from the true effect.</p>
   <div class="row" id="cfMode" role="group" aria-label="Who decides">
     <button class="btn prior" type="button" data-m="choose">Patients choose</button>
     <button class="btn" type="button" data-m="coin">Coin decides</button>
@@ -864,7 +864,7 @@
     var tru = cfTrue(pts, eff), est = cfEst(pts, t, eff), nD = t.filter(Boolean).length;
     var hD = Lab.mean(pts.filter(function (p, i) { return t[i]; }).map(function (p) { return p.h; })), hC = Lab.mean(pts.filter(function (p, i) { return !t[i]; }).map(function (p) { return p.h; }));
     $('cfChips').innerHTML = chip('Real effect in these 40', signed(tru, 1) + ' points') + chip("Trial's result", signed(est, 1) + ' points', true) + chip('Took the drug', nD + ' of 40');
-    $('cfNote').innerHTML = (CF.mode === 'choose' ? 'Patients chose, so the healthier ones took the drug.' : 'The coin ignores each patient\'s health. Luck can still leave the groups unequal.') + ' The trial compares bright top icons (D) with bright bottom icons (P).';
+    $('cfNote').innerHTML = (CF.mode === 'choose' ? 'Patients chose, so the less sick ones took the drug.' : 'The coin ignores each patient\'s health. Luck can still leave the groups unequal.') + ' The trial compares bright top icons (D) with bright bottom icons (P).';
     $('cfEffv').textContent = signed(eff, 0) + ' points' + (eff === 0 ? ' (changes no patient)' : '');
     document.querySelectorAll('#cfMode .btn').forEach(function (b) { b.classList.toggle('on', b.dataset.m === CF.mode); });
     dealStrip(anim); sbDraw(); balDraw();
@@ -947,7 +947,7 @@
     if (!st) { $('sbChips').innerHTML = ''; $('sbNote').textContent = 'One group is empty. Press New assignment.'; return; }
     var n = sbSvg($('sbBars'), st);
     $('sbChips').innerHTML = sbChipsHtml(n);
-    $('sbNote').textContent = (CF.mode === 'choose' ? 'Patients chose: the drug group was healthier to begin with, so the bias bracket is tall.' : 'A coin decided, so any bias is luck and averages to zero over many trials.') + ' Dashed bar = the same drug group, had it skipped the drug.';
+    $('sbNote').textContent = (CF.mode === 'choose' ? 'Patients chose: the drug group was less sick to begin with, so the bias bracket is tall.' : 'A coin decided, so any bias is luck and averages to zero over many trials.') + ' Dashed bar = the same drug group, had it skipped the drug.';
   }
 
   /* ---------- Balance table ---------- */
@@ -975,7 +975,7 @@
 
   function cfCard(key, o) { o.score = score; var c = Lab.QuestionCard($('cfCards'), o); cardEl[key] = c; return c; }
   var qc = { tag: 'Predict: randomization 1', type: 'choice',
-    q: 'The drug does nothing: both outcomes match for every patient. Patients choose, and healthier people pick it. Does the trial show a benefit?',
+    q: 'The drug does nothing: both outcomes match for every patient. Patients choose, and the less sick pick it. Does the trial show a benefit?',
     options: [{ value: 'up', label: 'Yes, the drug group looks better' }, { value: 'zero', label: 'No, the groups look the same' }, { value: 'down', label: 'It looks like it hurts' }],
     answer: function () {
       var i, pts, st, k = 0, sa = 0, sb = 0, sc = 0;
@@ -987,7 +987,7 @@
       svg.style.maxWidth = '600px';
       var p = document.createElement('p'); p.className = 'cap'; p.textContent = 'Average of 500 trials: all of the gap is bias.'; box.appendChild(p);
     },
-    explain: function () { return 'The drug group looks better only because healthier people picked it. Its own "had it skipped the drug" bar is just as tall.'; } };
+    explain: function () { return 'The drug group looks better only because the less sick picked it. Its own "had it skipped the drug" bar is just as tall.'; } };
   cfCard('qc', qc);
   var q7 = { tag: 'Predict: randomization 2', type: 'choice',
     q: 'Many studies saw women on hormone therapy having fewer heart problems. Then a large randomized trial (WHI) tested it. What happened to the risk of heart disease?',

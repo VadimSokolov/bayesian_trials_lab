@@ -110,8 +110,8 @@
 
 <section class="fig" aria-label="One simulated trial as an icon array">
   <h3>One simulated trial, patient by patient</h3>
-  <div class="legend"><span><i style="background:#E07A3F"></i>sicker</span><span><i style="background:#2D8B8B"></i>healthier</span><span><i style="background:#fff;border:2.5px solid #0A1628"></i>recovered</span><span><i style="background:#fff;border:2.5px dashed #0A1628"></i>quit the drug (marked ×)</span></div>
-  <svg id="icons" role="img" aria-label="Icons for each patient in the placebo group and the drug group, colored sicker to healthier, quitters dashed and marked with a cross"></svg>
+  <div class="legend"><span><i style="background:#E07A3F"></i>sicker</span><span><i style="background:#2D8B8B"></i>less sick</span><span><i style="background:#fff;border:2.5px solid #0A1628"></i>recovered</span><span><i style="background:#fff;border:2.5px dashed #0A1628"></i>quit the drug (marked ×)</span></div>
+  <svg id="icons" role="img" aria-label="Icons for each patient in the placebo group and the drug group, colored sicker to less sick, quitters dashed and marked with a cross"></svg>
   <p class="note" id="iconNote"></p>
 </section>
 
@@ -255,7 +255,7 @@
         if (p.q) { var cx = x0 + (k % cols) * cell + cell / 2, cy = oy + 32 + Math.floor(k / cols) * cell + cell / 2, d = cell * 0.3; E('path', { d: 'M' + (cx - d) + ' ' + (cy - d) + 'L' + (cx + d) + ' ' + (cy + d) + 'M' + (cx + d) + ' ' + (cy - d) + 'L' + (cx - d) + ' ' + (cy + d), stroke: NAVY, 'stroke-width': 1.6, fill: 'none' }, svg); }
       });
       E('text', { x: x0, y: oy + BH - 20 }, svg).textContent = 'Recovered' + (gi ? ', all counted' : '') + ': ' + rec(gr.arr) + ' of ' + gr.arr.length + ' (' + (gr.arr.length ? pctTxt(rec(gr.arr) / gr.arr.length) : '0%') + ')';
-      E('text', { x: x0, y: oy + BH - 5 }, svg).textContent = gi ? 'Those who stayed: ' + (avgH(stay) - avgH(groups[0].arr) > 0.15 ? 'healthier than the placebo group' : 'about as healthy as the placebo group') : '';
+      E('text', { x: x0, y: oy + BH - 5 }, svg).textContent = gi ? 'Those who stayed: ' + (avgH(stay) - avgH(groups[0].arr) > 0.15 ? 'less sick than the placebo group' : 'about as sick as the placebo group') : '';
     });
     var c = groups[0].arr, d = groups[1].arr, st = d.filter(function (p) { return !p.q; }), rc = rec(c) / Math.max(1, c.length);
     $('iconNote').innerHTML = 'This trial, extra recoveries per 100: <b>' + signed(100 * (rec(d) / Math.max(1, d.length) - rc), 1) + '</b> (count everyone), <b>' + signed(100 * (rec(st) / Math.max(1, st.length) - rc), 1) + '</b> (drop quitters). Effect if taken: ' + signed(S.eff, 0) + '. Effect of prescribing it: ' + signed(S.eff * (1 - S.quit / 100), 1) + '.';
@@ -334,7 +334,7 @@
     options: [{ value: 'up', label: 'Better' }, { value: 'same', label: 'The same' }, { value: 'down', label: 'Worse' }],
     answer: function () { q6.m = many({ eff: 0, quit: 30, str: 1.5, N: 400 }, 500); return Lab.mean(q6.m.pp) - Lab.mean(q6.m.itt) > 1 ? 'up' : 'same'; },
     onReveal: function () { miniHist(cardEl.q6.el, [{ vals: q6.m.itt, color: TEAL, label: 'Count everyone' }, { vals: q6.m.pp, color: ORANGE, label: 'Drop quitters' }], -30, 30, 40, 0, null, 'Average: ' + signed(Lab.mean(q6.m.itt)) + ' everyone, ' + signed(Lab.mean(q6.m.pp)) + ' quitters dropped.'); },
-    explain: function () { return 'Dropping quitters keeps only the healthier drug patients, while the placebo group keeps everyone. That breaks the balance the coin made.'; } };
+    explain: function () { return 'Dropping quitters keeps only the less sick drug patients, while the placebo group keeps everyone. That breaks the balance the coin made.'; } };
   mk('q6', q6);
 
   var qR = { tag: 'Predict 3', type: 'choice',
