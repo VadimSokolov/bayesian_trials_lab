@@ -40,6 +40,7 @@ summary { cursor: pointer; }
 
 .search-slot { margin-left: auto; flex: 1 1 140px; max-width: 320px; min-width: 0; }
 body.is-home .search-slot { visibility: hidden; }
+body.is-home .sitenav .sn-sub { display: none; }
 
 main:focus-visible { outline: none; }
 main { max-width: 1120px; margin: 0 auto; padding: 1.6rem 1.5rem 3rem; outline: none; }

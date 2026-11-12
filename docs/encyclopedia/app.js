@@ -202,11 +202,30 @@ function searchView(params) {
   if (Ask.looksLikeQuestion(q)) runSmart(); else $('#sp-smartbar').hidden = false;
 }
 
+// ---------- phone: header slides away when scrolling down, comes back when scrolling up ----------
+function hideHeaderOnScroll() {
+  const h = document.querySelector('.sitenav');
+  const phone = window.matchMedia('(max-width: 700px)');
+  let last = window.scrollY, ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY, d = y - last;
+      if (!phone.matches || y < 60 || d < -8) h.classList.remove('sn-hidden');
+      else if (d > 8 && !h.contains(document.activeElement)) h.classList.add('sn-hidden');
+      if (Math.abs(d) > 8) last = y;
+      ticking = false;
+    });
+  }, { passive: true });
+}
+
 // ---------- footer ----------
 function renderFooter() {
   const b = KG.book;
   $('#footer').innerHTML = `<p>${esc(b.authors)} (2026). <em>${esc(b.title)}</em>.
     <a href="https://doi.org/${esc(b.doi)}" target="_blank" rel="noopener noreferrer">DOI</a> &middot;
+    <a href="#/graph">Map of topics</a> &middot;
     <a href="llms.txt">llms.txt</a></p>`;
 }
 
@@ -714,6 +733,7 @@ async function init() {
   INDEX = buildIndex();
   buildPath();
   mountSearch($('#header-search'), false);
+  hideHeaderOnScroll();
   renderFooter();
   Tutor.init(KG);
   Ask.init(KG);

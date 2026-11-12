@@ -28,6 +28,11 @@
 .sitenav .sn-sub a:hover { color: var(--sn-text); background: var(--sn-hover); }
 .sitenav .sn-sub a[aria-current="page"] { color: var(--sn-text); font-weight: 600; background: var(--sn-hover); }
 .sitenav .sn-sub .sn-end { margin-left: auto; }
+@media (max-width: 700px) {
+  .sitenav { transition: transform .2s ease; }
+  .sitenav.sn-hidden { transform: translateY(-100%); }
+}
+@media (prefers-reduced-motion: reduce) { .sitenav { transition: none; } }
 @media (max-width: 520px) {
   .sitenav .sn-bar, .sitenav .sn-subin { padding: 0 1rem; }
   .sitenav .sn-bar { gap: 1rem; }
